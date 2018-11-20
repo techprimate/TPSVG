@@ -12,7 +12,7 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* SVG_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* SVG_Spec.swift */; };
+		607FACEC1AFB9204008FA782 /* TPSVG_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* TPSVG_Spec.swift */; };
 		7E6C7453A616E44389A90FAA /* Pods_TPSVG_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1F6999D9B3F2A2CE8A052E /* Pods_TPSVG_Tests.framework */; };
 		AB6E74C374D403AE3A0C6E11 /* Pods_TPSVG_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F884A594357B0231E777545 /* Pods_TPSVG_Example.framework */; };
 /* End PBXBuildFile section */
@@ -41,7 +41,7 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* TPSVG_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TPSVG_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* SVG_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVG_Spec.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* TPSVG_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSVG_Spec.swift; sourceTree = "<group>"; };
 		8F884A594357B0231E777545 /* Pods_TPSVG_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TPSVG_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2AFB1539E659101C4CA5F24 /* Pods-TPSVG_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPSVG_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPSVG_Example/Pods-TPSVG_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		BF1F6999D9B3F2A2CE8A052E /* Pods_TPSVG_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TPSVG_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,7 +115,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* SVG_Spec.swift */,
+				607FACEB1AFB9204008FA782 /* TPSVG_Spec.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -369,7 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* SVG_Spec.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* TPSVG_Spec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
