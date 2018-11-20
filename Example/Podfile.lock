@@ -1,13 +1,13 @@
 PODS:
-  - Nimble (7.0.3)
-  - Quick (1.2.0)
-  - SwiftLint (0.27.0)
+  - Nimble (7.3.1)
+  - Quick (1.3.2)
+  - SwiftLint (0.28.1)
   - TPSVG (0.1.0):
     - SwiftLint
 
 DEPENDENCIES:
-  - Nimble (~> 7.0.2)
-  - Quick (~> 1.2.0)
+  - Nimble
+  - Quick
   - TPSVG (from `../`)
 
 SPEC REPOS:
@@ -21,11 +21,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
-  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
+  Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
+  Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
+  SwiftLint: 7f5f7de0da74a649b16616cb5246ae323489656e
   TPSVG: 5969c09289622f1e73e9cf24074867493a73914c
 
-PODFILE CHECKSUM: 4da6ffeaf33d54b10214e98c0029046ad612ca6e
+PODFILE CHECKSUM: cf46af6e089caaffd07130bcf90385c638204024
 
 COCOAPODS: 1.5.3
