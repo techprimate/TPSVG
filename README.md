@@ -36,7 +36,7 @@
 
 <p align="center">
 	<b>
-	TPSVG is a fast PDF builder for iOS using simple commands to create advanced documents!
+	TPSVG is a fast SVG parser for iOS, tvOS, watchOS and macOS created in Swift!
 	</b>
 </p>
 
