@@ -1,0 +1,7 @@
+coverage_service: cobertura_xml
+xcodeproj: Example/TPSVG.xcodeproj
+scheme: TPSVG-Example
+workspace: Example/TPSVG.xcworkspace
+source_directory: Source
+configuration: Debug
+binary_basename: TPSVG

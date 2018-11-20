@@ -1,0 +1,8 @@
+author: Philip Niedertscheider
+author_url: https://www.github.com/techprimate-phil
+github_url: https://www.github.com/techprimate/TPSVG
+root_url: https://techprimate.github.io/TPSVG/
+module: TPSVG
+output: docs
+theme: fullwidth
+xcodebuild_arguments: [-workspace, 'Example/TPSVG.xcworkspace', -scheme, 'TPSVG-Example']
