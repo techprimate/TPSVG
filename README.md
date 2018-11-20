@@ -23,8 +23,8 @@
 	<a href="https://travis-ci.org/techprimate/TPSVG">
 		<img src="https://travis-ci.org/techprimate/TPSVG.svg?branch=master&style=flat-square" alt="Travis">
 	</a>
-	<a href="https://codebeat.co/projects/github-com-techprimate-TPSVG-master">
-		<img src="https://codebeat.co/badges/ea2a8d79-a50c-43ea-a05a-2ac57baf84de" alt="codebeat">
+	<a href="https://codebeat.co/projects/github-com-techprimate-tpsvg-master">
+		<img src="https://codebeat.co/badges/3d242e57-5f87-433d-b5ae-715d9d0c2c25" alt="codebeat">
 	</a>
 	<a href="https://bettercodehub.com/results/Techprimate/TPSVG">
 		<img src="https://bettercodehub.com/edge/badge/Techprimate/TPSVG" alt="bettercodehub">
