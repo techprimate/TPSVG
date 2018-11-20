@@ -11,7 +11,7 @@ env:
   - EXAMPLE_SCHEME="TPSVG-Example"
   - SOURCE_FOLDER="Source"
   matrix:
-  - DESTINATION="OS=12.1,name=iPhone XS"
+  - DESTINATION="OS=11.4,name=iPhone X"
 install:
 - bundle install
 - bundle exec pod repo update
