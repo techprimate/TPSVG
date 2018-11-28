@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  TPSVG
 //
-//  Created by techprimate-phil on 11/18/2018.
-//  Copyright (c) 2018 techprimate-phil. All rights reserved.
+//  Created by Philip Niedertscheider on 11/18/2018.
+//  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
 import UIKit
@@ -14,4 +14,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 }
-

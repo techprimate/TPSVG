@@ -4,12 +4,12 @@ platform :ios, "12.1"
 use_frameworks!
 
 target "TPSVG_Example" do
-  pod "TPSVG", :path => "../"
+    pod "TPSVG", :path => "../"
 
-  target "TPSVG_Tests" do
-    inherit! :search_paths
+    target "TPSVG_Tests" do
+        inherit! :search_paths
 
-    pod "Quick"
-    pod "Nimble"
-  end
+        pod "Quick"
+        pod "Nimble"
+    end
 end

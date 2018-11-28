@@ -12,9 +12,12 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* TPSVG_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* TPSVG_Spec.swift */; };
 		7E6C7453A616E44389A90FAA /* Pods_TPSVG_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1F6999D9B3F2A2CE8A052E /* Pods_TPSVG_Tests.framework */; };
 		AB6E74C374D403AE3A0C6E11 /* Pods_TPSVG_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F884A594357B0231E777545 /* Pods_TPSVG_Example.framework */; };
+		D40822ED21AF3D520027B10B /* CGImage+Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40822EC21AF3D520027B10B /* CGImage+Pixel.swift */; };
+		D40822EF21AF3F2A0027B10B /* UIImage+Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40822EE21AF3F2A0027B10B /* UIImage+Pixel.swift */; };
+		D40822F121AF3F740027B10B /* CGImage+Pixel_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40822F021AF3F740027B10B /* CGImage+Pixel_Spec.swift */; };
+		D40822F321AF42B40027B10B /* UIImage+Pixel_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40822F221AF42B40027B10B /* UIImage+Pixel_Spec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,12 +44,22 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* TPSVG_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TPSVG_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* TPSVG_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSVG_Spec.swift; sourceTree = "<group>"; };
 		8F884A594357B0231E777545 /* Pods_TPSVG_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TPSVG_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2AFB1539E659101C4CA5F24 /* Pods-TPSVG_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPSVG_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPSVG_Example/Pods-TPSVG_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		BF1F6999D9B3F2A2CE8A052E /* Pods_TPSVG_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TPSVG_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D40822EC21AF3D520027B10B /* CGImage+Pixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage+Pixel.swift"; sourceTree = "<group>"; };
+		D40822EE21AF3F2A0027B10B /* UIImage+Pixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Pixel.swift"; sourceTree = "<group>"; };
+		D40822F021AF3F740027B10B /* CGImage+Pixel_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage+Pixel_Spec.swift"; sourceTree = "<group>"; };
+		D40822F221AF42B40027B10B /* UIImage+Pixel_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Pixel_Spec.swift"; sourceTree = "<group>"; };
+		D40822F521AF46870027B10B /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-version"; path = "../.swift-version"; sourceTree = "<group>"; };
+		D40822F621AF46870027B10B /* .slather.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .slather.yml; path = ../.slather.yml; sourceTree = "<group>"; };
+		D40822F721AF46870027B10B /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
+		D40822F821AF46870027B10B /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Gemfile; path = ../Gemfile; sourceTree = "<group>"; };
+		D40822F921AF46870027B10B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .swiftlint.yml; path = ../.swiftlint.yml; sourceTree = "<group>"; };
+		D40822FA21AF46870027B10B /* .codebeatignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .codebeatignore; path = ../.codebeatignore; sourceTree = "<group>"; };
+		D40822FB21AF46880027B10B /* .jazzy.yaml */ = {isa = PBXFileReference; explicitFileType = text; name = .jazzy.yaml; path = ../.jazzy.yaml; sourceTree = "<group>"; };
 		E7D5C892A3F54FF85A78E5D7 /* Pods-TPSVG_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPSVG_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPSVG_Example/Pods-TPSVG_Example.release.xcconfig"; sourceTree = "<group>"; };
-		EF61573B6404BF45F4542059 /* TPSVG.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TPSVG.podspec; path = ../TPSVG.podspec; sourceTree = "<group>"; };
+		EF61573B6404BF45F4542059 /* TPSVG.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TPSVG.podspec; path = ../TPSVG.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +128,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* TPSVG_Spec.swift */,
+				D40822EB21AF3D250027B10B /* Helper */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -132,9 +145,16 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				EF61573B6404BF45F4542059 /* TPSVG.podspec */,
-				380BD0E5C16873394EC86E2C /* README.md */,
+				D40822FA21AF46870027B10B /* .codebeatignore */,
+				D40822FB21AF46880027B10B /* .jazzy.yaml */,
+				D40822F621AF46870027B10B /* .slather.yml */,
+				D40822F521AF46870027B10B /* .swift-version */,
+				D40822F921AF46870027B10B /* .swiftlint.yml */,
+				D40822F721AF46870027B10B /* .travis.yml */,
+				D40822F821AF46870027B10B /* Gemfile */,
 				13F137746BFF6AEFAABE32FD /* LICENSE */,
+				380BD0E5C16873394EC86E2C /* README.md */,
+				EF61573B6404BF45F4542059 /* TPSVG.podspec */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -159,6 +179,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D40822EB21AF3D250027B10B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				D40822EC21AF3D520027B10B /* CGImage+Pixel.swift */,
+				D40822EE21AF3F2A0027B10B /* UIImage+Pixel.swift */,
+				D40822F221AF42B40027B10B /* UIImage+Pixel_Spec.swift */,
+				D40822F021AF3F740027B10B /* CGImage+Pixel_Spec.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,6 +199,7 @@
 			buildPhases = (
 				3C4F4FA2EBD2DC462F1933D6 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
+				D40822F421AF44530027B10B /* Swiftlint */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				52022734C6A93D67C52B7CE4 /* [CP] Embed Pods Frameworks */,
@@ -207,9 +239,10 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = TP;
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = CocoaPods;
+				ORGANIZATIONNAME = "techprimate GmbH & Co. KG";
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -353,6 +386,24 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPSVG_Tests/Pods-TPSVG_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D40822F421AF44530027B10B /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"info: Looking for SwiftLint in Pods folder: \" ${PODS_ROOT}\n\nif which swiftlint >/dev/null; then\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" --config \"../.swiftlint.yml\"\nelse\n   echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -369,7 +420,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* TPSVG_Spec.swift in Sources */,
+				D40822EF21AF3F2A0027B10B /* UIImage+Pixel.swift in Sources */,
+				D40822ED21AF3D520027B10B /* CGImage+Pixel.swift in Sources */,
+				D40822F321AF42B40027B10B /* UIImage+Pixel_Spec.swift in Sources */,
+				D40822F121AF3F740027B10B /* CGImage+Pixel_Spec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
