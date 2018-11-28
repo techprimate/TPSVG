@@ -1,5 +1,5 @@
 os: osx
-osx_iamge: xcode10
+osx_image: xcode10.1
 cache:
 - bundler
 - cocoapods
@@ -12,6 +12,7 @@ env:
   - SOURCE_FOLDER="Source"
   matrix:
   - DESTINATION="OS=11.4,name=iPhone X"
+  - DESTINATION="OS=12.1,name=iPhone XS"
 install:
 - bundle install
 - bundle exec pod repo update
