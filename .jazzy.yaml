@@ -5,4 +5,4 @@ root_url: https://techprimate.github.io/TPSVG/
 module: TPSVG
 output: docs
 theme: fullwidth
-xcodebuild_arguments: [-workspace, 'Example/TPSVG.xcworkspace', -scheme, 'TPSVG-Example']
+xcodebuild_arguments: [-workspace, 'Example/TPSVG.xcworkspace', -scheme, 'TPSVG-Example', -sdk, 'iphonesimulator' ]

@@ -1,6 +1,19 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/TPSVG.swift",
+      "line": 28,
+      "symbol": "TPSVG.init(data:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/TPSVG.swift",
+      "line": 36,
+      "symbol": "TPSVG.init(raw:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
   ],
   "source_directory": "/Users/Philip/Desktop/techprimate/Projects/TPSVG"
 }

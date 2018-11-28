@@ -6,7 +6,12 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
-class TPSVG {
+import Foundation
+
+/**
+ 
+ */
+public class TPSVG {
 
     /**
      Initialize a `Data` with the contents of a `URL`.
@@ -14,7 +19,7 @@ class TPSVG {
      - Parameter url: The `URL` to read.
 
      - Throws: An error in the Cocoa domain, if `url` cannot be read.
-    */
+     */
     public convenience init(contentsOf url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }

@@ -159,9 +159,7 @@ TPSVG is created and maintained by Philip Niedertscheider, owned by [techprimate
 
 ### Contributors
 
-We want to thank the following individuals for their work:
-
-Always looking for more contributors!
+We want to thank all [Contributors](https://github.com/techprimate/TPSVG/graphs/contributors) for their support!
 
 ## License
 

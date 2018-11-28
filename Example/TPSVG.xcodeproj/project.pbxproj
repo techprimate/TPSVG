@@ -58,6 +58,7 @@
 		D40822F921AF46870027B10B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .swiftlint.yml; path = ../.swiftlint.yml; sourceTree = "<group>"; };
 		D40822FA21AF46870027B10B /* .codebeatignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .codebeatignore; path = ../.codebeatignore; sourceTree = "<group>"; };
 		D40822FB21AF46880027B10B /* .jazzy.yaml */ = {isa = PBXFileReference; explicitFileType = text; name = .jazzy.yaml; path = ../.jazzy.yaml; sourceTree = "<group>"; };
+		D408230221AF54740027B10B /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		E7D5C892A3F54FF85A78E5D7 /* Pods-TPSVG_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPSVG_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPSVG_Example/Pods-TPSVG_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EF61573B6404BF45F4542059 /* TPSVG.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TPSVG.podspec; path = ../TPSVG.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
@@ -146,15 +147,16 @@
 			isa = PBXGroup;
 			children = (
 				D40822FA21AF46870027B10B /* .codebeatignore */,
-				D40822FB21AF46880027B10B /* .jazzy.yaml */,
-				D40822F621AF46870027B10B /* .slather.yml */,
 				D40822F521AF46870027B10B /* .swift-version */,
-				D40822F921AF46870027B10B /* .swiftlint.yml */,
-				D40822F721AF46870027B10B /* .travis.yml */,
 				D40822F821AF46870027B10B /* Gemfile */,
 				13F137746BFF6AEFAABE32FD /* LICENSE */,
+				D408230221AF54740027B10B /* CHANGELOG.md */,
 				380BD0E5C16873394EC86E2C /* README.md */,
 				EF61573B6404BF45F4542059 /* TPSVG.podspec */,
+				D40822FB21AF46880027B10B /* .jazzy.yaml */,
+				D40822F621AF46870027B10B /* .slather.yml */,
+				D40822F921AF46870027B10B /* .swiftlint.yml */,
+				D40822F721AF46870027B10B /* .travis.yml */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
