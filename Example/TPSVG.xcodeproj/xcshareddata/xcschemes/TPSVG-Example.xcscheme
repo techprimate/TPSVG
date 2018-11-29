@@ -51,24 +51,12 @@
             BlueprintName = "TPSVG"
             ReferencedContainer = "container:Pods/Pods.xcodeproj">
          </BuildableReference>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "TPSVG_Example.app"
-            BlueprintName = "TPSVG_Example"
-            ReferencedContainer = "container:TPSVG.xcodeproj">
-         </BuildableReference>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACE41AFB9204008FA782"
-            BuildableName = "TPSVG_Tests.xctest"
-            BlueprintName = "TPSVG_Tests"
-            ReferencedContainer = "container:TPSVG.xcodeproj">
-         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            parallelizable = "YES"
+            testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"

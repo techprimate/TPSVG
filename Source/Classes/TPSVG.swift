@@ -14,6 +14,11 @@ import Foundation
 public class TPSVG {
 
     /**
+     Loaded raw SVG
+     */
+    public private(set) var raw: String
+
+    /**
      Initialize a `Data` with the contents of a `URL`.
 
      - Parameter url: The `URL` to read.
@@ -26,7 +31,7 @@ public class TPSVG {
 
     // TODO: Documentation
     public convenience init(data: Data) throws {
-        guard let raw = String(data: data, encoding: String.Encoding.utf8) else {
+        guard let raw = String(data: data, encoding: .utf8) else {
             throw TPSVGError.invalidData
         }
         self.init(raw: raw)
@@ -34,6 +39,7 @@ public class TPSVG {
 
     // TODO: Documentation
     public init(raw: String) {
+        self.raw = raw
         // TODO: Parsing of raw SVG String
     }
 }
