@@ -27,6 +27,9 @@ class TPSVGEngine: NSObject {
      Calling this method discards previously parsed data.
      */
     func parse(_ data: Data) {
+        styles = []
+        paths = []
+        
         let parser = XMLParser(data: data)
         parser.delegate = self
         parser.parse()

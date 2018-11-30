@@ -17,7 +17,7 @@ class TPSVGEngine_Spec: QuickSpec {
     override func spec() {
         describe("TPSVGEngine") {
 
-            it("can parse data") {
+            it("can parse empty data") {
                 let url = Bundle.main.url(forResource: "empty", withExtension: "svg")!
                 var data: Data!
                 do {
@@ -32,6 +32,8 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles) == []
                 expect(engine.paths) == []
             }
+
+            it("can parse )
         }
     }
 }
