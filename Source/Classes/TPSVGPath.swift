@@ -6,8 +6,14 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: documentation
+ */
 public class TPSVGPath {
 
+    /**
+     TODO: documentation
+     */
     enum ElementKind {
 
         case rect

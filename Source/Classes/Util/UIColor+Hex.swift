@@ -85,6 +85,12 @@ extension UIColor {
                   alpha: CGFloat(alpha) / 255)
     }
 
+    /**
+     Creates a hexa-decimal string representing this color.
+
+     If the alpha component is 1.0 then the result will be in format `#RRGGBB`.
+     Otherwise the result will be in format `#RRGGBBAA`
+     */
     public var hex: String {
         var red: CGFloat = 0
         var green: CGFloat = 0

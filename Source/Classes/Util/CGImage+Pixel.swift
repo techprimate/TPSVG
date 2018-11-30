@@ -6,14 +6,21 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
-import UIKit
-
+/**
+ TODO: documentation
+ */
 extension CGImage {
 
+    /**
+     TODO: documentation
+     */
     func pixel(at point: CGPoint) -> UIColor? {
         return pixels(at: [point])?.first
     }
 
+    /**
+     TODO: documentation
+     */
     func pixels(at points: [CGPoint]) -> [UIColor]? {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bytesPerPixel = 4

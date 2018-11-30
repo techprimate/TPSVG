@@ -6,14 +6,34 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: documentation
+ */
 struct TPRegexMatchResult {
 
+    /**
+     TODO: documentation
+     */
     public let regex: NSRegularExpression
+
+    /**
+     TODO: documentation
+     */
     public let searchString: String
+
+    /**
+     TODO: documentation
+     */
     public let items: [NSTextCheckingResult]
 
+    /**
+     TODO: documentation
+     */
     public let captures: [String]
 
+    /**
+     TODO: documentation
+     */
     public init(regex: NSRegularExpression, searchString: String, items: [NSTextCheckingResult]) {
         self.regex = regex
         self.searchString = searchString
@@ -25,17 +45,5 @@ struct TPRegexMatchResult {
                 return (searchString as NSString).substring(with: range)
             }
         }
-    }
-
-    public var boolValue: Bool {
-        return items.count > 0
-    }
-
-    subscript (i: Int) -> NSTextCheckingResult {
-        return items[i]
-    }
-
-    subscript (i: Int) -> String {
-        return captures[i]
     }
 }

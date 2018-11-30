@@ -16,6 +16,9 @@ class TPCSSEngine {
      */
     public var text: String = ""
 
+    /**
+     TODO: documentation
+     */
     init() {}
 
     /**

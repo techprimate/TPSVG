@@ -6,8 +6,14 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: documentation
+ */
 extension TPSVGPath: Equatable {
 
+    /**
+     TODO: documentation
+     */
     public static func == (lhs: TPSVGPath, rhs: TPSVGPath) -> Bool {
         return true
     }
