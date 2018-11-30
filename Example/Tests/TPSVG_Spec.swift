@@ -81,7 +81,7 @@ class TPSVG_Spec: QuickSpec {
                         let engine = TPSVGEngine()
                         engine.parse(data)
 
-                        expect(svg.paths) == engine.paths
+                        expect(svg.paths) == engine.elements
                         expect(svg.styles) == engine.styles
                     } catch {
                         fail(error.localizedDescription)

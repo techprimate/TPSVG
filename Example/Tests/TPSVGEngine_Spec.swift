@@ -36,7 +36,7 @@ class TPSVGEngine_Spec: QuickSpec {
                 let engine = parse(file: "empty")
 
                 expect(engine.styles) == []
-                expect(engine.paths) == []
+                expect(engine.elements) == []
             }
 
             it("can parse file-1") {
@@ -45,7 +45,9 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.red)
                 ]))
-                expect(engine.paths) == []
+                expect(engine.elements) == [
+                    TPSVGRect(classNames: ["st0"], origin: CGPoint(x: 100, y: 100), size: CGSize(width: 300, height: 300))
+                ]
             }
 
             it("can parse file-2") {
@@ -54,7 +56,7 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.red)
                 ]))
-                expect(engine.paths) == []
+                expect(engine.elements) == []
             }
 
             it("can parse file-3") {
@@ -63,7 +65,7 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.clear, stroke: TPSVGStroke(color: UIColor.black, width: 10, miterLimit: 10))
                 ]))
-                expect(engine.paths) == []
+                expect(engine.elements) == []
             }
 
             it("can parse file-4") {
@@ -72,7 +74,7 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
                 ]))
-                expect(engine.paths) == []
+                expect(engine.elements) == []
             }
 
             it("can parse file-5") {
@@ -81,7 +83,7 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
                 ]))
-                expect(engine.paths) == []
+                expect(engine.elements) == []
             }
 
             it("can parse file-6") {
@@ -90,7 +92,7 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
                 ]))
-                expect(engine.paths) == []
+                expect(engine.elements) == []
             }
 
             it("can parse file-7") {
@@ -100,7 +102,7 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGStyle(name: ".st0", font: TPSVGFont(family: "AvenirNext-Regular")),
                     TPSVGStyle(name: ".st1", font: TPSVGFont(size: 50))
                 ]))
-                expect(engine.paths) == []
+                expect(engine.elements) == []
             }
 
             it("can parse file-8") {
@@ -109,7 +111,7 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
                 ]))
-                expect(engine.paths) == []
+                expect(engine.elements) == []
             }
 
             it("can parse file-9") {
@@ -119,7 +121,7 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGStyle(name: ".st0", fill: UIColor.green),
                     TPSVGStyle(name: ".st1", fill: UIColor.cyan)
                 ]))
-                expect(engine.paths) == []
+                expect(engine.elements) == []
             }
 
             it("can parse file-10-tiger") {
@@ -173,7 +175,7 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGStyle(name: ".z", fill: UIColor(hex: 0xe5e5b2))
                 ]
                 expect(engine.styles).to(contain(expectedStyles))
-                expect(engine.paths) == []
+                expect(engine.elements) == []
             }
         }
     }

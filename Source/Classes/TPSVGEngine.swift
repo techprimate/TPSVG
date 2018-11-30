@@ -19,7 +19,7 @@ class TPSVGEngine: NSObject {
     /**
      An ordered list of all paths parsed by this engine.
      */
-    public private(set) var paths = [TPSVGPath]()
+    public private(set) var elements = [TPSVGElement]()
 
     // MARK: - Parsing
 
@@ -33,7 +33,7 @@ class TPSVGEngine: NSObject {
      */
     func parse(_ data: Data) {
         styles = []
-        paths = []
+        elements = []
 
         let parser = XMLParser(data: data)
         parser.delegate = self
@@ -51,6 +51,17 @@ extension TPSVGEngine: XMLParserDelegate {
         switch elementName.lowercased() {
         case "style":
             cssEngine = TPCSSEngine()
+        case SVGSpecElement.rect.rawValue:
+            if let rect = TPSVGRect(attributes: attributeDict) {
+                elements.append(rect)
+            }
+        case SVGSpecElement.audio.rawValue,
+             SVGSpecElement.canvas.rawValue,
+             SVGSpecElement.foreign.rawValue,
+             SVGSpecElement.iframe.rawValue,
+             SVGSpecElement.tspan.rawValue,
+             SVGSpecElement.video.rawValue:
+            print("⚠️ [TPSVG] Unsupported tag found:", elementName)
         default:
             break
 //            print("💜 Start Element:", elementName, namespaceURI as Any, qName as Any, attributeDict)
@@ -64,7 +75,6 @@ extension TPSVGEngine: XMLParserDelegate {
             styles = cssEngine?.parse() ?? []
         default:
             break
-//            print("💜 End Element:", elementName, namespaceURI as Any, qName as Any)
         }
     }
 

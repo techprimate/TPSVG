@@ -30,7 +30,7 @@ public class TPSVG {
     /**
      Parsed paths
      */
-    public private(set) var paths = [TPSVGPath]()
+    public private(set) var paths = [TPSVGElement]()
 
     /**
      Initialize a `TPSVG` with the contents of a `URL`.
@@ -79,6 +79,6 @@ public class TPSVG {
         engine.parse(data)
 
         self.styles = engine.styles
-        self.paths = engine.paths
+        self.paths = engine.elements
     }
 }

@@ -100,6 +100,7 @@
 		D40D18C821B152870061C15F /* file-10-tiger.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; fileEncoding = 4; path = "file-10-tiger.svg"; sourceTree = "<group>"; };
 		D40D18D921B166230061C15F /* file-1.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "file-1.css"; sourceTree = "<group>"; };
 		D40D18DD21B166720061C15F /* TPCSSEngine_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPCSSEngine_Spec.swift; sourceTree = "<group>"; };
+		D429C65F21B1A8A800B5CE0A /* file-11-line.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; path = "file-11-line.svg"; sourceTree = "<group>"; };
 		E7D5C892A3F54FF85A78E5D7 /* Pods-TPSVG_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPSVG_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPSVG_Example/Pods-TPSVG_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EF61573B6404BF45F4542059 /* TPSVG.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TPSVG.podspec; path = ../TPSVG.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
@@ -259,6 +260,7 @@
 				D40D18B321B142900061C15F /* file-9.svg */,
 				D40D18C721B152870061C15F /* file-10-tiger-inline.svg */,
 				D40D18C821B152870061C15F /* file-10-tiger.svg */,
+				D429C65F21B1A8A800B5CE0A /* file-11-line.svg */,
 			);
 			path = SVG;
 			sourceTree = "<group>";
