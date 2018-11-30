@@ -18,7 +18,7 @@ extension TPSVGStyle: Equatable {
         guard lhs.name == rhs.name else {
             return false
         }
-        guard lhs.fill == rhs.fill else {
+        guard lhs.fill?.hex == rhs.fill?.hex else {
             return false
         }
         guard lhs.stroke == rhs.stroke else {

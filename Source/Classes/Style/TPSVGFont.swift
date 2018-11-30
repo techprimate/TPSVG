@@ -29,3 +29,14 @@ public struct TPSVGFont {
         self.size = size
     }
 }
+
+extension TPSVGFont: CustomStringConvertible, CustomDebugStringConvertible {
+
+    public var description: String {
+        return String(format: "TPSVGFont { family: %@, size: %f }", family ?? "nil", size ?? 0)
+    }
+
+    public var debugDescription: String {
+        return String(format: "TPSVGFont { family: %@, size: %f }", family ?? "nil", size ?? 0)
+    }
+}

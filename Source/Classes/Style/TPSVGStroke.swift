@@ -35,3 +35,14 @@ public struct TPSVGStroke {
         self.miterLimit = miterLimit
     }
 }
+
+extension TPSVGStroke: CustomStringConvertible, CustomDebugStringConvertible {
+
+    public var description: String {
+        return String(format: "TPSVGStroke { color: %@, width: %f, miter limit: %f }", color?.hex ?? "nil", width ?? 0, miterLimit ?? 0)
+    }
+
+    public var debugDescription: String {
+        return String(format: "TPSVGStroke { color: %@, width: %f, miter limit: %f }", color?.hex ?? "nil", width ?? 0, miterLimit ?? 0)
+    }
+}

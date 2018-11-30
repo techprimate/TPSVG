@@ -15,7 +15,7 @@ extension TPSVGStroke: Equatable {
      TODO: documentation
      */
     public static func == (lhs: TPSVGStroke, rhs: TPSVGStroke) -> Bool {
-        guard lhs.color == rhs.color else {
+        guard lhs.color?.hex == rhs.color?.hex else {
             return false
         }
         guard lhs.width == rhs.width else {
