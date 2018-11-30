@@ -14,13 +14,6 @@ public class TPSVGElement: Equatable {
     /**
      TODO: documentation
      */
-    var kind: TPSVGElementKind {
-        return .none
-    }
-
-    /**
-     TODO: documentation
-     */
     public var classNames: [String]
 
     /**
@@ -44,6 +37,9 @@ public class TPSVGElement: Equatable {
         if let lhs = lhs as? TPSVGEllipse, let rhs = rhs as? TPSVGEllipse {
             return lhs == rhs
         }
+        if let lhs = lhs as? TPSVGGroup, let rhs = rhs as? TPSVGGroup {
+            return lhs == rhs
+        }
         if let lhs = lhs as? TPSVGPath, let rhs = rhs as? TPSVGPath {
             return lhs == rhs
         }
@@ -59,7 +55,6 @@ public class TPSVGElement: Equatable {
         if let lhs = lhs as? TPSVGText, let rhs = rhs as? TPSVGText {
             return lhs == rhs
         }
-
-        return lhs.kind == rhs.kind
+        return true
     }
 }

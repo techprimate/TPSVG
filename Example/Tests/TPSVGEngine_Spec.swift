@@ -10,7 +10,7 @@ import Quick
 import Nimble
 @testable import TPSVG
 
-// swiftlint:disable type_name function_body_length
+// swiftlint:disable type_name function_body_length type_body_length
 
 class TPSVGEngine_Spec: QuickSpec {
 
@@ -55,8 +55,13 @@ class TPSVGEngine_Spec: QuickSpec {
 
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.red)
-                ]))
-                expect(engine.elements) == []
+                    ]))
+                expect(engine.elements) == [
+                    TPSVGPolygon(classNames: ["st0"], points: [
+                        CGPoint(x: 325, y: 120), CGPoint(x: 175, y: 120), CGPoint(x: 100, y: 250),
+                        CGPoint(x: 175, y: 380), CGPoint(x: 325, y: 380), CGPoint(x: 400, y: 250)
+                        ])
+                ]
             }
 
             it("can parse file-3") {
@@ -65,7 +70,12 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.clear, stroke: TPSVGStroke(color: UIColor.black, width: 10, miterLimit: 10))
                 ]))
-                expect(engine.elements) == []
+                expect(engine.elements) == [
+                    TPSVGPolyline(classNames: ["st0"], points: [
+                        CGPoint(x: 53, y: 217), CGPoint(x: 175, y: 164),
+                        CGPoint(x: 279, y: 350), CGPoint(x: 433, y: 240)
+                        ])
+                ]
             }
 
             it("can parse file-4") {
@@ -74,7 +84,9 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
                 ]))
-                expect(engine.elements) == []
+                expect(engine.elements) == [
+                    TPSVGCircle(classNames: ["st0"], center: CGPoint(x: 250, y: 250), radius: 150)
+                ]
             }
 
             it("can parse file-5") {
@@ -83,7 +95,9 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
                 ]))
-                expect(engine.elements) == []
+                expect(engine.elements) == [
+                    TPSVGEllipse(classNames: ["st0"], center: CGPoint(x: 250, y: 250), radius: CGVector(dx: 225, dy: 150))
+                ]
             }
 
             it("can parse file-6") {
@@ -92,7 +106,9 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
                 ]))
-                expect(engine.elements) == []
+                expect(engine.elements) == [
+                    TPSVGPath(classNames: ["st0"], d: [])
+                ]
             }
 
             it("can parse file-7") {
@@ -102,7 +118,9 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGStyle(name: ".st0", font: TPSVGFont(family: "AvenirNext-Regular")),
                     TPSVGStyle(name: ".st1", font: TPSVGFont(size: 50))
                 ]))
-                expect(engine.elements) == []
+                expect(engine.elements) == [
+                    TPSVGText(classNames: ["st0", "st1"], transform: "matrix(1 0 0 1 88.0273 250)", text: "TPSVG rocks!")
+                ]
             }
 
             it("can parse file-8") {
@@ -111,7 +129,9 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
                 ]))
-                expect(engine.elements) == []
+                expect(engine.elements) == [
+                    TPSVGPath(classNames: ["st0"], d: [])
+                ]
             }
 
             it("can parse file-9") {
@@ -121,7 +141,18 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGStyle(name: ".st0", fill: UIColor.green),
                     TPSVGStyle(name: ".st1", fill: UIColor.cyan)
                 ]))
-                expect(engine.elements) == []
+                expect(engine.elements) == [
+                    TPSVGGroup(elements: [
+                        TPSVGPolygon(classNames: ["st0"], points: [
+                            CGPoint(x: 284, y: 155), CGPoint(x: 284, y: 64), CGPoint(x: 71, y: 64),
+                            CGPoint(x: 71, y: 231), CGPoint(x: 214.5, y: 231), CGPoint(x: 214.5, y: 155)
+                            ]),
+                        TPSVGPolygon(classNames: ["st1"], points: [
+                            CGPoint(x: 284, y: 155), CGPoint(x: 284, y: 231), CGPoint(x: 214.5, y: 231),
+                            CGPoint(x: 214.5, y: 292.1), CGPoint(x: 429.3, y: 292.1), CGPoint(x: 429.3, y: 155)
+                            ])
+                        ])
+                ]
             }
 
             it("can parse file-10-tiger") {
@@ -175,7 +206,341 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGStyle(name: ".z", fill: UIColor(hex: 0xe5e5b2))
                 ]
                 expect(engine.styles).to(contain(expectedStyles))
-                expect(engine.elements) == []
+                let expectedPaths = [
+                    TPSVGPath(classNames: ["a"], d: []),
+                    TPSVGPath(classNames: ["a"], d: []),
+                    TPSVGPath(classNames: ["a"], d: []),
+
+                    TPSVGPath(classNames: ["a"], d: []),
+                    TPSVGPath(classNames: ["a"], d: []),
+                    TPSVGPath(classNames: ["a"], d: []),
+                    TPSVGPath(classNames: ["a"], d: []),
+
+                    TPSVGPath(classNames: ["a"], d: []),
+                    TPSVGPath(classNames: ["a"], d: []),
+                    TPSVGPath(classNames: ["a"], d: []),
+                    TPSVGPath(classNames: ["a"], d: []),
+
+                    TPSVGPath(classNames: ["a"], d: []),
+                    TPSVGPath(classNames: ["b"], d: []),
+                    TPSVGPath(classNames: ["c"], d: []),
+                    TPSVGPath(classNames: ["d"], d: []),
+                    TPSVGPath(classNames: ["e"], d: []),
+                    TPSVGPath(classNames: ["f"], d: []),
+                    TPSVGPath(classNames: ["g"], d: []),
+                    TPSVGPath(classNames: ["h"], d: []),
+                    TPSVGPath(classNames: ["i"], d: []),
+                    TPSVGPath(classNames: ["j"], d: []),
+                    TPSVGPath(classNames: ["k"], d: []),
+                    TPSVGPath(classNames: ["l"], d: []),
+                    TPSVGPath(classNames: ["m"], d: []),
+                    TPSVGPath(classNames: ["n"], d: []),
+                    TPSVGPath(classNames: ["o"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["q"], d: []),
+                    TPSVGPath(classNames: ["r"], d: []),
+                    TPSVGPath(classNames: ["s"], d: []),
+                    TPSVGPath(classNames: ["t"], d: []),
+                    TPSVGPath(classNames: ["u"], d: []),
+                    TPSVGPath(classNames: ["v"], d: []),
+                    TPSVGPath(classNames: ["w"], d: []),
+
+                    TPSVGPath(classNames: ["u"], d: []),
+                    TPSVGPath(classNames: ["u"], d: []),
+                    TPSVGPath(classNames: ["u"], d: []),
+                    TPSVGPath(classNames: ["u"], d: []),
+                    TPSVGPath(classNames: ["u"], d: []),
+                    TPSVGPath(classNames: ["u"], d: []),
+
+                    TPSVGPath(classNames: ["x"], d: []),
+                    TPSVGPath(classNames: ["x"], d: []),
+
+                    TPSVGPath(classNames: ["u"], d: []),
+
+                    TPSVGPath(classNames: ["x"], d: []),
+                    TPSVGPath(classNames: ["x"], d: []),
+
+                    TPSVGPath(classNames: ["y"], d: []),
+
+                    TPSVGPath(classNames: ["u"], d: []),
+                    TPSVGPath(classNames: ["u"], d: []),
+                    TPSVGPath(classNames: ["u"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["u"], d: []),
+                    TPSVGPath(classNames: ["u"], d: []),
+                    TPSVGPath(classNames: ["u"], d: []),
+                    TPSVGPath(classNames: ["u"], d: []),
+                    TPSVGPath(classNames: ["u"], d: []),
+
+                    TPSVGPath(classNames: ["z"], d: []),
+                    TPSVGPath(classNames: ["z"], d: []),
+
+                    TPSVGPath(classNames: ["d"], d: []),
+
+                    TPSVGPath(classNames: ["aa"], d: []),
+                    TPSVGPath(classNames: ["ab"], d: []),
+                    TPSVGPath(classNames: ["ac"], d: []),
+                    TPSVGPath(classNames: ["ad"], d: []),
+
+                    TPSVGPath(classNames: ["o"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["ae"], d: []),
+                    TPSVGPath(classNames: ["af"], d: []),
+                    TPSVGPath(classNames: ["o"], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: ["d"], d: []),
+                    TPSVGPath(classNames: ["o"], d: []),
+
+                    TPSVGPath(classNames: ["ag"], d: []),
+                    TPSVGPath(classNames: ["ah"], d: []),
+                    TPSVGPath(classNames: ["ai"], d: []),
+
+                    TPSVGPath(classNames: ["o"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: ["ae"], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["aj"], d: []),
+                    TPSVGPath(classNames: ["ak"], d: []),
+                    TPSVGPath(classNames: ["al"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["o"], d: []),
+
+                    TPSVGPath(classNames: ["am"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["d"], d: []),
+                    TPSVGPath(classNames: ["d"], d: []),
+                    TPSVGPath(classNames: ["d"], d: []),
+                    TPSVGPath(classNames: ["d"], d: []),
+                    TPSVGPath(classNames: ["d"], d: []),
+                    TPSVGPath(classNames: ["d"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["an"], d: []),
+                    TPSVGPath(classNames: ["an"], d: []),
+                    TPSVGPath(classNames: ["an"], d: []),
+                    TPSVGPath(classNames: ["an"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: ["ao"], d: []),
+                    TPSVGPath(classNames: ["ae"], d: []),
+                    TPSVGPath(classNames: ["af"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["ap"], d: []),
+                    TPSVGPath(classNames: ["aq"], d: []),
+                    TPSVGPath(classNames: ["am"], d: []),
+                    TPSVGPath(classNames: ["o"], d: []),
+                    TPSVGPath(classNames: ["am"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["o"], d: []),
+                    TPSVGPath(classNames: ["o"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["am"], d: []),
+                    TPSVGPath(classNames: ["am"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+
+                    TPSVGPath(classNames: ["p"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+                    TPSVGPath(classNames: ["ar"], d: []),
+
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+                    TPSVGPath(classNames: [], d: []),
+
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+
+                    TPSVGPath(classNames: ["p"], d: []),
+                    TPSVGPath(classNames: ["p"], d: []),
+
+                    TPSVGPath(classNames: ["as"], d: []),
+                    TPSVGPath(classNames: ["as"], d: []),
+                    TPSVGPath(classNames: ["as"], d: []),
+                    TPSVGPath(classNames: ["as"], d: [])
+                ]
+                if let group = engine.elements.first as? TPSVGGroup {
+                    expect(group.elements).to(haveCount(expectedPaths.count))
+
+                    expect(Array(group.elements[0..<10])) == Array(expectedPaths[0..<10])
+                    expect(Array(group.elements[10..<20])) == Array(expectedPaths[10..<20])
+                    expect(Array(group.elements[20..<30])) == Array(expectedPaths[20..<30])
+                    expect(Array(group.elements[30..<40])) == Array(expectedPaths[30..<40])
+                    expect(Array(group.elements[40..<50])) == Array(expectedPaths[40..<50])
+                    expect(Array(group.elements[50..<60])) == Array(expectedPaths[50..<60])
+                    expect(Array(group.elements[60..<70])) == Array(expectedPaths[60..<70])
+                    expect(Array(group.elements[70..<80])) == Array(expectedPaths[70..<80])
+                    expect(Array(group.elements[80..<90])) == Array(expectedPaths[80..<90])
+                    expect(Array(group.elements[90..<100])) == Array(expectedPaths[90..<100])
+
+                    expect(Array(group.elements[100..<110])) == Array(expectedPaths[100..<110])
+                    expect(Array(group.elements[110..<120])) == Array(expectedPaths[110..<120])
+                    expect(Array(group.elements[120..<130])) == Array(expectedPaths[120..<130])
+                    expect(Array(group.elements[130..<140])) == Array(expectedPaths[130..<140])
+                    expect(Array(group.elements[140..<150])) == Array(expectedPaths[140..<150])
+                    expect(Array(group.elements[150..<160])) == Array(expectedPaths[150..<160])
+                    expect(Array(group.elements[160..<170])) == Array(expectedPaths[160..<170])
+                    expect(Array(group.elements[170..<180])) == Array(expectedPaths[170..<180])
+                    expect(Array(group.elements[180..<190])) == Array(expectedPaths[180..<190])
+                    expect(Array(group.elements[190..<200])) == Array(expectedPaths[190..<200])
+
+                    expect(Array(group.elements[200..<210])) == Array(expectedPaths[200..<210])
+                    expect(Array(group.elements[210..<220])) == Array(expectedPaths[210..<220])
+                    expect(Array(group.elements[220..<230])) == Array(expectedPaths[220..<230])
+                    expect(Array(group.elements[230..<240])) == Array(expectedPaths[230..<240])
+                }
+                expect(engine.elements) == [
+                    TPSVGGroup(elements: expectedPaths)
+                ]
             }
         }
     }

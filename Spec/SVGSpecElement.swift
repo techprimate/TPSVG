@@ -15,6 +15,7 @@ public enum SVGSpecElement: String {
     case audio = "audio"
     case canvas = "canvas"
     case foreign = "foreignObject"
+    case group = "g"
     case iframe = "iframe"
     case line = "line"
     case path = "path"

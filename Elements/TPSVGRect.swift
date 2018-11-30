@@ -8,10 +8,6 @@
 
 public class TPSVGRect: TPSVGElement {
 
-    public override var kind: TPSVGElementKind {
-        return .rect
-    }
-
     private var origin: CGPoint
     private var size: CGSize
 
@@ -44,6 +40,15 @@ public class TPSVGRect: TPSVGElement {
     // MARK: - Equatable
 
     public static func == (lhs: TPSVGRect, rhs: TPSVGRect) -> Bool {
+        guard lhs.classNames == rhs.classNames else {
+            return false
+        }
+        guard lhs.origin == rhs.origin else {
+            return false
+        }
+        guard lhs.size == rhs.size else {
+            return false
+        }
         return true
     }
 }

@@ -8,12 +8,21 @@
 
 class TPSVGPath: TPSVGElement {
 
-    override var kind: TPSVGElementKind {
-        return .path
-    }
-
     public init(classNames: [String] = [], d: [String] = []) {
         // TODO: save d
         super.init(classNames: classNames)
+    }
+
+    public override init?(attributes: [String : String]) {
+        super.init(attributes: attributes)
+    }
+
+    // MARK: - Equatable
+
+    public static func == (lhs: TPSVGPath, rhs: TPSVGPath) -> Bool {
+        guard lhs.classNames == rhs.classNames else {
+            return false
+        }
+        return true
     }
 }
