@@ -18,7 +18,7 @@ class TPSVGEngine_Spec: QuickSpec {
         describe("TPSVGEngine") {
 
             func parse(file: String) -> TPSVGEngine {
-                let url = Bundle.main.url(forResource: "empty", withExtension: "svg")!
+                let url = Bundle.main.url(forResource: file, withExtension: "svg")!
                 var data: Data!
                 do {
                     data = try Data(contentsOf: url)

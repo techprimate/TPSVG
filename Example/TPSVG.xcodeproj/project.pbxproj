@@ -44,6 +44,9 @@
 		D40D18CA21B152870061C15F /* file-10-tiger-inline.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40D18C721B152870061C15F /* file-10-tiger-inline.svg */; };
 		D40D18CB21B152870061C15F /* file-10-tiger.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40D18C821B152870061C15F /* file-10-tiger.svg */; };
 		D40D18CC21B152870061C15F /* file-10-tiger.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40D18C821B152870061C15F /* file-10-tiger.svg */; };
+		D40D18DA21B166230061C15F /* file-1.css in Resources */ = {isa = PBXBuildFile; fileRef = D40D18D921B166230061C15F /* file-1.css */; };
+		D40D18DB21B166230061C15F /* file-1.css in Resources */ = {isa = PBXBuildFile; fileRef = D40D18D921B166230061C15F /* file-1.css */; };
+		D40D18DF21B166720061C15F /* TPCSSEngine_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40D18DD21B166720061C15F /* TPCSSEngine_Spec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +102,8 @@
 		D40D18B321B142900061C15F /* file-9.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; fileEncoding = 4; path = "file-9.svg"; sourceTree = "<group>"; };
 		D40D18C721B152870061C15F /* file-10-tiger-inline.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; fileEncoding = 4; path = "file-10-tiger-inline.svg"; sourceTree = "<group>"; };
 		D40D18C821B152870061C15F /* file-10-tiger.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; fileEncoding = 4; path = "file-10-tiger.svg"; sourceTree = "<group>"; };
+		D40D18D921B166230061C15F /* file-1.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "file-1.css"; sourceTree = "<group>"; };
+		D40D18DD21B166720061C15F /* TPCSSEngine_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPCSSEngine_Spec.swift; sourceTree = "<group>"; };
 		E7D5C892A3F54FF85A78E5D7 /* Pods-TPSVG_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPSVG_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPSVG_Example/Pods-TPSVG_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EF61573B6404BF45F4542059 /* TPSVG.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TPSVG.podspec; path = ../TPSVG.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
@@ -173,6 +178,7 @@
 				D40D18A921B13CE80061C15F /* TPSVGEngine_Spec.swift */,
 				D40D187D21B098A30061C15F /* Data */,
 				D40822EB21AF3D250027B10B /* Helper */,
+				D40D18DC21B1664E0061C15F /* Style */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -238,6 +244,15 @@
 		D40D187D21B098A30061C15F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D40D18D821B166070061C15F /* CSS */,
+				D40D18D721B165FB0061C15F /* SVG */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D40D18D721B165FB0061C15F /* SVG */ = {
+			isa = PBXGroup;
+			children = (
 				D40D189B21B09ABB0061C15F /* empty.svg */,
 				D40D188521B098CA0061C15F /* file-1-rect.svg */,
 				D40D18AD21B13EC70061C15F /* file-2-polygon.svg */,
@@ -251,7 +266,23 @@
 				D40D18C721B152870061C15F /* file-10-tiger-inline.svg */,
 				D40D18C821B152870061C15F /* file-10-tiger.svg */,
 			);
-			path = Data;
+			path = SVG;
+			sourceTree = "<group>";
+		};
+		D40D18D821B166070061C15F /* CSS */ = {
+			isa = PBXGroup;
+			children = (
+				D40D18D921B166230061C15F /* file-1.css */,
+			);
+			path = CSS;
+			sourceTree = "<group>";
+		};
+		D40D18DC21B1664E0061C15F /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				D40D18DD21B166720061C15F /* TPCSSEngine_Spec.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,6 +390,7 @@
 				D40D18B421B142900061C15F /* file-8.svg in Resources */,
 				D40D18BC21B142990061C15F /* file-6-path.svg in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				D40D18DA21B166230061C15F /* file-1.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D40D18BE21B1429A0061C15F /* file-2-polygon.svg in Resources */,
+				D40D18DB21B166230061C15F /* file-1.css in Resources */,
 				D40D18CC21B152870061C15F /* file-10-tiger.svg in Resources */,
 				D40D188E21B098CA0061C15F /* file-1-rect.svg in Resources */,
 				D40D18B021B140940061C15F /* file-6-path.svg in Resources */,
@@ -511,6 +544,7 @@
 				D40822EF21AF3F2A0027B10B /* UIImage+Pixel.swift in Sources */,
 				D40822ED21AF3D520027B10B /* CGImage+Pixel.swift in Sources */,
 				D40D189121B09A900061C15F /* TPSVG_Spec.swift in Sources */,
+				D40D18DF21B166720061C15F /* TPCSSEngine_Spec.swift in Sources */,
 				D40D18AA21B13CE80061C15F /* TPSVGEngine_Spec.swift in Sources */,
 				D40822F321AF42B40027B10B /* UIImage+Pixel_Spec.swift in Sources */,
 				D40822F121AF3F740027B10B /* CGImage+Pixel_Spec.swift in Sources */,
