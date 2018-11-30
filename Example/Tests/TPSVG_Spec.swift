@@ -10,7 +10,7 @@ import Quick
 import Nimble
 @testable import TPSVG
 
-// swiftlint:disable type_name
+// swiftlint:disable type_name function_body_length
 
 class TPSVG_Spec: QuickSpec {
 
@@ -23,16 +23,16 @@ class TPSVG_Spec: QuickSpec {
                     let url = Bundle.main.url(forResource: "empty", withExtension: "svg")!
                     do {
                         let svg = try TPSVG(contentsOf: url)
-                        expect(svg.raw).to(equal("<svg></svg>\n"))
+                        expect(svg.raw) == "<svg></svg>\n"
                     } catch {
                         fail(error.localizedDescription)
                     }
                 }
 
-                it("can not be initialized with an invalid url") {
+                it("cannot be initialized with an invalid url") {
                     do {
                         _ = try TPSVG(contentsOf: URL(fileURLWithPath: ""))
-                        fail("Should have failed!")
+                        fail("Should have thrown!")
                     } catch {
                         expect(error).toNot(beNil())
                     }
@@ -43,27 +43,49 @@ class TPSVG_Spec: QuickSpec {
                     do {
                         let data = try Data(contentsOf: url)
                         let svg = try TPSVG(data: data)
-                        expect(svg.raw).to(equal("<svg></svg>\n"))
+                        expect(svg.raw) == "<svg></svg>\n"
                     } catch {
                         fail(error.localizedDescription)
                     }
                 }
 
-                it("can not be initialized with invalid UTF8 data") {
+                it("cannot be initialized with invalid UTF8 data") {
                     do {
                         _ = try TPSVG(data: Data(bytes: [0xAD]))
                         fail("Should have thrown!")
                     } catch TPSVGError.invalidData {
-                        expect(true).to(beTrue()) // Success
+                        expect(true) == true // Success
                     } catch {
                         fail(error.localizedDescription)
                     }
                 }
 
                 it("can be initialized with raw string") {
-                    let raw = "<svg></svg>"
-                    let svg = TPSVG(raw: raw)
-                    expect(svg.raw).to(equal(raw))
+                    do {
+                        let raw = "<svg></svg>"
+                        let svg = try TPSVG(raw: raw)
+                        expect(svg.raw) == raw
+                    } catch {
+                        fail(error.localizedDescription)
+                    }
+                }
+            }
+
+            describe("results") {
+
+                it("should parse raw result") {
+                    let url = Bundle.main.url(forResource: "empty", withExtension: "svg")!
+                    do {
+                        let data = try Data(contentsOf: url)
+                        let svg = try TPSVG(data: data)
+                        let engine = TPSVGEngine()
+                        engine.parse(data)
+
+                        expect(svg.paths) == engine.paths
+                        expect(svg.styles) == engine.styles
+                    } catch {
+                        fail(error.localizedDescription)
+                    }
                 }
             }
         }

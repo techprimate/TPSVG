@@ -15,5 +15,4 @@ public enum TPSVGError: Error {
      Data is not a valid UTF-8 string.
      */
     case invalidData
-
 }
