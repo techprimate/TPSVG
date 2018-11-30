@@ -6,8 +6,14 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: documentation
+ */
 extension TPSVGStyle: Equatable {
 
+    /**
+     TODO: documentation
+     */
     public static func == (lhs: TPSVGStyle, rhs: TPSVGStyle) -> Bool {
         guard lhs.name == rhs.name else {
             return false

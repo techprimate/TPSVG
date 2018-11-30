@@ -6,13 +6,30 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: documentation
+ */
 public struct TPSVGStroke {
 
-    public let color: UIColor
-    public let width: CGFloat
-    public let miterLimit: CGFloat
+    /**
+     TODO: documentation
+     */
+    public let color: UIColor?
 
-    public init(color: UIColor, width: CGFloat = 0, miterLimit: CGFloat = 0) {
+    /**
+     TODO: documentation
+     */
+    public let width: CGFloat?
+
+    /**
+     TODO: documentation
+     */
+    public let miterLimit: CGFloat?
+
+    /**
+     TODO: documentation
+     */
+    public init(color: UIColor? = nil, width: CGFloat? = nil, miterLimit: CGFloat? = nil) {
         self.color = color
         self.width = width
         self.miterLimit = miterLimit

@@ -6,4 +6,7 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: documentation
+ */
 public typealias TPSVGColor = UIColor
