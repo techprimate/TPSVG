@@ -41,15 +41,3 @@ public class TPSVGStyle {
         self.font = font
     }
 }
-
-extension TPSVGStyle: CustomStringConvertible, CustomDebugStringConvertible {
-
-    public var description: String {
-        return String(format: "TPSVGStyle { name: %@ }", name)
-    }
-
-    public var debugDescription: String {
-        return String(format: "TPSVGStyle{ name: %@, fill: %@, stroke: %@, font: %@ }",
-                      name, fill?.hex ?? "nil", stroke?.debugDescription ?? "nil", font?.debugDescription ?? "nil")
-    }
-}

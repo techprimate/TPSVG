@@ -6,12 +6,21 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: documentation
+ */
 class TPCSSEngine {
 
+    /**
+     TODO: documentation
+     */
     public var text: String = ""
 
     init() {}
 
+    /**
+     TODO: documentation
+     */
     func parse() -> [TPSVGStyle] {
         let trimmed = text.replacingOccurrences(of: "^\\n|\\s|\\s+|\\s$", with: "", options: .regularExpression)
 
@@ -44,6 +53,9 @@ class TPCSSEngine {
             })
     }
 
+    /**
+     TODO: documentation
+     */
     private func parseCSSElement(raw: String) -> (names: [Substring], attributes: [Substring: Substring])? {
         var elementRegex: TPRegex!
         do {
@@ -61,6 +73,9 @@ class TPCSSEngine {
         }
     }
 
+    /**
+     TODO: documentation
+     */
     private func parseCssAttributes(raw: String) -> [Substring: Substring] {
         var result: [Substring: Substring] = [:]
 
@@ -76,7 +91,10 @@ class TPCSSEngine {
         return result
     }
 
-    private lazy var numberFormatter: NumberFormatter = {
+    /**
+     TODO: documentation
+     */
+    private static var numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 4
         formatter.minimumFractionDigits = 0
@@ -84,26 +102,42 @@ class TPCSSEngine {
         return formatter
     }()
 
+    /**
+     TODO: documentation
+     */
     private func createStyle(name: Substring, attributes: [Substring: Substring]) -> TPSVGStyle {
-        // Fill
+        return TPSVGStyle(name: String(name),
+                          fill: TPCSSEngine.createFill(attributes: attributes),
+                          stroke: TPCSSEngine.createStroke(attributes: attributes),
+                          font: TPCSSEngine.createFont(attributes: attributes))
+    }
 
-        var fill: TPSVGColor?
-        if let rawFillColor = attributes["fill"] {
-            let value = String(rawFillColor)
-            switch value {
-            case "none":
-                fill = TPSVGColor.clear
-            default:
-                fill = TPSVGColor(hex: value)
-            }
+    /**
+     TODO: documentation
+     */
+    private static func createFill(attributes: [Substring: Substring]) -> TPSVGColor? {
+        guard let rawFillColor = attributes["fill"] else {
+            return nil
         }
 
-        // Stroke
+        let value = String(rawFillColor)
 
-        var stroke: TPSVGStroke?
+        switch value {
+        case "none":
+            return TPSVGColor.clear
+        default:
+            return TPSVGColor(hex: value)
+        }
+    }
+
+    /**
+     TODO: documentation
+     */
+    private static func createStroke(attributes: [Substring: Substring]) -> TPSVGStroke? {
         var strokeColor: TPSVGColor?
         var strokeWidth: CGFloat?
         var strokeMiterLimit: CGFloat?
+
         if let rawStrokeColor = attributes["stroke"] {
             strokeColor = TPSVGColor(hex: String(rawStrokeColor))
         }
@@ -119,28 +153,34 @@ class TPCSSEngine {
                 strokeMiterLimit = round(CGFloat(miterLimit * 10000)) / 10000 // Fix floating point error
             }
         }
-        if strokeColor != nil || strokeWidth != nil || strokeMiterLimit != nil {
-            stroke = TPSVGStroke(color: strokeColor, width: strokeWidth, miterLimit: strokeMiterLimit)
+
+        guard strokeColor != nil || strokeWidth != nil || strokeMiterLimit != nil else {
+            return nil
         }
+        return TPSVGStroke(color: strokeColor, width: strokeWidth, miterLimit: strokeMiterLimit)
+    }
 
-        // Font
-
-        var font: TPSVGFont?
+    /**
+     TODO: documentation
+     */
+    private static func createFont(attributes: [Substring: Substring]) -> TPSVGFont? {
         var fontFamily: String?
         var fontSize: CGFloat?
+
         if let family = attributes["font-family"] {
             fontFamily = String(family).replacingOccurrences(of: "\\'|\\\"", with: "", options: .regularExpression)
         }
+
         if let rawSize = attributes["font-size"] {
             let sizeWithoutUnits = String(rawSize).replacingOccurrences(of: "px|pt", with: "", options: .regularExpression)
             if let size = numberFormatter.number(from: sizeWithoutUnits)?.floatValue {
                 fontSize = CGFloat(size)
             }
         }
-        if fontFamily != nil || fontSize != nil {
-            font = TPSVGFont(family: fontFamily, size: fontSize)
-        }
 
-        return TPSVGStyle(name: String(name), fill: fill, stroke: stroke, font: font)
+        guard fontFamily != nil || fontSize != nil else {
+            return nil
+        }
+        return TPSVGFont(family: fontFamily, size: fontSize)
     }
 }
