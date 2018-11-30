@@ -29,7 +29,7 @@ class TPSVGEngine: NSObject {
     func parse(_ data: Data) {
         styles = []
         paths = []
-        
+
         let parser = XMLParser(data: data)
         parser.delegate = self
         parser.parse()
@@ -39,14 +39,6 @@ class TPSVGEngine: NSObject {
 // MARK: - XMLParserDelegate
 
 extension TPSVGEngine: XMLParserDelegate {
-
-    func parserDidStartDocument(_ parser: XMLParser) {
-        print("Did Start")
-    }
-
-    func parserDidEndDocument(_ parser: XMLParser) {
-        print("Did End")
-    }
 
     func parser(_ parser: XMLParser, foundNotationDeclarationWithName name: String, publicID: String?, systemID: String?) {
         print("Notation Declaration: ", name, publicID as Any, systemID as Any)

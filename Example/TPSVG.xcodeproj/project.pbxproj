@@ -40,6 +40,10 @@
 		D40D18C021B1429A0061C15F /* file-4-circle.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40D18AB21B13E4D0061C15F /* file-4-circle.svg */; };
 		D40D18C121B1429A0061C15F /* file-5-ellipse.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40D18AE21B13FD60061C15F /* file-5-ellipse.svg */; };
 		D40D18C221B1429A0061C15F /* file-7-text.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40D18B121B1418B0061C15F /* file-7-text.svg */; };
+		D40D18C921B152870061C15F /* file-10-tiger-inline.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40D18C721B152870061C15F /* file-10-tiger-inline.svg */; };
+		D40D18CA21B152870061C15F /* file-10-tiger-inline.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40D18C721B152870061C15F /* file-10-tiger-inline.svg */; };
+		D40D18CB21B152870061C15F /* file-10-tiger.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40D18C821B152870061C15F /* file-10-tiger.svg */; };
+		D40D18CC21B152870061C15F /* file-10-tiger.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40D18C821B152870061C15F /* file-10-tiger.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +97,8 @@
 		D40D18B121B1418B0061C15F /* file-7-text.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; path = "file-7-text.svg"; sourceTree = "<group>"; };
 		D40D18B221B142900061C15F /* file-8.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; fileEncoding = 4; path = "file-8.svg"; sourceTree = "<group>"; };
 		D40D18B321B142900061C15F /* file-9.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; fileEncoding = 4; path = "file-9.svg"; sourceTree = "<group>"; };
+		D40D18C721B152870061C15F /* file-10-tiger-inline.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; fileEncoding = 4; path = "file-10-tiger-inline.svg"; sourceTree = "<group>"; };
+		D40D18C821B152870061C15F /* file-10-tiger.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; fileEncoding = 4; path = "file-10-tiger.svg"; sourceTree = "<group>"; };
 		E7D5C892A3F54FF85A78E5D7 /* Pods-TPSVG_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPSVG_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPSVG_Example/Pods-TPSVG_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EF61573B6404BF45F4542059 /* TPSVG.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TPSVG.podspec; path = ../TPSVG.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
@@ -232,6 +238,7 @@
 		D40D187D21B098A30061C15F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D40D189B21B09ABB0061C15F /* empty.svg */,
 				D40D188521B098CA0061C15F /* file-1-rect.svg */,
 				D40D18AD21B13EC70061C15F /* file-2-polygon.svg */,
 				D40D18AC21B13E8B0061C15F /* file-3-polyline.svg */,
@@ -241,7 +248,8 @@
 				D40D18B121B1418B0061C15F /* file-7-text.svg */,
 				D40D18B221B142900061C15F /* file-8.svg */,
 				D40D18B321B142900061C15F /* file-9.svg */,
-				D40D189B21B09ABB0061C15F /* empty.svg */,
+				D40D18C721B152870061C15F /* file-10-tiger-inline.svg */,
+				D40D18C821B152870061C15F /* file-10-tiger.svg */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -343,7 +351,9 @@
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				D40D18B921B142990061C15F /* file-3-polyline.svg in Resources */,
 				D40D18B821B142990061C15F /* file-2-polygon.svg in Resources */,
+				D40D18CB21B152870061C15F /* file-10-tiger.svg in Resources */,
 				D40D189C21B09ABB0061C15F /* empty.svg in Resources */,
+				D40D18C921B152870061C15F /* file-10-tiger-inline.svg in Resources */,
 				D40D18BB21B142990061C15F /* file-5-ellipse.svg in Resources */,
 				D40D18BD21B142990061C15F /* file-7-text.svg in Resources */,
 				D40D18B421B142900061C15F /* file-8.svg in Resources */,
@@ -357,10 +367,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D40D18BE21B1429A0061C15F /* file-2-polygon.svg in Resources */,
+				D40D18CC21B152870061C15F /* file-10-tiger.svg in Resources */,
 				D40D188E21B098CA0061C15F /* file-1-rect.svg in Resources */,
 				D40D18B021B140940061C15F /* file-6-path.svg in Resources */,
 				D40D18B721B142900061C15F /* file-9.svg in Resources */,
 				D40D18BF21B1429A0061C15F /* file-3-polyline.svg in Resources */,
+				D40D18CA21B152870061C15F /* file-10-tiger-inline.svg in Resources */,
 				D40D18C121B1429A0061C15F /* file-5-ellipse.svg in Resources */,
 				D40D18B521B142900061C15F /* file-8.svg in Resources */,
 				D40D189D21B09ABB0061C15F /* empty.svg in Resources */,

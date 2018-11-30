@@ -1,7 +1,7 @@
 PODS:
   - Nimble (7.3.1)
   - Quick (1.3.2)
-  - SwiftLint (0.29.0)
+  - SwiftLint (0.29.1)
   - TPSVG (0.1.0):
     - SwiftLint
 
@@ -23,7 +23,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
   Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
-  SwiftLint: d4e7443d93e2bbe868dc302e6c7ac30b469d6a14
+  SwiftLint: 6772320e40b52049053a518c17db9b0634a0b45a
   TPSVG: 4c48da9c9037f8dc67bf4bc53af8cf5fcfd1302f
 
 PODFILE CHECKSUM: ceccbd958a420e8f3411d74977e0c15ff1ed57e9

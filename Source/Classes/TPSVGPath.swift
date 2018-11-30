@@ -8,4 +8,15 @@
 
 public class TPSVGPath {
 
+    enum ElementKind {
+
+        case rect
+        case circle
+        case ellipse
+        case polygon
+        case polyline
+        case path
+        case text
+
+    }
 }
