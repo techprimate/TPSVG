@@ -10,7 +10,7 @@ import Quick
 import Nimble
 @testable import TPSVG
 
-// swiftlint:disable type_name function_body_length
+// swiftlint:disable type_name function_body_length cyclomatic_complexity
 
 class TPSVG_UIImage_Spec: QuickSpec {
 
