@@ -17,7 +17,7 @@ public class TPSVGRect: TPSVGElement {
         super.init(classNames: classNames)
     }
 
-    public override init?(attributes: [String : String]) {
+    public override init?(attributes: [String: String]) {
         guard let rawX = attributes["x"], let x = TPSVGNumberParser.parse(rawX) else {
             return nil
         }

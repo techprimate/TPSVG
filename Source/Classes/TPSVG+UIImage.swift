@@ -35,6 +35,7 @@ extension TPSVG {
             }) {
                 context.setStrokeColor(stroke.color?.cgColor ?? UIColor.clear.cgColor)
                 context.setLineWidth(stroke.width ?? 0)
+                context.setMiterLimit(stroke.miterLimit ?? 0)
             }
 
             element.draw(in: context)

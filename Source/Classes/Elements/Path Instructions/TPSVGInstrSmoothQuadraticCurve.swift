@@ -8,14 +8,32 @@
 
 class TPSVGInstrSmoothQuadraticCurve: TPSVGInstruction {
 
-    let end: CGPoint
-    let control2: CGPoint
+    var end: CGPoint
+    var control2: CGPoint
     let relative: Bool
 
     init(end: CGPoint, control2: CGPoint, relative: Bool = false) {
         self.end = end
         self.control2 = control2
         self.relative = relative
+    }
+
+    // MARK: - CustomStringConvertible
+
+    override var description: String {
+        return "TPSVGInstrSmoothQuadraticCurve {}"
+    }
+
+    // MARK: - CustomDebugStringConvertible
+
+    override var debugDescription: String {
+        return "TPSVGInstrSmoothQuadraticCurve { end: \(end), control2: \(control2), relative: \(relative) }"
+    }
+
+    // MARK: - Drawing
+
+    override func modify(context: CGContext) {
+        // TODO: this
     }
 
     // MARK: - Equatable

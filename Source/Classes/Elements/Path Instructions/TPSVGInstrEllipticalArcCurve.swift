@@ -8,12 +8,12 @@
 
 class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
 
-    let end: CGPoint
-    let radius: CGVector
-    let xAxisRotation: CGFloat
+    var end: CGPoint
+    var radius: CGVector
+    var xAxisRotation: CGFloat
 
-    let largeArcFlag: Bool
-    let sweepFlag: Bool
+    var largeArcFlag: Bool
+    var sweepFlag: Bool
 
     let relative: Bool
 
@@ -24,6 +24,19 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
         self.largeArcFlag = largeArcFlag
         self.sweepFlag = sweepFlag
         self.relative = relative
+    }
+
+    // MARK: - CustomStringConvertible
+
+    override var description: String {
+        return "TPSVGInstrEllipticalArcCurve {}"
+    }
+
+    // MARK: - CustomDebugStringConvertible
+
+    override var debugDescription: String {
+        return "TPSVGInstrEllipticalArcCurve { end: \(end), radius: \(radius), x-axis-rotation: \(xAxisRotation), "
+            + "largeArcFlag: \(largeArcFlag), sweepFlag: \(sweepFlag), relative: \(relative) }"
     }
 
     // MARK: - Equatable

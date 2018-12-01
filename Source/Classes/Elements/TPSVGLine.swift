@@ -20,7 +20,7 @@ class TPSVGLine: TPSVGElement {
         super.init(classNames: classNames)
     }
 
-    public override init?(attributes: [String : String]) {
+    public override init?(attributes: [String: String]) {
         guard let rawX1 = attributes["x1"], let x1 = TPSVGNumberParser.parse(rawX1) else {
             return nil
         }
@@ -37,6 +37,17 @@ class TPSVGLine: TPSVGElement {
         end = CGPoint(x: x2.value, y: y2.value)
 
         super.init(attributes: attributes)
+    }
+
+    // MARK: - Drawing
+
+    override func draw(in context: CGContext) {
+        context.beginPath()
+        context.move(to: start)
+        context.addLine(to: end)
+
+        context.strokePath()
+        context.fillPath()
     }
 
     // MARK: - Equatable

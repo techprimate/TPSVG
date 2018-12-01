@@ -162,6 +162,9 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-10-tiger")
 
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
                     expect(ref.pixelsEqual(to: svg)).to(beTrue())
@@ -173,9 +176,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
                         fatalError()
                     }
                     let ref = referenceImage(file: "file-11-line")
-
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())

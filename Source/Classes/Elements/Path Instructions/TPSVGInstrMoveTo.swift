@@ -8,15 +8,36 @@
 
 class TPSVGInstrMoveTo: TPSVGInstruction {
 
-    let point: CGPoint
+    var point: CGPoint
     let relative: Bool
 
     init(point: CGPoint, relative: Bool = false) {
         self.point = point
         self.relative = relative
     }
-    
-    // MARK: - Equatable
+
+    override var description: String {
+        return "TPSVGInstrMoveTo {}"
+    }
+
+    override var debugDescription: String {
+        return "TPSVGInstrMoveTo { point = \(point), relative: \(relative) }"
+    }
+
+    // MARK: - Drawing
+
+    override func modify(context: CGContext) {
+        if relative {
+            context.move(to: context.currentPointOfPath + point)
+        } else {
+            context.move(to: point)
+        }
+    }
+}
+
+// MARK: - Equatable
+
+extension TPSVGInstrMoveTo {
 
     public static func == (lhs: TPSVGInstrMoveTo, rhs: TPSVGInstrMoveTo) -> Bool {
         guard lhs.point == rhs.point else {

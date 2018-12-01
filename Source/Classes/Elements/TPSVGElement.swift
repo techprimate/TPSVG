@@ -9,7 +9,7 @@
 /**
  TODO: documentation
  */
-public class TPSVGElement: Equatable {
+public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugStringConvertible {
 
     /**
      TODO: documentation
@@ -77,7 +77,17 @@ public class TPSVGElement: Equatable {
 
     // MARK: - Rendering
 
-    public func draw(in context: CGContext) {
+    public func draw(in context: CGContext) {}
 
+    // MARK: - CustomStringConvertible
+
+    public var description: String {
+        return "TPSVGElement {}"
+    }
+
+    // MARK: - CustomDebugStringConvertible
+
+    public var debugDescription: String {
+        return "TPSVGElement { classes: \(classNames), styles: \(styles) }"
     }
 }

@@ -6,10 +6,10 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
-class TPSVGInstruction: Equatable {
+class TPSVGInstruction: Equatable, CustomStringConvertible, CustomDebugStringConvertible {
 
     // MARK: - Equatable
-    
+
     public static func == (lhs: TPSVGInstruction, rhs: TPSVGInstruction) -> Bool {
         if let lhs = lhs as? TPSVGInstrMoveTo, let rhs = rhs as? TPSVGInstrMoveTo {
             return lhs == rhs
@@ -43,4 +43,20 @@ class TPSVGInstruction: Equatable {
         }
         return false
     }
+
+    // MARK: - CustomStringConvertible {
+
+    var description: String {
+        return "TSVGInstruction {}"
+    }
+
+    // MARK: - CustomDebugStringConvertible
+
+    var debugDescription: String {
+        return "TSVGInstruction {}"
+    }
+
+    // MARK: - Drawing
+
+    func modify(context: CGContext) {}
 }

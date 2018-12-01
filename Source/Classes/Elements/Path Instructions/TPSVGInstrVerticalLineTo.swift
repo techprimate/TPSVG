@@ -8,7 +8,7 @@
 
 class TPSVGInstrVerticalLineTo: TPSVGInstruction {
 
-    let length: CGFloat
+    var length: CGFloat
     let relative: Bool
 
     init(length: CGFloat, relative: Bool = false) {
@@ -16,6 +16,31 @@ class TPSVGInstrVerticalLineTo: TPSVGInstruction {
         self.relative = relative
     }
 
+    // MARK: - CustomStringConvertible
+
+    override var description: String {
+        return "TPSVGInstrVerticalLineTo {}"
+    }
+
+    // MARK: - CustomDebugStringConvertible
+
+    override var debugDescription: String {
+        return "TPSVGInstrVerticalLineTo { length: \(length), relative: \(relative) }"
+    }
+
+    // MARK: - Drawing
+
+    override func modify(context: CGContext) {
+        if relative {
+            var end = context.currentPointOfPath
+            end.y += length
+            context.move(to: end)
+        } else {
+            var end = context.currentPointOfPath
+            end.y = length
+            context.move(to: end)
+        }
+    }
     // MARK: - Equatable
 
     public static func == (lhs: TPSVGInstrVerticalLineTo, rhs: TPSVGInstrVerticalLineTo) -> Bool {

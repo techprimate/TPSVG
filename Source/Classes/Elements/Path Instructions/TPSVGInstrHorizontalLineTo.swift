@@ -8,12 +8,38 @@
 
 class TPSVGInstrHorizontalLineTo: TPSVGInstruction {
 
-    let length: CGFloat
+    var length: CGFloat
     let relative: Bool
 
     init(length: CGFloat, relative: Bool = false) {
         self.length = length
         self.relative = relative
+    }
+
+    // MARK: - CustomStringConvertible
+
+    override var description: String {
+        return "TPSVGInstrHorizontalLineTo {}"
+    }
+
+    // MARK: - CustomDebugStringConvertible
+
+    override var debugDescription: String {
+        return "TPSVGInstrHorizontalLineTo { length: \(length), relative: \(relative) }"
+    }
+
+    // MARK: - Drawing
+
+    override func modify(context: CGContext) {
+        if relative {
+            var end = context.currentPointOfPath
+            end.x += length
+            context.move(to: end)
+        } else {
+            var end = context.currentPointOfPath
+            end.x = length
+            context.move(to: end)
+        }
     }
 
     // MARK: - Equatable
@@ -28,4 +54,3 @@ class TPSVGInstrHorizontalLineTo: TPSVGInstruction {
         return true
     }
 }
-

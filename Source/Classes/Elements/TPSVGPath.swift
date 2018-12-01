@@ -34,4 +34,27 @@ class TPSVGPath: TPSVGElement {
         }
         return true
     }
+
+    // MARK: - Drawing
+
+    override func draw(in context: CGContext) {
+        context.beginPath()
+        for inst in instructions {
+            inst.modify(context: context)
+        }
+        context.fillPath()
+        context.strokePath()
+    }
+
+    // MARK: - CustomStringConvertible
+
+    override public var description: String {
+        return "TPSVGPath {}"
+    }
+
+    // MARK: - CustomDebugStringConvertible
+
+    override public var debugDescription: String {
+        return "TPSVGPath { classes: \(classNames), instructions: \(instructions) }"
+    }
 }

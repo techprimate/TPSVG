@@ -105,16 +105,16 @@ class TPSVGEngine_Spec: QuickSpec {
 
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
-                ]))
+                    ]))
                 expect(engine.elements) == [
                     TPSVGPath(classNames: ["st0"], instructions: [
                         TPSVGInstrMoveTo(point: CGPoint(x: 90, y: 260)),
-                        TPSVGInstrCubicCurve(end: CGPoint(x: -30, y: -40),
-                                                   control1: CGPoint(x: 40, y: -90), control2: CGPoint(x: 80, y: -90), relative: true),
+                        TPSVGInstrCubicCurve(end: CGPoint(x: 0, y: -30),
+                                             control1: CGPoint(x: 40, y: -90), control2: CGPoint(x: 80, y: -90), relative: true),
                         TPSVGInstrCubicCurve(end: CGPoint(x: 60, y: 0),
-                                                   control1: CGPoint(x: 90, y: 176), control2: CGPoint(x: 150, y: 180), relative: true),
+                                             control1: CGPoint(x: 90, y: 176), control2: CGPoint(x: 150, y: 180), relative: true),
                         TPSVGInstrCubicCurve(end: CGPoint(x: 38, y: 2.3),
-                                                   control1: CGPoint(x: 110, y: -62), control2: CGPoint(x: 110, y: -100), relative: true)
+                                             control1: CGPoint(x: 110, y: -62), control2: CGPoint(x: 110, y: -100), relative: true)
                         ])
                 ]
             }
@@ -138,7 +138,21 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
                 ]))
                 expect(engine.elements) == [
-                    TPSVGPath(classNames: ["st0"], instructions: [])
+                    TPSVGPath(classNames: ["st0"], instructions: [
+                        TPSVGInstrMoveTo(point: CGPoint(x: 250, y: 38)),
+                        TPSVGInstrLineTo(point: CGPoint(x: 38, y: 250)),
+                        TPSVGInstrLineTo(point: CGPoint(x: 212, y: 212), relative: true),
+                        TPSVGInstrLineTo(point: CGPoint(x: 213, y: -212), relative: true),
+                        TPSVGInstrLineTo(point: CGPoint(x: 250, y: 38)),
+                        TPSVGInstrClosePath(),
+
+                        TPSVGInstrMoveTo(point: CGPoint(x: 250, y: 320)),
+                        TPSVGInstrLineTo(point: CGPoint(x: -70, y: -70), relative: true),
+                        TPSVGInstrLineTo(point: CGPoint(x: 70, y: -70), relative: true),
+                        TPSVGInstrLineTo(point: CGPoint(x: 70, y: 70), relative: true),
+                        TPSVGInstrLineTo(point: CGPoint(x: 250, y: 320)),
+                        TPSVGInstrClosePath()
+                        ])
                 ]
             }
 

@@ -8,9 +8,9 @@
 
 class TPSVGInstrCubicCurve: TPSVGInstruction {
 
-    let end: CGPoint
-    let control1: CGPoint
-    let control2: CGPoint
+    var end: CGPoint
+    var control1: CGPoint
+    var control2: CGPoint
     let relative: Bool
 
     init(end: CGPoint, control1: CGPoint, control2: CGPoint, relative: Bool = false) {
@@ -18,6 +18,30 @@ class TPSVGInstrCubicCurve: TPSVGInstruction {
         self.control1 = control1
         self.control2 = control2
         self.relative = relative
+    }
+
+    // MARK: - CustomStringConvertible
+
+    override var description: String {
+        return "TPSVGInstrCubicCurve {}"
+    }
+
+    // MARK: - CustomDebugStringConvertible
+
+    override var debugDescription: String {
+        return "TPSVGInstrCubicCurve { end: \(end), control1: \(control1), control2: \(control2), relative: \(relative) }"
+    }
+
+    // MARK: - Drawing
+
+    override func modify(context: CGContext) {
+        if relative {
+            let ref = context.currentPointOfPath
+            context.addCurve(to: ref + end, control1: ref + control1, control2: ref + control2)
+        } else {
+            context.addCurve(to: end, control1: control1, control2: control2)
+
+        }
     }
 
     // MARK: - Equatable

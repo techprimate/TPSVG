@@ -60,4 +60,20 @@ class TPSVGCircle: TPSVGElement {
         context.fillPath()
         context.strokePath()
     }
+
+    // MARK: - CustomStringConvertible
+
+    override public var description: String {
+        return String(format: "TPSVGCircle {}")
+    }
+
+    // MARK: - CustomDebugStringConvertible
+
+    override public var debugDescription: String {
+        return String(format: "TPSVGCircle { classes: %@, styles: %@, center: %@, radius: %f }",
+                      classNames.joined(separator: ", "),
+                      styles.map({ $0.name }).joined(separator: ", "),
+                      center.debugDescription,
+                      radius)
+    }
 }

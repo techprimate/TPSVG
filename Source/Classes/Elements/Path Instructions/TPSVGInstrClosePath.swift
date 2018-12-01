@@ -8,6 +8,24 @@
 
 class TPSVGInstrClosePath: TPSVGInstruction {
 
+    // MARK: - CustomStringConvertible
+
+    override var description: String {
+        return "TPSVGInstrClosePath {}"
+    }
+
+    // MARK: - CustomDebugStringConvertible
+
+    override var debugDescription: String {
+        return "TPSVGInstrClosePath {}"
+    }
+
+    // MARK: - Drawing
+
+    override func modify(context: CGContext) {
+        context.closePath()
+    }
+
     // MARK: - Equatable
 
     public static func == (lhs: TPSVGInstrClosePath, rhs: TPSVGInstrClosePath) -> Bool {

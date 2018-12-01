@@ -8,14 +8,36 @@
 
 class TPSVGInstrLineTo: TPSVGInstruction {
 
-    let point: CGPoint
+    var point: CGPoint
     let relative: Bool
 
     init(point: CGPoint, relative: Bool = false) {
         self.point = point
         self.relative = relative
     }
-    
+
+    // MARK: - CustomStringConvertible
+
+    override var description: String {
+        return "TPSVGInstrLineTo {}"
+    }
+
+    // MARK: - CustomDebugStringConvertible
+
+    override var debugDescription: String {
+        return "TPSVGInstrLineTo { point: \(point), relative: \(relative) }"
+    }
+
+    // MARK: - Drawing
+
+    override func modify(context: CGContext) {
+        if relative {
+            context.addLine(to: context.currentPointOfPath + point)
+        } else {
+            context.addLine(to: point)
+        }
+    }
+
     // MARK: - Equatable
 
     public static func == (lhs: TPSVGInstrLineTo, rhs: TPSVGInstrLineTo) -> Bool {
