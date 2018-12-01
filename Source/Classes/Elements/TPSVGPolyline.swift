@@ -15,7 +15,7 @@ class TPSVGPolyline: TPSVGElement {
         super.init(classNames: classNames)
     }
 
-    public override init?(attributes: [String : String]) {
+    public override init?(attributes: [String: String]) {
         guard let rawPoints = attributes["points"] else {
             return nil
         }
@@ -32,6 +32,8 @@ class TPSVGPolyline: TPSVGElement {
         super.init(attributes: attributes)
     }
 
+    // MARK: - Equatable
+
     public static func == (lhs: TPSVGPolyline, rhs: TPSVGPolyline) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
@@ -40,5 +42,23 @@ class TPSVGPolyline: TPSVGElement {
             return false
         }
         return true
+    }
+
+    // MARK: - Draw
+
+    override func draw(in context: CGContext) {
+        guard points.count > 0 else {
+            return
+        }
+        context.beginPath()
+        for (idx, point) in points.enumerated() {
+            if idx == 0 {
+                context.move(to: point)
+            } else {
+                context.addLine(to: point)
+            }
+        }
+        context.fillPath()
+        context.strokePath()
     }
 }

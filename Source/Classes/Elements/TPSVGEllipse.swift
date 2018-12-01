@@ -54,4 +54,16 @@ class TPSVGEllipse: TPSVGElement {
         }
         return true
     }
+
+    // MARK: - Drawing
+
+    override func draw(in context: CGContext) {
+        let path = UIBezierPath(ovalIn: CGRect(x: center.x - radius.dx,
+                                               y: center.y - radius.dy,
+                                               width: 2 * radius.dx,
+                                               height: 2 * radius.dy))
+        context.addPath(path.cgPath)
+        context.fillPath()
+        context.strokePath()
+    }
 }

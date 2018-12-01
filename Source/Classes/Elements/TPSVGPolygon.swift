@@ -43,4 +43,23 @@ class TPSVGPolygon: TPSVGElement {
         }
         return true
     }
+
+    // MARK: - Draw
+
+    override func draw(in context: CGContext) {
+        guard points.count > 0 else {
+            return
+        }
+        context.beginPath()
+        for (idx, point) in points.enumerated() {
+            if idx == 0 {
+                context.move(to: point)
+            } else {
+                context.addLine(to: point)
+            }
+        }
+        context.fillPath()
+        context.strokePath()
+        context.closePath()
+    }
 }

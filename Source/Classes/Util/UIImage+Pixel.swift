@@ -24,4 +24,14 @@ extension UIImage {
     func pixels(at points: [CGPoint]) -> [UIColor]? {
         return cgImage?.pixels(at: points)
     }
+
+    /**
+     TODO: documentation
+     */
+    func pixelsEqual(to other: UIImage, threshold: Double = 0.1) -> Bool {
+        guard let cgImg = self.cgImage, let otherCGImage = other.cgImage else {
+            return false
+        }
+        return cgImg.pixelsEqual(to: otherCGImage, threshold: threshold)
+    }
 }

@@ -33,6 +33,16 @@ public class TPSVG {
     public private(set) var paths = [TPSVGElement]()
 
     /**
+     Frame of view box/artboard
+     */
+    public private(set) var frame = CGRect.zero
+
+    /**
+     Origin of artboard
+     */
+    public private(set) var origin = CGPoint.zero
+
+    /**
      Initialize a `TPSVG` with the contents of a `URL`.
 
      The content of the file should be in `UTF-8` encoding.
@@ -80,5 +90,7 @@ public class TPSVG {
 
         self.styles = engine.styles
         self.paths = engine.elements
+        self.origin = engine.origin
+        self.frame = engine.frame
     }
 }

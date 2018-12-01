@@ -21,6 +21,16 @@ class TPSVGEngine: NSObject {
      */
     public private(set) var elements = [TPSVGElement]()
 
+    /**
+     Frame of view box/artboard
+     */
+    public private(set) var frame = CGRect.zero
+
+    /**
+     Origin of artboard
+     */
+    public private(set) var origin = CGPoint.zero
+
     // MARK: - Parsing
 
     private var currentElement: String?
@@ -35,10 +45,25 @@ class TPSVGEngine: NSObject {
     func parse(_ data: Data) {
         styles = []
         elements = []
+        frame = .zero
+        origin = .zero
 
         let parser = XMLParser(data: data)
         parser.delegate = self
         parser.parse()
+
+        elements.forEach(resolveStyles(element:))
+    }
+
+    private func resolveStyles(element: TPSVGElement) {
+        element.styles = element.classNames.compactMap({ className in
+            return styles.first(where: { style -> Bool in
+                return style.name == "." + className
+            })
+        })
+        if let groupElement = element as? TPSVGGroup {
+            groupElement.elements.forEach(resolveStyles(element:))
+        }
     }
 }
 
@@ -50,67 +75,30 @@ extension TPSVGEngine: XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?,
                 qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
         currentElement = elementName.lowercased()
+        var element: TPSVGElement?
         switch elementName.lowercased() {
+        case "svg":
+            parseSVG(attributes: attributeDict)
         case "style":
             cssEngine = TPCSSEngine()
         case SVGSpecElement.circle.rawValue:
-            if let circle = TPSVGCircle(attributes: attributeDict) {
-                if let group = groups.top {
-                    group.elements.append(circle)
-                } else {
-                    elements.append(circle)
-                }
-            }
+            element = TPSVGCircle(attributes: attributeDict)
         case SVGSpecElement.ellipse.rawValue:
-            if let ellipse = TPSVGEllipse(attributes: attributeDict) {
-                if let group = groups.top {
-                    group.elements.append(ellipse)
-                } else {
-                    elements.append(ellipse)
-                }
-            }
+            element = TPSVGEllipse(attributes: attributeDict)
         case SVGSpecElement.group.rawValue:
             groups.push(TPSVGGroup())
+        case SVGSpecElement.line.rawValue:
+            element = TPSVGLine(attributes: attributeDict)
         case SVGSpecElement.path.rawValue:
-            if let path = TPSVGPath(attributes: attributeDict) {
-                if let group = groups.top {
-                    group.elements.append(path)
-                } else {
-                    elements.append(path)
-                }
-            }
+            element = TPSVGPath(attributes: attributeDict)
         case SVGSpecElement.polygon.rawValue:
-            if let polygon = TPSVGPolygon(attributes: attributeDict) {
-                if let group = groups.top {
-                    group.elements.append(polygon)
-                } else {
-                    elements.append(polygon)
-                }
-            }
+            element = TPSVGPolygon(attributes: attributeDict)
         case SVGSpecElement.polyline.rawValue:
-            if let polyline = TPSVGPolyline(attributes: attributeDict) {
-                if let group = groups.top {
-                    group.elements.append(polyline)
-                } else {
-                    elements.append(polyline)
-                }
-            }
+            element = TPSVGPolyline(attributes: attributeDict)
         case SVGSpecElement.rect.rawValue:
-            if let rect = TPSVGRect(attributes: attributeDict) {
-                if let group = groups.top {
-                    group.elements.append(rect)
-                } else {
-                    elements.append(rect)
-                }
-            }
+            element = TPSVGRect(attributes: attributeDict)
         case SVGSpecElement.text.rawValue:
-            if let text = TPSVGText(attributes: attributeDict) {
-                if let group = groups.top {
-                    group.elements.append(text)
-                } else {
-                    elements.append(text)
-                }
-            }
+            element = TPSVGText(attributes: attributeDict)
         case SVGSpecElement.audio.rawValue,
              SVGSpecElement.canvas.rawValue,
              SVGSpecElement.foreign.rawValue,
@@ -120,7 +108,35 @@ extension TPSVGEngine: XMLParserDelegate {
             print("⚠️ [TPSVG] Unsupported tag found:", elementName)
         default:
             break
-            //            print("💜 Start Element:", elementName, namespaceURI as Any, qName as Any, attributeDict)
+        }
+
+        if let elem = element {
+            if let group = groups.top {
+                group.elements.append(elem)
+            } else {
+                elements.append(elem)
+            }
+        }
+    }
+
+    private func parseSVG(attributes: [String: String]) {
+        if let rawX = attributes["x"], let x = TPSVGNumberParser.parse(rawX),
+            let rawY = attributes["y"], let y = TPSVGNumberParser.parse(rawY) {
+            origin = CGPoint(x: x.value, y: y.value)
+        }
+
+        if let rawViewBox = attributes["viewBox"] {
+            let comps = rawViewBox.components(separatedBy: " ")
+            if comps.count == 4,
+                let x = TPSVGNumberParser.parse(comps[0]),
+                let y = TPSVGNumberParser.parse(comps[1]),
+                let width = TPSVGNumberParser.parse(comps[2]),
+                let height = TPSVGNumberParser.parse(comps[3]) {
+                frame = CGRect(x: x.value,
+                               y: y.value,
+                               width: width.value,
+                               height: height.value)
+            }
         }
     }
 

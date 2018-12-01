@@ -8,7 +8,8 @@
 
 class TPSVGPath: TPSVGElement {
 
-    public init(classNames: [String] = [], d: [String] = []) {
+    private var commands: [
+    public init(classNames: [String] = [], commands: [String] = []) {
         // TODO: save d
         super.init(classNames: classNames)
     }

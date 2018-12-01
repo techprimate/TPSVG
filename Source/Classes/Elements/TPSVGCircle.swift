@@ -30,7 +30,7 @@ class TPSVGCircle: TPSVGElement {
             return nil
         }
         self.radius = radius.value
-        
+
         super.init(attributes: attributes)
     }
 
@@ -47,5 +47,17 @@ class TPSVGCircle: TPSVGElement {
             return false
         }
         return true
+    }
+
+    // MARK: - Drawing
+
+    override func draw(in context: CGContext) {
+        let path = UIBezierPath(ovalIn: CGRect(x: center.x - radius,
+                                               y: center.y - radius,
+                                               width: 2 * radius,
+                                               height: 2 * radius))
+        context.addPath(path.cgPath)
+        context.fillPath()
+        context.strokePath()
     }
 }

@@ -17,14 +17,24 @@ public class TPSVGElement: Equatable {
     public var classNames: [String]
 
     /**
+     Holds a reference to the SVG styles, resolved by `classNames`.
+     */
+    public var styles: [TPSVGStyle]
+
+    /**
      TODO: documentation
      */
     public init(classNames: [String]) {
         self.classNames = classNames
+        self.styles = []
     }
 
+    /**
+     Initalises an instance using the given `attributes`
+     */
     public init?(attributes: [String: String]) {
         self.classNames = attributes["class"]?.split(separator: " ").map({ String($0) }) ?? []
+        self.styles = []
     }
 
     /**
@@ -55,6 +65,19 @@ public class TPSVGElement: Equatable {
         if let lhs = lhs as? TPSVGText, let rhs = rhs as? TPSVGText {
             return lhs == rhs
         }
+
+        guard lhs.classNames == rhs.classNames else {
+            return false
+        }
+        guard lhs.styles == rhs.styles else {
+            return false
+        }
         return true
+    }
+
+    // MARK: - Rendering
+
+    public func draw(in context: CGContext) {
+
     }
 }

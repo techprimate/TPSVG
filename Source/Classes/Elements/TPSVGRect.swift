@@ -8,8 +8,8 @@
 
 public class TPSVGRect: TPSVGElement {
 
-    private var origin: CGPoint
-    private var size: CGSize
+    public private(set) var origin: CGPoint
+    public private(set) var size: CGSize
 
     public init(classNames: [String] = [], origin: CGPoint = .zero, size: CGSize = .zero) {
         self.origin = origin
@@ -50,5 +50,12 @@ public class TPSVGRect: TPSVGElement {
             return false
         }
         return true
+    }
+
+    // MARK: - Rendering
+
+    override public func draw(in context: CGContext) {
+        context.fill(CGRect(origin: origin, size: size))
+        context.stroke(CGRect(origin: origin, size: size))
     }
 }
