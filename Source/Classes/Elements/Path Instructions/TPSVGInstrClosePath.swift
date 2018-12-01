@@ -9,7 +9,7 @@
 class TPSVGInstrClosePath: TPSVGInstruction {
 
     // MARK: - Equatable
-    
+
     public static func == (lhs: TPSVGInstrClosePath, rhs: TPSVGInstrClosePath) -> Bool {
         return true
     }

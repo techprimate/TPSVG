@@ -11,7 +11,7 @@ class TPSVGInstrLineTo: TPSVGInstruction {
     let point: CGPoint
     let relative: Bool
 
-    init(point: CGPoint, relative: Bool) {
+    init(point: CGPoint, relative: Bool = false) {
         self.point = point
         self.relative = relative
     }

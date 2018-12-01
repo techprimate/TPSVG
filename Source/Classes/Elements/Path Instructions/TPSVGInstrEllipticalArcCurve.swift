@@ -15,12 +15,15 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
     let largeArcFlag: Bool
     let sweepFlag: Bool
 
-    init(end: CGPoint, radius: CGVector, xAxisRotation: CGFloat, largeArcFlag: Bool, sweepFlag: Bool) {
+    let relative: Bool
+
+    init(end: CGPoint, radius: CGVector, xAxisRotation: CGFloat, largeArcFlag: Bool, sweepFlag: Bool, relative: Bool = false) {
         self.end = end
         self.radius = radius
         self.xAxisRotation = xAxisRotation
         self.largeArcFlag = largeArcFlag
         self.sweepFlag = sweepFlag
+        self.relative = relative
     }
 
     // MARK: - Equatable
@@ -39,6 +42,9 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
             return false
         }
         guard lhs.sweepFlag == rhs.sweepFlag else {
+            return false
+        }
+        guard lhs.relative == rhs.relative else {
             return false
         }
         return true

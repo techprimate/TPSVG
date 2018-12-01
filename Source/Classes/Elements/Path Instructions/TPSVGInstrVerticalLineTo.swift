@@ -1,25 +1,25 @@
 //
-//  TPSVGInstrMoveTo.swift
+//  TPSVGInstrVerticalLineTo.swift
 //  TPSVG
 //
 //  Created by Philip Niedertscheider on 01.12.18.
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
-class TPSVGInstrMoveTo: TPSVGInstruction {
+class TPSVGInstrVerticalLineTo: TPSVGInstruction {
 
-    let point: CGPoint
+    let length: CGFloat
     let relative: Bool
 
-    init(point: CGPoint, relative: Bool = false) {
-        self.point = point
+    init(length: CGFloat, relative: Bool = false) {
+        self.length = length
         self.relative = relative
     }
-    
+
     // MARK: - Equatable
 
-    public static func == (lhs: TPSVGInstrMoveTo, rhs: TPSVGInstrMoveTo) -> Bool {
-        guard lhs.point == rhs.point else {
+    public static func == (lhs: TPSVGInstrVerticalLineTo, rhs: TPSVGInstrVerticalLineTo) -> Bool {
+        guard lhs.length == rhs.length else {
             return false
         }
         guard lhs.relative == rhs.relative else {

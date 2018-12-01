@@ -107,7 +107,15 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
                 ]))
                 expect(engine.elements) == [
-                    TPSVGPath(classNames: ["st0"], instructions: [])
+                    TPSVGPath(classNames: ["st0"], instructions: [
+                        TPSVGInstrMoveTo(point: CGPoint(x: 90, y: 260)),
+                        TPSVGInstrCubicCurve(end: CGPoint(x: -30, y: -40),
+                                                   control1: CGPoint(x: 40, y: -90), control2: CGPoint(x: 80, y: -90), relative: true),
+                        TPSVGInstrCubicCurve(end: CGPoint(x: 60, y: 0),
+                                                   control1: CGPoint(x: 90, y: 176), control2: CGPoint(x: 150, y: 180), relative: true),
+                        TPSVGInstrCubicCurve(end: CGPoint(x: 38, y: 2.3),
+                                                   control1: CGPoint(x: 110, y: -62), control2: CGPoint(x: 110, y: -100), relative: true)
+                        ])
                 ]
             }
 
