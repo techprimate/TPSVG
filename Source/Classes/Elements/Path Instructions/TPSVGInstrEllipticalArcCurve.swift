@@ -124,16 +124,19 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
                                   radius: r, cosPhi: phi.cos, sinPhi: phi.sin, center: center)
             let p  = mapToEllipse(point: point2, radius: r, cosPhi: phi.cos, sinPhi: phi.sin, center: center)
 
-            context.addCurve(to: p1, control1: p2, control2: p)
+            context.addCurve(to: p, control1: p1, control2: p2)
             ang1 += ang2
         }
+        context.setStrokeColor(UIColor.green.cgColor)
+        context.setFillColor(UIColor.red.cgColor)
+        context.setLineWidth(100)
         context.fillPath()
         context.strokePath()
     }
 
     private func mapToEllipse(point: CGPoint, radius: CGVector, cosPhi: CGFloat, sinPhi: CGFloat, center: CGPoint) -> CGPoint {
         return center + CGPoint(x: cosPhi * point.x * radius.dx - sinPhi * point.y * radius.dy,
-                                y: sinPhi * point.x * radius.dx - cosPhi * point.y * radius.dy)
+                                y: sinPhi * point.x * radius.dx + cosPhi * point.y * radius.dy)
     }
 
     private func vectorAngle(ux: CGFloat, uy: CGFloat, vx: CGFloat, vy: CGFloat) -> CGFloat {
@@ -144,13 +147,8 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
 
         var div = dot / (umag * vmag)
 
-        if (div > 1) {
-            div = 1
-        }
-
-        if (div < -1) {
-            div = -1
-        }
+        div = min(div, 1)
+        div = max(div, -1)
 
         return sign * acos(div)
     }
