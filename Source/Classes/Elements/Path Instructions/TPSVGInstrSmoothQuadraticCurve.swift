@@ -32,7 +32,7 @@ class TPSVGInstrSmoothQuadraticCurve: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGContext) {
+    override func modify(context: CGContext, prev: TPSVGInstruction?) {
         // TODO: this
     }
 

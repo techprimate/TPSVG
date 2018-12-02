@@ -22,7 +22,7 @@ class TPSVGInstrClosePath: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGContext) {
+    override func modify(context: CGContext, prev: TPSVGInstruction?) {
         context.closePath()
     }
 

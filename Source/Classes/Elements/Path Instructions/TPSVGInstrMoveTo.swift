@@ -26,7 +26,7 @@ class TPSVGInstrMoveTo: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGContext) {
+    override func modify(context: CGContext, prev: TPSVGInstruction?) {
         if relative {
             context.move(to: context.currentPointOfPath + point)
         } else {

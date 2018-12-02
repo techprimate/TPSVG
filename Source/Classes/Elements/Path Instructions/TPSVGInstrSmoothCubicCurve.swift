@@ -32,7 +32,7 @@ class TPSVGInstrSmoothCubicCurve: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGContext) {
+    override func modify(context: CGContext, prev: TPSVGInstruction?) {
         if relative {
             let ref = context.currentPointOfPath
             // TODO: this here

@@ -141,6 +141,19 @@ class TPSVGPathDLexer {
             }
             line.point.x = values[0]
             line.point.y = values[1]
+        } else if let ellArc = curr as? TPSVGInstrEllipticalArcCurve {
+            guard values.count == 7 else {
+                return
+            }
+            ellArc.radius.dx = values[0]
+            ellArc.radius.dy = values[1]
+            ellArc.xAxisRotation = values[2]
+
+            ellArc.largeArcFlag = values[3] == 1
+            ellArc.sweepFlag = values[4] == 1
+
+            ellArc.end.x = values[5]
+            ellArc.end.y = values[6]
         }
     }
 }

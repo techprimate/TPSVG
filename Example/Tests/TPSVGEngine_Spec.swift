@@ -564,6 +564,18 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGGroup(elements: expectedPaths)
                 ]
             }
+
+            it("can parse file-12") {
+                let engine = parse(file: "file-12-ell-arc")
+
+                expect(engine.styles).to(contain([
+                    TPSVGStyle(name: ".st0", font: TPSVGFont(family: "AvenirNext-Regular")),
+                    TPSVGStyle(name: ".st1", font: TPSVGFont(size: 50))
+                    ]))
+                expect(engine.elements) == [
+                    TPSVGText(classNames: ["st0"], transform: "matrix(1 0 0 1 88.0273 250)", text: "TPSVG rocks!")
+                ]
+            }
         }
     }
 }

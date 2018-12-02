@@ -39,8 +39,10 @@ class TPSVGPath: TPSVGElement {
 
     override func draw(in context: CGContext) {
         context.beginPath()
+        var prev: TPSVGInstruction?
         for inst in instructions {
-            inst.modify(context: context)
+            inst.modify(context: context, prev: prev)
+            prev = inst
         }
         context.fillPath()
         context.strokePath()

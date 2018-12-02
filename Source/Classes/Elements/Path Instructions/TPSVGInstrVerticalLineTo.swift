@@ -30,7 +30,7 @@ class TPSVGInstrVerticalLineTo: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGContext) {
+    override func modify(context: CGContext, prev: TPSVGInstruction?) {
         if relative {
             var end = context.currentPointOfPath
             end.y += length

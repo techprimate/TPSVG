@@ -45,7 +45,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         expect(instructions[0]) == TPSVGInstrMoveTo(point: CGPoint(x: 90, y: 260), relative: true)
                     }
 
-                    it("should parse partly minified moveTo") {
+                    it("should parse partly minified") {
                         let raw = "M 90,260"
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
@@ -53,7 +53,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         expect(instructions[0]) == TPSVGInstrMoveTo(point: CGPoint(x: 90, y: 260))
                     }
 
-                    it("should parse minified moveTo") {
+                    it("should parse minified") {
                         let raw = "M90,260"
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
@@ -95,7 +95,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                                                                         relative: true)
                     }
 
-                    it("should parse partly minified moveTo") {
+                    it("should parse partly minified") {
                         let raw = "C100,100 250,100 250,200"
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
@@ -105,7 +105,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                                                                         control2: CGPoint(x: 250, y: 200))
                     }
 
-                    it("should parse minified moveTo") {
+                    it("should parse minified") {
                         let raw = "C100,100,250,100,250,200"
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
@@ -149,7 +149,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                                                                         relative: true)
                     }
 
-                    it("should parse partly minified moveTo") {
+                    it("should parse partly minified") {
                         let raw = "C100,100 250,100 250,200"
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
@@ -159,7 +159,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                                                                         control2: CGPoint(x: 250, y: 200))
                     }
 
-                    it("should parse minified moveTo") {
+                    it("should parse minified") {
                         let raw = "C100,100,250,100,250,200"
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
@@ -167,6 +167,70 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         expect(instructions[0]) == TPSVGInstrCubicCurve(end: CGPoint(x: 100, y: 100),
                                                                         control1: CGPoint(x: 250, y: 100),
                                                                         control2: CGPoint(x: 250, y: 200))
+                    }
+                }
+
+                describe("elliptical arc") {
+
+                    it("should parse") {
+                        let raw = "A 70 50 10 0 0 250,150"
+                        let instructions = TPSVGPathDLexer(raw: raw).parse()
+
+                        expect(instructions).to(haveCount(1))
+                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 250, y: 150),
+                                                                                radius: CGVector(dx: 70, dy: 50),
+                                                                                xAxisRotation: 10,
+                                                                                largeArcFlag: false,
+                                                                                sweepFlag: false)
+                    }
+
+                    it("should parse with floating values") {
+                        let raw = "A 70.1234 50.1234 10.1234 1 1 250.1234,150.1234"
+                        let instructions = TPSVGPathDLexer(raw: raw).parse()
+
+                        expect(instructions).to(haveCount(1))
+                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 250.1234, y: 150.1234),
+                                                                                radius: CGVector(dx: 70.1234, dy: 50.1234),
+                                                                                xAxisRotation: 10.1234,
+                                                                                largeArcFlag: true,
+                                                                                sweepFlag: true)
+                    }
+
+                    it("should parse relative") {
+                        let raw = "a70 50 10 0 0 250,150"
+                        let instructions = TPSVGPathDLexer(raw: raw).parse()
+
+                        expect(instructions).to(haveCount(1))
+                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 250, y: 150),
+                                                                                radius: CGVector(dx: 70, dy: 50),
+                                                                                xAxisRotation: 10,
+                                                                                largeArcFlag: false,
+                                                                                sweepFlag: false,
+                                                                                relative: true)
+                    }
+
+                    it("should parse partly minified") {
+                        let raw = "A70 50 10 0 0 250,150"
+                        let instructions = TPSVGPathDLexer(raw: raw).parse()
+
+                        expect(instructions).to(haveCount(1))
+                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 250, y: 150),
+                                                                                radius: CGVector(dx: 70, dy: 50),
+                                                                                xAxisRotation: 10,
+                                                                                largeArcFlag: false,
+                                                                                sweepFlag: false)
+                    }
+
+                    it("should parse minified") {
+                        let raw = "A70,50,10,0,0,250,150"
+                        let instructions = TPSVGPathDLexer(raw: raw).parse()
+
+                        expect(instructions).to(haveCount(1))
+                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 250, y: 150),
+                                                                                radius: CGVector(dx: 70, dy: 50),
+                                                                                xAxisRotation: 10,
+                                                                                largeArcFlag: false,
+                                                                                sweepFlag: false)
                     }
                 }
             }
