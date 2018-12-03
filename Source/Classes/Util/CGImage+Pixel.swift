@@ -54,7 +54,7 @@ extension CGImage {
 
      TODO: documentation
      */
-    func pixelsEqual(to other: CGImage, threshold: Double = 0.1) -> Bool {
+    func pixelsEqual(to other: CGImage, threshold: Double = 0.01) -> Bool {
         guard self.width == other.width && self.height == other.height else {
             return false
         }
@@ -93,6 +93,6 @@ extension CGImage {
                 }
             }
         }
-        return Double(diffPixelCount) / Double(height * width) < threshold
+        return Double(diffPixelCount) / Double(height * width) <= threshold
     }
 }

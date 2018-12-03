@@ -58,6 +58,7 @@ class TPSVGCircle: TPSVGElement {
                                                height: 2 * radius))
         context.addPath(path.cgPath)
         context.fillPath()
+        context.addPath(path.cgPath)
         context.strokePath()
     }
 

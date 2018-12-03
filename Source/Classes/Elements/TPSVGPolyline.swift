@@ -50,15 +50,17 @@ class TPSVGPolyline: TPSVGElement {
         guard points.count > 0 else {
             return
         }
-        context.beginPath()
+        let mutablePath = CGMutablePath()
         for (idx, point) in points.enumerated() {
             if idx == 0 {
-                context.move(to: point)
+                mutablePath.move(to: point)
             } else {
-                context.addLine(to: point)
+                mutablePath.addLine(to: point)
             }
         }
+        context.addPath(mutablePath)
         context.fillPath()
+        context.addPath(mutablePath)
         context.strokePath()
     }
 }

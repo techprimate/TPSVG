@@ -38,13 +38,20 @@ class TPSVGPath: TPSVGElement {
     // MARK: - Drawing
 
     override func draw(in context: CGContext) {
-        context.beginPath()
+        let path = CGMutablePath()
+
         var prev: TPSVGInstruction?
+        var lastStartPoint: CGPoint?
         for inst in instructions {
-            inst.modify(context: context, prev: prev)
+            let point = path.currentPoint
+            inst.modify(context: path, prev: prev, prevStartPoint: lastStartPoint)
+            lastStartPoint = point
             prev = inst
         }
+
+        context.addPath(path)
         context.fillPath()
+        context.addPath(path)
         context.strokePath()
     }
 

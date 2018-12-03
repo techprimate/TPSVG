@@ -42,12 +42,13 @@ class TPSVGLine: TPSVGElement {
     // MARK: - Drawing
 
     override func draw(in context: CGContext) {
-        context.beginPath()
-        context.move(to: start)
-        context.addLine(to: end)
-
-        context.strokePath()
+        let path = CGMutablePath()
+        path.move(to: start)
+        path.move(to: end)
+        context.addPath(path)
         context.fillPath()
+        context.addPath(path)
+        context.strokePath()
     }
 
     // MARK: - Equatable

@@ -28,7 +28,7 @@ extension UIImage {
     /**
      TODO: documentation
      */
-    func pixelsEqual(to other: UIImage, threshold: Double = 0.1) -> Bool {
+    func pixelsEqual(to other: UIImage, threshold: Double = 0.01) -> Bool {
         guard let cgImg = self.cgImage, let otherCGImage = other.cgImage else {
             return false
         }

@@ -78,6 +78,10 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-3-polyline")
 
+
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+                    
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
                     expect(ref.pixelsEqual(to: svg)).to(beTrue())
@@ -230,21 +234,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
                         fatalError()
                     }
                     let ref = referenceImage(file: "file-13-icon-03")
-
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
-                }
-
-                it("should render render file-13-icon-04") {
-                    guard let svg = svgImage(file: "file-13-icon-04") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-13-icon-04")
 
                     try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
                     try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))

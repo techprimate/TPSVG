@@ -32,17 +32,43 @@ class TPSVGInstrSmoothCubicCurve: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGContext, prev: TPSVGInstruction?) {
+    override func modify(context: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
+        var control1 = context.currentPoint
+        var prevControl2: CGPoint?
+        var prevRelative = false
+        if let prevCubic = prev as? TPSVGInstrCubicCurve {
+            prevControl2 = prevCubic.control2
+            prevRelative = prevCubic.relative
+        } else if let prevSmoothCubic = prev as? TPSVGInstrSmoothCubicCurve {
+            prevControl2 = prevSmoothCubic.control2
+            prevRelative = prevSmoothCubic.relative
+        } else if let prevQuadratic = prev as? TPSVGInstrQuadraticCurve {
+            prevControl2 = prevQuadratic.control1
+            prevRelative = prevQuadratic.relative
+        } else if let prevSmoothQuadratic = prev as? TPSVGInstrSmoothQuadraticCurve {
+            prevControl2 = prevSmoothQuadratic.control2
+            prevRelative = prevSmoothQuadratic.relative
+        }
+        if let prevC2 = prevControl2, let prevSp = prevStartPoint {
+            if prevRelative {
+                let absolutePrevC2 = prevSp + prevC2
+                let diff = context.currentPoint - absolutePrevC2
+                control1 = context.currentPoint + diff
+            } else {
+                let diff = context.currentPoint - prevC2
+                control1 = context.currentPoint + diff
+            }
+        }
+
         if relative {
-            let ref = context.currentPointOfPath
-            // TODO: this here
-//            context.addCurve(to: ref + end, control1: ref + control1, control2: ref + control2)
+            let ref = context.currentPoint
+            context.addCurve(to: ref + end, control1: control1, control2: ref + control2)
         } else {
-//            context.addCurve(to: end, control1: control1, control2: control2)
+            context.addCurve(to: end, control1: control1, control2: control2)
 
         }
     }
-    
+
     // MARK: - Equatable
 
     public static func == (lhs: TPSVGInstrSmoothCubicCurve, rhs: TPSVGInstrSmoothCubicCurve) -> Bool {

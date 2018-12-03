@@ -713,18 +713,20 @@ class TPSVGEngine_Spec: QuickSpec {
                 if engine.elements.count == 2, let parsedPath = engine.elements[1] as? TPSVGPath {
                     expect(parsedPath.instructions).to(haveCount(expectedInstructions.count))
 
-                    expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
-                    expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
-                    expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
-                    expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
-                    expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
-                    expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
-                    expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
-                    expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
-                    expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
-                    expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
-                    expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
-                    expect(parsedPath.instructions[60..<63]) == expectedInstructions[60..<63]
+                    if parsedPath.instructions.count == expectedInstructions.count {
+                        expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
+                        expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
+                        expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
+                        expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
+                        expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
+                        expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
+                        expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
+                        expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
+                        expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
+                        expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
+                        expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
+                        expect(parsedPath.instructions[60..<63]) == expectedInstructions[60..<63]
+                    }
                 }
                 expect(engine.elements) == [
                     TPSVGRect(classNames: ["st0"], origin: .zero, size: CGSize(width: 512, height: 512)),

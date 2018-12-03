@@ -22,8 +22,8 @@ class TPSVGInstrClosePath: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGContext, prev: TPSVGInstruction?) {
-        context.closePath()
+    override func modify(context: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
+        context.closeSubpath()
     }
 
     // MARK: - Equatable

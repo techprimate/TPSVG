@@ -58,11 +58,14 @@ class TPSVGEllipse: TPSVGElement {
     // MARK: - Drawing
 
     override func draw(in context: CGContext) {
-        context.addEllipse(in: CGRect(x: center.x - radius.dx,
-                                      y: center.y - radius.dy,
-                                      width: 2 * radius.dx,
-                                      height: 2 * radius.dy))
+        let path = CGMutablePath()
+        path.addEllipse(in: CGRect(x: center.x - radius.dx,
+                                   y: center.y - radius.dy,
+                                   width: 2 * radius.dx,
+                                   height: 2 * radius.dy))
+        context.addPath(path)
         context.fillPath()
+        context.addPath(path)
         context.strokePath()
     }
 }

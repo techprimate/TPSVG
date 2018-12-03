@@ -58,5 +58,5 @@ class TPSVGInstruction: Equatable, CustomStringConvertible, CustomDebugStringCon
 
     // MARK: - Drawing
 
-    func modify(context: CGContext, prev: TPSVGInstruction?) {}
+    func modify(context: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {}
 }
