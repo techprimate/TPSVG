@@ -30,11 +30,11 @@ class TPSVGInstrLineTo: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
+    override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {
-            context.addLine(to: context.currentPoint + point)
+            path.addLine(to: path.currentPoint + point)
         } else {
-            context.addLine(to: point)
+            path.addLine(to: point)
         }
     }
 

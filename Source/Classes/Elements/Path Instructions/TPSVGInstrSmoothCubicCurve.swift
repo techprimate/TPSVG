@@ -32,8 +32,8 @@ class TPSVGInstrSmoothCubicCurve: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
-        var control1 = context.currentPoint
+    override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
+        var control1 = path.currentPoint
         var prevControl2: CGPoint?
         var prevRelative = false
         if let prevCubic = prev as? TPSVGInstrCubicCurve {
@@ -52,19 +52,19 @@ class TPSVGInstrSmoothCubicCurve: TPSVGInstruction {
         if let prevC2 = prevControl2, let prevSp = prevStartPoint {
             if prevRelative {
                 let absolutePrevC2 = prevSp + prevC2
-                let diff = context.currentPoint - absolutePrevC2
-                control1 = context.currentPoint + diff
+                let diff = path.currentPoint - absolutePrevC2
+                control1 = path.currentPoint + diff
             } else {
-                let diff = context.currentPoint - prevC2
-                control1 = context.currentPoint + diff
+                let diff = path.currentPoint - prevC2
+                control1 = path.currentPoint + diff
             }
         }
 
         if relative {
-            let ref = context.currentPoint
-            context.addCurve(to: ref + end, control1: control1, control2: ref + control2)
+            let ref = path.currentPoint
+            path.addCurve(to: ref + end, control1: control1, control2: ref + control2)
         } else {
-            context.addCurve(to: end, control1: control1, control2: control2)
+            path.addCurve(to: end, control1: control1, control2: control2)
 
         }
     }

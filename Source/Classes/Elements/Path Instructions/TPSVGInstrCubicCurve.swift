@@ -34,12 +34,12 @@ class TPSVGInstrCubicCurve: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
+    override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {
-            let ref = context.currentPoint
-            context.addCurve(to: ref + end, control1: ref + control1, control2: ref + control2)
+            let ref = path.currentPoint
+            path.addCurve(to: ref + end, control1: ref + control1, control2: ref + control2)
         } else {
-            context.addCurve(to: end, control1: control1, control2: control2)
+            path.addCurve(to: end, control1: control1, control2: control2)
 
         }
     }

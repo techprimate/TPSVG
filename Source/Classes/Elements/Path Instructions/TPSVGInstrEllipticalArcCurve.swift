@@ -42,9 +42,9 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
     // MARK: - Drawing
 
     // swiftlint:disable identifier_name
-    override func modify(context: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
+    override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         return
-        let start = context.currentPoint
+        let start = path.currentPoint
         let end = self.end
         var r = self.radius
         let xAxisRotation = self.xAxisRotation
@@ -123,7 +123,7 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
                                   radius: r, cosPhi: phi.cos, sinPhi: phi.sin, center: center)
             let p  = mapToEllipse(point: point2, radius: r, cosPhi: phi.cos, sinPhi: phi.sin, center: center)
 
-            context.addCurve(to: p, control1: p1, control2: p2)
+            path.addCurve(to: p, control1: p1, control2: p2)
             ang1 += ang2
         }
     }

@@ -32,7 +32,7 @@ class TPSVGInstrSmoothQuadraticCurve: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
+    override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         // TODO: this
     }
 

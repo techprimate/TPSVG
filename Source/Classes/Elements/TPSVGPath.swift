@@ -44,7 +44,7 @@ class TPSVGPath: TPSVGElement {
         var lastStartPoint: CGPoint?
         for inst in instructions {
             let point = path.currentPoint
-            inst.modify(context: path, prev: prev, prevStartPoint: lastStartPoint)
+            inst.modify(path: path, prev: prev, prevStartPoint: lastStartPoint)
             lastStartPoint = point
             prev = inst
         }

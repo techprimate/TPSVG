@@ -30,15 +30,15 @@ class TPSVGInstrVerticalLineTo: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
+    override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {
-            var end = context.currentPoint
+            var end = path.currentPoint
             end.y += length
-            context.move(to: end)
+            path.move(to: end)
         } else {
-            var end = context.currentPoint
+            var end = path.currentPoint
             end.y = length
-            context.move(to: end)
+            path.move(to: end)
         }
     }
 

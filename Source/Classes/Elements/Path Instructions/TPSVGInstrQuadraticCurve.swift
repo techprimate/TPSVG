@@ -32,12 +32,12 @@ class TPSVGInstrQuadraticCurve: TPSVGInstruction {
 
     // MARK: - Drawing
 
-    override func modify(context: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
+    override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {
-            let ref = context.currentPoint
-            context.addQuadCurve(to: ref + end, control: ref + control1)
+            let ref = path.currentPoint
+            path.addQuadCurve(to: ref + end, control: ref + control1)
         } else {
-            context.addQuadCurve(to: end, control: control1)
+            path.addQuadCurve(to: end, control: control1)
         }
     }
 
