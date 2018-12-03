@@ -44,7 +44,7 @@ class TPSVGLine: TPSVGElement {
     override func draw(in context: CGContext) {
         let path = CGMutablePath()
         path.move(to: start)
-        path.move(to: end)
+        path.addLine(to: end)
         context.addPath(path)
         context.fillPath()
         context.addPath(path)
