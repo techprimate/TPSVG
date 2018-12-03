@@ -35,9 +35,9 @@ class TPSVGPathDLexer {
                 result.append(TPSVGInstrEllipticalArcCurve(end: .zero, radius: .zero, xAxisRotation: 0,
                                                            largeArcFlag: false, sweepFlag: false, relative: true))
             case DChars.C.rawValue:
-                result.append(TPSVGInstrCubicCurve(end: .zero, control1: .zero, control2: .zero))
+                result.append(TPSVGInstrCubicCurve(control1: .zero, control2: .zero, end: .zero))
             case DChars.c.rawValue:
-                result.append(TPSVGInstrCubicCurve(end: .zero, control1: .zero, control2: .zero, relative: true))
+                result.append(TPSVGInstrCubicCurve(control1: .zero, control2: .zero, end: .zero, relative: true))
             case DChars.H.rawValue:
                 result.append(TPSVGInstrHorizontalLineTo(length: 0))
             case DChars.h.rawValue:

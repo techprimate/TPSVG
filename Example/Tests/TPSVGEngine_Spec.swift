@@ -10,8 +10,6 @@ import Quick
 import Nimble
 @testable import TPSVG
 
-// swiftlint:disable type_name function_body_length type_body_length file_length
-
 class TPSVGEngine_Spec: QuickSpec {
 
     override func spec() {
@@ -109,17 +107,17 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.elements) == [
                     TPSVGPath(classNames: ["st0"], instructions: [
                         TPSVGInstrMoveTo(point: CGPoint(x: 90, y: 260)),
-                        TPSVGInstrCubicCurve(end: CGPoint(x: 80, y: -90),
-                                             control1: CGPoint(x: 0, y: -30),
+                        TPSVGInstrCubicCurve(control1: CGPoint(x: 0, y: -30),
                                              control2: CGPoint(x: 40, y: -90),
+                                             end: CGPoint(x: 80, y: -90),
                                              relative: true),
-                        TPSVGInstrCubicCurve(end: CGPoint(x: 150, y: 180),
-                                             control1: CGPoint(x: 60, y: 0),
+                        TPSVGInstrCubicCurve(control1: CGPoint(x: 60, y: 0),
                                              control2: CGPoint(x: 90, y: 176),
+                                             end: CGPoint(x: 150, y: 180),
                                              relative: true),
-                        TPSVGInstrCubicCurve(end: CGPoint(x: 110, y: -100),
-                                             control1: CGPoint(x: 38, y: 2.3),
+                        TPSVGInstrCubicCurve(control1: CGPoint(x: 38, y: 2.3),
                                              control2: CGPoint(x: 110, y: -62),
+                                             end: CGPoint(x: 110, y: -100),
                                              relative: true)
                         ])
                 ]
@@ -239,15 +237,9 @@ class TPSVGEngine_Spec: QuickSpec {
                 let expectedPaths = [
                     TPSVGPath(classNames: ["a"], instructions: [
                         TPSVGInstrMoveTo(point: CGPoint(x: 109, y: 403.83)),
-                        TPSVGInstrSmoothCubicCurve(end: CGPoint(x: -1.29, y: 3.31),
-                                                   control2: CGPoint(x: 0.18, y: 3.34),
-                                                   relative: true),
-                        TPSVGInstrSmoothCubicCurve(end: CGPoint(x: -66.74, y: -81),
-                                                   control2: CGPoint(x: -30.49, y: -84.92),
-                                                   relative: true),
-                        TPSVGInstrCubicCurve(end: CGPoint(x: 109, y: 403.83),
-                                             control1: CGPoint(x: 40.94, y: 326.18),
-                                             control2: CGPoint(x: 72.33, y: 313.2)),
+                        TPSVGInstrSmoothCubicCurve(end: CGPoint(x: -1.29, y: 3.31), control2: CGPoint(x: 0.18, y: 3.34), relative: true),
+                        TPSVGInstrSmoothCubicCurve(end: CGPoint(x: -66.74, y: -81), control2: CGPoint(x: -30.49, y: -84.92), relative: true),
+                        TPSVGInstrCubicCurve(control1: CGPoint(x: 40.94, y: 326.18), control2: CGPoint(x: 72.33, y: 313.2), end: CGPoint(x: 109, y: 403.83)),
                         TPSVGInstrClosePath()
                         ]),
                     TPSVGPath(classNames: ["a"], instructions: []),
@@ -657,9 +649,7 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGInstrLineTo(point: CGPoint(x: 7.75, y: -7.41), relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: -77.16, y: -77.16), relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: 53.24, y: -53.24), relative: true),
-                    TPSVGInstrCubicCurve(end: CGPoint(x: 0, y: -62.67),
-                                         control1: CGPoint(x: 17.3058, y: -17.3058),
-                                         control2: CGPoint(x: 17.3058, y: -45.3642), relative: true),
+                    TPSVGInstrCubicCurve(control1: CGPoint(x: 17.3058, y: -17.3058), control2: CGPoint(x: 17.3058, y: -45.3642), end: CGPoint(x: 0, y: -62.67), relative: true),
 
                     TPSVGInstrSmoothCubicCurve(end: CGPoint(x: -62.67, y: 0),
                                                control2: CGPoint(x: -45.3642, y: -17.3058),
@@ -679,27 +669,27 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGInstrClosePath(),
                     TPSVGInstrMoveTo(point: CGPoint(x: 340.74, y: 148)),
 
-                    TPSVGInstrCubicCurve(end: CGPoint(x: 16.17, y: 7.41),
-                                         control1: CGPoint(x: 5.6, y: 0),
+                    TPSVGInstrCubicCurve(control1: CGPoint(x: 5.6, y: 0),
                                          control2: CGPoint(x: 11.29, y: 2.53),
+                                         end: CGPoint(x: 16.17, y: 7.41),
                                          relative: true),
-                    TPSVGInstrCubicCurve(end: CGPoint(x: 0, y: 32),
-                                         control1: CGPoint(x: 9.73, y: 9.73),
+                    TPSVGInstrCubicCurve(control1: CGPoint(x: 9.73, y: 9.73),
                                          control2: CGPoint(x: 9.73, y: 22.28),
+                                         end: CGPoint(x: 0, y: 32),
                                          relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: -7.07, y: 7.08), relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: -32, y: -32), relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: 7.07, y: -7.08), relative: true),
-                    TPSVGInstrCubicCurve(end: CGPoint(x: 340.74, y: 148),
-                                         control1: CGPoint(x: 329.79, y: 150.54),
-                                         control2: CGPoint(x: 335.14, y: 148)),
+                    TPSVGInstrCubicCurve(control1: CGPoint(x: 329.79, y: 150.54),
+                                         control2: CGPoint(x: 335.14, y: 148),
+                                         end: CGPoint(x: 340.74, y: 148)),
                     TPSVGInstrClosePath(),
                     TPSVGInstrMoveTo(point: CGPoint(x: 302.67, y: 177.65)),
                     TPSVGInstrLineTo(point: CGPoint(x: 32, y: 32), relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: -130.4, y: 130.4), relative: true),
-                    TPSVGInstrCubicCurve(end: CGPoint(x: -32, y: -32),
-                                         control1: CGPoint(x: -7.1311, y: -13.697),
+                    TPSVGInstrCubicCurve(control1: CGPoint(x: -7.1311, y: -13.697),
                                          control2: CGPoint(x: -18.303, y: -24.8689),
+                                         end: CGPoint(x: -32, y: -32),
                                          relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: 302.67, y: 177.65)),
                     TPSVGInstrClosePath(),
@@ -714,9 +704,9 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGInstrLineTo(point: CGPoint(x: 303.67, y: 271.32)),
                     TPSVGInstrClosePath(),
                     TPSVGInstrMoveTo(point: CGPoint(x: 158.45, y: 325.24)),
-                    TPSVGInstrCubicCurve(end: CGPoint(x: 28.65, y: 28.64),
-                                         control1: CGPoint(x: 12.9288, y: 5.4313),
+                    TPSVGInstrCubicCurve(control1: CGPoint(x: 12.9288, y: 5.4313),
                                          control2: CGPoint(x: 23.2142, y: 15.7131),
+                                         end: CGPoint(x: 28.65, y: 28.64),
                                          relative: true),
 
                     TPSVGInstrLineTo(point: CGPoint(x: 151.38, y: 361)),

@@ -10,7 +10,7 @@ import Quick
 import Nimble
 @testable import TPSVG
 
-// swiftlint:disable type_name function_body_length
+// swiftlint:disable type_name function_body_length line_length
 
 class TPSVGPathDLexer_Spec: QuickSpec {
 
@@ -69,9 +69,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(end: CGPoint(x: 100, y: 100),
-                                                                        control1: CGPoint(x: 250, y: 100),
-                                                                        control2: CGPoint(x: 250, y: 200))
+                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 100, y: 100), control2: CGPoint(x: 250, y: 100), end: CGPoint(x: 250, y: 200))
                     }
 
                     it("should parse with floating values") {
@@ -79,9 +77,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(end: CGPoint(x: 123.456, y: 654.321),
-                                                                        control1: CGPoint(x: 123.123, y: 567.567),
-                                                                        control2: CGPoint(x: 876.876, y: 465.465))
+                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 123.456, y: 654.321), control2: CGPoint(x: 123.123, y: 567.567), end: CGPoint(x: 876.876, y: 465.465))
                     }
 
                     it("should parse relative") {
@@ -89,10 +85,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(end: CGPoint(x: 100, y: 100),
-                                                                        control1: CGPoint(x: 250, y: 100),
-                                                                        control2: CGPoint(x: 250, y: 200),
-                                                                        relative: true)
+                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 100, y: 100), control2: CGPoint(x: 250, y: 100), end: CGPoint(x: 250, y: 200), relative: true)
                     }
 
                     it("should parse partly minified") {
@@ -100,9 +93,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(end: CGPoint(x: 100, y: 100),
-                                                                        control1: CGPoint(x: 250, y: 100),
-                                                                        control2: CGPoint(x: 250, y: 200))
+                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 100, y: 100), control2: CGPoint(x: 250, y: 100), end: CGPoint(x: 250, y: 200))
                     }
 
                     it("should parse minified") {
@@ -110,9 +101,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(end: CGPoint(x: 100, y: 100),
-                                                                        control1: CGPoint(x: 250, y: 100),
-                                                                        control2: CGPoint(x: 250, y: 200))
+                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 100, y: 100), control2: CGPoint(x: 250, y: 100), end: CGPoint(x: 250, y: 200))
                     }
                 }
 
@@ -123,9 +112,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(end: CGPoint(x: 100, y: 100),
-                                                                        control1: CGPoint(x: 250, y: 100),
-                                                                        control2: CGPoint(x: 250, y: 200))
+                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 100, y: 100), control2: CGPoint(x: 250, y: 100), end: CGPoint(x: 250, y: 200))
                     }
 
                     it("should parse with floating values") {
@@ -133,9 +120,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(end: CGPoint(x: 123.456, y: 654.321),
-                                                                        control1: CGPoint(x: 123.123, y: 567.567),
-                                                                        control2: CGPoint(x: 876.876, y: 465.465))
+                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 123.456, y: 654.321), control2: CGPoint(x: 123.123, y: 567.567), end: CGPoint(x: 876.876, y: 465.465))
                     }
 
                     it("should parse relative") {
@@ -143,10 +128,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(end: CGPoint(x: 100, y: 100),
-                                                                        control1: CGPoint(x: 250, y: 100),
-                                                                        control2: CGPoint(x: 250, y: 200),
-                                                                        relative: true)
+                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 100, y: 100), control2: CGPoint(x: 250, y: 100), end: CGPoint(x: 250, y: 200), relative: true)
                     }
 
                     it("should parse partly minified") {
@@ -154,9 +136,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(end: CGPoint(x: 100, y: 100),
-                                                                        control1: CGPoint(x: 250, y: 100),
-                                                                        control2: CGPoint(x: 250, y: 200))
+                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 100, y: 100), control2: CGPoint(x: 250, y: 100), end: CGPoint(x: 250, y: 200))
                     }
 
                     it("should parse minified") {
@@ -164,9 +144,7 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(end: CGPoint(x: 100, y: 100),
-                                                                        control1: CGPoint(x: 250, y: 100),
-                                                                        control2: CGPoint(x: 250, y: 200))
+                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 100, y: 100), control2: CGPoint(x: 250, y: 100), end: CGPoint(x: 250, y: 200))
                     }
                 }
 

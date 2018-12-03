@@ -13,7 +13,7 @@ class TPSVGInstrCubicCurve: TPSVGInstruction {
     var control2: CGPoint
     let relative: Bool
 
-    init(end: CGPoint, control1: CGPoint, control2: CGPoint, relative: Bool = false) {
+    init(control1: CGPoint, control2: CGPoint, end: CGPoint, relative: Bool = false) {
         self.end = end
         self.control1 = control1
         self.control2 = control2

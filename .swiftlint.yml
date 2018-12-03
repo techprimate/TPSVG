@@ -20,7 +20,6 @@ identifier_name:
     warning: 2
 included:
   - ../Source
-  - ../Example/Tests
   - ../Example/TPSVG
 line_length: 150
 reporter: xcode
