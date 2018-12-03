@@ -42,15 +42,14 @@ class TPSVGPathDLexer {
         }
 
         for (cmd, data) in unparsedElements {
-            var values: [CGFloat] = parseValues(from: data)
+            var values: [CGFloat] = TPSVGPathDLexer.parseValues(from: data)
             repeat {
                 var element: TPSVGInstruction?
                 switch cmd {
                 case .A:
-                    element = TPSVGInstrEllipticalArcCurve(end: .zero, radius: .zero, xAxisRotation: 0, largeArcFlag: false, sweepFlag: false)
+                    element = TPSVGInstrEllipticalArcCurve(radius: .zero, xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: .zero)
                 case .a:
-                    element = TPSVGInstrEllipticalArcCurve(end: .zero, radius: .zero, xAxisRotation: 0,
-                                                               largeArcFlag: false, sweepFlag: false, relative: true)
+                    element = TPSVGInstrEllipticalArcCurve(radius: .zero, xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: .zero, relative: true)
                 case .C:
                     element = TPSVGInstrCubicCurve(control1: .zero, control2: .zero, end: .zero)
                 case .c:
@@ -91,6 +90,8 @@ class TPSVGPathDLexer {
                 if let elem = element {
                     values = changeData(curr: elem, values: values)
                     result.append(elem)
+                } else {
+                    values = []
                 }
             } while !values.isEmpty
         }
@@ -98,23 +99,42 @@ class TPSVGPathDLexer {
         return result
     }
 
-    private func parseValues(from raw: String) -> [CGFloat] {
+    public static func parseValues(from raw: String) -> [CGFloat] {
         var values: [CGFloat] = []
         var valueData: [Character] = []
         for c in raw {
-            switch String(c).utf8CString[0] {
-            case DChars.comma.rawValue,
-                 DChars.space.rawValue:
-                if let parsed = TPSVGNumberParser.parse(String(valueData)) {
-                    values.append(parsed.value)
+            if let dChar = DChars(rawValue: String(c).utf8CString[0]) {
+                switch dChar {
+                case .sign:
+                    if let parsed = TPSVGNumberParser.parse(String(valueData)) {
+                        values.append(parsed.value)
+                        valueData = [c]
+                    } else {
+                        valueData = [c]
+                    }
+                case .comma:
+                    if let parsed = TPSVGNumberParser.parse(String(valueData)) {
+                        values.append(parsed.value)
+                        valueData = []
+                    } else {
+                        valueData = [c]
+                    }
+                case .space:
+                    if let parsed = TPSVGNumberParser.parse(String(valueData)) {
+                        values.append(parsed.value)
+                    }
+                    valueData = []
+                case .dot:
+                    if valueData.contains(c), let parsed = TPSVGNumberParser.parse(String(valueData)) {
+                        values.append(parsed.value)
+                        valueData = [c]
+                    } else {
+                        valueData.append(c)
+                    }
+                default:
+                    break
                 }
-                valueData = []
-            case DChars.sign.rawValue:
-                if let parsed = TPSVGNumberParser.parse(String(valueData)) {
-                    values.append(parsed.value)
-                }
-                valueData = [c]
-            default:
+            } else {
                 valueData.append(c)
             }
         }
@@ -226,7 +246,7 @@ class TPSVGPathDLexer {
         if let slice = result {
             return Array(slice)
         }
-        return values
+        return []
     }
 }
 
@@ -264,6 +284,7 @@ enum DChars: CChar {
 
     case comma = 44
     case sign = 45
+    case dot = 46
     case space = 32
 
     static var commands: [DChars] {
@@ -275,7 +296,7 @@ enum DChars: CChar {
             return nil
         }
         switch dchar {
-        case .comma, .sign, .space:
+        case .comma, .sign, .space, .dot:
             return nil
         default:
             return dchar

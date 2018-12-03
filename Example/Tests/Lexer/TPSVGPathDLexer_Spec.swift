@@ -155,11 +155,11 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 250, y: 150),
-                                                                                radius: CGVector(dx: 70, dy: 50),
+                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 70, dy: 50),
                                                                                 xAxisRotation: 10,
                                                                                 largeArcFlag: false,
-                                                                                sweepFlag: false)
+                                                                                sweepFlag: false,
+                                                                                end: CGPoint(x: 250, y: 150))
                     }
 
                     it("should parse with floating values") {
@@ -167,11 +167,11 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 250.1234, y: 150.1234),
-                                                                                radius: CGVector(dx: 70.1234, dy: 50.1234),
+                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 70.1234, dy: 50.1234),
                                                                                 xAxisRotation: 10.1234,
                                                                                 largeArcFlag: true,
-                                                                                sweepFlag: true)
+                                                                                sweepFlag: true,
+                                                                                end: CGPoint(x: 250.1234, y: 150.1234))
                     }
 
                     it("should parse relative") {
@@ -179,11 +179,11 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 250, y: 150),
-                                                                                radius: CGVector(dx: 70, dy: 50),
+                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 70, dy: 50),
                                                                                 xAxisRotation: 10,
                                                                                 largeArcFlag: false,
                                                                                 sweepFlag: false,
+                                                                                end: CGPoint(x: 250, y: 150),
                                                                                 relative: true)
                     }
 
@@ -192,11 +192,11 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 250, y: 150),
-                                                                                radius: CGVector(dx: 70, dy: 50),
+                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 70, dy: 50),
                                                                                 xAxisRotation: 10,
                                                                                 largeArcFlag: false,
-                                                                                sweepFlag: false)
+                                                                                sweepFlag: false,
+                                                                                end: CGPoint(x: 250, y: 150))
                     }
 
                     it("should parse minified") {
@@ -204,12 +204,25 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                         let instructions = TPSVGPathDLexer(raw: raw).parse()
 
                         expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 250, y: 150),
-                                                                                radius: CGVector(dx: 70, dy: 50),
+                        expect(instructions[0]) == TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 70, dy: 50),
                                                                                 xAxisRotation: 10,
                                                                                 largeArcFlag: false,
-                                                                                sweepFlag: false)
+                                                                                sweepFlag: false,
+                                                                                end: CGPoint(x: 250, y: 150))
                     }
+                }
+            }
+
+            describe("parseRaw") {
+
+                it("should parse values") {
+                    let raw = "-2.46.4-4.9.86-7.32,1.41"
+                    expect(TPSVGPathDLexer.parseValues(from: raw)) == [-2.46, 0.4, -4.9, 0.86, -7.32, 1.41]
+                }
+
+                it("should parse values") {
+                    let raw = "123.456 654.321 123.123 567.567 876.876 465.465"
+                    expect(TPSVGPathDLexer.parseValues(from: raw)) == [123.456, 654.321, 123.123, 567.567, 876.876, 465.465]
                 }
             }
         }

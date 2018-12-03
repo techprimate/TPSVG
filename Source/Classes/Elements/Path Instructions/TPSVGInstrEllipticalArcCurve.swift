@@ -17,7 +17,7 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
 
     let relative: Bool
 
-    init(end: CGPoint, radius: CGVector, xAxisRotation: CGFloat, largeArcFlag: Bool, sweepFlag: Bool, relative: Bool = false) {
+    init(radius: CGVector, xAxisRotation: CGFloat, largeArcFlag: Bool, sweepFlag: Bool, end: CGPoint, relative: Bool = false) {
         self.end = end
         self.radius = radius
         self.xAxisRotation = xAxisRotation
@@ -35,8 +35,8 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
     // MARK: - CustomDebugStringConvertible
 
     override var debugDescription: String {
-        return "TPSVGInstrEllipticalArcCurve { end: \(end), radius: \(radius), x-axis-rotation: \(xAxisRotation), "
-            + "largeArcFlag: \(largeArcFlag), sweepFlag: \(sweepFlag), relative: \(relative) }"
+        return "TPSVGInstrEllipticalArcCurve { radius: \(radius), x-axis-rotation: \(xAxisRotation), "
+            + "largeArcFlag: \(largeArcFlag), sweepFlag: \(sweepFlag), end: \(end), relative: \(relative) }"
     }
 
     // MARK: - Drawing

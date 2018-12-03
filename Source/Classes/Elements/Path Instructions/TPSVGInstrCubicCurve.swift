@@ -29,7 +29,7 @@ class TPSVGInstrCubicCurve: TPSVGInstruction {
     // MARK: - CustomDebugStringConvertible
 
     override var debugDescription: String {
-        return "TPSVGInstrCubicCurve { end: \(end), control1: \(control1), control2: \(control2), relative: \(relative) }"
+        return "TPSVGInstrCubicCurve {control1: \(control1), control2: \(control2), end: \(end), relative: \(relative) }"
     }
 
     // MARK: - Drawing

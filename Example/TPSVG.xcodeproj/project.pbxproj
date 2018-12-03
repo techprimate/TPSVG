@@ -115,6 +115,8 @@
 		D4C5F89E21B4058700B2CB60 /* file-13-icon-01.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C5F88D21B4058700B2CB60 /* file-13-icon-01.png */; };
 		D4C5F89F21B4058700B2CB60 /* file-13-icon-01.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C5F88D21B4058700B2CB60 /* file-13-icon-01.png */; };
 		D4C5F8A221B405F500B2CB60 /* TPSVGEngine_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5F8A021B405F500B2CB60 /* TPSVGEngine_Spec.swift */; };
+		D4FCD1A421B5C8900034F082 /* TPSVGEngine_Spec_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FCD1A321B5C8900034F082 /* TPSVGEngine_Spec_2.swift */; };
+		D4FCD1A621B5C8A10034F082 /* TPSVGEngine_Spec_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FCD1A521B5C8A10034F082 /* TPSVGEngine_Spec_3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +208,8 @@
 		D4C5F88C21B4058700B2CB60 /* file-13-icon-09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-13-icon-09.png"; sourceTree = "<group>"; };
 		D4C5F88D21B4058700B2CB60 /* file-13-icon-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-13-icon-01.png"; sourceTree = "<group>"; };
 		D4C5F8A021B405F500B2CB60 /* TPSVGEngine_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSVGEngine_Spec.swift; sourceTree = "<group>"; };
+		D4FCD1A321B5C8900034F082 /* TPSVGEngine_Spec_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSVGEngine_Spec_2.swift; sourceTree = "<group>"; };
+		D4FCD1A521B5C8A10034F082 /* TPSVGEngine_Spec_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSVGEngine_Spec_3.swift; sourceTree = "<group>"; };
 		E7D5C892A3F54FF85A78E5D7 /* Pods-TPSVG_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPSVG_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPSVG_Example/Pods-TPSVG_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EF61573B6404BF45F4542059 /* TPSVG.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TPSVG.podspec; path = ../TPSVG.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
@@ -280,6 +284,8 @@
 				D40D187921B097C30061C15F /* TPSVG_Spec.swift */,
 				D429C66B21B2A2BB00B5CE0A /* TPSVG_UIImage_Spec.swift */,
 				D4C5F8A021B405F500B2CB60 /* TPSVGEngine_Spec.swift */,
+				D4FCD1A321B5C8900034F082 /* TPSVGEngine_Spec_2.swift */,
+				D4FCD1A521B5C8A10034F082 /* TPSVGEngine_Spec_3.swift */,
 				D40D187D21B098A30061C15F /* Data */,
 				D40822EB21AF3D250027B10B /* Helper */,
 				D40D18DC21B1664E0061C15F /* Style */,
@@ -761,8 +767,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FCD1A421B5C8900034F082 /* TPSVGEngine_Spec_2.swift in Sources */,
 				D40D189121B09A900061C15F /* TPSVG_Spec.swift in Sources */,
 				D429C6B721B2E72500B5CE0A /* TPSVGPathDLexer_Spec.swift in Sources */,
+				D4FCD1A621B5C8A10034F082 /* TPSVGEngine_Spec_3.swift in Sources */,
 				D40D18DF21B166720061C15F /* TPCSSEngine_Spec.swift in Sources */,
 				D429C66C21B2A2BB00B5CE0A /* TPSVG_UIImage_Spec.swift in Sources */,
 				D4C5F8A221B405F500B2CB60 /* TPSVGEngine_Spec.swift in Sources */,
