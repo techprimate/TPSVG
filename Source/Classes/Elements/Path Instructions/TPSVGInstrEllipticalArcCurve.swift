@@ -43,6 +43,7 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
 
     // swiftlint:disable identifier_name
     override func modify(context: CGContext, prev: TPSVGInstruction?) {
+        return
         let start = context.currentPointOfPath
         let end = self.end
         var r = self.radius
@@ -93,8 +94,8 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
         let v2 = CGPoint(x: (-pp.x - centerP.x) / rSq.dx,
                          y: (-pp.y - centerP.y) / rSq.dy)
 
-        var ang1 = vectorAngle(ux: 1, uy: 0, vx: v1.x, vy: v1.y)
-        var ang2 = vectorAngle(ux: v1.x, uy: v1.y, vx: v2.x, vy: v2.y)
+        var ang1 = vectorAngle(u: CGVector(dx: 1, dy: 0), v: CGVector(dx: v1.x, dy: v1.y))
+        var ang2 = vectorAngle(u: CGVector(dx: v1.x, dy: v1.y), v: CGVector(dx: v2.x, dy: v2.y))
 
         if sweepFlag == false && ang2 > 0 {
             ang2 -= tau
@@ -139,18 +140,15 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
                                 y: sinPhi * point.x * radius.dx + cosPhi * point.y * radius.dy)
     }
 
-    private func vectorAngle(ux: CGFloat, uy: CGFloat, vx: CGFloat, vy: CGFloat) -> CGFloat {
-        let sign: CGFloat = (ux * vy - uy * vx < 0) ? -1 : 1
-        let umag = sqrt(ux * ux + uy * uy)
-        let vmag = sqrt(ux * ux + uy * uy)
-        let dot = ux * vx + uy * vy
+    private func vectorAngle(u: CGVector, v: CGVector) -> CGFloat {
+        let dot = u.dot(v)
+        let len = u.length * v.length
 
-        var div = dot / (umag * vmag)
-
-        div = min(div, 1)
-        div = max(div, -1)
-
-        return sign * acos(div)
+        var ang = acos(max(min(dot / len, 1), -1))
+        if u.dx * v.dy - u.dy * v.dx < 0 {
+            ang = -ang
+        }
+        return ang
     }
 
     // MARK: - Equatable

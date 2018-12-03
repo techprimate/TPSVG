@@ -193,6 +193,156 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
                     expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
+
+                it("should render render file-13-icon-01") {
+                    guard let svg = svgImage(file: "file-13-icon-01") else {
+                        fail("Image should not be null!")
+                        fatalError()
+                    }
+                    let ref = referenceImage(file: "file-13-icon-01")
+
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+
+                    expect(svg.size) == ref.size
+                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
+                }
+
+                it("should render render file-13-icon-02") {
+                    guard let svg = svgImage(file: "file-13-icon-02") else {
+                        fail("Image should not be null!")
+                        fatalError()
+                    }
+                    let ref = referenceImage(file: "file-13-icon-02")
+
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+
+                    expect(svg.size) == ref.size
+                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
+                }
+
+                it("should render render file-13-icon-03") {
+                    guard let svg = svgImage(file: "file-13-icon-03") else {
+                        fail("Image should not be null!")
+                        fatalError()
+                    }
+                    let ref = referenceImage(file: "file-13-icon-03")
+
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+
+                    expect(svg.size) == ref.size
+                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
+                }
+
+                it("should render render file-13-icon-04") {
+                    guard let svg = svgImage(file: "file-13-icon-04") else {
+                        fail("Image should not be null!")
+                        fatalError()
+                    }
+                    let ref = referenceImage(file: "file-13-icon-04")
+
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+
+                    expect(svg.size) == ref.size
+                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
+                }
+
+                it("should render render file-13-icon-04") {
+                    guard let svg = svgImage(file: "file-13-icon-04") else {
+                        fail("Image should not be null!")
+                        fatalError()
+                    }
+                    let ref = referenceImage(file: "file-13-icon-04")
+
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+
+                    expect(svg.size) == ref.size
+                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
+                }
+
+                it("should render render file-13-icon-05") {
+                    guard let svg = svgImage(file: "file-13-icon-05") else {
+                        fail("Image should not be null!")
+                        fatalError()
+                    }
+                    let ref = referenceImage(file: "file-13-icon-05")
+
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+
+                    expect(svg.size) == ref.size
+                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
+                }
+
+                it("should render render file-13-icon-06") {
+                    guard let svg = svgImage(file: "file-13-icon-06") else {
+                        fail("Image should not be null!")
+                        fatalError()
+                    }
+                    let ref = referenceImage(file: "file-13-icon-06")
+
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+
+                    expect(svg.size) == ref.size
+                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
+                }
+
+                it("should render render file-13-icon-07") {
+                    guard let svg = svgImage(file: "file-13-icon-07") else {
+                        fail("Image should not be null!")
+                        fatalError()
+                    }
+                    let ref = referenceImage(file: "file-13-icon-07")
+
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+
+                    expect(svg.size) == ref.size
+                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
+                }
+
+                it("should render render file-13-icon-08") {
+                    guard let svg = svgImage(file: "file-13-icon-08") else {
+                        fail("Image should not be null!")
+                        fatalError()
+                    }
+                    let ref = referenceImage(file: "file-13-icon-08")
+
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+
+                    expect(svg.size) == ref.size
+                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
+                }
+
+                it("should render render file-13-icon-09") {
+                    guard let svg = svgImage(file: "file-13-icon-09") else {
+                        fail("Image should not be null!")
+                        fatalError()
+                    }
+                    let ref = referenceImage(file: "file-13-icon-09")
+
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+
+                    expect(svg.size) == ref.size
+                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
+                }
             }
         }
     }

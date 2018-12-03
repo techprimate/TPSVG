@@ -1,8 +1,8 @@
 //
 //  TPSVGEngine_Spec.swift
-//  TPSVG_Tests
+//  TPSVG
 //
-//  Created by Philip Niedertscheider on 30.11.18.
+//  Created by Philip Niedertscheider on 02.12.18.
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
@@ -44,7 +44,7 @@ class TPSVGEngine_Spec: QuickSpec {
 
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.red)
-                ]))
+                    ]))
                 expect(engine.elements) == [
                     TPSVGRect(classNames: ["st0"], origin: CGPoint(x: 100, y: 100), size: CGSize(width: 300, height: 300))
                 ]
@@ -69,7 +69,7 @@ class TPSVGEngine_Spec: QuickSpec {
 
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.clear, stroke: TPSVGStroke(color: UIColor.black, width: 10, miterLimit: 10))
-                ]))
+                    ]))
                 expect(engine.elements) == [
                     TPSVGPolyline(classNames: ["st0"], points: [
                         CGPoint(x: 53, y: 217), CGPoint(x: 175, y: 164),
@@ -83,7 +83,7 @@ class TPSVGEngine_Spec: QuickSpec {
 
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
-                ]))
+                    ]))
                 expect(engine.elements) == [
                     TPSVGCircle(classNames: ["st0"], center: CGPoint(x: 250, y: 250), radius: 150)
                 ]
@@ -94,7 +94,7 @@ class TPSVGEngine_Spec: QuickSpec {
 
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
-                ]))
+                    ]))
                 expect(engine.elements) == [
                     TPSVGEllipse(classNames: ["st0"], center: CGPoint(x: 250, y: 250), radius: CGVector(dx: 225, dy: 150))
                 ]
@@ -109,12 +109,18 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.elements) == [
                     TPSVGPath(classNames: ["st0"], instructions: [
                         TPSVGInstrMoveTo(point: CGPoint(x: 90, y: 260)),
-                        TPSVGInstrCubicCurve(end: CGPoint(x: 0, y: -30),
-                                             control1: CGPoint(x: 40, y: -90), control2: CGPoint(x: 80, y: -90), relative: true),
-                        TPSVGInstrCubicCurve(end: CGPoint(x: 60, y: 0),
-                                             control1: CGPoint(x: 90, y: 176), control2: CGPoint(x: 150, y: 180), relative: true),
-                        TPSVGInstrCubicCurve(end: CGPoint(x: 38, y: 2.3),
-                                             control1: CGPoint(x: 110, y: -62), control2: CGPoint(x: 110, y: -100), relative: true)
+                        TPSVGInstrCubicCurve(end: CGPoint(x: 80, y: -90),
+                                             control1: CGPoint(x: 0, y: -30),
+                                             control2: CGPoint(x: 40, y: -90),
+                                             relative: true),
+                        TPSVGInstrCubicCurve(end: CGPoint(x: 150, y: 180),
+                                             control1: CGPoint(x: 60, y: 0),
+                                             control2: CGPoint(x: 90, y: 176),
+                                             relative: true),
+                        TPSVGInstrCubicCurve(end: CGPoint(x: 110, y: -100),
+                                             control1: CGPoint(x: 38, y: 2.3),
+                                             control2: CGPoint(x: 110, y: -62),
+                                             relative: true)
                         ])
                 ]
             }
@@ -125,7 +131,7 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", font: TPSVGFont(family: "AvenirNext-Regular")),
                     TPSVGStyle(name: ".st1", font: TPSVGFont(size: 50))
-                ]))
+                    ]))
                 expect(engine.elements) == [
                     TPSVGText(classNames: ["st0", "st1"], transform: "matrix(1 0 0 1 88.0273 250)", text: "TPSVG rocks!")
                 ]
@@ -136,7 +142,7 @@ class TPSVGEngine_Spec: QuickSpec {
 
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green)
-                ]))
+                    ]))
                 expect(engine.elements) == [
                     TPSVGPath(classNames: ["st0"], instructions: [
                         TPSVGInstrMoveTo(point: CGPoint(x: 250, y: 38)),
@@ -162,7 +168,7 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.styles).to(contain([
                     TPSVGStyle(name: ".st0", fill: UIColor.green),
                     TPSVGStyle(name: ".st1", fill: UIColor.cyan)
-                ]))
+                    ]))
                 expect(engine.elements) == [
                     TPSVGGroup(elements: [
                         TPSVGPolygon(classNames: ["st0"], points: [
@@ -227,6 +233,7 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGStyle(name: ".y", fill: UIColor(hex: 0xb2b2b2)),
                     TPSVGStyle(name: ".z", fill: UIColor(hex: 0xe5e5b2))
                 ]
+                expect(engine.styles).to(haveCount(expectedStyles.count))
                 expect(engine.styles).to(contain(expectedStyles))
                 let expectedPaths = [
                     TPSVGPath(classNames: ["a"], instructions: []),
@@ -530,50 +537,198 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGPath(classNames: ["as"], instructions: []),
                     TPSVGPath(classNames: ["as"], instructions: [])
                 ]
-                if let group = engine.elements.first as? TPSVGGroup {
-                    expect(group.elements).to(haveCount(expectedPaths.count))
-
-                    expect(Array(group.elements[0..<10])) == Array(expectedPaths[0..<10])
-                    expect(Array(group.elements[10..<20])) == Array(expectedPaths[10..<20])
-                    expect(Array(group.elements[20..<30])) == Array(expectedPaths[20..<30])
-                    expect(Array(group.elements[30..<40])) == Array(expectedPaths[30..<40])
-                    expect(Array(group.elements[40..<50])) == Array(expectedPaths[40..<50])
-                    expect(Array(group.elements[50..<60])) == Array(expectedPaths[50..<60])
-                    expect(Array(group.elements[60..<70])) == Array(expectedPaths[60..<70])
-                    expect(Array(group.elements[70..<80])) == Array(expectedPaths[70..<80])
-                    expect(Array(group.elements[80..<90])) == Array(expectedPaths[80..<90])
-                    expect(Array(group.elements[90..<100])) == Array(expectedPaths[90..<100])
-
-                    expect(Array(group.elements[100..<110])) == Array(expectedPaths[100..<110])
-                    expect(Array(group.elements[110..<120])) == Array(expectedPaths[110..<120])
-                    expect(Array(group.elements[120..<130])) == Array(expectedPaths[120..<130])
-                    expect(Array(group.elements[130..<140])) == Array(expectedPaths[130..<140])
-                    expect(Array(group.elements[140..<150])) == Array(expectedPaths[140..<150])
-                    expect(Array(group.elements[150..<160])) == Array(expectedPaths[150..<160])
-                    expect(Array(group.elements[160..<170])) == Array(expectedPaths[160..<170])
-                    expect(Array(group.elements[170..<180])) == Array(expectedPaths[170..<180])
-                    expect(Array(group.elements[180..<190])) == Array(expectedPaths[180..<190])
-                    expect(Array(group.elements[190..<200])) == Array(expectedPaths[190..<200])
-
-                    expect(Array(group.elements[200..<210])) == Array(expectedPaths[200..<210])
-                    expect(Array(group.elements[210..<220])) == Array(expectedPaths[210..<220])
-                    expect(Array(group.elements[220..<230])) == Array(expectedPaths[220..<230])
-                    expect(Array(group.elements[230..<240])) == Array(expectedPaths[230..<240])
-                }
                 expect(engine.elements) == [
                     TPSVGGroup(elements: expectedPaths)
                 ]
+                if let group = engine.elements.first as? TPSVGGroup {
+                    expect(group.elements).to(haveCount(expectedPaths.count))
+
+                    if group.elements.count == expectedPaths.count {
+                        expect(Array(group.elements[0..<10])) == Array(expectedPaths[0..<10])
+                        expect(Array(group.elements[10..<20])) == Array(expectedPaths[10..<20])
+                        expect(Array(group.elements[20..<30])) == Array(expectedPaths[20..<30])
+                        expect(Array(group.elements[30..<40])) == Array(expectedPaths[30..<40])
+                        expect(Array(group.elements[40..<50])) == Array(expectedPaths[40..<50])
+                        expect(Array(group.elements[50..<60])) == Array(expectedPaths[50..<60])
+                        expect(Array(group.elements[60..<70])) == Array(expectedPaths[60..<70])
+                        expect(Array(group.elements[70..<80])) == Array(expectedPaths[70..<80])
+                        expect(Array(group.elements[80..<90])) == Array(expectedPaths[80..<90])
+                        expect(Array(group.elements[90..<100])) == Array(expectedPaths[90..<100])
+
+                        expect(Array(group.elements[100..<110])) == Array(expectedPaths[100..<110])
+                        expect(Array(group.elements[110..<120])) == Array(expectedPaths[110..<120])
+                        expect(Array(group.elements[120..<130])) == Array(expectedPaths[120..<130])
+                        expect(Array(group.elements[130..<140])) == Array(expectedPaths[130..<140])
+                        expect(Array(group.elements[140..<150])) == Array(expectedPaths[140..<150])
+                        expect(Array(group.elements[150..<160])) == Array(expectedPaths[150..<160])
+                        expect(Array(group.elements[160..<170])) == Array(expectedPaths[160..<170])
+                        expect(Array(group.elements[170..<180])) == Array(expectedPaths[170..<180])
+                        expect(Array(group.elements[180..<190])) == Array(expectedPaths[180..<190])
+                        expect(Array(group.elements[190..<200])) == Array(expectedPaths[190..<200])
+
+                        expect(Array(group.elements[200..<210])) == Array(expectedPaths[200..<210])
+                        expect(Array(group.elements[210..<220])) == Array(expectedPaths[210..<220])
+                        expect(Array(group.elements[220..<230])) == Array(expectedPaths[220..<230])
+                        expect(Array(group.elements[230..<240])) == Array(expectedPaths[230..<240])
+                    }
+                }
             }
 
             it("can parse file-12") {
                 let engine = parse(file: "file-12-ell-arc")
 
                 expect(engine.styles).to(contain([
-                    TPSVGStyle(name: ".st0", font: TPSVGFont(family: "AvenirNext-Regular")),
-                    TPSVGStyle(name: ".st1", font: TPSVGFont(size: 50))
+                    TPSVGStyle(name: ".st0", fill: .clear, stroke: TPSVGStroke(color: .black, width: 8, miterLimit: 10))
                     ]))
                 expect(engine.elements) == [
-                    TPSVGText(classNames: ["st0"], transform: "matrix(1 0 0 1 88.0273 250)", text: "TPSVG rocks!")
+                    TPSVGPath(classNames: ["st0"], instructions: [
+                        TPSVGInstrMoveTo(point: CGPoint(x: 100, y: 200)),
+                        TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 200, y: 250),
+                                                     radius: CGVector(dx: 70, dy: 50),
+                                                     xAxisRotation: 10,
+                                                     largeArcFlag: false,
+                                                     sweepFlag: false)
+                        ]),
+                    TPSVGPath(classNames: ["st0"], instructions: [
+                        TPSVGInstrMoveTo(point: CGPoint(x: 50, y: 250)),
+                        TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 150, y: 300),
+                                                     radius: CGVector(dx: 70, dy: 50),
+                                                     xAxisRotation: 10,
+                                                     largeArcFlag: true,
+                                                     sweepFlag: false)
+                        ]),
+                    TPSVGPath(classNames: ["st0"], instructions: [
+                        TPSVGInstrMoveTo(point: CGPoint(x: 150, y: 150)),
+                        TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 250, y: 200),
+                                                     radius: CGVector(dx: 70, dy: 50),
+                                                     xAxisRotation: 10,
+                                                     largeArcFlag: false,
+                                                     sweepFlag: true)
+                        ]),
+                    TPSVGPath(classNames: ["st0"], instructions: [
+                        TPSVGInstrMoveTo(point: CGPoint(x: 200, y: 100)),
+                        TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 300, y: 150),
+                                                     radius: CGVector(dx: 70, dy: 50),
+                                                     xAxisRotation: 10,
+                                                     largeArcFlag: true,
+                                                     sweepFlag: true)
+                        ])
+                ]
+            }
+
+            it("can parse file-13-icon-01") {
+                let engine = parse(file: "file-13-icon-01")
+
+                expect(engine.styles).to(contain([
+                    TPSVGStyle(name: ".st0", fill: TPSVGColor(hex: 0xed1c24)),
+                    TPSVGStyle(name: ".st1", fill: TPSVGColor.white)
+                    ]))
+
+                let expectedInstructions: [TPSVGInstruction] =  [
+                    TPSVGInstrMoveTo(point: CGPoint(x: 178.67, y: 116)),
+                    TPSVGInstrLineTo(point: CGPoint(x: -7.41, y: 7.75), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -47.51, y: 47.51), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -7.75, y: 7.41), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 77.5, y: 77.5), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -53.91, y: 53.91), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -0.68, y: 3.37), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -11.79, y: 59.3), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -3.37, y: 15.84), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 15.84, y: -3.37), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 59.3, y: -11.8), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 3.37, y: -0.67), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 53.91, y: -53.91), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 333.33, y: 396)),
+                    TPSVGInstrLineTo(point: CGPoint(x: 7.41, y: -7.75), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 47.51, y: -47.51), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 7.75, y: -7.41), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -77.16, y: -77.16), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 53.24, y: -53.24), relative: true),
+                    TPSVGInstrCubicCurve(end: CGPoint(x: 0, y: -62.67),
+                                         control1: CGPoint(x: 17.3058, y: -17.3058),
+                                         control2: CGPoint(x: 17.3058, y: -45.3642), relative: true),
+
+                    TPSVGInstrSmoothCubicCurve(end: CGPoint(x: -62.67, y: 0),
+                                               control2: CGPoint(x: -45.3642, y: -17.3058),
+                                               relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -53.24, y: 53.24), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 178.67, y: 116)),
+                    TPSVGInstrClosePath(),
+                    TPSVGInstrMoveTo(point: CGPoint(x: 178.67, y: 146.66)),
+                    TPSVGInstrLineTo(point: CGPoint(x: 20.89, y: 21.23), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -15.83, y: 15.84), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 15.5, y: 15.5), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 15.83, y: -15.84), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 240.67, y: 209)),
+                    TPSVGInstrLineTo(point: CGPoint(x: -32, y: 32), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -62.34, y: -62.34), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 178.67, y: 146.66)),
+                    TPSVGInstrClosePath(),
+                    TPSVGInstrMoveTo(point: CGPoint(x: 340.74, y: 148)),
+
+                    TPSVGInstrCubicCurve(end: CGPoint(x: 16.17, y: 7.41),
+                                         control1: CGPoint(x: 5.6, y: 0),
+                                         control2: CGPoint(x: 11.29, y: 2.53),
+                                         relative: true),
+                    TPSVGInstrCubicCurve(end: CGPoint(x: 0, y: 32),
+                                         control1: CGPoint(x: 9.73, y: 9.73),
+                                         control2: CGPoint(x: 9.73, y: 22.28),
+                                         relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -7.07, y: 7.08), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -32, y: -32), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 7.07, y: -7.08), relative: true),
+                    TPSVGInstrCubicCurve(end: CGPoint(x: 340.74, y: 148),
+                                         control1: CGPoint(x: 329.79, y: 150.54),
+                                         control2: CGPoint(x: 335.14, y: 148)),
+                    TPSVGInstrClosePath(),
+                    TPSVGInstrMoveTo(point: CGPoint(x: 302.67, y: 177.65)),
+                    TPSVGInstrLineTo(point: CGPoint(x: 32, y: 32), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -130.4, y: 130.4), relative: true),
+                    TPSVGInstrCubicCurve(end: CGPoint(x: -32, y: -32),
+                                         control1: CGPoint(x: -7.1311, y: -13.697),
+                                         control2: CGPoint(x: -18.303, y: -24.8689),
+                                         relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 302.67, y: 177.65)),
+                    TPSVGInstrClosePath(),
+                    TPSVGInstrMoveTo(point: CGPoint(x: 303.67, y: 271.32)),
+                    TPSVGInstrLineTo(point: CGPoint(x: 25.61, y: 25.61), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 313.1, y: 313.1)),
+                    TPSVGInstrLineTo(point: CGPoint(x: 15.5, y: 15.5), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 16.17, y: -16.17), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 365.34, y: 333)),
+                    TPSVGInstrLineTo(point: CGPoint(x: 333, y: 365.34)),
+                    TPSVGInstrLineTo(point: CGPoint(x: -61.66, y: -61.66), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 303.67, y: 271.32)),
+                    TPSVGInstrClosePath(),
+                    TPSVGInstrMoveTo(point: CGPoint(x: 158.45, y: 325.24)),
+                    TPSVGInstrCubicCurve(end: CGPoint(x: 28.65, y: 28.64),
+                                         control1: CGPoint(x: 12.9288, y: 5.4313),
+                                         control2: CGPoint(x: 23.2142, y: 15.7131),
+                                         relative: true),
+
+                    TPSVGInstrLineTo(point: CGPoint(x: 151.38, y: 361)),
+                    TPSVGInstrLineTo(point: CGPoint(x: 158.45, y: 325.24)),
+                    TPSVGInstrClosePath()
+                ]
+                if engine.elements.count == 2, let parsedPath = engine.elements[1] as? TPSVGPath {
+                    expect(parsedPath.instructions).to(haveCount(expectedInstructions.count))
+
+                    expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
+                    expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
+                    expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
+                    expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
+                    expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
+                    expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
+                    expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
+                    expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
+                    expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
+                    expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
+                    expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
+                    expect(parsedPath.instructions[60..<63]) == expectedInstructions[60..<63]
+                }
+                expect(engine.elements) == [
+                    TPSVGRect(classNames: ["st0"], origin: .zero, size: CGSize(width: 512, height: 512)),
+                    TPSVGPath(classNames: ["st1"], instructions: expectedInstructions)
                 ]
             }
         }

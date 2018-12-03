@@ -18,22 +18,22 @@ public class TPSVGRect: TPSVGElement {
     }
 
     public override init?(attributes: [String: String]) {
-        guard let rawX = attributes["x"], let x = TPSVGNumberParser.parse(rawX) else {
-            return nil
-        }
-        guard let rawY = attributes["y"], let y = TPSVGNumberParser.parse(rawY) else {
-            return nil
-        }
-        origin = CGPoint(x: x.value, y: y.value)
+        origin = .zero
+        size = .zero
 
-        guard let rawWidth = attributes["width"], let width = TPSVGNumberParser.parse(rawWidth) else {
-            return nil
+        if let rawX = attributes["x"], let x = TPSVGNumberParser.parse(rawX) {
+            origin.x = x.value
         }
-        guard let rawHeight = attributes["height"], let height = TPSVGNumberParser.parse(rawHeight) else {
-            return nil
+        if let rawY = attributes["y"], let y = TPSVGNumberParser.parse(rawY) {
+            origin.y = y.value
         }
-        size = CGSize(width: width.value, height: height.value)
 
+        if let rawWidth = attributes["width"], let width = TPSVGNumberParser.parse(rawWidth) {
+            size.width = width.value
+        }
+        if let rawHeight = attributes["height"], let height = TPSVGNumberParser.parse(rawHeight) {
+            size.height = height.value
+        }
         super.init(attributes: attributes)
     }
 

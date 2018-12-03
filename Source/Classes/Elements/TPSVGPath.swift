@@ -8,7 +8,7 @@
 
 class TPSVGPath: TPSVGElement {
 
-    private var instructions: [TPSVGInstruction]
+    public var instructions: [TPSVGInstruction]
 
     public init(classNames: [String] = [], instructions: [TPSVGInstruction] = []) {
         self.instructions = instructions

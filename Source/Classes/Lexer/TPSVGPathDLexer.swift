@@ -113,18 +113,6 @@ class TPSVGPathDLexer {
             }
             moveTo.point.x = values[0]
             moveTo.point.y = values[1]
-        } else if let cubicCurve = curr as? TPSVGInstrCubicCurve {
-            guard values.count == 6 else {
-                return
-            }
-            cubicCurve.end.x = values[0]
-            cubicCurve.end.y = values[1]
-
-            cubicCurve.control1.x = values[2]
-            cubicCurve.control1.y = values[3]
-
-            cubicCurve.control2.x = values[4]
-            cubicCurve.control2.y = values[5]
         } else if let line = curr as? TPSVGInstrHorizontalLineTo {
             guard values.count == 1 else {
                 return
@@ -141,6 +129,45 @@ class TPSVGPathDLexer {
             }
             line.point.x = values[0]
             line.point.y = values[1]
+        } else if let cubicCurve = curr as? TPSVGInstrCubicCurve {
+            guard values.count == 6 else {
+                return
+            }
+            cubicCurve.control1.x = values[0]
+            cubicCurve.control1.y = values[1]
+
+            cubicCurve.control2.x = values[2]
+            cubicCurve.control2.y = values[3]
+
+            cubicCurve.end.x = values[4]
+            cubicCurve.end.y = values[5]
+        } else if let cubicSmoothCurve = curr as? TPSVGInstrSmoothCubicCurve {
+            guard values.count == 4 else {
+                return
+            }
+            cubicSmoothCurve.control2.x = values[0]
+            cubicSmoothCurve.control2.y = values[1]
+
+            cubicSmoothCurve.end.x = values[2]
+            cubicSmoothCurve.end.y = values[3]
+        } else if let quadCurve = curr as? TPSVGInstrQuadraticCurve {
+            guard values.count == 4 else {
+                return
+            }
+            quadCurve.control1.x = values[0]
+            quadCurve.control1.y = values[1]
+
+            quadCurve.end.x = values[2]
+            quadCurve.end.y = values[3]
+        } else if let quadSmoothCurve = curr as? TPSVGInstrSmoothQuadraticCurve {
+            guard values.count == 4 else {
+                return
+            }
+            quadSmoothCurve.control2.x = values[0]
+            quadSmoothCurve.control2.y = values[1]
+
+            quadSmoothCurve.end.x = values[2]
+            quadSmoothCurve.end.y = values[3]
         } else if let ellArc = curr as? TPSVGInstrEllipticalArcCurve {
             guard values.count == 7 else {
                 return

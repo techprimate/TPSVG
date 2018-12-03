@@ -29,3 +29,14 @@ public func sqrt(_ point: CGVector) -> CGVector {
 public func pow(_ point: CGVector, _ exponent: CGFloat) -> CGVector {
     return CGVector(dx: pow(point.dx, exponent), dy: pow(point.dy, exponent))
 }
+
+extension CGVector {
+
+    public func dot(_ other: CGVector) -> CGFloat {
+        return self.dx * other.dx + self.dy * other.dy
+    }
+
+    public var length: CGFloat {
+        return sqrt(dx * dx + dy * dy)
+    }
+}
