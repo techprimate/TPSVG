@@ -983,25 +983,33 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGStyle(name: ".b", fill: TPSVGColor.white)
                     ]))
 
-                let expectedInstructions: [TPSVGInstruction] =  [
+                let expectedInstructions: [TPSVGInstruction] = [
+                    TPSVGInstrMoveTo(point: CGPoint(x: 392.29, y: 166.17)),
+                    TPSVGInstrLineTo(point: CGPoint(x: -3.09, y: -9.37), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -49.46, y: 49.44), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -24.27, y: -9.7), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -9.7, y: -24.3), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 49.43, y: -49.46), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -9.37, y: -3.1), relative: true),
+                    TPSVGInstrEllipticalArcCurve(end: CGPoint(x: -95.92, y: 69.37), radius: CGVector(dx: 73, dy: 73), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, relative: true),
+                    TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 4.92, y: 26.23), radius: CGVector(dx: 71.86, dy: 71.86), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 124.68, y: 345.42)),
+                    TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 41.92, y: 41.92), radius: CGVector(dx: 29.64, dy: 29.64), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 296.73, y: 257.2)),
+                    TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 323, y: 262.1), radius: CGVector(dx: 72.22, dy: 72.22), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false),
+                    TPSVGInstrEllipticalArcCurve(end: CGPoint(x: 69.33, y: -95.93), radius: CGVector(dx: 73, dy: 73), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, relative: true),
+                    TPSVGInstrClosePath()
                 ]
                 if engine.elements.count == 2, let parsedPath = engine.elements[1] as? TPSVGPath {
                     expect(parsedPath.instructions).to(haveCount(expectedInstructions.count))
 
-                    //                    if parsedPath.instructions.count == expectedInstructions.count {
-                    //                        expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
-                    //                        expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
-                    //                        expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
-                    //                        expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
-                    //                        expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
-                    //                        expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
-                    //                        expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
-                    //                        expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
-                    //                        expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
-                    //                        expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
-                    //                        expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
-                    //                        expect(parsedPath.instructions[60..<63]) == expectedInstructions[60..<63]
-                    //                    }
+                    if parsedPath.instructions.count == expectedInstructions.count {
+                        expect(parsedPath.instructions[0..<3]) == expectedInstructions[0..<3]
+                        expect(parsedPath.instructions[3..<6]) == expectedInstructions[3..<6]
+                        expect(parsedPath.instructions[6..<9]) == expectedInstructions[6..<9]
+                        expect(parsedPath.instructions[9..<12]) == expectedInstructions[9..<12]
+                        expect(parsedPath.instructions[12..<15]) == expectedInstructions[12..<15]
+                    }
                 }
                 expect(engine.elements) == [
                     TPSVGRect(classNames: ["a"], origin: .zero, size: CGSize(width: 512, height: 512)),
