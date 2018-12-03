@@ -234,9 +234,22 @@ class TPSVGEngine_Spec: QuickSpec {
                     TPSVGStyle(name: ".z", fill: UIColor(hex: 0xe5e5b2))
                 ]
                 expect(engine.styles).to(haveCount(expectedStyles.count))
+
                 expect(engine.styles).to(contain(expectedStyles))
                 let expectedPaths = [
-                    TPSVGPath(classNames: ["a"], instructions: []),
+                    TPSVGPath(classNames: ["a"], instructions: [
+                        TPSVGInstrMoveTo(point: CGPoint(x: 109, y: 403.83)),
+                        TPSVGInstrSmoothCubicCurve(end: CGPoint(x: -1.29, y: 3.31),
+                                                   control2: CGPoint(x: 0.18, y: 3.34),
+                                                   relative: true),
+                        TPSVGInstrSmoothCubicCurve(end: CGPoint(x: -66.74, y: -81),
+                                                   control2: CGPoint(x: -30.49, y: -84.92),
+                                                   relative: true),
+                        TPSVGInstrCubicCurve(end: CGPoint(x: 109, y: 403.83),
+                                             control1: CGPoint(x: 40.94, y: 326.18),
+                                             control2: CGPoint(x: 72.33, y: 313.2)),
+                        TPSVGInstrClosePath()
+                        ]),
                     TPSVGPath(classNames: ["a"], instructions: []),
                     TPSVGPath(classNames: ["a"], instructions: []),
 
@@ -731,6 +744,278 @@ class TPSVGEngine_Spec: QuickSpec {
                 expect(engine.elements) == [
                     TPSVGRect(classNames: ["st0"], origin: .zero, size: CGSize(width: 512, height: 512)),
                     TPSVGPath(classNames: ["st1"], instructions: expectedInstructions)
+                ]
+            }
+
+            it("can parse file-13-icon-02") {
+                let engine = parse(file: "file-13-icon-02")
+
+                expect(engine.styles).to(contain([
+                    TPSVGStyle(name: ".a", fill: TPSVGColor(hex: 0xf15a24)),
+                    TPSVGStyle(name: ".b", fill: TPSVGColor.white)
+                    ]))
+
+                let expectedInstructions: [TPSVGInstruction] =  [
+                ]
+                if engine.elements.count == 2, let parsedPath = engine.elements[1] as? TPSVGPath {
+                    expect(parsedPath.instructions).to(haveCount(expectedInstructions.count))
+
+                    //                    if parsedPath.instructions.count == expectedInstructions.count {
+                    //                        expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
+                    //                        expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
+                    //                        expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
+                    //                        expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
+                    //                        expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
+                    //                        expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
+                    //                        expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
+                    //                        expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
+                    //                        expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
+                    //                        expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
+                    //                        expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
+                    //                        expect(parsedPath.instructions[60..<63]) == expectedInstructions[60..<63]
+                    //                    }
+                }
+                expect(engine.elements) == [
+                    TPSVGRect(classNames: ["a"], origin: .zero, size: CGSize(width: 512, height: 512)),
+                    TPSVGPath(classNames: ["b"], instructions: expectedInstructions)
+                ]
+            }
+
+            it("can parse file-13-icon-03") {
+                let engine = parse(file: "file-13-icon-03")
+
+                expect(engine.styles).to(contain([
+                    TPSVGStyle(name: ".a", fill: TPSVGColor(hex: 0xf7931e)),
+                    TPSVGStyle(name: ".b", fill: TPSVGColor.white)
+                    ]))
+
+                let expectedInstructions: [TPSVGInstruction] =  [
+                ]
+                if engine.elements.count == 2, let parsedPath = engine.elements[1] as? TPSVGPath {
+                    expect(parsedPath.instructions).to(haveCount(expectedInstructions.count))
+
+                    //                    if parsedPath.instructions.count == expectedInstructions.count {
+                    //                        expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
+                    //                        expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
+                    //                        expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
+                    //                        expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
+                    //                        expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
+                    //                        expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
+                    //                        expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
+                    //                        expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
+                    //                        expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
+                    //                        expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
+                    //                        expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
+                    //                        expect(parsedPath.instructions[60..<63]) == expectedInstructions[60..<63]
+                    //                    }
+                }
+                expect(engine.elements) == [
+                    TPSVGRect(classNames: ["a"], origin: .zero, size: CGSize(width: 512, height: 512)),
+                    TPSVGPath(classNames: ["b"], instructions: expectedInstructions)
+                ]
+            }
+
+            it("can parse file-13-icon-04") {
+                let engine = parse(file: "file-13-icon-04")
+
+                expect(engine.styles).to(contain([
+                    TPSVGStyle(name: ".a", fill: TPSVGColor(hex: 0xf7931e)),
+                    TPSVGStyle(name: ".b", fill: TPSVGColor.white)
+                    ]))
+
+                let expectedInstructions: [TPSVGInstruction] =  [
+                ]
+                if engine.elements.count == 2, let parsedPath = engine.elements[1] as? TPSVGPath {
+                    expect(parsedPath.instructions).to(haveCount(expectedInstructions.count))
+
+                    //                    if parsedPath.instructions.count == expectedInstructions.count {
+                    //                        expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
+                    //                        expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
+                    //                        expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
+                    //                        expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
+                    //                        expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
+                    //                        expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
+                    //                        expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
+                    //                        expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
+                    //                        expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
+                    //                        expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
+                    //                        expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
+                    //                        expect(parsedPath.instructions[60..<63]) == expectedInstructions[60..<63]
+                    //                    }
+                }
+                expect(engine.elements) == [
+                    TPSVGRect(classNames: ["a"], origin: .zero, size: CGSize(width: 512, height: 512)),
+                    TPSVGPath(classNames: ["b"], instructions: expectedInstructions)
+                ]
+            }
+
+            it("can parse file-13-icon-05") {
+                let engine = parse(file: "file-13-icon-05")
+
+                expect(engine.styles).to(contain([
+                    TPSVGStyle(name: ".a", fill: TPSVGColor(hex: 0x00a99d)),
+                    TPSVGStyle(name: ".b", fill: TPSVGColor.white)
+                    ]))
+
+                let expectedInstructions: [TPSVGInstruction] =  [
+                ]
+                if engine.elements.count == 2, let parsedPath = engine.elements[1] as? TPSVGPath {
+                    expect(parsedPath.instructions).to(haveCount(expectedInstructions.count))
+
+                    //                    if parsedPath.instructions.count == expectedInstructions.count {
+                    //                        expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
+                    //                        expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
+                    //                        expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
+                    //                        expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
+                    //                        expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
+                    //                        expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
+                    //                        expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
+                    //                        expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
+                    //                        expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
+                    //                        expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
+                    //                        expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
+                    //                        expect(parsedPath.instructions[60..<63]) == expectedInstructions[60..<63]
+                    //                    }
+                }
+                expect(engine.elements) == [
+                    TPSVGRect(classNames: ["a"], origin: .zero, size: CGSize(width: 512, height: 512)),
+                    TPSVGPath(classNames: ["b"], instructions: expectedInstructions)
+                ]
+            }
+
+            it("can parse file-13-icon-06") {
+                let engine = parse(file: "file-13-icon-06")
+
+                expect(engine.styles).to(contain([
+                    TPSVGStyle(name: ".a", fill: TPSVGColor(hex: 0x29abe2)),
+                    TPSVGStyle(name: ".b", fill: TPSVGColor.white)
+                    ]))
+
+                let expectedInstructions: [TPSVGInstruction] =  [
+                ]
+                if engine.elements.count == 2, let parsedPath = engine.elements[1] as? TPSVGPath {
+                    expect(parsedPath.instructions).to(haveCount(expectedInstructions.count))
+
+                    //                    if parsedPath.instructions.count == expectedInstructions.count {
+                    //                        expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
+                    //                        expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
+                    //                        expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
+                    //                        expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
+                    //                        expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
+                    //                        expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
+                    //                        expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
+                    //                        expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
+                    //                        expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
+                    //                        expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
+                    //                        expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
+                    //                        expect(parsedPath.instructions[60..<63]) == expectedInstructions[60..<63]
+                    //                    }
+                }
+                expect(engine.elements) == [
+                    TPSVGRect(classNames: ["a"], origin: .zero, size: CGSize(width: 512, height: 512)),
+                    TPSVGPath(classNames: ["b"], instructions: expectedInstructions)
+                ]
+            }
+
+            it("can parse file-13-icon-07") {
+                let engine = parse(file: "file-13-icon-07")
+
+                expect(engine.styles).to(contain([
+                    TPSVGStyle(name: ".a", fill: TPSVGColor(hex: 0xd4145a)),
+                    TPSVGStyle(name: ".b", fill: TPSVGColor.white)
+                    ]))
+
+                let expectedInstructions: [TPSVGInstruction] =  [
+                ]
+                if engine.elements.count == 2, let parsedPath = engine.elements[1] as? TPSVGPath {
+                    expect(parsedPath.instructions).to(haveCount(expectedInstructions.count))
+
+                    //                    if parsedPath.instructions.count == expectedInstructions.count {
+                    //                        expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
+                    //                        expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
+                    //                        expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
+                    //                        expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
+                    //                        expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
+                    //                        expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
+                    //                        expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
+                    //                        expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
+                    //                        expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
+                    //                        expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
+                    //                        expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
+                    //                        expect(parsedPath.instructions[60..<63]) == expectedInstructions[60..<63]
+                    //                    }
+                }
+                expect(engine.elements) == [
+                    TPSVGRect(classNames: ["a"], origin: .zero, size: CGSize(width: 512, height: 512)),
+                    TPSVGPath(classNames: ["b"], instructions: expectedInstructions)
+                ]
+            }
+
+            it("can parse file-13-icon-08") {
+                let engine = parse(file: "file-13-icon-08")
+
+                expect(engine.styles).to(contain([
+                    TPSVGStyle(name: ".a", fill: TPSVGColor(hex: 0x0071bc)),
+                    TPSVGStyle(name: ".b", fill: TPSVGColor.white)
+                    ]))
+
+                let expectedInstructions: [TPSVGInstruction] =  [
+                ]
+                if engine.elements.count == 2, let parsedPath = engine.elements[1] as? TPSVGPath {
+                    expect(parsedPath.instructions).to(haveCount(expectedInstructions.count))
+
+                    //                    if parsedPath.instructions.count == expectedInstructions.count {
+                    //                        expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
+                    //                        expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
+                    //                        expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
+                    //                        expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
+                    //                        expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
+                    //                        expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
+                    //                        expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
+                    //                        expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
+                    //                        expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
+                    //                        expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
+                    //                        expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
+                    //                        expect(parsedPath.instructions[60..<63]) == expectedInstructions[60..<63]
+                    //                    }
+                }
+                expect(engine.elements) == [
+                    TPSVGRect(classNames: ["a"], origin: .zero, size: CGSize(width: 512, height: 512)),
+                    TPSVGPath(classNames: ["b"], instructions: expectedInstructions)
+                ]
+            }
+
+            it("can parse file-13-icon-09") {
+                let engine = parse(file: "file-13-icon-09")
+
+                expect(engine.styles).to(contain([
+                    TPSVGStyle(name: ".a", fill: TPSVGColor(hex: 0x2e3192)),
+                    TPSVGStyle(name: ".b", fill: TPSVGColor.white)
+                    ]))
+
+                let expectedInstructions: [TPSVGInstruction] =  [
+                ]
+                if engine.elements.count == 2, let parsedPath = engine.elements[1] as? TPSVGPath {
+                    expect(parsedPath.instructions).to(haveCount(expectedInstructions.count))
+
+                    //                    if parsedPath.instructions.count == expectedInstructions.count {
+                    //                        expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
+                    //                        expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
+                    //                        expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
+                    //                        expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
+                    //                        expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
+                    //                        expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
+                    //                        expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
+                    //                        expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
+                    //                        expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
+                    //                        expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
+                    //                        expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
+                    //                        expect(parsedPath.instructions[60..<63]) == expectedInstructions[60..<63]
+                    //                    }
+                }
+                expect(engine.elements) == [
+                    TPSVGRect(classNames: ["a"], origin: .zero, size: CGSize(width: 512, height: 512)),
+                    TPSVGPath(classNames: ["b"], instructions: expectedInstructions)
                 ]
             }
         }
