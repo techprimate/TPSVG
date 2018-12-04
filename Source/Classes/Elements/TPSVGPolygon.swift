@@ -27,7 +27,7 @@ class TPSVGPolygon: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public override init?(attributes: [String : String]) {
+    public override init?(attributes: [String: String]) {
         guard let rawPoints = attributes["points"] else {
             return nil
         }

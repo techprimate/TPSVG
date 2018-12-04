@@ -34,18 +34,22 @@ class TPSVGCircle: TPSVGElement {
      TODO: Add documentation
      */
     public override init?(attributes: [String: String]) {
-        guard let rawX = attributes["cx"], let x = TPSVGNumberParser.parse(rawX) else {
-            return nil
+        center = .zero
+        if let rawX = attributes["cx"], let x = TPSVGNumberParser.parse(rawX) {
+            center.x = x.value
         }
-        guard let rawY = attributes["cy"], let y = TPSVGNumberParser.parse(rawY) else {
-            return nil
+        if let rawY = attributes["cy"], let y = TPSVGNumberParser.parse(rawY) {
+            center.y = y.value
         }
-        center = CGPoint(x: x.value, y: y.value)
 
-        guard let rawRadius = attributes["r"], let radius = TPSVGNumberParser.parse(rawRadius) else {
-            return nil
+        radius = 0
+        if let rawRadius = attributes["r"], let radius = TPSVGNumberParser.parse(rawRadius) {
+            if radius.value < 0 {
+                print("Negative radii are not allowed for circles!")
+            } else {
+                self.radius = radius.value
+            }
         }
-        self.radius = radius.value
 
         super.init(attributes: attributes)
     }

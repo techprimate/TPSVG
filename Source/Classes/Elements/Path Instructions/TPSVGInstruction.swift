@@ -54,14 +54,14 @@ class TPSVGInstruction: Equatable, CustomStringConvertible, CustomDebugStringCon
 
     /// :nodoc:
     var description: String {
-        return String(describing: self)
+        return String(describing: type(of: self)) + " {}"
     }
 
     // MARK: - CustomDebugStringConvertible
 
     /// :nodoc:
     var debugDescription: String {
-        return String(reflecting: self)
+        return String(describing: type(of: self)) + " {}"
     }
 
     // MARK: - Drawing

@@ -197,6 +197,9 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-13-icon-02")
 
+                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
+                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
+
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
                 }

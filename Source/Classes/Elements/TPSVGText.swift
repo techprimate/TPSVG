@@ -33,13 +33,22 @@ class TPSVGText: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public override init?(attributes: [String : String]) {
+    public override init?(attributes: [String: String]) {
         guard let transform = attributes["transform"] else {
             return nil
         }
         self.transform = transform
         self.text = ""
         super.init(attributes: attributes)
+    }
+
+    // MARK: - Drawing
+
+    /**
+     TODO: Add documentation
+     */
+    override func draw(in context: CGContext) {
+        // TODO: draw text
     }
 
     // MARK: - Equatable

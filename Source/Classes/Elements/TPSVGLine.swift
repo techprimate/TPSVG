@@ -42,7 +42,7 @@ class TPSVGLine: TPSVGElement {
         }
         start = CGPoint(x: x1.value, y: y1.value)
         guard let rawX2 = attributes["x2"], let x2 = TPSVGNumberParser.parse(rawX2) else {
-            return nil
+            return nil 
         }
         guard let rawY2 = attributes["y2"], let y2 = TPSVGNumberParser.parse(rawY2) else {
             return nil
