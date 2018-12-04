@@ -155,166 +155,179 @@ class TPSVGEngine_Spec_3: QuickSpec {
                     ]))
 
                 let expectedInstructions: [TPSVGInstruction] =  [
+                    // 0 - 4
                     TPSVGInstrMoveTo(point: CGPoint(x: 256, y: 116)),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: CGPoint(x: -10.77, y: 10.77), relative: true),
                     TPSVGInstrVerticalLineTo(length: 1.85, relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -8.71, y: 10.56), relative: true),
                     TPSVGInstrCubicCurve(control1: CGPoint(x: -2.46, y: 0.4), control2: CGPoint(x: -4.9, y: 0.86), end: CGPoint(x: -7.32, y: 1.41), relative: true),
 
+                    // 5 - 9
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -12, y: -6.42), relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: -0.71, y: -1.68), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: -19.9, y: 8.25), relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: 0.72, y: 1.72), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.57, dy: 10.57), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -4, y: 13.06), relative: true),
 
+                    // 10 - 14
                     TPSVGInstrQuadraticCurve(end: CGPoint(x: -6.18, y: 4.12), control1: CGPoint(x: -3.16, y: 2), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -13.59, y: -1.32), relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: -1.31, y: -1.3), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.76, dy: 10.76), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: 157, y: 172.24)),
                     TPSVGInstrLineTo(point: CGPoint(x: 1.3, y: 1.31), relative: true),
 
+                    // 15 - 19
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 1.32, y: 13.59), relative: true),
                     TPSVGInstrQuadraticCurve(end: CGPoint(x: -4.12, y: 6.18), control1: CGPoint(x: -2.14, y: 3), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.61, dy: 10.61), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -13.08, y: 4), relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: -1.7, y: -0.72), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.78, dy: 10.78), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: -8.27, y: 19.9), relative: true),
 
+                    // 20 - 24
                     TPSVGInstrLineTo(point: CGPoint(x: 1.68, y: 0.69), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.61, dy: 10.61), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 6.44, y: 12), relative: true),
-                    TPSVGInstrQuadraticCurve(end: CGPoint(x: -0.83, y: 3.63), control1: CGPoint(x: -1.43, y: 7.32), relative: true),
+                    TPSVGInstrQuadraticCurve(end: CGPoint(x: -1.43, y: 7.32), control1: CGPoint(x: -0.83, y: 3.63), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.58, dy: 10.58), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -10.54, y: 8.71), relative: true),
                     TPSVGInstrHorizontalLineTo(length: -1.85, relative: true),
 
+                    // 25 - 29
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: 0, y: 21.54), relative: true),
                     TPSVGInstrHorizontalLineTo(length: 1.85, relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 10.56, y: 8.71), relative: true),
-                    TPSVGInstrCubicCurve(control1: CGPoint(x: 0.4, y: 2.46), control2: CGPoint(x: 0.86, y: 4.9), end: CGPoint(x: 1.41, y: 7.32)),
+                    TPSVGInstrCubicCurve(control1: CGPoint(x: 0.4, y: 2.46), control2: CGPoint(x: 0.86, y: 4.9), end: CGPoint(x: 1.41, y: 7.32), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -6.42, y: 12), relative: true),
-                    TPSVGInstrLineTo(point: CGPoint(x: -1.68, y: 0.71), relative: true),
 
+                    // 30 - 34
+                    TPSVGInstrLineTo(point: CGPoint(x: -1.68, y: 0.71), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: 8.25, y: 19.9), relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: 1.72, y: -0.72), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.62, dy: 10.62), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 13.08, y: 4), relative: true),
-                    TPSVGInstrCubicCurve(control1: CGPoint(x: 1.32, y: 2.11), control2: CGPoint(x: 2.68, y: 4.18), end: CGPoint(x: 4.13, y: 6.21)),
+                    TPSVGInstrCubicCurve(control1: CGPoint(x: 1.32, y: 2.11), control2: CGPoint(x: 2.68, y: 4.18), end: CGPoint(x: 4.13, y: 6.21), relative: true),
+
+                    // 35 - 39
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -1.33, y: 13.58), relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: 157, y: 339.78)),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: 172.24, y: 355)),
-                    TPSVGInstrLineTo(point: CGPoint(x: 1.33, y: -1.31)),
+                    TPSVGInstrLineTo(point: CGPoint(x: 1.33, y: -1.31), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.58, dy: 10.58), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 13.57, y: -1.34), relative: true),
-                    TPSVGInstrSmoothQuadraticCurve(end: CGPoint(x: 6.2, y: 4.14), control2: CGPoint(x: 3, y: 2.16), relative: true),
+
+                    // 40 - 44
+                    TPSVGInstrQuadraticCurve(end: CGPoint(x: 6.2, y: 4.14), control1: CGPoint(x: 3, y: 2.16), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.62, dy: 10.62), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 4, y: 13.08), relative: true),
-                    TPSVGInstrLineTo(point: CGPoint(x: -0.72, y: 1.71)),
+                    TPSVGInstrLineTo(point: CGPoint(x: -0.72, y: 1.71), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: 19.9, y: 8.26), relative: true),
-                    TPSVGInstrLineTo(point: CGPoint(x: 0.69, y: -1.68)),
+                    TPSVGInstrLineTo(point: CGPoint(x: 0.69, y: -1.68), relative: true),
+
+                    // 45 - 49
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.61, dy: 10.61), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 12, y: -6.44), relative: true),
-                    TPSVGInstrSmoothQuadraticCurve(end: CGPoint(x: 7.32, y: 1.43), control2: CGPoint(x: 3.63, y: 0.82), relative: true),
+                    TPSVGInstrQuadraticCurve(end: CGPoint(x: 7.32, y: 1.43), control1: CGPoint(x: 3.63, y: 0.82), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.55, dy: 10.55), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 8.69, y: 10.52), relative: true),
                     TPSVGInstrVerticalLineTo(length: 1.85, relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: 21.54, y: 0), relative: true),
+
+                    // 50 - 54
                     TPSVGInstrVerticalLineTo(length: -1.85, relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 8.71, y: -10.56), relative: true),
                     TPSVGInstrCubicCurve(control1: CGPoint(x: 2.46, y: -0.4), control2: CGPoint(x: 4.9, y: -0.86), end: CGPoint(x: 7.32, y: -1.41), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0.0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 12.0, y: 6.42), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 0.71, y: 1.68), relative: true),
+
+                    // 55 - 59
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: 19.9, y: -8.25), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -0.72, y: -1.72), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.62, dy: 10.62), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 4, y: -13.08), relative: true),
+                    TPSVGInstrCubicCurve(control1: CGPoint(x: 2.11, y: -1.32), control2: CGPoint(x: 4.18, y: -2.68), end: CGPoint(x: 6.21, y: -4.13), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 13.58, y: 1.33), relative: true),
+
+                    // 60 - 64
+                    TPSVGInstrLineTo(point: CGPoint(x: 1.31, y: 1.32), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: CGPoint(x: 355, y: 339.76)),
                     TPSVGInstrLineTo(point: CGPoint(x: -1.31, y: -1.33), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.58, dy: 10.58), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -1.34, y: -13.57), relative: true),
-                    TPSVGInstrSmoothQuadraticCurve(end: CGPoint(x: 4.14, y: -6.2), control2: CGPoint(x: 2.16, y: -3), relative: true),
+                    TPSVGInstrQuadraticCurve(end: CGPoint(x: 4.14, y: -6.2), control1: CGPoint(x: 2.16, y: -3), relative: true),
+
+                    // 65 - 69
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.62, dy: 10.62), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 13.08, y: -4), relative: true),
-                    TPSVGInstrLineTo(point: CGPoint(x: 1.71, y: 0.72)),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: 8.26, y: -19.9)),
-                    TPSVGInstrLineTo(point: CGPoint(x: -1.68, y: -0.69)),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.61, dy: 10.61), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -6.44, y: -12)),
-                    TPSVGInstrSmoothQuadraticCurve(end: CGPoint(x: 1.43, y: -7.32), control2: CGPoint(x: 0.82, y: -3.63), relative: true),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.55, dy: 10.55), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 10.52, y: -8.69)),
+                    TPSVGInstrLineTo(point: CGPoint(x: 1.71, y: 0.72), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: 8.26, y: -19.9), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -1.68, y: -0.69), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.61, dy: 10.61), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -6.44, y: -12), relative: true),
+
+                    // 70 - 74
+                    TPSVGInstrQuadraticCurve(end: CGPoint(x: 1.43, y: -7.32), control1: CGPoint(x: 0.82, y: -3.63), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.55, dy: 10.55), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 10.52, y: -8.69), relative: true),
                     TPSVGInstrHorizontalLineTo(length: 1.85, relative: true),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: CGPoint(x: 0, y: -21.54)),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: CGPoint(x: 0, y: -21.54), relative: true),
                     TPSVGInstrHorizontalLineTo(length: -1.85, relative: true),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -10.56, y: -8.71)),
+
+                    // 75 - 79
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -10.56, y: -8.71), relative: true),
                     TPSVGInstrCubicCurve(control1: CGPoint(x: -0.4, y: -2.46), control2: CGPoint(x: -0.86, y: -4.9), end: CGPoint(x: -1.41, y: -7.32), relative: true),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 6.42, y: -12)),
-                    TPSVGInstrLineTo(point: CGPoint(x: 1.68, y: -0.71)),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: -8.25, y: -19.9)),
-                    TPSVGInstrLineTo(point: CGPoint(x: -1.72, y: 0.72)),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.62, dy: 10.62), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -13.08, y: -4)),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 6.42, y: -12), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 1.68, y: -0.71), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: -8.25, y: -19.9), relative: true),
+
+                    // 80 - 84
+                    TPSVGInstrLineTo(point: CGPoint(x: -1.72, y: 0.72), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.62, dy: 10.62), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -13.08, y: -4), relative: true),
                     TPSVGInstrCubicCurve(control1: CGPoint(x: -1.32, y: -2.11), control2: CGPoint(x: -2.68, y: -4.18), end: CGPoint(x: -4.13, y: -6.21), relative: true),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 1.33, y: -13.58)),
-                    TPSVGInstrLineTo(point: CGPoint(x: 1.32, y: -1.31)),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.6, dy: 10.6), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 1.33, y: -13.58), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: 1.32, y: -1.31), relative: true),
+
+                    // 85 - 89
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: CGPoint(x: 339.76, y: 157)),
-                    TPSVGInstrLineTo(point: CGPoint(x: -1.31, y: 1.33)),
+                    TPSVGInstrLineTo(point: CGPoint(x: -1.31, y: 1.33), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.62, dy: 10.62), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -13.59, y: 1.35), relative: true),
                     TPSVGInstrQuadraticCurve(end: CGPoint(x: -6.2, y: -4.15), control1: CGPoint(x: -3, y: -2.17), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.62, dy: 10.62), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -4, y: -13.08), relative: true),
-                    TPSVGInstrLineTo(point: CGPoint(x: -0.72, y: -1.7)),
+
+                    // 90 - 94
+                    TPSVGInstrLineTo(point: CGPoint(x: 0.72, y: -1.7), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.78, dy: 10.78), xAxisRotation: 0, largeArcFlag: true, sweepFlag: false, end: CGPoint(x: -19.9, y: -8.27), relative: true),
-                    TPSVGInstrLineTo(point: CGPoint(x: -0.71, y: 1.68)),
+                    TPSVGInstrLineTo(point: CGPoint(x: -0.71, y: 1.68), relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.61, dy: 10.61), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -12, y: 6.44), relative: true),
                     TPSVGInstrQuadraticCurve(end: CGPoint(x: -7.32, y: -1.43), control1: CGPoint(x: -3.63, y: -0.83), relative: true),
+
+                    // 95 - 99
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.57, dy: 10.57), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -8.69, y: -10.54), relative: true),
                     TPSVGInstrVerticalLineTo(length: -1.85, relative: true),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: CGPoint(x: 256, y: 116), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 10.77, dy: 10.77), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: CGPoint(x: 256, y: 116)),
                     TPSVGInstrClosePath(),
                     TPSVGInstrMoveTo(point: CGPoint(x: 0, y: 53.85), relative: true),
+
+                    // 100 - 104
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 86.12, dy: 86.12), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 85.42, y: 75.38), relative: true),
                     TPSVGInstrHorizontalLineTo(length: 297.54),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 42.16, dy: 42.16), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: CGPoint(x: -53, y: -30.58), relative: true),
-                    TPSVGInstrLineTo(point: CGPoint(x: -22, y: -38.07)),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 85.71, dy: 85.71), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 256, y: 169.85), relative: true),
+                    TPSVGInstrLineTo(point: CGPoint(x: -22, y: -38.07), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 85.71, dy: 85.71), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 256, y: 169.85)),
+
+                    // 105 - 109
                     TPSVGInstrClosePath(),
                     TPSVGInstrMoveTo(point: CGPoint(x: -52, y: 17.58), relative: true),
                     TPSVGInstrMoveTo(point: CGPoint(x: 21.86, y: 37.86), relative: true),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 42.93, dy: 42.93), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 0, y: 61.4), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 42.93, dy: 42.93), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: CGPoint(x: 0, y: 61.4), relative: true),
                     TPSVGInstrLineTo(point: CGPoint(x: 204, y: 324.55)),
+
+                    // 110 - 114
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 85.93, dy: 85.93), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 0, y: -137.12), relative: true),
                     TPSVGInstrClosePath(),
                     TPSVGInstrMoveTo(point: CGPoint(x: 52, y: 47), relative: true),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 21.54, dy: 21.54), xAxisRotation: 0, largeArcFlag: true, sweepFlag: true, end: CGPoint(x: 234.46, y: 256), relative: true),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 0.54, dy: 21.54), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 256, y: 234.46), relative: true),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 21.54, dy: 21.54), xAxisRotation: 0, largeArcFlag: true, sweepFlag: true, end: CGPoint(x: 234.46, y: 256)),
+                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 21.54, dy: 21.54), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: 256, y: 234.46)),
+
+                    // 115 - 119
                     TPSVGInstrClosePath(),
                     TPSVGInstrMoveTo(point: CGPoint(x: 41.54, y: 32.31), relative: true),
                     TPSVGInstrHorizontalLineTo(length: 43.88, relative: true),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 86.14, dy: 86.14), xAxisRotation: 0, largeArcFlag: false, sweepFlag: true, end: CGPoint(x: -118.84, y: 68.65), relative: true),
-                    TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 42.38, dy: 42.38), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: CGPoint(x: 256, y: 299.08)),
                     TPSVGInstrLineTo(point: CGPoint(x: 22, y: -38.09), relative: true),
+
+                    // 120 - 122
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 42.38, dy: 42.38), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: CGPoint(x: 256, y: 299.08)),
                     TPSVGInstrEllipticalArcCurve(radius: CGVector(dx: 43, dy: 43), xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: CGPoint(x: 297.54, y: 266.77)),
-                    TPSVGInstrClosePath(),
-
-                    TPSVGInstrClosePath(),
-                    TPSVGInstrClosePath(),
-                    TPSVGInstrClosePath(),
-                    TPSVGInstrClosePath(),
-                    TPSVGInstrClosePath(),
-                    TPSVGInstrClosePath(),
-                    TPSVGInstrClosePath(),
                     TPSVGInstrClosePath()
                 ]
-                if engine.elements.count == 2, let parsedPath = engine.elements[1] as? TPSVGPath {
-                    expect(parsedPath.instructions).to(haveCount(expectedInstructions.count))
-
-                    //                    if parsedPath.instructions.count == expectedInstructions.count {
-                    expect(parsedPath.instructions[0..<10]) == expectedInstructions[0..<10]
-                    expect(parsedPath.instructions[10..<15]) == expectedInstructions[10..<15]
-                    expect(parsedPath.instructions[15..<20]) == expectedInstructions[15..<20]
-                    expect(parsedPath.instructions[20..<25]) == expectedInstructions[20..<25]
-                    expect(parsedPath.instructions[25..<30]) == expectedInstructions[25..<30]
-                    expect(parsedPath.instructions[30..<35]) == expectedInstructions[30..<35]
-                    expect(parsedPath.instructions[35..<40]) == expectedInstructions[35..<40]
-                    expect(parsedPath.instructions[40..<45]) == expectedInstructions[40..<45]
-                    expect(parsedPath.instructions[45..<50]) == expectedInstructions[45..<50]
-                    expect(parsedPath.instructions[50..<55]) == expectedInstructions[50..<55]
-                    expect(parsedPath.instructions[55..<60]) == expectedInstructions[55..<60]
-                    expect(parsedPath.instructions[60..<65]) == expectedInstructions[60..<65]
-//                    expect(parsedPath.instructions[65..<60]) == expectedInstructions[65..<70]
-//                    expect(parsedPath.instructions[70..<65]) == expectedInstructions[70..<75]
-//                    expect(parsedPath.instructions[75..<60]) == expectedInstructions[75..<80]
-//                    expect(parsedPath.instructions[80..<65]) == expectedInstructions[80..<85]
-//                    expect(parsedPath.instructions[85..<60]) == expectedInstructions[85..<90]
-//                    expect(parsedPath.instructions[90..<65]) == expectedInstructions[90..<95]
-//                    expect(parsedPath.instructions[95..<100]) == expectedInstructions[95..<100]
-//                    expect(parsedPath.instructions[100..<105]) == expectedInstructions[100..<105]
-//                    expect(parsedPath.instructions[105..<110]) == expectedInstructions[105..<110]
-//                    expect(parsedPath.instructions[110..<115]) == expectedInstructions[110..<115]
-//                    expect(parsedPath.instructions[115..<120]) == expectedInstructions[115..<120]
-//                    }
-                }
                 expect(engine.elements) == [
                     TPSVGRect(classNames: ["a"], origin: .zero, size: CGSize(width: 512, height: 512)),
                     TPSVGPath(classNames: ["b"], instructions: expectedInstructions)
