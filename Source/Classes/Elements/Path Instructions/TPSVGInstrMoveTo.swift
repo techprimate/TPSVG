@@ -29,24 +29,16 @@ class TPSVGInstrMoveTo: TPSVGInstruction {
         self.relative = relative
     }
 
-    /**
-     TODO: Add documentation
-     */
-    override var description: String {
-        return "TPSVGInstrMoveTo {}"
-    }
-
-    /**
-     TODO: Add documentation
-     */
-    override var debugDescription: String {
-        return "TPSVGInstrMoveTo { point = \(point), relative: \(relative) }"
-    }
-
     // MARK: - Drawing
 
     /**
-     TODO: Add documentation
+     Modifies a given path using the logic of this instruction.
+
+     Moves the current point of the given `path`.
+
+     - Parameter path: Active path, which should be modified
+     - Parameter prev: Previous instruction if exists, might be null.
+     - Parameter prevStartPoint: Start point of previous instruction, used to calculate control points with relative values
      */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {

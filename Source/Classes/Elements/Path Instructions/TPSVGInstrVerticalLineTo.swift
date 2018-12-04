@@ -50,7 +50,13 @@ class TPSVGInstrVerticalLineTo: TPSVGInstruction {
     // MARK: - Drawing
 
     /**
-     TODO: Add documentation
+     Modifies a given path using the logic of this instruction.
+
+     Adds a vertical line to the given `path` starting and the current point.
+
+     - Parameter path: Active path, which should be modified
+     - Parameter prev: Previous instruction if exists, might be null.
+     - Parameter prevStartPoint: Start point of previous instruction, used to calculate control points with relative values
      */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {

@@ -52,26 +52,28 @@ class TPSVGInstruction: Equatable, CustomStringConvertible, CustomDebugStringCon
 
     // MARK: - CustomStringConvertible {
 
-    /**
-     TODO: Add documentation
-     */
+    /// :nodoc:
     var description: String {
-        return "TSVGInstruction {}"
+        return String(describing: self)
     }
 
     // MARK: - CustomDebugStringConvertible
 
-    /**
-     TODO: Add documentation
-     */
+    /// :nodoc:
     var debugDescription: String {
-        return "TSVGInstruction {}"
+        return String(reflecting: self)
     }
 
     // MARK: - Drawing
 
     /**
-     TODO: Add documentation
+     Modifies a given path using the logic of this instruction.
+
+     Subclasses should overwrite this method to implement instruction specific modification.
+
+     - Parameter path: Active path, which should be modified
+     - Parameter prev: Previous instruction if exists, might be null.
+     - Parameter prevStartPoint: Start point of previous instruction, used to calculate control points with relative values
      */
     func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {}
 }
