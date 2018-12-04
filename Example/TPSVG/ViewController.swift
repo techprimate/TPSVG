@@ -7,7 +7,25 @@
 //
 
 import UIKit
+import TPSVG
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var leftImageView: UIImageView!
+    @IBOutlet weak var rightImageView: UIImageView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        do {
+            if let path = Bundle.main.path(forResource: "file-10-tiger", ofType: "png") {
+                leftImageView.image = UIImage(contentsOfFile: path)
+            }
+            if let url = Bundle.main.url(forResource: "file-10-tiger", withExtension: "svg") {
+                rightImageView.image = try TPSVG(contentsOf: url).image()
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }

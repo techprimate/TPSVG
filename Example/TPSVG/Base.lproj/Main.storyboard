@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +20,39 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FTK-pT-n3E">
+                                <rect key="frame" x="195" y="251.5" width="164" height="164"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1PZ-vD-JEE">
+                                <rect key="frame" x="16" y="251.5" width="164" height="164"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1PZ-vD-JEE" secondAttribute="height" multiplier="1:1" id="F4X-h5-ros"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FTK-pT-n3E" secondAttribute="trailing" constant="16" id="EQw-wV-I8Q"/>
+                            <constraint firstItem="1PZ-vD-JEE" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="Juw-uo-Dgm"/>
+                            <constraint firstItem="FTK-pT-n3E" firstAttribute="height" secondItem="1PZ-vD-JEE" secondAttribute="height" id="Mmd-wk-C6X"/>
+                            <constraint firstItem="1PZ-vD-JEE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="16" id="ece-et-O6e"/>
+                            <constraint firstItem="FTK-pT-n3E" firstAttribute="bottom" secondItem="1PZ-vD-JEE" secondAttribute="bottom" id="fw3-g7-S3I"/>
+                            <constraint firstItem="FTK-pT-n3E" firstAttribute="top" secondItem="1PZ-vD-JEE" secondAttribute="top" id="h5P-pE-Hpw"/>
+                            <constraint firstItem="FTK-pT-n3E" firstAttribute="width" secondItem="1PZ-vD-JEE" secondAttribute="width" id="mg6-7J-CkI"/>
+                            <constraint firstItem="FTK-pT-n3E" firstAttribute="leading" secondItem="1PZ-vD-JEE" secondAttribute="trailing" constant="15" id="uEp-A6-Lge"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="leftImageView" destination="1PZ-vD-JEE" id="lY8-aG-FdF"/>
+                        <outlet property="rightImageView" destination="FTK-pT-n3E" id="viq-A0-OIs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
