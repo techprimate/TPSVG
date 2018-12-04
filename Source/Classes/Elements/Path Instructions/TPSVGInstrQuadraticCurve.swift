@@ -6,12 +6,29 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: Add documentation
+ */
 class TPSVGInstrQuadraticCurve: TPSVGInstruction {
 
+    /**
+     TODO: Add documentation
+     */
     var end: CGPoint
+
+    /**
+     TODO: Add documentation
+     */
     var control1: CGPoint
+
+    /**
+     TODO: Add documentation
+     */
     let relative: Bool
 
+    /**
+     TODO: Add documentation
+     */
     init(end: CGPoint, control1: CGPoint, relative: Bool = false) {
         self.end = end
         self.control1 = control1
@@ -20,18 +37,27 @@ class TPSVGInstrQuadraticCurve: TPSVGInstruction {
 
     // MARK: - CustomStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     override var description: String {
         return "TPSVGInstrQuadraticCurve {}"
     }
 
     // MARK: - CustomDebugStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     override var debugDescription: String {
         return "TPSVGInstrQuadraticCurve { end: \(end), control1: \(control1), relative: \(relative) }"
     }
 
     // MARK: - Drawing
 
+    /**
+     TODO: Add documentation
+     */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {
             let ref = path.currentPoint
@@ -43,6 +69,9 @@ class TPSVGInstrQuadraticCurve: TPSVGInstruction {
 
     // MARK: - Equatable
 
+    /**
+     TODO: Add documentation
+     */
     public static func == (lhs: TPSVGInstrQuadraticCurve, rhs: TPSVGInstrQuadraticCurve) -> Bool {
         guard lhs.end == rhs.end else {
             return false

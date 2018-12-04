@@ -6,18 +6,34 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: Add documentation
+ */
 class TPSVGCircle: TPSVGElement {
 
+    /**
+     TODO: Add documentation
+     */
     public var center: CGPoint
+
+    /**
+     TODO: Add documentation
+     */
     public var radius: CGFloat
 
+    /**
+     TODO: Add documentation
+     */
     public init(classNames: [String] = [], center: CGPoint = .zero, radius: CGFloat = 0) {
         self.center = center
         self.radius = radius
         super.init(classNames: classNames)
     }
 
-    public override init?(attributes: [String : String]) {
+    /**
+     TODO: Add documentation
+     */
+    public override init?(attributes: [String: String]) {
         guard let rawX = attributes["cx"], let x = TPSVGNumberParser.parse(rawX) else {
             return nil
         }
@@ -36,6 +52,9 @@ class TPSVGCircle: TPSVGElement {
 
     // MARK: - Equatable
 
+    /**
+     TODO: Add documentation
+     */
     public static func == (lhs: TPSVGCircle, rhs: TPSVGCircle) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
@@ -51,6 +70,9 @@ class TPSVGCircle: TPSVGElement {
 
     // MARK: - Drawing
 
+    /**
+     TODO: Add documentation
+     */
     override func draw(in context: CGContext) {
         let path = UIBezierPath(ovalIn: CGRect(x: center.x - radius,
                                                y: center.y - radius,
@@ -64,12 +86,18 @@ class TPSVGCircle: TPSVGElement {
 
     // MARK: - CustomStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     override public var description: String {
         return String(format: "TPSVGCircle {}")
     }
 
     // MARK: - CustomDebugStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     override public var debugDescription: String {
         return String(format: "TPSVGCircle { classes: %@, styles: %@, center: %@, radius: %f }",
                       classNames.joined(separator: ", "),

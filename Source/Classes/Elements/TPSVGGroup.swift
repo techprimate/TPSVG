@@ -6,10 +6,19 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: Add documentation
+ */
 class TPSVGGroup: TPSVGElement {
 
+    /**
+     TODO: Add documentation
+     */
     public var elements: [TPSVGElement]
 
+    /**
+     TODO: Add documentation
+     */
     public init(elements: [TPSVGElement] = []) {
         self.elements = elements
         super.init(classNames: [])
@@ -17,6 +26,9 @@ class TPSVGGroup: TPSVGElement {
 
     // MARK: - Equatable
 
+    /**
+     TODO: Add documentation
+     */
     public static func == (lhs: TPSVGGroup, rhs: TPSVGGroup) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
@@ -29,6 +41,9 @@ class TPSVGGroup: TPSVGElement {
 
     // MARK: - Drawing
 
+    /**
+     TODO: Add documentation
+     */
     override func draw(in context: CGContext) {
         for element in elements {
             // Style

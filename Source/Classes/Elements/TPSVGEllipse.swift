@@ -6,17 +6,33 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: Add documentation
+ */
 class TPSVGEllipse: TPSVGElement {
 
+    /**
+     TODO: Add documentation
+     */
     public var center: CGPoint
+
+    /**
+     TODO: Add documentation
+     */
     public var radius: CGVector
 
+    /**
+     TODO: Add documentation
+     */
     public init(classNames: [String] = [], center: CGPoint = .zero, radius: CGVector = .zero) {
         self.center = center
         self.radius = radius
         super.init(classNames: classNames)
     }
 
+    /**
+     TODO: Add documentation
+     */
     public override init?(attributes: [String : String]) {
         guard let rawX = attributes["cx"], let x = TPSVGNumberParser.parse(rawX) else {
             return nil
@@ -39,6 +55,9 @@ class TPSVGEllipse: TPSVGElement {
 
     // MARK: - Equatable
 
+    /**
+     TODO: Add documentation
+     */
     public static func == (lhs: TPSVGEllipse, rhs: TPSVGEllipse) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
@@ -57,6 +76,9 @@ class TPSVGEllipse: TPSVGElement {
 
     // MARK: - Drawing
 
+    /**
+     TODO: Add documentation
+     */
     override func draw(in context: CGContext) {
         let path = CGMutablePath()
         path.addEllipse(in: CGRect(x: center.x - radius.dx,

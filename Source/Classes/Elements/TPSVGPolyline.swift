@@ -6,15 +6,27 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: Add documentation
+ */
 class TPSVGPolyline: TPSVGElement {
 
+    /**
+     TODO: Add documentation
+     */
     public var points: [CGPoint]
 
+    /**
+     TODO: Add documentation
+     */
     public init(classNames: [String] = [], points: [CGPoint] = []) {
         self.points = points
         super.init(classNames: classNames)
     }
 
+    /**
+     TODO: Add documentation
+     */
     public override init?(attributes: [String: String]) {
         guard let rawPoints = attributes["points"] else {
             return nil
@@ -34,6 +46,9 @@ class TPSVGPolyline: TPSVGElement {
 
     // MARK: - Equatable
 
+    /**
+     TODO: Add documentation
+     */
     public static func == (lhs: TPSVGPolyline, rhs: TPSVGPolyline) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
@@ -46,6 +61,9 @@ class TPSVGPolyline: TPSVGElement {
 
     // MARK: - Draw
 
+    /**
+     TODO: Add documentation
+     */
     override func draw(in context: CGContext) {
         guard points.count > 0 else {
             return

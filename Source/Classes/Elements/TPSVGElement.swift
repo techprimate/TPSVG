@@ -77,16 +77,25 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
 
     // MARK: - Rendering
 
+    /**
+     TODO: Add documentation
+     */
     public func draw(in context: CGContext) {}
 
     // MARK: - CustomStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     public var description: String {
         return "TPSVGElement {}"
     }
 
     // MARK: - CustomDebugStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     public var debugDescription: String {
         return "TPSVGElement { classes: \(classNames), styles: \(styles) }"
     }

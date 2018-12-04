@@ -6,12 +6,29 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: Add documentation
+ */
 class TPSVGInstrSmoothCubicCurve: TPSVGInstruction {
 
+    /**
+     TODO: Add documentation
+     */
     var end: CGPoint
+
+    /**
+     TODO: Add documentation
+     */
     var control2: CGPoint
+
+    /**
+     TODO: Add documentation
+     */
     let relative: Bool
 
+    /**
+     TODO: Add documentation
+     */
     init(end: CGPoint, control2: CGPoint, relative: Bool = false) {
         self.end = end
         self.control2 = control2
@@ -20,18 +37,27 @@ class TPSVGInstrSmoothCubicCurve: TPSVGInstruction {
 
     // MARK: - CustomStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     override var description: String {
         return "TPSVGInstrSmoothCubicCurve {}"
     }
 
     // MARK: - CustomDebugStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     override var debugDescription: String {
         return "TPSVGInstrSmoothCubicCurve { end: \(end), control2: \(control2), relative: \(relative) }"
     }
 
     // MARK: - Drawing
 
+    /**
+     TODO: Add documentation
+     */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         var control1 = path.currentPoint
         var prevControl2: CGPoint?
@@ -71,6 +97,9 @@ class TPSVGInstrSmoothCubicCurve: TPSVGInstruction {
 
     // MARK: - Equatable
 
+    /**
+     TODO: Add documentation
+     */
     public static func == (lhs: TPSVGInstrSmoothCubicCurve, rhs: TPSVGInstrSmoothCubicCurve) -> Bool {
         guard lhs.end == rhs.end else {
             return false

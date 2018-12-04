@@ -33,8 +33,19 @@ class TPSVGEngine: NSObject {
 
     // MARK: - Parsing
 
+    /**
+     TODO: Add documentation
+     */
     private var currentElement: String?
+
+    /**
+     TODO: Add documentation
+     */
     private var groups = TPStack<TPSVGGroup>()
+
+    /**
+     TODO: Add documentation
+     */
     private var cssEngine: TPCSSEngine?
 
     /**
@@ -55,6 +66,9 @@ class TPSVGEngine: NSObject {
         elements.forEach(resolveStyles(element:))
     }
 
+    /**
+     TODO: Add documentation
+     */
     private func resolveStyles(element: TPSVGElement) {
         element.styles = element.classNames.compactMap({ className in
             return styles.first(where: { style -> Bool in
@@ -69,9 +83,15 @@ class TPSVGEngine: NSObject {
 
 // MARK: - XMLParserDelegate
 
+/**
+ TODO: Add documentation
+ */
 extension TPSVGEngine: XMLParserDelegate {
 
     // swiftlint:disable cyclomatic_complexity
+    /**
+     TODO: Add documentation
+     */
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?,
                 qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
         currentElement = elementName.lowercased()
@@ -119,6 +139,9 @@ extension TPSVGEngine: XMLParserDelegate {
         }
     }
 
+    /**
+     TODO: Add documentation
+     */
     private func parseSVG(attributes: [String: String]) {
         if let rawX = attributes["x"], let x = TPSVGNumberParser.parse(rawX),
             let rawY = attributes["y"], let y = TPSVGNumberParser.parse(rawY) {
@@ -139,6 +162,9 @@ extension TPSVGEngine: XMLParserDelegate {
             }
         }
     }
+    /**
+     TODO: Add documentation
+     */
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         switch elementName.lowercased() {
@@ -153,6 +179,9 @@ extension TPSVGEngine: XMLParserDelegate {
         }
     }
 
+    /**
+     TODO: Add documentation
+     */
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         switch currentElement {
         case "style":
@@ -172,9 +201,15 @@ extension TPSVGEngine: XMLParserDelegate {
         }
     }
 
+    /**
+     TODO: Add documentation
+     */
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
         print("☠️ Parse Error:", parseError)
     }
+    /**
+     TODO: Add documentation
+     */
 
     func parser(_ parser: XMLParser, validationErrorOccurred validationError: Error) {
         print("☠️ Validation Error:", validationError)

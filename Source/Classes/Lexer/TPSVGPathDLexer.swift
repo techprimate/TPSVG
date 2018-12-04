@@ -6,17 +6,28 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
-// swiftlint:disable identifier_name
+// swiftlint:disable identifier_name cyclomatic_complexity function_body_length
 
+/**
+ TODO: Add documentation
+ */
 class TPSVGPathDLexer {
 
+    /**
+     TODO: Add documentation
+     */
     private let raw: String
 
+    /**
+     TODO: Add documentation
+     */
     init(raw: String) {
         self.raw = raw
     }
 
-    // swiftlint:disable cyclomatic_complexity function_body_length
+    /**
+     TODO: Add documentation
+     */
     func parse() -> [TPSVGInstruction] {
         var result = [TPSVGInstruction]()
 
@@ -99,6 +110,9 @@ class TPSVGPathDLexer {
         return result
     }
 
+    /**
+     TODO: Add documentation
+     */
     public static func parseValues(from raw: String) -> [CGFloat] {
         var values: [CGFloat] = []
         var valueData: [Character] = []
@@ -147,6 +161,9 @@ class TPSVGPathDLexer {
         return values
     }
 
+    /**
+     TODO: Add documentation
+     */
     private func changeData(curr: TPSVGInstruction, values: [CGFloat]) -> [CGFloat] {
         var result: ArraySlice<CGFloat>?
         if let moveTo = curr as? TPSVGInstrMoveTo {
@@ -250,6 +267,9 @@ class TPSVGPathDLexer {
     }
 }
 
+/**
+ TODO: Add documentation
+ */
 enum DChars: CChar {
 
     case A = 65
@@ -287,10 +307,16 @@ enum DChars: CChar {
     case dot = 46
     case space = 32
 
+    /**
+     TODO: Add documentation
+     */
     static var commands: [DChars] {
         return [.A, .a, .C, .c, .H, .h, .L, .l, .M, .m, .Q, .q, .S, .s, .T, .t, .V, .v, .Z, .z]
     }
 
+    /**
+     TODO: Add documentation
+     */
     static func command(from raw: CChar) -> DChars? {
         guard let dchar = DChars(rawValue: raw) else {
             return nil

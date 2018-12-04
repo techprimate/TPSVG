@@ -6,14 +6,23 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: Add documentation
+ */
 public func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
 }
 
+/**
+ TODO: Add documentation
+ */
 public func - (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
 }
 
+/**
+ TODO: Add documentation
+ */
 public func pow(_ point: CGPoint, _ exponent: CGFloat) -> CGPoint {
     return CGPoint(x: pow(point.x, exponent), y: pow(point.y, exponent))
 }

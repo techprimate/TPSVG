@@ -6,12 +6,21 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: Add documentation
+ */
 class TPSVGNumberParser {
 
+    /**
+     TODO: Add documentation
+     */
     private static let formatter: NumberFormatter = {
         return NumberFormatter()
     }()
 
+    /**
+     TODO: Add documentation
+     */
     public static func parse(_ raw: String) -> (value: CGFloat, unit: String)? {
         guard let regex = try? TPRegex(pattern: "^([-|+]?[\\d|,|\\.]*)(.*)$") else {
             return nil
@@ -32,6 +41,9 @@ class TPSVGNumberParser {
         return nil
     }
 
+    /**
+     TODO: Add documentation
+     */
     public static func parsePair(_ raw: String, separator: String = ",") -> (left: (value: CGFloat, unit: String),
                                                                              right: (value: CGFloat, unit: String))? {
         let comps = raw.components(separatedBy: separator)

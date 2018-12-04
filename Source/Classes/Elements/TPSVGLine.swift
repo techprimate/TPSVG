@@ -11,15 +11,28 @@
  */
 class TPSVGLine: TPSVGElement {
 
+    /**
+     TODO: Add documentation
+     */
     private var start: CGPoint
+
+    /**
+     TODO: Add documentation
+     */
     private var end: CGPoint
 
+    /**
+     TODO: Add documentation
+     */
     public init(classNames: [String] = [], start: CGPoint = .zero, end: CGPoint = .zero) {
         self.start = start
         self.end = end
         super.init(classNames: classNames)
     }
 
+    /**
+     TODO: Add documentation
+     */
     public override init?(attributes: [String: String]) {
         guard let rawX1 = attributes["x1"], let x1 = TPSVGNumberParser.parse(rawX1) else {
             return nil
@@ -41,6 +54,9 @@ class TPSVGLine: TPSVGElement {
 
     // MARK: - Drawing
 
+    /**
+     TODO: Add documentation
+     */
     override func draw(in context: CGContext) {
         let path = CGMutablePath()
         path.move(to: start)
@@ -53,6 +69,9 @@ class TPSVGLine: TPSVGElement {
 
     // MARK: - Equatable
 
+    /**
+     TODO: Add documentation
+     */
     public static func == (lhs: TPSVGLine, rhs: TPSVGLine) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false

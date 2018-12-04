@@ -5,8 +5,14 @@
 //  Created by Philip Niedertscheider on 01.12.18.
 //
 
+/**
+ TODO: Add documentation
+ */
 extension TPSVG {
 
+    /**
+     TODO: Add documentation
+     */
     public func image() -> UIImage? {
         defer {
             UIGraphicsEndImageContext()

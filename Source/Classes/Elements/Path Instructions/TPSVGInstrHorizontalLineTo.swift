@@ -6,11 +6,24 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: Add documentation
+ */
 class TPSVGInstrHorizontalLineTo: TPSVGInstruction {
 
+    /**
+     TODO: Add documentation
+     */
     var length: CGFloat
+
+    /**
+     TODO: Add documentation
+     */
     let relative: Bool
 
+    /**
+     TODO: Add documentation
+     */
     init(length: CGFloat, relative: Bool = false) {
         self.length = length
         self.relative = relative
@@ -18,18 +31,27 @@ class TPSVGInstrHorizontalLineTo: TPSVGInstruction {
 
     // MARK: - CustomStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     override var description: String {
         return "TPSVGInstrHorizontalLineTo {}"
     }
 
     // MARK: - CustomDebugStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     override var debugDescription: String {
         return "TPSVGInstrHorizontalLineTo { length: \(length), relative: \(relative) }"
     }
 
     // MARK: - Drawing
 
+    /**
+     TODO: Add documentation
+     */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {
             var end = path.currentPoint
@@ -44,6 +66,9 @@ class TPSVGInstrHorizontalLineTo: TPSVGInstruction {
 
     // MARK: - Equatable
 
+    /**
+     TODO: Add documentation
+     */
     public static func == (lhs: TPSVGInstrHorizontalLineTo, rhs: TPSVGInstrHorizontalLineTo) -> Bool {
         guard lhs.length == rhs.length else {
             return false

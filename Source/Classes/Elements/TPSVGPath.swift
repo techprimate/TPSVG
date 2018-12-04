@@ -6,15 +6,27 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: Add documentation
+ */
 class TPSVGPath: TPSVGElement {
 
+    /**
+     TODO: Add documentation
+     */
     public var instructions: [TPSVGInstruction]
 
+    /**
+     TODO: Add documentation
+     */
     public init(classNames: [String] = [], instructions: [TPSVGInstruction] = []) {
         self.instructions = instructions
         super.init(classNames: classNames)
     }
 
+    /**
+     TODO: Add documentation
+     */
     public override init?(attributes: [String: String]) {
         guard let rawD = attributes["d"] else {
             return nil
@@ -25,6 +37,9 @@ class TPSVGPath: TPSVGElement {
 
     // MARK: - Equatable
 
+    /**
+     TODO: Add documentation
+     */
     public static func == (lhs: TPSVGPath, rhs: TPSVGPath) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
@@ -37,6 +52,9 @@ class TPSVGPath: TPSVGElement {
 
     // MARK: - Drawing
 
+    /**
+     TODO: Add documentation
+     */
     override func draw(in context: CGContext) {
         let path = CGMutablePath()
 
@@ -57,12 +75,18 @@ class TPSVGPath: TPSVGElement {
 
     // MARK: - CustomStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     override public var description: String {
         return "TPSVGPath {}"
     }
 
     // MARK: - CustomDebugStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     override public var debugDescription: String {
         return "TPSVGPath { classes: \(classNames), instructions: \(instructions) }"
     }

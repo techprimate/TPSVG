@@ -6,10 +6,16 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: Add documentation
+ */
 class TPSVGInstruction: Equatable, CustomStringConvertible, CustomDebugStringConvertible {
 
     // MARK: - Equatable
 
+    /**
+     TODO: Add documentation
+     */
     public static func == (lhs: TPSVGInstruction, rhs: TPSVGInstruction) -> Bool {
         if let lhs = lhs as? TPSVGInstrMoveTo, let rhs = rhs as? TPSVGInstrMoveTo {
             return lhs == rhs
@@ -46,17 +52,26 @@ class TPSVGInstruction: Equatable, CustomStringConvertible, CustomDebugStringCon
 
     // MARK: - CustomStringConvertible {
 
+    /**
+     TODO: Add documentation
+     */
     var description: String {
         return "TSVGInstruction {}"
     }
 
     // MARK: - CustomDebugStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     var debugDescription: String {
         return "TSVGInstruction {}"
     }
 
     // MARK: - Drawing
 
+    /**
+     TODO: Add documentation
+     */
     func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {}
 }

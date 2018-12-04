@@ -6,17 +6,44 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
+/**
+ TODO: Add documentation
+ */
 class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
 
+    /**
+     TODO: Add documentation
+     */
     var end: CGPoint
+
+    /**
+     TODO: Add documentation
+     */
     var radius: CGVector
+
+    /**
+     TODO: Add documentation
+     */
     var xAxisRotation: CGFloat
 
+    /**
+     TODO: Add documentation
+     */
     var largeArcFlag: Bool
+
+    /**
+     TODO: Add documentation
+     */
     var sweepFlag: Bool
 
+    /**
+     TODO: Add documentation
+     */
     let relative: Bool
 
+    /**
+     TODO: Add documentation
+     */
     init(radius: CGVector, xAxisRotation: CGFloat, largeArcFlag: Bool, sweepFlag: Bool, end: CGPoint, relative: Bool = false) {
         self.end = end
         self.radius = radius
@@ -28,12 +55,18 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
 
     // MARK: - CustomStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     override var description: String {
         return "TPSVGInstrEllipticalArcCurve {}"
     }
 
     // MARK: - CustomDebugStringConvertible
 
+    /**
+     TODO: Add documentation
+     */
     override var debugDescription: String {
         return "TPSVGInstrEllipticalArcCurve { radius: \(radius), x-axis-rotation: \(xAxisRotation), "
             + "largeArcFlag: \(largeArcFlag), sweepFlag: \(sweepFlag), end: \(end), relative: \(relative) }"
@@ -41,6 +74,9 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
 
     // MARK: - Drawing
 
+    /**
+     TODO: Add documentation
+     */
     // swiftlint:disable identifier_name
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         return
@@ -128,11 +164,17 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
         }
     }
 
+    /**
+     TODO: Add documentation
+     */
     private func mapToEllipse(point: CGPoint, radius: CGVector, cosPhi: CGFloat, sinPhi: CGFloat, center: CGPoint) -> CGPoint {
         return center + CGPoint(x: cosPhi * point.x * radius.dx - sinPhi * point.y * radius.dy,
                                 y: sinPhi * point.x * radius.dx + cosPhi * point.y * radius.dy)
     }
 
+    /**
+     TODO: Add documentation
+     */
     private func vectorAngle(u: CGVector, v: CGVector) -> CGFloat {
         let dot = u.dot(v)
         let len = u.length * v.length
@@ -146,6 +188,9 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
 
     // MARK: - Equatable
 
+    /**
+     TODO: Add documentation
+     */
     public static func == (lhs: TPSVGInstrEllipticalArcCurve, rhs: TPSVGInstrEllipticalArcCurve) -> Bool {
         guard lhs.end == rhs.end else {
             return false

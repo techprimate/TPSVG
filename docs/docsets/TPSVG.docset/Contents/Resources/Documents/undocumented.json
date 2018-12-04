@@ -1,24 +1,129 @@
 {
   "warnings": [
     {
-      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/TPSVG.swift",
-      "line": 12,
-      "symbol": "TPSVG",
-      "symbol_kind": "source.lang.swift.decl.class",
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Elements/Path Instructions/TPSVGInstrMoveTo.swift",
+      "line": 64,
+      "symbol": "TPSVGInstrMoveTo.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/TPSVG.swift",
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 15,
+      "symbol": "SVGSpecElement.rect",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 16,
+      "symbol": "SVGSpecElement.circle",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 17,
+      "symbol": "SVGSpecElement.ellipse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 18,
+      "symbol": "SVGSpecElement.audio",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 19,
+      "symbol": "SVGSpecElement.canvas",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 20,
+      "symbol": "SVGSpecElement.foreign",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 21,
+      "symbol": "SVGSpecElement.group",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 22,
+      "symbol": "SVGSpecElement.iframe",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 23,
+      "symbol": "SVGSpecElement.line",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 24,
+      "symbol": "SVGSpecElement.path",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 25,
+      "symbol": "SVGSpecElement.polygon",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
       "line": 26,
-      "symbol": "TPSVG.init(data:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "symbol": "SVGSpecElement.polyline",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/TPSVG.swift",
-      "line": 34,
-      "symbol": "TPSVG.init(raw:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 27,
+      "symbol": "SVGSpecElement.text",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 28,
+      "symbol": "SVGSpecElement.textPath",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 29,
+      "symbol": "SVGSpecElement.tspan",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Spec/SVGSpecElement.swift",
+      "line": 30,
+      "symbol": "SVGSpecElement.video",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Util/TPStack.swift",
+      "line": 63,
+      "symbol": "TPStack.top",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     }
   ],
