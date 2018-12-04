@@ -144,7 +144,7 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
 
         ang2 /= CGFloat(segments)
 
-        for i in 0..<segments {
+        for _ in 0..<segments {
             let factor: CGFloat = 4.0 / 3.0 * tan(ang2 / 4.0)
 
             let point1 = CGPoint(x: cos(ang1), y: sin(ang1))
