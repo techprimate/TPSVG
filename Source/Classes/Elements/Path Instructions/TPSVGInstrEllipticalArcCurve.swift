@@ -79,7 +79,6 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
      */
     // swiftlint:disable identifier_name
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
-        return
         let start = path.currentPoint
         let end = self.end
         var r = self.radius
@@ -145,7 +144,7 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
 
         ang2 /= CGFloat(segments)
 
-        for _ in 0..<segments {
+        for i in 0..<segments {
             let factor: CGFloat = 4.0 / 3.0 * tan(ang2 / 4.0)
 
             let point1 = CGPoint(x: cos(ang1), y: sin(ang1))

@@ -18,10 +18,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         do {
-            if let path = Bundle.main.path(forResource: "file-13-icon-09", ofType: "png") {
+            if let path = Bundle.main.path(forResource: "file-13-icon-04", ofType: "png") {
                 leftImageView.image = UIImage(contentsOfFile: path)
             }
-            if let url = Bundle.main.url(forResource: "file-13-icon-09", withExtension: "svg") {
+            if let url = Bundle.main.url(forResource: "file-13-icon-04", withExtension: "svg") {
                 rightImageView.image = try TPSVG(contentsOf: url).image()
             }
         } catch {

@@ -53,10 +53,11 @@ class TPSVGPathDLexer {
         }
 
         for (cmd, data) in unparsedElements {
+            var currCmd = cmd
             var values: [CGFloat] = TPSVGPathDLexer.parseValues(from: data)
             repeat {
                 var element: TPSVGInstruction?
-                switch cmd {
+                switch currCmd {
                 case .A:
                     element = TPSVGInstrEllipticalArcCurve(radius: .zero, xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: .zero)
                 case .a:
@@ -101,6 +102,11 @@ class TPSVGPathDLexer {
                 if let elem = element {
                     values = changeData(curr: elem, values: values)
                     result.append(elem)
+                    if currCmd == DChars.M {
+                        currCmd = DChars.L
+                    } else if currCmd == DChars.m {
+                        currCmd = DChars.l
+                    }
                 } else {
                     values = []
                 }
