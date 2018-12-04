@@ -62,11 +62,11 @@ class TPSVGInstrHorizontalLineTo: TPSVGInstruction {
         if relative {
             var end = path.currentPoint
             end.x += length
-            path.move(to: end)
+            path.addLine(to: end)
         } else {
             var end = path.currentPoint
             end.x = length
-            path.move(to: end)
+            path.addLine(to: end)
         }
     }
 

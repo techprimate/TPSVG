@@ -373,7 +373,7 @@ class TPSVGEngine_Spec_3: QuickSpec {
                 let engine = parse(file: "file-13-icon-04")
 
                 expect(engine.styles).to(contain([
-                    TPSVGStyle(name: ".a", fill: TPSVGColor(hex: 0xf7931e)),
+                    TPSVGStyle(name: ".a", fill: TPSVGColor(hex: 0x009245)),
                     TPSVGStyle(name: ".b", fill: TPSVGColor.white)
                     ]))
 

@@ -35,13 +35,32 @@ extension TPSVG {
                 return style.fill != nil ? style.fill : prev
             }) {
                 context.setFillColor(fill.cgColor)
+            } else {
+                context.setFillColor(UIColor.clear.cgColor)
             }
-            if let stroke = element.styles.reduce(nil, { (prev, style) -> TPSVGStroke? in
-                return style.stroke != nil ? style.stroke : prev
+
+            if let strokeColor = element.styles.reduce(nil, { (prev, style) -> TPSVGColor? in
+                return style.stroke?.color != nil ? style.stroke?.color : prev
             }) {
-                context.setStrokeColor(stroke.color?.cgColor ?? UIColor.clear.cgColor)
-                context.setLineWidth(stroke.width ?? 0)
-                context.setMiterLimit(stroke.miterLimit ?? 0)
+                context.setStrokeColor(strokeColor.cgColor)
+            } else {
+                context.setStrokeColor(TPSVGColor.clear.cgColor)
+            }
+
+            if let strokeLineWidth = element.styles.reduce(nil, { (prev, style) -> CGFloat? in
+                return style.stroke?.width != nil ? style.stroke?.width : prev
+            }) {
+                context.setLineWidth(strokeLineWidth)
+            } else {
+                context.setLineWidth(0)
+            }
+
+            if let strokeMiterLimit = element.styles.reduce(nil, { (prev, style) -> CGFloat? in
+                return style.stroke?.miterLimit != nil ? style.stroke?.miterLimit : prev
+            }) {
+                context.setMiterLimit(strokeMiterLimit)
+            } else {
+                context.setMiterLimit(0)
             }
 
             element.draw(in: context)

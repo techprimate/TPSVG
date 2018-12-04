@@ -71,9 +71,14 @@ class TPSVGEngine: NSObject {
      */
     private func resolveStyles(element: TPSVGElement) {
         element.styles = element.classNames.compactMap({ className in
-            return styles.first(where: { style -> Bool in
+            if let style = styles.first(where: { style -> Bool in
                 return style.name == "." + className
-            })
+            }) {
+                return style
+            } else {
+                print("⚠️ Failed to find style with class: " + className)
+            }
+            return nil
         })
         if let groupElement = element as? TPSVGGroup {
             groupElement.elements.forEach(resolveStyles(element:))

@@ -62,11 +62,11 @@ class TPSVGInstrVerticalLineTo: TPSVGInstruction {
         if relative {
             var end = path.currentPoint
             end.y += length
-            path.move(to: end)
+            path.addLine(to: end)
         } else {
             var end = path.currentPoint
             end.y = length
-            path.move(to: end)
+            path.addLine(to: end)
         }
     }
 
