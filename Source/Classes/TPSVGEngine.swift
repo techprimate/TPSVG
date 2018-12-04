@@ -70,8 +70,10 @@ class TPSVGEngine: NSObject {
      TODO: Add documentation
      */
     private func resolveStyles(element: TPSVGElement) {
+        let inlineStyles = element.styles
+        let stylesToSearch = inlineStyles + styles
         element.styles = element.classNames.compactMap({ className in
-            if let style = styles.first(where: { style -> Bool in
+            if let style = stylesToSearch.first(where: { style -> Bool in
                 return style.name == "." + className
             }) {
                 return style

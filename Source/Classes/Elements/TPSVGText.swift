@@ -68,4 +68,11 @@ class TPSVGText: TPSVGElement {
         }
         return true
     }
+
+    // MARK: - Calculations
+
+    /// :nodoc:
+    override public var bounds: CGRect {
+        return CGRect.zero
+    }
 }

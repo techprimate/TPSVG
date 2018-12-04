@@ -68,17 +68,34 @@ class TPSVGPolyline: TPSVGElement {
         guard points.count > 0 else {
             return
         }
-        let mutablePath = CGMutablePath()
+        let path = CGMutablePath()
         for (idx, point) in points.enumerated() {
             if idx == 0 {
-                mutablePath.move(to: point)
+                path.move(to: point)
             } else {
-                mutablePath.addLine(to: point)
+                path.addLine(to: point)
             }
         }
-        context.addPath(mutablePath)
+        context.addPath(path)
         context.fillPath()
-        context.addPath(mutablePath)
+        context.addPath(path)
         context.strokePath()
+    }
+
+    // MARK: - Calculations
+
+    /// :nodoc:
+    override public var bounds: CGRect {
+        let path = CGMutablePath()
+
+        for (idx, point) in points.enumerated() {
+            if idx == 0 {
+                path.move(to: point)
+            } else {
+                path.addLine(to: point)
+            }
+        }
+
+        return path.boundingBoxOfPath
     }
 }

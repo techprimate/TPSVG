@@ -19,9 +19,9 @@ class TPSVGGroup: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public init(elements: [TPSVGElement] = []) {
+    public init(elements: [TPSVGElement] = [], classNames: [String] = []) {
         self.elements = elements
-        super.init(classNames: [])
+        super.init(classNames: classNames)
     }
 
     // MARK: - Equatable
@@ -37,6 +37,18 @@ class TPSVGGroup: TPSVGElement {
             return false
         }
         return true
+    }
+
+    // MARK: - CustomStringConvertible
+
+    override var description: String {
+        return String(describing: type(of: self)) + " { elements: \(elements.count) }"
+    }
+
+    // MARK: - CustomStringDebugConvertible
+
+    override var debugDescription: String {
+        return String(describing: type(of: self)) + " { elements: " + elements.map({ $0.debugDescription }).joined() + " }"
     }
 
     // MARK: - Drawing
@@ -60,5 +72,14 @@ class TPSVGGroup: TPSVGElement {
             }
             element.draw(in: context)
         }
+    }
+
+    // MARK: - Calculations
+
+    /// :nodoc:
+    override public var bounds: CGRect {
+        return elements.reduce(CGRect.null, { (prev, element) -> CGRect in
+            return prev.union(element.bounds)
+        })
     }
 }

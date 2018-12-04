@@ -22,11 +22,17 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
     public var styles: [TPSVGStyle]
 
     /**
+     Holds a style represnting all inline styling
+     */
+    public var inline: TPSVGStyle?
+
+    /**
      TODO: documentation
      */
-    public init(classNames: [String]) {
+    public init(classNames: [String] = [], inline: TPSVGStyle? = nil) {
         self.classNames = classNames
         self.styles = []
+        self.inline = inline
     }
 
     /**
@@ -35,6 +41,23 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
     public init?(attributes: [String: String]) {
         self.classNames = attributes["class"]?.split(separator: " ").map({ String($0) }) ?? []
         self.styles = []
+
+        var inlineFillColor: TPSVGColor?
+        if let rawHex = attributes["fill"] {
+            inlineFillColor = TPSVGColor(hex: rawHex)
+        }
+
+        if inlineFillColor != nil {
+            var i = 10 // Start at 10 so it will start with "a"
+
+            var name: String!
+            repeat {
+                name = String(format: "%x", i)
+                i += 1
+            } while classNames.contains("." + name)
+
+            inline = TPSVGStyle(name: name, fill: inlineFillColor, stroke: nil, font: nil)
+        }
     }
 
     /**
@@ -98,5 +121,11 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
      */
     public var debugDescription: String {
         return "TPSVGElement { classes: \(classNames), styles: \(styles) }"
+    }
+
+    // MARK: - Calculations
+
+    public var bounds: CGRect {
+        return .zero
     }
 }

@@ -61,6 +61,7 @@ class TPSVGLine: TPSVGElement {
         let path = CGMutablePath()
         path.move(to: start)
         path.addLine(to: end)
+
         context.addPath(path)
         context.fillPath()
         context.addPath(path)
@@ -83,5 +84,16 @@ class TPSVGLine: TPSVGElement {
             return false
         }
         return true
+    }
+
+    // MARK: - Calculations
+
+    /// :nodoc:
+    override public var bounds: CGRect {
+        let path = CGMutablePath()
+        path.move(to: start)
+        path.addLine(to: end)
+        
+        return path.boundingBoxOfPath
     }
 }

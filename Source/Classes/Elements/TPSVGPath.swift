@@ -19,9 +19,9 @@ class TPSVGPath: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public init(classNames: [String] = [], instructions: [TPSVGInstruction] = []) {
+    public init(classNames: [String] = [], inline: TPSVGStyle? = nil, instructions: [TPSVGInstruction] = []) {
         self.instructions = instructions
-        super.init(classNames: classNames)
+        super.init(classNames: classNames, inline: inline)
     }
 
     /**
@@ -89,5 +89,23 @@ class TPSVGPath: TPSVGElement {
      */
     override public var debugDescription: String {
         return "TPSVGPath { classes: \(classNames), instructions: \(instructions) }"
+    }
+
+    // MARK: - Calculations
+
+    /// :nodoc:
+    override public var bounds: CGRect {
+        let path = CGMutablePath()
+
+        var prev: TPSVGInstruction?
+        var lastStartPoint: CGPoint?
+        for inst in instructions {
+            let point = path.currentPoint
+            inst.modify(path: path, prev: prev, prevStartPoint: lastStartPoint)
+            lastStartPoint = point
+            prev = inst
+        }
+        
+        return path.boundingBoxOfPath
     }
 }

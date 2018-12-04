@@ -22,7 +22,7 @@ class TPSVG_UIImage_Spec: QuickSpec {
                 func svgImage(file: String) -> UIImage? {
                     let url = Bundle.main.url(forResource: file, withExtension: "svg")!
                     do {
-                        return try TPSVG(data: try Data(contentsOf: url)).image()
+                        return try TPSVG(data: try Data(contentsOf: url)).image(antialias: false)
                     } catch {
                         fail(error.localizedDescription)
                         fatalError()
@@ -40,6 +40,19 @@ class TPSVG_UIImage_Spec: QuickSpec {
                         fail(error.localizedDescription)
                         fatalError()
                     }
+                }
+
+                func svgEqualsRef(name: String) -> Bool {
+                    guard let svg = svgImage(file: "file-1-rect") else {
+                        fail("Image should not be null!")
+                        fatalError()
+                    }
+                    let ref = referenceImage(file: "file-1-rect")
+
+                    guard svg.size == ref.size else {
+                        return false
+                    }
+                    return svg.pixelsEqual(to: ref)
                 }
 
                 it("should render not render empty") {
@@ -299,6 +312,10 @@ class TPSVG_UIImage_Spec: QuickSpec {
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                }
+
+                it("should render inline-1") {
+                    expect(svgEqualsRef(name: "inline-1")).to(beTrue())
                 }
             }
         }
