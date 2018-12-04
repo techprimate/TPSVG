@@ -56,7 +56,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-2") {
@@ -68,7 +67,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-3") {
@@ -80,7 +78,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-4") {
@@ -92,7 +89,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-5") {
@@ -104,7 +100,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-6") {
@@ -116,7 +111,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-7") {
@@ -128,7 +122,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-8") {
@@ -140,7 +133,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-9") {
@@ -152,7 +144,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-10") {
@@ -164,7 +155,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-11") {
@@ -174,12 +164,8 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-11-line")
 
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
-
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-12") {
@@ -189,12 +175,8 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-12-ell-arc")
 
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
-
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-13-icon-01") {
@@ -204,12 +186,8 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-13-icon-01")
 
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
-
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-13-icon-02") {
@@ -219,12 +197,8 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-13-icon-02")
 
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
-
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-13-icon-03") {
@@ -234,12 +208,8 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-13-icon-03")
 
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
-
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-13-icon-04") {
@@ -249,12 +219,8 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-13-icon-04")
 
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
-
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-13-icon-05") {
@@ -264,12 +230,8 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-13-icon-05")
 
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
-
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-13-icon-06") {
@@ -279,12 +241,8 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-13-icon-06")
 
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
-
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-13-icon-07") {
@@ -294,12 +252,8 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-13-icon-07")
 
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
-
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-13-icon-08") {
@@ -309,12 +263,8 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-13-icon-08")
 
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
-
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
 
                 it("should render render file-13-icon-09") {
@@ -324,12 +274,8 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                     let ref = referenceImage(file: "file-13-icon-09")
 
-                    try? svg.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/svg.png"))
-                    try? ref.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/ref.png"))
-
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())
-                    expect(ref.pixelsEqual(to: svg)).to(beTrue())
                 }
             }
         }
