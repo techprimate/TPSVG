@@ -63,26 +63,81 @@ class TPSVGEngine: NSObject {
         parser.delegate = self
         parser.parse()
 
-        elements.forEach(resolveStyles(element:))
+        elements.forEach({ resolveStyles(element: $0, parent: nil) })
     }
 
     /**
      TODO: Add documentation
      */
-    private func resolveStyles(element: TPSVGElement) {
+    private func resolveStyles(element: TPSVGElement, parent: TPSVGElement?) {
+        let inlineStyles = element.styles
+        let stylesToSearch = inlineStyles + styles
         element.styles = element.classNames.compactMap({ className in
-            if let style = styles.first(where: { style -> Bool in
-                return style.name == "." + className
-            }) {
+            if let style = stylesToSearch.first(where: { $0.name == "." + className }) {
                 return style
             } else {
                 print("⚠️ Failed to find style with class: " + className)
             }
             return nil
         })
+        element.resolvedStyle = element.styles.reduce(nil, mergeOverwrite(style:with:))
+        element.resolvedStyle = element.inheritedStyles.reduce(element.resolvedStyle, mergeOverwrite(style:with:))
+        element.resolvedStyle = mergeOverwrite(style: element.resolvedStyle, with: parent?.resolvedStyle)
+        element.resolvedStyle = mergeOverwrite(style: element.resolvedStyle, with: element.inline)
+        
         if let groupElement = element as? TPSVGGroup {
-            groupElement.elements.forEach(resolveStyles(element:))
+            groupElement.elements.forEach { (el) in
+                el.inheritedStyles = groupElement.inheritedStyles + groupElement.styles
+            }
+            groupElement.elements.forEach({ resolveStyles(element: $0, parent: groupElement) })
         }
+    }
+
+    private func mergeOverwrite(style: TPSVGStyle?, with other: TPSVGStyle?) -> TPSVGStyle? {
+        if style == nil && other == nil {
+            return nil
+        } else if style == nil {
+            return other
+        } else if other == nil {
+            return style
+        }
+
+        var fillColor = style?.fill
+        var stroke = style?.stroke
+        var font = style?.font
+
+        if let otherFill = other?.fill {
+            fillColor = otherFill
+        }
+        if let otherStroke = other?.stroke {
+            if stroke == nil {
+                stroke = otherStroke
+            } else {
+                if let otherStrokeColor = otherStroke.color {
+                    stroke?.color = otherStrokeColor
+                }
+                if let otherStrokeWidth = otherStroke.width {
+                    stroke?.width = otherStrokeWidth
+                }
+                if let otherStrokeMiterLimit = otherStroke.miterLimit {
+                    stroke?.miterLimit = otherStrokeMiterLimit
+                }
+            }
+        }
+        if let otherFont = other?.font {
+            if font == nil {
+                font = otherFont
+            } else {
+                if let otherFontSize = otherFont.size {
+                    font?.size = otherFontSize
+                }
+                if let otherFontFamily = otherFont.family {
+                    font?.family = otherFontFamily
+                }
+            }
+        }
+
+        return TPSVGStyle(name: style?.name ?? other?.name ?? "?", fill: fillColor, stroke: stroke, font: font)
     }
 }
 

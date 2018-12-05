@@ -19,17 +19,17 @@ public class TPSVGStyle {
     /**
      TODO: documentation
      */
-    let fill: TPSVGColor?
+    var fill: TPSVGColor?
 
     /**
      TODO: documentation
      */
-    let stroke: TPSVGStroke?
+    var stroke: TPSVGStroke?
 
     /**
      TODO: documentation
      */
-    let font: TPSVGFont?
+    var font: TPSVGFont?
 
     /**
      TODO: documentation

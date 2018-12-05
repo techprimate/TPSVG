@@ -19,9 +19,9 @@ class TPSVGGroup: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public init(elements: [TPSVGElement] = []) {
+    public init(elements: [TPSVGElement] = [], classNames: [String] = []) {
         self.elements = elements
-        super.init(classNames: [])
+        super.init(classNames: classNames)
     }
 
     // MARK: - Equatable
@@ -39,6 +39,18 @@ class TPSVGGroup: TPSVGElement {
         return true
     }
 
+    // MARK: - CustomStringConvertible
+
+    override var description: String {
+        return String(describing: type(of: self)) + " { elements: \(elements.count) }"
+    }
+
+    // MARK: - CustomStringDebugConvertible
+
+    override var debugDescription: String {
+        return String(describing: type(of: self)) + " { elements: " + elements.map({ $0.debugDescription }).joined() + " }"
+    }
+
     // MARK: - Drawing
 
     /**
@@ -46,19 +58,21 @@ class TPSVGGroup: TPSVGElement {
      */
     override func draw(in context: CGContext) {
         for element in elements {
-            // Style
-            if let fill = element.styles.reduce(nil, { (prev, style) -> TPSVGColor? in
-                return style.fill != nil ? style.fill : prev
-            }) {
-                context.setFillColor(fill.cgColor)
-            }
-            if let stroke = element.styles.reduce(nil, { (prev, style) -> TPSVGStroke? in
-                return style.stroke != nil ? style.stroke : prev
-            }) {
-                context.setStrokeColor(stroke.color?.cgColor ?? UIColor.clear.cgColor)
-                context.setLineWidth(stroke.width ?? 0)
-            }
+            context.setFillColor(TPSVG.fillColor(of: element).cgColor)
+            context.setStrokeColor(TPSVG.strokeColor(of: element).cgColor)
+            context.setLineWidth(TPSVG.strokeLineWidth(of: element))
+            context.setMiterLimit(TPSVG.strokeMiterLimit(of: element))
+
             element.draw(in: context)
         }
+    }
+
+    // MARK: - Calculations
+
+    /// :nodoc:
+    override public var bounds: CGRect {
+        return elements.reduce(CGRect.null, { (prev, element) -> CGRect in
+            return prev.union(element.bounds)
+        })
     }
 }

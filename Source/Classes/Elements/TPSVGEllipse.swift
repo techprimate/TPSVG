@@ -33,7 +33,7 @@ class TPSVGEllipse: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public override init?(attributes: [String : String]) {
+    public override init?(attributes: [String: String]) {
         guard let rawX = attributes["cx"], let x = TPSVGNumberParser.parse(rawX) else {
             return nil
         }
@@ -81,13 +81,25 @@ class TPSVGEllipse: TPSVGElement {
      */
     override func draw(in context: CGContext) {
         let path = CGMutablePath()
-        path.addEllipse(in: CGRect(x: center.x - radius.dx,
-                                   y: center.y - radius.dy,
-                                   width: 2 * radius.dx,
-                                   height: 2 * radius.dy))
+        let origin = CGPoint(x: center.x - radius.dx, y: center.y - radius.dy)
+        let size = CGSize(width: 2 * radius.dx, height: 2 * radius.dy)
+        path.addEllipse(in: CGRect(origin: origin, size: size))
+
         context.addPath(path)
         context.fillPath()
         context.addPath(path)
         context.strokePath()
+    }
+
+    // MARK: - Calculations
+
+    /// :nodoc:
+    override public var bounds: CGRect {
+        let path = CGMutablePath()
+        path.addEllipse(in: CGRect(x: center.x - radius.dx,
+                                   y: center.y - radius.dy,
+                                   width: 2 * radius.dx,
+                                   height: 2 * radius.dy))
+        return path.boundingBoxOfPath
     }
 }

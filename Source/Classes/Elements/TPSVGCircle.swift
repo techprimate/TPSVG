@@ -109,4 +109,15 @@ class TPSVGCircle: TPSVGElement {
                       center.debugDescription,
                       radius)
     }
+
+    // MARK: - Calculations
+
+    override public var bounds: CGRect {
+        let path = CGMutablePath()
+        path.addEllipse(in: CGRect(x: center.x - radius,
+                                   y: center.y - radius,
+                                   width: 2 * radius,
+                                   height: 2 * radius))
+        return path.boundingBoxOfPath
+    }
 }

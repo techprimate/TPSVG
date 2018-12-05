@@ -19,19 +19,20 @@ class TPSVGPath: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public init(classNames: [String] = [], instructions: [TPSVGInstruction] = []) {
+    public init(classNames: [String] = [], inline: TPSVGStyle? = nil, instructions: [TPSVGInstruction] = []) {
         self.instructions = instructions
-        super.init(classNames: classNames)
+        super.init(classNames: classNames, inline: inline)
     }
 
     /**
      TODO: Add documentation
      */
     public override init?(attributes: [String: String]) {
-        guard let rawD = attributes["d"] else {
-            return nil
+        if let rawD = attributes["d"] {
+            self.instructions = TPSVGPathDLexer(raw: rawD).parse()
+        } else {
+            self.instructions = []
         }
-        self.instructions = TPSVGPathDLexer(raw: rawD).parse()
         super.init(attributes: attributes)
     }
 
@@ -61,7 +62,7 @@ class TPSVGPath: TPSVGElement {
         var prev: TPSVGInstruction?
         var lastStartPoint: CGPoint?
         for inst in instructions {
-            let point = path.currentPoint
+            let point = path.isEmpty ? .zero : path.currentPoint
             inst.modify(path: path, prev: prev, prevStartPoint: lastStartPoint)
             lastStartPoint = point
             prev = inst
@@ -89,5 +90,23 @@ class TPSVGPath: TPSVGElement {
      */
     override public var debugDescription: String {
         return "TPSVGPath { classes: \(classNames), instructions: \(instructions) }"
+    }
+
+    // MARK: - Calculations
+
+    /// :nodoc:
+    override public var bounds: CGRect {
+        let path = CGMutablePath()
+
+        var prev: TPSVGInstruction?
+        var lastStartPoint: CGPoint?
+        for inst in instructions {
+            let point = path.currentPoint
+            inst.modify(path: path, prev: prev, prevStartPoint: lastStartPoint)
+            lastStartPoint = point
+            prev = inst
+        }
+        
+        return path.boundingBoxOfPath
     }
 }

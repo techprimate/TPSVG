@@ -14,12 +14,12 @@ public struct TPSVGFont {
     /**
      TODO: documentation
      */
-    public let family: String?
+    public var family: String?
 
     /**
      TODO: documentation
      */
-    public let size: CGFloat?
+    public var size: CGFloat?
 
     /**
      TODO: documentation

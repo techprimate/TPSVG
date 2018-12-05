@@ -80,4 +80,11 @@ public class TPSVGRect: TPSVGElement {
         context.fill(CGRect(origin: origin, size: size))
         context.stroke(CGRect(origin: origin, size: size))
     }
+
+    // MARK: - Calculations
+
+    /// :nodoc:
+    override public var bounds: CGRect {
+        return CGRect(origin: origin, size: size)
+    }
 }

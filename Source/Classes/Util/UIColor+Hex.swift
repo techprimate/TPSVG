@@ -18,7 +18,7 @@ extension UIColor {
 
      - Parameter hex: A hexa-decimal color string representation.
      */
-    public convenience init(hex: String) {
+    internal convenience init(hex: String) {
         var trimmed = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         if trimmed.hasPrefix("#") {
             trimmed = String(trimmed[trimmed.index(trimmed.startIndex, offsetBy: 1)...])
@@ -69,7 +69,7 @@ extension UIColor {
      - parameter hex: A hexa-decimal UInt32 that represents a color.
      - parameter alphaChannel: If true the given hex-decimal UInt32 includes the alpha channel (e.g. e0df00ff).
      */
-    public convenience init(hex: UInt32, useAlpha alphaChannel: Bool = false) {
+    internal convenience init(hex: UInt32, useAlpha alphaChannel: Bool = false) {
         let white = UInt32(0xffffff)
         let mask = UInt32(0xFF)
         let limit = !alphaChannel && hex > white ? white : hex
@@ -91,7 +91,7 @@ extension UIColor {
      If the alpha component is 1.0 then the result will be in format `#RRGGBB`.
      Otherwise the result will be in format `#RRGGBBAA`
      */
-    public var hex: String {
+    internal var hex: String {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0

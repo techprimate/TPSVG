@@ -93,4 +93,13 @@ public class TPSVG {
         self.origin = engine.origin
         self.frame = engine.frame
     }
+
+    /**
+     TODO: documentation
+     */
+    public var contentBounds: CGRect {
+        return paths.reduce(CGRect.null, { (prev, element) -> CGRect in
+            return prev.union(element.bounds)
+        })
+    }
 }

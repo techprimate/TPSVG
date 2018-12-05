@@ -22,7 +22,7 @@ class ViewController: UIViewController {
                 leftImageView.image = UIImage(contentsOfFile: path)
             }
             if let url = Bundle.main.url(forResource: "file-10-tiger", withExtension: "svg") {
-                rightImageView.image = try TPSVG(contentsOf: url).image()
+                rightImageView.image = try TPSVG(contentsOf: url).image(antialias: false)
             }
         } catch {
             print(error.localizedDescription)

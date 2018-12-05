@@ -68,16 +68,37 @@ class TPSVGPolygon: TPSVGElement {
         guard points.count > 0 else {
             return
         }
-        context.beginPath()
+        let path = CGMutablePath()
         for (idx, point) in points.enumerated() {
             if idx == 0 {
-                context.move(to: point)
+                path.move(to: point)
             } else {
-                context.addLine(to: point)
+                path.addLine(to: point)
             }
         }
+        path.closeSubpath()
+
+        context.addPath(path)
         context.fillPath()
+        context.addPath(path)
         context.strokePath()
-        context.closePath()
+    }
+
+    // MARK: - Calculations
+
+    /// :nodoc:
+    override public var bounds: CGRect {
+        let path = CGMutablePath()
+
+        for (idx, point) in points.enumerated() {
+            if idx == 0 {
+                path.move(to: point)
+            } else {
+                path.addLine(to: point)
+            }
+        }
+        path.closeSubpath()
+
+        return path.boundingBoxOfPath
     }
 }
