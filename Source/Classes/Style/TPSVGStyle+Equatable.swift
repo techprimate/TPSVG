@@ -14,7 +14,7 @@ extension TPSVGStyle: Equatable {
     /**
      TODO: documentation
      */
-    public static func == (lhs: TPSVGStyle, rhs: TPSVGStyle) -> Bool {
+    internal static func == (lhs: TPSVGStyle, rhs: TPSVGStyle) -> Bool {
         guard lhs.name == rhs.name else {
             return false
         }

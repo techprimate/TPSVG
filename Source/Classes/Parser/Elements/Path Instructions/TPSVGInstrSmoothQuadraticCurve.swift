@@ -101,7 +101,7 @@ class TPSVGInstrSmoothQuadraticCurve: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrSmoothQuadraticCurve, rhs: TPSVGInstrSmoothQuadraticCurve) -> Bool {
+    internal static func == (lhs: TPSVGInstrSmoothQuadraticCurve, rhs: TPSVGInstrSmoothQuadraticCurve) -> Bool {
         guard lhs.end == rhs.end else {
             return false
         }

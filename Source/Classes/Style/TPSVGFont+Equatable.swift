@@ -14,7 +14,7 @@ extension TPSVGFont: Equatable {
     /**
      TODO: documentation
      */
-    public static func == (lhs: TPSVGFont, rhs: TPSVGFont) -> Bool {
+    internal static func == (lhs: TPSVGFont, rhs: TPSVGFont) -> Bool {
         guard lhs.family == rhs.family else {
             return false
         }

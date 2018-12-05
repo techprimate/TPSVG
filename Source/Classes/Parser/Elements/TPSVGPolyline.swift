@@ -14,12 +14,12 @@ class TPSVGPolyline: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public var points: [CGPoint]
+    internal var points: [CGPoint]
 
     /**
      TODO: Add documentation
      */
-    public init(classNames: [String] = [], points: [CGPoint] = []) {
+    internal init(classNames: [String] = [], points: [CGPoint] = []) {
         self.points = points
         super.init(classNames: classNames)
     }
@@ -27,7 +27,7 @@ class TPSVGPolyline: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public override init?(attributes: [String: String]) {
+    internal override init?(attributes: [String: String]) {
         guard let rawPoints = attributes["points"] else {
             return nil
         }
@@ -49,7 +49,7 @@ class TPSVGPolyline: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGPolyline, rhs: TPSVGPolyline) -> Bool {
+    internal static func == (lhs: TPSVGPolyline, rhs: TPSVGPolyline) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
         }
@@ -85,7 +85,7 @@ class TPSVGPolyline: TPSVGElement {
     // MARK: - Calculations
 
     /// :nodoc:
-    override public var bounds: CGRect {
+    override internal var bounds: CGRect {
         let path = CGMutablePath()
 
         for (idx, point) in points.enumerated() {

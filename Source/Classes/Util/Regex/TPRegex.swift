@@ -24,7 +24,7 @@ struct TPRegex {
     /**
      TODO: documentation
      */
-    public init(pattern: String) throws {
+    internal init(pattern: String) throws {
         self.pattern = pattern
 
         regex = try NSRegularExpression(pattern: pattern, options: [])
@@ -33,7 +33,7 @@ struct TPRegex {
     /**
      TODO: documentation
      */
-    public func match(in value: String) -> TPRegexMatchResult {
+    internal func match(in value: String) -> TPRegexMatchResult {
         var matches: [NSTextCheckingResult] = []
         let range = NSRange(location: 0, length: value.count)
 

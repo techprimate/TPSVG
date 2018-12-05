@@ -14,27 +14,27 @@ struct TPRegexMatchResult {
     /**
      TODO: documentation
      */
-    public let regex: NSRegularExpression
+    internal let regex: NSRegularExpression
 
     /**
      TODO: documentation
      */
-    public let searchString: String
+    internal let searchString: String
 
     /**
      TODO: documentation
      */
-    public let items: [NSTextCheckingResult]
+    internal let items: [NSTextCheckingResult]
 
     /**
      TODO: documentation
      */
-    public let captures: [String]
+    internal let captures: [String]
 
     /**
      TODO: documentation
      */
-    public init(regex: NSRegularExpression, searchString: String, items: [NSTextCheckingResult]) {
+    internal init(regex: NSRegularExpression, searchString: String, items: [NSTextCheckingResult]) {
         self.regex = regex
         self.searchString = searchString
         self.items = items

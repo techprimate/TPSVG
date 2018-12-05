@@ -190,7 +190,7 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrEllipticalArcCurve, rhs: TPSVGInstrEllipticalArcCurve) -> Bool {
+    internal static func == (lhs: TPSVGInstrEllipticalArcCurve, rhs: TPSVGInstrEllipticalArcCurve) -> Bool {
         guard lhs.end == rhs.end else {
             return false
         }

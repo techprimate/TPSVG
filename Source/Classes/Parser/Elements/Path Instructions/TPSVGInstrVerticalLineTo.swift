@@ -73,7 +73,7 @@ class TPSVGInstrVerticalLineTo: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrVerticalLineTo, rhs: TPSVGInstrVerticalLineTo) -> Bool {
+    internal static func == (lhs: TPSVGInstrVerticalLineTo, rhs: TPSVGInstrVerticalLineTo) -> Bool {
         guard lhs.length == rhs.length else {
             return false
         }

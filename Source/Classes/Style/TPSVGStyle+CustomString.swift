@@ -14,14 +14,14 @@ extension TPSVGStyle: CustomStringConvertible, CustomDebugStringConvertible {
     /**
      TODO: documentation
      */
-    public var description: String {
+    internal var description: String {
         return String(format: "TPSVGStyle { name: %@ }", name)
     }
 
     /**
      TODO: documentation
      */
-    public var debugDescription: String {
+    internal var debugDescription: String {
         return String(format: "TPSVGStyle{ name: %@, fill: %@, stroke: %@, font: %@ }",
                       name, fill?.hex ?? "nil", stroke?.debugDescription ?? "nil", font?.debugDescription ?? "nil")
     }

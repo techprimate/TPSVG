@@ -8,9 +8,9 @@
 /**
  TODO: Add documentation
  */
-public enum SVGSpecElement: String {
+enum SVGSpecElement: String {
 
-    public typealias RawValue = String
+    internal typealias RawValue = String
 
     /**
      TODO: Add documentation

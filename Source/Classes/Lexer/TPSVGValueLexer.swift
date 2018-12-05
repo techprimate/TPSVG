@@ -8,7 +8,7 @@
 
 class TPSVGValueLexer {
 
-    public static func parsePoints(from raw: String) -> [CGPoint] {
+    internal static func parsePoints(from raw: String) -> [CGPoint] {
         let values = parseValues(from: raw)
         return getPoints(from: values)
     }
@@ -16,7 +16,7 @@ class TPSVGValueLexer {
     /**
      TODO: Add documentation
      */
-    public static func parseValues(from raw: String) -> [CGFloat] {
+    internal static func parseValues(from raw: String) -> [CGFloat] {
         var values: [CGFloat] = []
         var valueData: [Character] = []
         for rawC in raw {
@@ -64,12 +64,12 @@ class TPSVGValueLexer {
         return values
     }
 
-    public static func getPoints(from values: [CGFloat]) -> [CGPoint] {
+    internal static func getPoints(from values: [CGFloat]) -> [CGPoint] {
         return stride(from: 0, to: values.count, by: 2)
             .map({ CGPoint(x: values[$0], y: values[$0 + 1] )})
     }
 
-    public static func getRect(from values: [CGFloat]) -> [CGRect] {
+    internal static func getRect(from values: [CGFloat]) -> [CGRect] {
         return stride(from: 0, to: values.count, by: 4)
             .map({ CGRect(x: values[$0], y: values[$0 + 1], width: values[$0 + 2], height: values[$0 + 3]) })
     }

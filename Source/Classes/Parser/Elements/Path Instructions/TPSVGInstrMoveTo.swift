@@ -57,7 +57,7 @@ extension TPSVGInstrMoveTo {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrMoveTo, rhs: TPSVGInstrMoveTo) -> Bool {
+    internal static func == (lhs: TPSVGInstrMoveTo, rhs: TPSVGInstrMoveTo) -> Bool {
         guard lhs.point == rhs.point else {
             return false
         }

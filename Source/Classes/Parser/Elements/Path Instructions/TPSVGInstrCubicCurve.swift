@@ -85,7 +85,7 @@ class TPSVGInstrCubicCurve: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrCubicCurve, rhs: TPSVGInstrCubicCurve) -> Bool {
+    internal static func == (lhs: TPSVGInstrCubicCurve, rhs: TPSVGInstrCubicCurve) -> Bool {
         guard lhs.end == rhs.end else {
             return false
         }

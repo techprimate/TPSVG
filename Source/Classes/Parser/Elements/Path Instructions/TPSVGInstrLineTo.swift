@@ -72,7 +72,7 @@ class TPSVGInstrLineTo: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrLineTo, rhs: TPSVGInstrLineTo) -> Bool {
+    internal static func == (lhs: TPSVGInstrLineTo, rhs: TPSVGInstrLineTo) -> Bool {
         guard lhs.point == rhs.point else {
             return false
         }

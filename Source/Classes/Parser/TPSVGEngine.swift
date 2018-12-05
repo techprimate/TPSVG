@@ -14,22 +14,22 @@ class TPSVGEngine: NSObject {
     /**
      A list of all styles parsed by this engine.
      */
-    public private(set) var styles = [TPSVGStyle]()
+    internal private(set) var styles = [TPSVGStyle]()
 
     /**
      An ordered list of all paths parsed by this engine.
      */
-    public private(set) var elements = [TPSVGElement]()
+    internal private(set) var elements = [TPSVGElement]()
 
     /**
      Frame of view box/artboard
      */
-    public private(set) var frame = CGRect.zero
+    internal private(set) var frame = CGRect.zero
 
     /**
      Origin of artboard
      */
-    public private(set) var origin = CGPoint.zero
+    internal private(set) var origin = CGPoint.zero
 
     // MARK: - Parsing
 

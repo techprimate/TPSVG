@@ -73,7 +73,7 @@ class TPSVGInstrHorizontalLineTo: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrHorizontalLineTo, rhs: TPSVGInstrHorizontalLineTo) -> Bool {
+    internal static func == (lhs: TPSVGInstrHorizontalLineTo, rhs: TPSVGInstrHorizontalLineTo) -> Bool {
         guard lhs.length == rhs.length else {
             return false
         }

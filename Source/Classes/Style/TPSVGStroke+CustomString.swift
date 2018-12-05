@@ -14,14 +14,14 @@ extension TPSVGStroke: CustomStringConvertible, CustomDebugStringConvertible {
     /**
      TODO: documentation
      */
-    public var description: String {
+    internal var description: String {
         return String(format: "TPSVGStroke { color: %@, width: %f, miter limit: %f }", color?.hex ?? "nil", width ?? 0, miterLimit ?? 0)
     }
 
     /**
      TODO: documentation
      */
-    public var debugDescription: String {
+    internal var debugDescription: String {
         return String(format: "TPSVGStroke { color: %@, width: %f, miter limit: %f }", color?.hex ?? "nil", width ?? 0, miterLimit ?? 0)
     }
 }

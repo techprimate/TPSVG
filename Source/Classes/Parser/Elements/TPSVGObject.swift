@@ -7,10 +7,10 @@
 //
 class TPSVGObject {
 
-    public let origin: CGPoint
-    public let viewBox: CGRect
+    internal let origin: CGPoint
+    internal let viewBox: CGRect
 
-    public init(attributes: [String: String]) {
+    internal init(attributes: [String: String]) {
         if let rawX = attributes["x"], let x = TPSVGNumberParser.parse(rawX),
             let rawY = attributes["y"], let y = TPSVGNumberParser.parse(rawY) {
             origin = CGPoint(x: x.value, y: y.value)
