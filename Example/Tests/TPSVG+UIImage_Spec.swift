@@ -22,7 +22,7 @@ class TPSVG_UIImage_Spec: QuickSpec {
                 func svgImage(file: String) -> UIImage? {
                     let url = Bundle.main.url(forResource: file, withExtension: "svg")!
                     do {
-                        return try TPSVG(data: try Data(contentsOf: url)).image(antialias: false)
+                        return try TPSVG(data: try Data(contentsOf: url)).image(antialias: false, scale: 1)
                     } catch {
                         fail(error.localizedDescription)
                         fatalError()

@@ -13,12 +13,16 @@ extension TPSVG {
     /**
      TODO: Add documentation
      */
-    public func image(size: CGSize? = nil, crop: Bool = false, contentMode: TPSVGImageContentMode = .scaleToFill, antialias: Bool = true) -> UIImage? {
+    public func image(size: CGSize? = nil,
+                      crop: Bool = false,
+                      contentMode: TPSVGImageContentMode = .scaleToFill,
+                      antialias: Bool = true,
+                      scale: CGFloat = UIScreen.main.scale) -> UIImage? {
         defer {
             UIGraphicsEndImageContext()
         }
 
-        UIGraphicsBeginImageContext(frame.size)
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, scale)
         guard let context = UIGraphicsGetCurrentContext() else {
             return nil
         }
@@ -44,11 +48,11 @@ extension TPSVG {
         guard crop || size != nil else {
             return fullSizeImage
         }
-        return cropAndResize(image: fullSizeImage, crop: crop, size: size, contentMode: contentMode)
+        return cropAndResize(image: fullSizeImage, crop: crop, size: size, contentMode: contentMode, scale: scale)
     }
 
     // swiftlint:disable cyclomatic_complexity
-    private func cropAndResize(image: UIImage, crop: Bool, size: CGSize?, contentMode: TPSVGImageContentMode) -> UIImage? {
+    private func cropAndResize(image: UIImage, crop: Bool, size: CGSize?, contentMode: TPSVGImageContentMode, scale: CGFloat = UIScreen.main.scale) -> UIImage? {
         let bounds = self.contentBounds
         var scaleFactor: CGPoint = CGPoint(x: 1, y: 1)
         var offset: CGPoint = .zero
@@ -107,7 +111,7 @@ extension TPSVG {
             break
         }
 
-        UIGraphicsBeginImageContext(targetSize)
+        UIGraphicsBeginImageContextWithOptions(targetSize, false, scale)
         guard let context = UIGraphicsGetCurrentContext() else {
             return nil
         }

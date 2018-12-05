@@ -25,7 +25,7 @@ class TPSVG_UIImage_Cropping_Spec: QuickSpec {
                         let svgUrl = Bundle.main.url(forResource: "file-13-icon-08", withExtension: "svg")!
                         let refUrl = Bundle.main.url(forResource: "file-13-icon-08_resized", withExtension: "png")!
                         do {
-                            guard let resizedImage = try TPSVG(data: try Data(contentsOf: svgUrl)).image(size: CGSize(width: 100, height: 100), antialias: false) else {
+                            guard let resizedImage = try TPSVG(data: try Data(contentsOf: svgUrl)).image(size: CGSize(width: 100, height: 100), antialias: false, scale: 1) else {
                                 fatalError()
                             }
                             guard let refImage = UIImage(data: try Data(contentsOf: refUrl)) else {
@@ -43,7 +43,7 @@ class TPSVG_UIImage_Cropping_Spec: QuickSpec {
                         let svgUrl = Bundle.main.url(forResource: "file-4-circle", withExtension: "svg")!
                         let refUrl = Bundle.main.url(forResource: "file-4-circle_cropped", withExtension: "png")!
                         do {
-                            guard let resizedImage = try TPSVG(data: try Data(contentsOf: svgUrl)).image(crop: true, antialias: false) else {
+                            guard let resizedImage = try TPSVG(data: try Data(contentsOf: svgUrl)).image(crop: true, antialias: false, scale: 1) else {
                                 fatalError()
                             }
                             guard let refImage = UIImage(data: try Data(contentsOf: refUrl)) else {
@@ -61,7 +61,7 @@ class TPSVG_UIImage_Cropping_Spec: QuickSpec {
                         let svgUrl = Bundle.main.url(forResource: "file-6-path", withExtension: "svg")!
                         let refUrl = Bundle.main.url(forResource: "file-6-path_resized_cropped", withExtension: "png")!
                         do {
-                            guard let resizedImage = try TPSVG(data: try Data(contentsOf: svgUrl)).image(size: CGSize(width: 250, height: 209), crop: true, contentMode: .scaleAspectFit, antialias: false) else {
+                            guard let resizedImage = try TPSVG(data: try Data(contentsOf: svgUrl)).image(size: CGSize(width: 250, height: 209), crop: true, contentMode: .scaleAspectFit, antialias: false, scale: 1) else {
                                 fatalError()
                             }
                             guard let refImage = UIImage(data: try Data(contentsOf: refUrl)) else {
