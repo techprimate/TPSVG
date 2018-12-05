@@ -43,16 +43,29 @@ class TPSVG_UIImage_Spec: QuickSpec {
                 }
 
                 func svgEqualsRef(name: String) -> Bool {
-                    guard let svg = svgImage(file: "file-1-rect") else {
+                    guard let svg = svgImage(file: name) else {
                         fail("Image should not be null!")
                         fatalError()
                     }
-                    let ref = referenceImage(file: "file-1-rect")
+                    let ref = referenceImage(file: name)
 
                     guard svg.size == ref.size else {
                         return false
                     }
                     return svg.pixelsEqual(to: ref)
+                }
+
+                func svgPixelError(name: String) -> Double {
+                    guard let svg = svgImage(file: name) else {
+                        fail("Image should not be null!")
+                        fatalError()
+                    }
+                    let ref = referenceImage(file: name)
+
+                    guard svg.size == ref.size else {
+                        return 1.0
+                    }
+                    return svg.pixelError(to: ref)
                 }
 
                 it("should render not render empty") {
@@ -61,262 +74,99 @@ class TPSVG_UIImage_Spec: QuickSpec {
                 }
 
                 it("should render render file-1") {
-                    guard let svg = svgImage(file: "file-1-rect") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-1-rect")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-1-rect")).to(beTrue())
                 }
 
                 it("should render render file-2") {
-                    guard let svg = svgImage(file: "file-2-polygon") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-2-polygon")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-2-polygon")).to(beTrue())
                 }
 
                 it("should render render file-3") {
-                    guard let svg = svgImage(file: "file-3-polyline") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-3-polyline")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-3-polyline")).to(beTrue())
                 }
 
                 it("should render render file-4") {
-                    guard let svg = svgImage(file: "file-4-circle") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-4-circle")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-4-circle")).to(beTrue())
                 }
 
                 it("should render render file-5") {
-                    guard let svg = svgImage(file: "file-5-ellipse") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-5-ellipse")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-5-ellipse")).to(beTrue())
                 }
 
                 it("should render render file-6") {
-                    guard let svg = svgImage(file: "file-6-path") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-6-path")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-6-path")).to(beTrue())
                 }
 
                 it("should render render file-7") {
-                    // TODO: implement text rendering
-                    //                    guard let svg = svgImage(file: "file-7-text") else {
-                    //                        fail("Image should not be null!")
-                    //                        fatalError()
-                    //                    }
-                    //                    let ref = referenceImage(file: "file-7-text")
-                    //
-                    //                    expect(svg.size) == ref.size
-                    //                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+//                    expect(svgEqualsRef(name: "file-7-text")).to(beTrue())
                 }
 
                 it("should render render file-8") {
-                    guard let svg = svgImage(file: "file-8") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-8")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-8")).to(beTrue())
                 }
 
                 it("should render render file-9") {
-                    guard let svg = svgImage(file: "file-9") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-9")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-9")).to(beTrue())
                 }
 
                 it("should render render file-10") {
-                    guard let svg = svgImage(file: "file-10-tiger") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-10-tiger")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelError(to: ref)) < 0.01
+                    expect(svgPixelError(name: "file-10-tiger")) < 0.01
                 }
 
                 it("should render render file-11") {
-                    guard let svg = svgImage(file: "file-11-line") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-11-line")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-11-line")).to(beTrue())
                 }
 
                 it("should render render file-12") {
-                    guard let svg = svgImage(file: "file-12-ell-arc") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-12-ell-arc")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-12-ell-arc")).to(beTrue())
                 }
 
                 it("should render render file-13-icon-01") {
-                    guard let svg = svgImage(file: "file-13-icon-01") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-13-icon-01")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-13-icon-01")).to(beTrue())
                 }
 
                 it("should render render file-13-icon-02") {
-                    guard let svg = svgImage(file: "file-13-icon-02") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-13-icon-02")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-13-icon-02")).to(beTrue())
                 }
 
                 it("should render render file-13-icon-03") {
-                    guard let svg = svgImage(file: "file-13-icon-03") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-13-icon-03")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-13-icon-03")).to(beTrue())
                 }
 
                 it("should render render file-13-icon-04") {
-                    guard let svg = svgImage(file: "file-13-icon-04") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-13-icon-04")
-
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-13-icon-04")).to(beTrue())
                 }
 
                 it("should render render file-13-icon-05") {
-                    guard let svg = svgImage(file: "file-13-icon-05") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-13-icon-05")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-13-icon-05")).to(beTrue())
                 }
 
                 it("should render render file-13-icon-06") {
-                    guard let svg = svgImage(file: "file-13-icon-06") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-13-icon-06")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-13-icon-06")).to(beTrue())
                 }
 
                 it("should render render file-13-icon-07") {
-                    guard let svg = svgImage(file: "file-13-icon-07") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-13-icon-07")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-13-icon-07")).to(beTrue())
                 }
 
                 it("should render render file-13-icon-08") {
-                    guard let svg = svgImage(file: "file-13-icon-08") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-13-icon-08")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-13-icon-08")).to(beTrue())
                 }
 
                 it("should render render file-13-icon-09") {
-                    guard let svg = svgImage(file: "file-13-icon-09") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-13-icon-09")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-13-icon-09")).to(beTrue())
                 }
 
                 it("should render render file-14-v-line") {
-                    guard let svg = svgImage(file: "file-14-v-line") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-14-v-line")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-14-v-line")).to(beTrue())
                 }
 
                 it("should render render file-15-h-line") {
-                    guard let svg = svgImage(file: "file-15-h-line") else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: "file-15-h-line")
-
-                    expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svgEqualsRef(name: "file-15-h-line")).to(beTrue())
                 }
 
-                it("should render inline-1") {
-                    expect(svgEqualsRef(name: "inline-1")).to(beTrue())
+                it("should render inline-01") {
+                    expect(svgEqualsRef(name: "inline-01")).to(beTrue())
                 }
             }
         }
