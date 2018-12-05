@@ -20,27 +20,27 @@ public class TPSVG {
     /**
      Loaded raw SVG
      */
-    public private(set) var raw: String
+    internal private(set) var raw: String
 
     /**
      Parsed styles
      */
-    public private(set) var styles = [TPSVGStyle]()
+    internal private(set) var styles = [TPSVGStyle]()
 
     /**
      Parsed paths
      */
-    public private(set) var paths = [TPSVGElement]()
+    internal private(set) var paths = [TPSVGElement]()
 
     /**
      Frame of view box/artboard
      */
-    public private(set) var frame = CGRect.zero
+    internal private(set) var frame = CGRect.zero
 
     /**
      Origin of artboard
      */
-    public private(set) var origin = CGPoint.zero
+    internal private(set) var origin = CGPoint.zero
 
     /**
      Initialize a `TPSVG` with the contents of a `URL`.

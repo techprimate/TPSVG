@@ -9,7 +9,7 @@
 /**
  TODO: documentation
  */
-public class TPSVGStyle {
+class TPSVGStyle {
 
     /**
      TODO: documentation

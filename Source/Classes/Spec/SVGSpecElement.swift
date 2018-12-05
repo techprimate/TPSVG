@@ -15,6 +15,16 @@ public enum SVGSpecElement: String {
     /**
      TODO: Add documentation
      */
+    case svg = "svg"
+
+    /**
+     TODO: Add documentation
+     */
+    case style = "style"
+
+    /**
+     TODO: Add documentation
+     */
     case rect = "rect"
 
     /**

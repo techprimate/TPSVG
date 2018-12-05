@@ -84,7 +84,7 @@ class TPSVGEngine: NSObject {
         element.resolvedStyle = element.inheritedStyles.reduce(element.resolvedStyle, mergeOverwrite(style:with:))
         element.resolvedStyle = mergeOverwrite(style: element.resolvedStyle, with: parent?.resolvedStyle)
         element.resolvedStyle = mergeOverwrite(style: element.resolvedStyle, with: element.inline)
-        
+
         if let groupElement = element as? TPSVGGroup {
             groupElement.elements.forEach { (el) in
                 el.inheritedStyles = groupElement.inheritedStyles + groupElement.styles
@@ -143,23 +143,19 @@ class TPSVGEngine: NSObject {
 
 // MARK: - XMLParserDelegate
 
-/**
- TODO: Add documentation
- */
 extension TPSVGEngine: XMLParserDelegate {
 
-    // swiftlint:disable cyclomatic_complexity
-    /**
-     TODO: Add documentation
-     */
+    /// :nodoc:
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?,
                 qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
         currentElement = elementName.lowercased()
         var element: TPSVGElement?
         switch elementName.lowercased() {
-        case "svg":
-            parseSVG(attributes: attributeDict)
-        case "style":
+        case SVGSpecElement.svg.rawValue:
+            let svgObject = TPSVGObject(attributes: attributeDict)
+            self.origin = svgObject.origin
+            self.frame = svgObject.viewBox
+        case SVGSpecElement.style.rawValue:
             cssEngine = TPCSSEngine()
         case SVGSpecElement.circle.rawValue:
             element = TPSVGCircle(attributes: attributeDict)
@@ -199,36 +195,10 @@ extension TPSVGEngine: XMLParserDelegate {
         }
     }
 
-    /**
-     TODO: Add documentation
-     */
-    private func parseSVG(attributes: [String: String]) {
-        if let rawX = attributes["x"], let x = TPSVGNumberParser.parse(rawX),
-            let rawY = attributes["y"], let y = TPSVGNumberParser.parse(rawY) {
-            origin = CGPoint(x: x.value, y: y.value)
-        }
-
-        if let rawViewBox = attributes["viewBox"] {
-            let comps = rawViewBox.components(separatedBy: " ")
-            if comps.count == 4,
-                let x = TPSVGNumberParser.parse(comps[0]),
-                let y = TPSVGNumberParser.parse(comps[1]),
-                let width = TPSVGNumberParser.parse(comps[2]),
-                let height = TPSVGNumberParser.parse(comps[3]) {
-                frame = CGRect(x: x.value,
-                               y: y.value,
-                               width: width.value,
-                               height: height.value)
-            }
-        }
-    }
-    /**
-     TODO: Add documentation
-     */
-
+    /// :nodoc:
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         switch elementName.lowercased() {
-        case "style":
+        case SVGSpecElement.style.rawValue:
             styles = cssEngine?.parse() ?? []
         case SVGSpecElement.group.rawValue:
             if let group = groups.pop() {
@@ -239,12 +209,10 @@ extension TPSVGEngine: XMLParserDelegate {
         }
     }
 
-    /**
-     TODO: Add documentation
-     */
+    /// :nodoc:
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         switch currentElement {
-        case "style":
+        case SVGSpecElement.style.rawValue:
             guard let css = cssEngine else {
                 return
             }
@@ -261,16 +229,12 @@ extension TPSVGEngine: XMLParserDelegate {
         }
     }
 
-    /**
-     TODO: Add documentation
-     */
+    /// :nodoc:
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
         print("☠️ Parse Error:", parseError)
     }
-    /**
-     TODO: Add documentation
-     */
 
+    /// :nodoc:
     func parser(_ parser: XMLParser, validationErrorOccurred validationError: Error) {
         print("☠️ Validation Error:", validationError)
     }

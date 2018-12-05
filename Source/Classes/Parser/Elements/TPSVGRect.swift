@@ -9,7 +9,7 @@
 /**
  TODO: Add documentation
  */
-public class TPSVGRect: TPSVGElement {
+class TPSVGRect: TPSVGElement {
 
     /**
      TODO: Add documentation

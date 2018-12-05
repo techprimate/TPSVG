@@ -9,7 +9,7 @@
 /**
  TODO: documentation
  */
-public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugStringConvertible {
+class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugStringConvertible {
 
     /**
      TODO: documentation

@@ -66,7 +66,11 @@ class TPSVGValueLexer {
 
     public static func getPoints(from values: [CGFloat]) -> [CGPoint] {
         return stride(from: 0, to: values.count, by: 2)
-            .map({ (values[$0], values[$0 + 1]) })
-            .map({ CGPoint(x: $0.0, y: $0.1 )})
+            .map({ CGPoint(x: values[$0], y: values[$0 + 1] )})
+    }
+
+    public static func getRect(from values: [CGFloat]) -> [CGRect] {
+        return stride(from: 0, to: values.count, by: 4)
+            .map({ CGRect(x: values[$0], y: values[$0 + 1], width: values[$0 + 2], height: values[$0 + 3]) })
     }
 }
