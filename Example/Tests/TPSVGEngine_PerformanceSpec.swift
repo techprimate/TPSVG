@@ -22,55 +22,55 @@ class TPSVGEngine_PerformanceSpec: XCTestCase {
 
     func testFile1() {
         self.measure {
-            loadSVG(name: "file-10-tiger")
+            loadSVG(name: "file-1-rect")
         }
     }
 
     func testFile2() {
         self.measure {
-            loadSVG(name: "file-10-tiger")
+            loadSVG(name: "file-2-polygon")
         }
     }
 
     func testFile3() {
         self.measure {
-            loadSVG(name: "file-10-tiger")
+            loadSVG(name: "file-3-polyline")
         }
     }
 
     func testFile4() {
         self.measure {
-            loadSVG(name: "file-10-tiger")
+            loadSVG(name: "file-4-circle")
         }
     }
 
     func testFile5() {
         self.measure {
-            loadSVG(name: "file-10-tiger")
+            loadSVG(name: "file-5-ellipse")
         }
     }
 
     func testFile6() {
         self.measure {
-            loadSVG(name: "file-10-tiger")
+            loadSVG(name: "file-6-path")
         }
     }
 
     func testFile7() {
         self.measure {
-            loadSVG(name: "file-10-tiger")
+            loadSVG(name: "file-7-text")
         }
     }
 
     func testFile8() {
         self.measure {
-            loadSVG(name: "file-10-tiger")
+            loadSVG(name: "file-8")
         }
     }
 
     func testFile9() {
         self.measure {
-            loadSVG(name: "file-10-tiger")
+            loadSVG(name: "file-9")
         }
     }
 
@@ -82,13 +82,13 @@ class TPSVGEngine_PerformanceSpec: XCTestCase {
 
     func testFile11() {
         self.measure {
-            loadSVG(name: "file-10-tiger")
+            loadSVG(name: "file-11-line")
         }
     }
 
     func testFile12() {
         self.measure {
-            loadSVG(name: "file-10-tiger")
+            loadSVG(name: "file-12-ell-arc")
         }
     }
 

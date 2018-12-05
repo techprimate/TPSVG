@@ -28,10 +28,11 @@ class TPSVGPath: TPSVGElement {
      TODO: Add documentation
      */
     public override init?(attributes: [String: String]) {
-        guard let rawD = attributes["d"] else {
-            return nil
+        if let rawD = attributes["d"] {
+            self.instructions = TPSVGPathDLexer(raw: rawD).parse()
+        } else {
+            self.instructions = []
         }
-        self.instructions = TPSVGPathDLexer(raw: rawD).parse()
         super.init(attributes: attributes)
     }
 

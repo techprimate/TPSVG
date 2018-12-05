@@ -110,7 +110,7 @@ class TPSVG_UIImage_Spec: QuickSpec {
                 }
 
                 it("should render render file-10") {
-                    expect(svgPixelError(name: "file-10-tiger")) < 0.01
+                    expect(svgPixelError(name: "file-10-tiger")) < 0.035
                 }
 
                 it("should render render file-11") {
