@@ -58,7 +58,6 @@ class TPSVGGroup: TPSVGElement {
      */
     override func draw(in context: CGContext) {
         for element in elements {
-            // Style
             context.setFillColor(TPSVG.fillColor(of: element).cgColor)
             context.setStrokeColor(TPSVG.strokeColor(of: element).cgColor)
             context.setLineWidth(TPSVG.strokeLineWidth(of: element))

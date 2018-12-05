@@ -118,50 +118,18 @@ extension TPSVG {
     }
 
     internal static func fillColor(of element: TPSVGElement) -> TPSVGColor {
-        if let inline = element.inline?.fill {
-            return inline
-        }
-        return (element.inheritedStyles + element.styles).reduce(TPSVGColor.clear, { (prev, style) -> TPSVGColor in
-            if let value = style.fill {
-                return value
-            }
-            return prev
-        })
+        return element.resolvedStyle?.fill ?? TPSVGColor.black
     }
 
     internal static func strokeColor(of element: TPSVGElement) -> TPSVGColor {
-        if let inline = element.inline?.stroke?.color {
-            return inline
-        }
-        return (element.inheritedStyles + element.styles).reduce(TPSVGColor.clear, { (prev, style) -> TPSVGColor in
-            if let value = style.stroke?.color {
-                return value
-            }
-            return prev
-        })
+        return element.resolvedStyle?.stroke?.color ?? TPSVGColor.clear
     }
 
     internal static func strokeLineWidth(of element: TPSVGElement) -> CGFloat {
-        if let inline = element.inline?.stroke?.width {
-            return inline
-        }
-        return (element.inheritedStyles + element.styles).reduce(0, { (prev, style) -> CGFloat in
-            if let value = style.stroke?.width {
-                return value
-            }
-            return prev
-        })
+        return element.resolvedStyle?.stroke?.width ?? 1
     }
 
     internal static func strokeMiterLimit(of element: TPSVGElement) -> CGFloat {
-        if let inline = element.inline?.stroke?.miterLimit {
-            return inline
-        }
-        return  (element.inheritedStyles + element.styles).reduce(0, { (prev, style) -> CGFloat in
-            if let value = style.stroke?.miterLimit {
-                return value
-            }
-            return prev
-        })
+        return element.resolvedStyle?.stroke?.miterLimit ?? 4
     }
 }

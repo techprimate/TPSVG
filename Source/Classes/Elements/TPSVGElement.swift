@@ -31,6 +31,11 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
     public var inline: TPSVGStyle?
 
     /**
+     Style which should be used for drawing
+     */
+    public var resolvedStyle: TPSVGStyle?
+
+    /**
      TODO: documentation
      */
     public init(classNames: [String] = [], inheritedStyles: [TPSVGStyle] = [], styles: [TPSVGStyle] = [], inline: TPSVGStyle? = nil) {
@@ -62,7 +67,10 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
                 i += 1
             } while classNames.contains("." + name)
 
-            inline = TPSVGStyle(name: name, fill: inlineFillColor, stroke: nil, font: nil)
+            inline = TPSVGStyle(name: name,
+                                fill: inlineFillColor,
+                                stroke: nil,
+                                font: nil)
         }
     }
 

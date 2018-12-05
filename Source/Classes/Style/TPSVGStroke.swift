@@ -14,17 +14,17 @@ public struct TPSVGStroke {
     /**
      TODO: documentation
      */
-    public let color: UIColor?
+    public var color: UIColor?
 
     /**
      TODO: documentation
      */
-    public let width: CGFloat?
+    public var width: CGFloat?
 
     /**
      TODO: documentation
      */
-    public let miterLimit: CGFloat?
+    public var miterLimit: CGFloat?
 
     /**
      TODO: documentation
