@@ -44,8 +44,10 @@
 		D40D18DA21B166230061C15F /* file-1.css in Resources */ = {isa = PBXBuildFile; fileRef = D40D18D921B166230061C15F /* file-1.css */; };
 		D40D18DB21B166230061C15F /* file-1.css in Resources */ = {isa = PBXBuildFile; fileRef = D40D18D921B166230061C15F /* file-1.css */; };
 		D40D18DF21B166720061C15F /* TPCSSEngine_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40D18DD21B166720061C15F /* TPCSSEngine_Spec.swift */; };
-		D414778721B74BC500F7E4AC /* TPSVG_UIImage_Cropping_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D414778521B74BC500F7E4AC /* TPSVG_UIImage_Cropping_Spec.swift */; };
-		D429C66C21B2A2BB00B5CE0A /* TPSVG_UIImage_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D429C66B21B2A2BB00B5CE0A /* TPSVG_UIImage_Spec.swift */; };
+		D414778721B74BC500F7E4AC /* TPSVG+UIImage_Cropping_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D414778521B74BC500F7E4AC /* TPSVG+UIImage_Cropping_Spec.swift */; };
+		D414779021B7F7E100F7E4AC /* TPSVG+UIImage_PerformanceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D414778F21B7F7E100F7E4AC /* TPSVG+UIImage_PerformanceSpec.swift */; };
+		D414779221B7F92000F7E4AC /* TPSVGEngine_PerformanceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D414779121B7F92000F7E4AC /* TPSVGEngine_PerformanceSpec.swift */; };
+		D429C66C21B2A2BB00B5CE0A /* TPSVG+UIImage_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D429C66B21B2A2BB00B5CE0A /* TPSVG+UIImage_Spec.swift */; };
 		D429C67A21B2A50900B5CE0A /* file-4-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = D429C66E21B2A50900B5CE0A /* file-4-circle.png */; };
 		D429C67B21B2A50900B5CE0A /* file-4-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = D429C66E21B2A50900B5CE0A /* file-4-circle.png */; };
 		D429C67C21B2A50900B5CE0A /* file-10-tiger.png in Resources */ = {isa = PBXBuildFile; fileRef = D429C66F21B2A50900B5CE0A /* file-10-tiger.png */; };
@@ -191,9 +193,11 @@
 		D40D18C821B152870061C15F /* file-10-tiger.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; fileEncoding = 4; path = "file-10-tiger.svg"; sourceTree = "<group>"; };
 		D40D18D921B166230061C15F /* file-1.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "file-1.css"; sourceTree = "<group>"; };
 		D40D18DD21B166720061C15F /* TPCSSEngine_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPCSSEngine_Spec.swift; sourceTree = "<group>"; };
-		D414778521B74BC500F7E4AC /* TPSVG_UIImage_Cropping_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSVG_UIImage_Cropping_Spec.swift; sourceTree = "<group>"; };
+		D414778521B74BC500F7E4AC /* TPSVG+UIImage_Cropping_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TPSVG+UIImage_Cropping_Spec.swift"; sourceTree = "<group>"; };
+		D414778F21B7F7E100F7E4AC /* TPSVG+UIImage_PerformanceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TPSVG+UIImage_PerformanceSpec.swift"; sourceTree = "<group>"; };
+		D414779121B7F92000F7E4AC /* TPSVGEngine_PerformanceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSVGEngine_PerformanceSpec.swift; sourceTree = "<group>"; };
 		D429C65F21B1A8A800B5CE0A /* file-11-line.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; path = "file-11-line.svg"; sourceTree = "<group>"; };
-		D429C66B21B2A2BB00B5CE0A /* TPSVG_UIImage_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSVG_UIImage_Spec.swift; sourceTree = "<group>"; };
+		D429C66B21B2A2BB00B5CE0A /* TPSVG+UIImage_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TPSVG+UIImage_Spec.swift"; sourceTree = "<group>"; };
 		D429C66E21B2A50900B5CE0A /* file-4-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-4-circle.png"; sourceTree = "<group>"; };
 		D429C66F21B2A50900B5CE0A /* file-10-tiger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-10-tiger.png"; sourceTree = "<group>"; };
 		D429C67021B2A50900B5CE0A /* file-7-text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-7-text.png"; sourceTree = "<group>"; };
@@ -313,12 +317,14 @@
 			children = (
 				D429C6B521B2E6AC00B5CE0A /* Lexer */,
 				D40D187921B097C30061C15F /* TPSVG_Spec.swift */,
-				D429C66B21B2A2BB00B5CE0A /* TPSVG_UIImage_Spec.swift */,
-				D414778521B74BC500F7E4AC /* TPSVG_UIImage_Cropping_Spec.swift */,
+				D429C66B21B2A2BB00B5CE0A /* TPSVG+UIImage_Spec.swift */,
+				D414778521B74BC500F7E4AC /* TPSVG+UIImage_Cropping_Spec.swift */,
+				D414778F21B7F7E100F7E4AC /* TPSVG+UIImage_PerformanceSpec.swift */,
 				D4C5F8A021B405F500B2CB60 /* TPSVGEngine_Spec.swift */,
 				D4FCD1A321B5C8900034F082 /* TPSVGEngine_Spec_2.swift */,
 				D4FCD1A521B5C8A10034F082 /* TPSVGEngine_Spec_3.swift */,
 				D4851CBC21B6CC19000255C6 /* TPSVGEngine_Spec_4.swift */,
+				D414779121B7F92000F7E4AC /* TPSVGEngine_PerformanceSpec.swift */,
 				D40D187D21B098A30061C15F /* Data */,
 				D40822EB21AF3D250027B10B /* Helper */,
 				D40D18DC21B1664E0061C15F /* Style */,
@@ -845,13 +851,15 @@
 			files = (
 				D4FCD1A421B5C8900034F082 /* TPSVGEngine_Spec_2.swift in Sources */,
 				D40D189121B09A900061C15F /* TPSVG_Spec.swift in Sources */,
-				D414778721B74BC500F7E4AC /* TPSVG_UIImage_Cropping_Spec.swift in Sources */,
+				D414778721B74BC500F7E4AC /* TPSVG+UIImage_Cropping_Spec.swift in Sources */,
 				D429C6B721B2E72500B5CE0A /* TPSVGPathDLexer_Spec.swift in Sources */,
 				D4FCD1A621B5C8A10034F082 /* TPSVGEngine_Spec_3.swift in Sources */,
+				D414779021B7F7E100F7E4AC /* TPSVG+UIImage_PerformanceSpec.swift in Sources */,
 				D40D18DF21B166720061C15F /* TPCSSEngine_Spec.swift in Sources */,
-				D429C66C21B2A2BB00B5CE0A /* TPSVG_UIImage_Spec.swift in Sources */,
+				D429C66C21B2A2BB00B5CE0A /* TPSVG+UIImage_Spec.swift in Sources */,
 				D4851CBD21B6CC19000255C6 /* TPSVGEngine_Spec_4.swift in Sources */,
 				D4C5F8A221B405F500B2CB60 /* TPSVGEngine_Spec.swift in Sources */,
+				D414779221B7F92000F7E4AC /* TPSVGEngine_PerformanceSpec.swift in Sources */,
 				D40822F321AF42B40027B10B /* UIImage+Pixel_Spec.swift in Sources */,
 				D40822F121AF3F740027B10B /* CGImage+Pixel_Spec.swift in Sources */,
 			);
