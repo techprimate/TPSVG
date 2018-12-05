@@ -14,17 +14,17 @@ class TPSVGCircle: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public var center: CGPoint
+    internal var center: CGPoint
 
     /**
      TODO: Add documentation
      */
-    public var radius: CGFloat
+    internal var radius: CGFloat
 
     /**
      TODO: Add documentation
      */
-    public init(classNames: [String] = [], center: CGPoint = .zero, radius: CGFloat = 0) {
+    internal init(classNames: [String] = [], center: CGPoint = .zero, radius: CGFloat = 0) {
         self.center = center
         self.radius = radius
         super.init(classNames: classNames)
@@ -33,7 +33,7 @@ class TPSVGCircle: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public override init?(attributes: [String: String]) {
+    internal override init?(attributes: [String: String]) {
         center = .zero
         if let rawX = attributes["cx"], let x = TPSVGNumberParser.parse(rawX) {
             center.x = x.value
@@ -59,7 +59,7 @@ class TPSVGCircle: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGCircle, rhs: TPSVGCircle) -> Bool {
+    internal static func == (lhs: TPSVGCircle, rhs: TPSVGCircle) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
         }
@@ -93,7 +93,7 @@ class TPSVGCircle: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    override public var description: String {
+    override internal var description: String {
         return String(format: "TPSVGCircle {}")
     }
 
@@ -102,7 +102,7 @@ class TPSVGCircle: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    override public var debugDescription: String {
+    override internal var debugDescription: String {
         return String(format: "TPSVGCircle { classes: %@, styles: %@, center: %@, radius: %f }",
                       classNames.joined(separator: ", "),
                       styles.map({ $0.name }).joined(separator: ", "),
@@ -112,7 +112,7 @@ class TPSVGCircle: TPSVGElement {
 
     // MARK: - Calculations
 
-    override public var bounds: CGRect {
+    override internal var bounds: CGRect {
         let path = CGMutablePath()
         path.addEllipse(in: CGRect(x: center.x - radius,
                                    y: center.y - radius,

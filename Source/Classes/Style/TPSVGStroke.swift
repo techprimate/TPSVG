@@ -9,27 +9,27 @@
 /**
  TODO: documentation
  */
-public struct TPSVGStroke {
+internal struct TPSVGStroke {
 
     /**
      TODO: documentation
      */
-    public var color: UIColor?
+    internal var color: UIColor?
 
     /**
      TODO: documentation
      */
-    public var width: CGFloat?
+    internal var width: CGFloat?
 
     /**
      TODO: documentation
      */
-    public var miterLimit: CGFloat?
+    internal var miterLimit: CGFloat?
 
     /**
      TODO: documentation
      */
-    public init(color: UIColor? = nil, width: CGFloat? = nil, miterLimit: CGFloat? = nil) {
+    internal init(color: UIColor? = nil, width: CGFloat? = nil, miterLimit: CGFloat? = nil) {
         self.color = color
         self.width = width
         self.miterLimit = miterLimit

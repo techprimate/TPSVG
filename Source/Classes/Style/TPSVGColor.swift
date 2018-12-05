@@ -9,4 +9,4 @@
 /**
  TODO: documentation
  */
-public typealias TPSVGColor = UIColor
+internal typealias TPSVGColor = UIColor

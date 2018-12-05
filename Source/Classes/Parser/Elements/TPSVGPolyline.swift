@@ -1,5 +1,5 @@
 //
-//  TPSVGPolygon.swift
+//  TPSVGPolyline.swift
 //  TPSVG
 //
 //  Created by Philip Niedertscheider on 30.11.18.
@@ -9,17 +9,17 @@
 /**
  TODO: Add documentation
  */
-class TPSVGPolygon: TPSVGElement {
+class TPSVGPolyline: TPSVGElement {
 
     /**
      TODO: Add documentation
      */
-    public var points: [CGPoint]
+    internal var points: [CGPoint]
 
     /**
      TODO: Add documentation
      */
-    public init(classNames: [String] = [], points: [CGPoint] = []) {
+    internal init(classNames: [String] = [], points: [CGPoint] = []) {
         self.points = points
         super.init(classNames: classNames)
     }
@@ -27,7 +27,7 @@ class TPSVGPolygon: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public override init?(attributes: [String: String]) {
+    internal override init?(attributes: [String: String]) {
         guard let rawPoints = attributes["points"] else {
             return nil
         }
@@ -49,7 +49,7 @@ class TPSVGPolygon: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGPolygon, rhs: TPSVGPolygon) -> Bool {
+    internal static func == (lhs: TPSVGPolyline, rhs: TPSVGPolyline) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
         }
@@ -76,8 +76,6 @@ class TPSVGPolygon: TPSVGElement {
                 path.addLine(to: point)
             }
         }
-        path.closeSubpath()
-
         context.addPath(path)
         context.fillPath()
         context.addPath(path)
@@ -87,7 +85,7 @@ class TPSVGPolygon: TPSVGElement {
     // MARK: - Calculations
 
     /// :nodoc:
-    override public var bounds: CGRect {
+    override internal var bounds: CGRect {
         let path = CGMutablePath()
 
         for (idx, point) in points.enumerated() {
@@ -97,7 +95,6 @@ class TPSVGPolygon: TPSVGElement {
                 path.addLine(to: point)
             }
         }
-        path.closeSubpath()
 
         return path.boundingBoxOfPath
     }

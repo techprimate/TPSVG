@@ -14,17 +14,17 @@ class TPSVGEllipse: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public var center: CGPoint
+    internal var center: CGPoint
 
     /**
      TODO: Add documentation
      */
-    public var radius: CGVector
+    internal var radius: CGVector
 
     /**
      TODO: Add documentation
      */
-    public init(classNames: [String] = [], center: CGPoint = .zero, radius: CGVector = .zero) {
+    internal init(classNames: [String] = [], center: CGPoint = .zero, radius: CGVector = .zero) {
         self.center = center
         self.radius = radius
         super.init(classNames: classNames)
@@ -33,7 +33,7 @@ class TPSVGEllipse: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public override init?(attributes: [String: String]) {
+    internal override init?(attributes: [String: String]) {
         guard let rawX = attributes["cx"], let x = TPSVGNumberParser.parse(rawX) else {
             return nil
         }
@@ -58,7 +58,7 @@ class TPSVGEllipse: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGEllipse, rhs: TPSVGEllipse) -> Bool {
+    internal static func == (lhs: TPSVGEllipse, rhs: TPSVGEllipse) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
         }
@@ -94,7 +94,7 @@ class TPSVGEllipse: TPSVGElement {
     // MARK: - Calculations
 
     /// :nodoc:
-    override public var bounds: CGRect {
+    override internal var bounds: CGRect {
         let path = CGMutablePath()
         path.addEllipse(in: CGRect(x: center.x - radius.dx,
                                    y: center.y - radius.dy,

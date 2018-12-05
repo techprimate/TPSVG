@@ -67,7 +67,7 @@ class TPSVGInstrClosePath: TPSVGInstruction {
 
      This method will always return **true**, as the instances never differ.
      */
-    public static func == (lhs: TPSVGInstrClosePath, rhs: TPSVGInstrClosePath) -> Bool {
+    internal static func == (lhs: TPSVGInstrClosePath, rhs: TPSVGInstrClosePath) -> Bool {
         return true
     }
 }

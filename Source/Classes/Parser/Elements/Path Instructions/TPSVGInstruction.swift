@@ -16,7 +16,7 @@ class TPSVGInstruction: Equatable, CustomStringConvertible, CustomDebugStringCon
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstruction, rhs: TPSVGInstruction) -> Bool {
+    internal static func == (lhs: TPSVGInstruction, rhs: TPSVGInstruction) -> Bool {
         if let lhs = lhs as? TPSVGInstrMoveTo, let rhs = rhs as? TPSVGInstrMoveTo {
             return lhs == rhs
         }

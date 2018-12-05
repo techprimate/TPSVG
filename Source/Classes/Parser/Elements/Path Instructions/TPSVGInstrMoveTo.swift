@@ -1,5 +1,5 @@
 //
-//  TPSVGInstrVerticalLineTo.swift
+//  TPSVGInstrMoveTo.swift
 //  TPSVG
 //
 //  Created by Philip Niedertscheider on 01.12.18.
@@ -9,12 +9,12 @@
 /**
  TODO: Add documentation
  */
-class TPSVGInstrVerticalLineTo: TPSVGInstruction {
+class TPSVGInstrMoveTo: TPSVGInstruction {
 
     /**
      TODO: Add documentation
      */
-    var length: CGFloat
+    var point: CGPoint
 
     /**
      TODO: Add documentation
@@ -24,27 +24,9 @@ class TPSVGInstrVerticalLineTo: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    init(length: CGFloat, relative: Bool = false) {
-        self.length = length
+    init(point: CGPoint, relative: Bool = false) {
+        self.point = point
         self.relative = relative
-    }
-
-    // MARK: - CustomStringConvertible
-
-    /**
-     TODO: Add documentation
-     */
-    override var description: String {
-        return "TPSVGInstrVerticalLineTo {}"
-    }
-
-    // MARK: - CustomDebugStringConvertible
-
-    /**
-     TODO: Add documentation
-     */
-    override var debugDescription: String {
-        return "TPSVGInstrVerticalLineTo { length: \(length), relative: \(relative) }"
     }
 
     // MARK: - Drawing
@@ -52,7 +34,7 @@ class TPSVGInstrVerticalLineTo: TPSVGInstruction {
     /**
      Modifies a given path using the logic of this instruction.
 
-     Adds a vertical line to the given `path` starting and the current point.
+     Moves the current point of the given `path`.
 
      - Parameter path: Active path, which should be modified
      - Parameter prev: Previous instruction if exists, might be null.
@@ -60,23 +42,23 @@ class TPSVGInstrVerticalLineTo: TPSVGInstruction {
      */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {
-            var end = path.currentPoint
-            end.y += length
-            path.addLine(to: end)
+            let current = path.isEmpty ? .zero : path.currentPoint
+            path.move(to: current + point)
         } else {
-            var end = path.currentPoint
-            end.y = length
-            path.addLine(to: end)
+            path.move(to: point)
         }
     }
+}
 
-    // MARK: - Equatable
+// MARK: - Equatable
+
+extension TPSVGInstrMoveTo {
 
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrVerticalLineTo, rhs: TPSVGInstrVerticalLineTo) -> Bool {
-        guard lhs.length == rhs.length else {
+    internal static func == (lhs: TPSVGInstrMoveTo, rhs: TPSVGInstrMoveTo) -> Bool {
+        guard lhs.point == rhs.point else {
             return false
         }
         guard lhs.relative == rhs.relative else {

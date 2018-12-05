@@ -21,7 +21,7 @@ class TPSVGNumberParser {
     /**
      TODO: Add documentation
      */
-    public static func parse(_ raw: String) -> (value: CGFloat, unit: String)? {
+    internal static func parse(_ raw: String) -> (value: CGFloat, unit: String)? {
         guard let regex = try? TPRegex(pattern: "^([-|+]?[\\d|,|\\.]*)(.*)$") else {
             return nil
         }
@@ -44,7 +44,7 @@ class TPSVGNumberParser {
     /**
      TODO: Add documentation
      */
-    public static func parsePair(_ raw: String, separator: String = ",") -> (left: (value: CGFloat, unit: String),
+    internal static func parsePair(_ raw: String, separator: String = ",") -> (left: (value: CGFloat, unit: String),
                                                                              right: (value: CGFloat, unit: String))? {
         let comps = raw.components(separatedBy: separator)
         guard comps.count == 2 else {

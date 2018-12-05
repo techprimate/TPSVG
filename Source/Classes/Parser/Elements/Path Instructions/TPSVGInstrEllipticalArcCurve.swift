@@ -79,7 +79,7 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
      */
     // swiftlint:disable identifier_name
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
-        let start = path.currentPoint
+        let start = path.isEmpty ? .zero : path.currentPoint
         let end = self.end
         var r = self.radius
         let xAxisRotation = self.xAxisRotation
@@ -190,7 +190,7 @@ class TPSVGInstrEllipticalArcCurve: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrEllipticalArcCurve, rhs: TPSVGInstrEllipticalArcCurve) -> Bool {
+    internal static func == (lhs: TPSVGInstrEllipticalArcCurve, rhs: TPSVGInstrEllipticalArcCurve) -> Bool {
         guard lhs.end == rhs.end else {
             return false
         }

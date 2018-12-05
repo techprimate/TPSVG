@@ -9,36 +9,36 @@
 /**
  TODO: documentation
  */
-public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugStringConvertible {
+class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugStringConvertible {
 
     /**
      TODO: documentation
      */
-    public var classNames: [String]
+    internal var classNames: [String]
 
     /**
      */
-    public var inheritedStyles: [TPSVGStyle]
+    internal var inheritedStyles: [TPSVGStyle]
 
     /**
      Holds a reference to the SVG styles, resolved by `classNames`.
      */
-    public var styles: [TPSVGStyle]
+    internal var styles: [TPSVGStyle]
 
     /**
      Holds a style represnting all inline styling
      */
-    public var inline: TPSVGStyle?
+    internal var inline: TPSVGStyle?
 
     /**
      Style which should be used for drawing
      */
-    public var resolvedStyle: TPSVGStyle?
+    internal var resolvedStyle: TPSVGStyle?
 
     /**
      TODO: documentation
      */
-    public init(classNames: [String] = [], inheritedStyles: [TPSVGStyle] = [], styles: [TPSVGStyle] = [], inline: TPSVGStyle? = nil) {
+    internal init(classNames: [String] = [], inheritedStyles: [TPSVGStyle] = [], styles: [TPSVGStyle] = [], inline: TPSVGStyle? = nil) {
         self.classNames = classNames
         self.inheritedStyles = inheritedStyles
         self.styles = styles
@@ -48,7 +48,7 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
     /**
      Initalises an instance using the given `attributes`
      */
-    public init?(attributes: [String: String]) {
+    internal init?(attributes: [String: String]) {
         self.classNames = attributes["class"]?.split(separator: " ").map({ String($0) }) ?? []
         self.styles = []
         self.inheritedStyles = []
@@ -77,7 +77,7 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
     /**
      TODO: documentation
      */
-    public static func == (lhs: TPSVGElement, rhs: TPSVGElement) -> Bool {
+    internal static func == (lhs: TPSVGElement, rhs: TPSVGElement) -> Bool {
         if let lhs = lhs as? TPSVGCircle, let rhs = rhs as? TPSVGCircle {
             return lhs == rhs
         }
@@ -117,14 +117,14 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
     /**
      TODO: Add documentation
      */
-    public func draw(in context: CGContext) {}
+    internal func draw(in context: CGContext) {}
 
     // MARK: - CustomStringConvertible
 
     /**
      TODO: Add documentation
      */
-    public var description: String {
+    internal var description: String {
         return "TPSVGElement {}"
     }
 
@@ -133,13 +133,13 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
     /**
      TODO: Add documentation
      */
-    public var debugDescription: String {
+    internal var debugDescription: String {
         return "TPSVGElement { classes: \(classNames), styles: \(styles) }"
     }
 
     // MARK: - Calculations
 
-    public var bounds: CGRect {
+    internal var bounds: CGRect {
         return .zero
     }
 }

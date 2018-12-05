@@ -14,12 +14,12 @@ class TPSVGPath: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public var instructions: [TPSVGInstruction]
+    internal var instructions: [TPSVGInstruction]
 
     /**
      TODO: Add documentation
      */
-    public init(classNames: [String] = [], inline: TPSVGStyle? = nil, instructions: [TPSVGInstruction] = []) {
+    internal init(classNames: [String] = [], inline: TPSVGStyle? = nil, instructions: [TPSVGInstruction] = []) {
         self.instructions = instructions
         super.init(classNames: classNames, inline: inline)
     }
@@ -27,7 +27,7 @@ class TPSVGPath: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public override init?(attributes: [String: String]) {
+    internal override init?(attributes: [String: String]) {
         if let rawD = attributes["d"] {
             self.instructions = TPSVGPathDLexer(raw: rawD).parse()
         } else {
@@ -41,7 +41,7 @@ class TPSVGPath: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGPath, rhs: TPSVGPath) -> Bool {
+    internal static func == (lhs: TPSVGPath, rhs: TPSVGPath) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
         }
@@ -79,7 +79,7 @@ class TPSVGPath: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    override public var description: String {
+    override internal var description: String {
         return "TPSVGPath {}"
     }
 
@@ -88,20 +88,20 @@ class TPSVGPath: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    override public var debugDescription: String {
+    override internal var debugDescription: String {
         return "TPSVGPath { classes: \(classNames), instructions: \(instructions) }"
     }
 
     // MARK: - Calculations
 
     /// :nodoc:
-    override public var bounds: CGRect {
+    override internal var bounds: CGRect {
         let path = CGMutablePath()
 
         var prev: TPSVGInstruction?
         var lastStartPoint: CGPoint?
         for inst in instructions {
-            let point = path.currentPoint
+            let point = path.isEmpty ? .zero : path.currentPoint
             inst.modify(path: path, prev: prev, prevStartPoint: lastStartPoint)
             lastStartPoint = point
             prev = inst

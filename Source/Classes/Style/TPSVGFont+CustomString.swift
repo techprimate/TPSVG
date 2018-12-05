@@ -14,14 +14,14 @@ extension TPSVGFont: CustomStringConvertible, CustomDebugStringConvertible {
     /**
      TODO: documentation
      */
-    public var description: String {
+    internal var description: String {
         return String(format: "TPSVGFont { family: %@, size: %f }", family ?? "nil", size ?? 0)
     }
 
     /**
      TODO: documentation
      */
-    public var debugDescription: String {
+    internal var debugDescription: String {
         return String(format: "TPSVGFont { family: %@, size: %f }", family ?? "nil", size ?? 0)
     }
 }

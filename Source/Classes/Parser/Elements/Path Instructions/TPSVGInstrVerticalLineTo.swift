@@ -1,5 +1,5 @@
 //
-//  TPSVGInstrHorizontalLineTo.swift
+//  TPSVGInstrVerticalLineTo.swift
 //  TPSVG
 //
 //  Created by Philip Niedertscheider on 01.12.18.
@@ -9,7 +9,7 @@
 /**
  TODO: Add documentation
  */
-class TPSVGInstrHorizontalLineTo: TPSVGInstruction {
+class TPSVGInstrVerticalLineTo: TPSVGInstruction {
 
     /**
      TODO: Add documentation
@@ -35,7 +35,7 @@ class TPSVGInstrHorizontalLineTo: TPSVGInstruction {
      TODO: Add documentation
      */
     override var description: String {
-        return "TPSVGInstrHorizontalLineTo {}"
+        return "TPSVGInstrVerticalLineTo {}"
     }
 
     // MARK: - CustomDebugStringConvertible
@@ -44,7 +44,7 @@ class TPSVGInstrHorizontalLineTo: TPSVGInstruction {
      TODO: Add documentation
      */
     override var debugDescription: String {
-        return "TPSVGInstrHorizontalLineTo { length: \(length), relative: \(relative) }"
+        return "TPSVGInstrVerticalLineTo { length: \(length), relative: \(relative) }"
     }
 
     // MARK: - Drawing
@@ -52,22 +52,20 @@ class TPSVGInstrHorizontalLineTo: TPSVGInstruction {
     /**
      Modifies a given path using the logic of this instruction.
 
-     Adds a horizontal line to the given `path` starting and the current point.
+     Adds a vertical line to the given `path` starting and the current point.
 
      - Parameter path: Active path, which should be modified
      - Parameter prev: Previous instruction if exists, might be null.
      - Parameter prevStartPoint: Start point of previous instruction, used to calculate control points with relative values
      */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
+        var end = path.isEmpty ? .zero : path.currentPoint
         if relative {
-            var end = path.currentPoint
-            end.x += length
-            path.addLine(to: end)
+            end.y += length
         } else {
-            var end = path.currentPoint
-            end.x = length
-            path.addLine(to: end)
+            end.y = length
         }
+        path.addLine(to: end)
     }
 
     // MARK: - Equatable
@@ -75,7 +73,7 @@ class TPSVGInstrHorizontalLineTo: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrHorizontalLineTo, rhs: TPSVGInstrHorizontalLineTo) -> Bool {
+    internal static func == (lhs: TPSVGInstrVerticalLineTo, rhs: TPSVGInstrVerticalLineTo) -> Bool {
         guard lhs.length == rhs.length else {
             return false
         }

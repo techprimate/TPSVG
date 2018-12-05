@@ -9,22 +9,22 @@
 /**
  TODO: Add documentation
  */
-public class TPSVGRect: TPSVGElement {
+class TPSVGRect: TPSVGElement {
 
     /**
      TODO: Add documentation
      */
-    public private(set) var origin: CGPoint
+    internal private(set) var origin: CGPoint
 
     /**
      TODO: Add documentation
      */
-    public private(set) var size: CGSize
+    internal private(set) var size: CGSize
 
     /**
      TODO: Add documentation
      */
-    public init(classNames: [String] = [], origin: CGPoint = .zero, size: CGSize = .zero) {
+    internal init(classNames: [String] = [], origin: CGPoint = .zero, size: CGSize = .zero) {
         self.origin = origin
         self.size = size
         super.init(classNames: classNames)
@@ -33,7 +33,7 @@ public class TPSVGRect: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public override init?(attributes: [String: String]) {
+    internal override init?(attributes: [String: String]) {
         origin = .zero
         size = .zero
 
@@ -58,7 +58,7 @@ public class TPSVGRect: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGRect, rhs: TPSVGRect) -> Bool {
+    internal static func == (lhs: TPSVGRect, rhs: TPSVGRect) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
         }
@@ -76,7 +76,7 @@ public class TPSVGRect: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    override public func draw(in context: CGContext) {
+    override internal func draw(in context: CGContext) {
         context.fill(CGRect(origin: origin, size: size))
         context.stroke(CGRect(origin: origin, size: size))
     }
@@ -84,7 +84,7 @@ public class TPSVGRect: TPSVGElement {
     // MARK: - Calculations
 
     /// :nodoc:
-    override public var bounds: CGRect {
+    override internal var bounds: CGRect {
         return CGRect(origin: origin, size: size)
     }
 }

@@ -60,7 +60,8 @@ class TPSVGInstrLineTo: TPSVGInstruction {
      */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {
-            path.addLine(to: path.currentPoint + point)
+            let current = path.isEmpty ? .zero : path.currentPoint
+            path.addLine(to: current + point)
         } else {
             path.addLine(to: point)
         }
@@ -71,7 +72,7 @@ class TPSVGInstrLineTo: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrLineTo, rhs: TPSVGInstrLineTo) -> Bool {
+    internal static func == (lhs: TPSVGInstrLineTo, rhs: TPSVGInstrLineTo) -> Bool {
         guard lhs.point == rhs.point else {
             return false
         }

@@ -54,7 +54,7 @@ class TPSVGPathDLexer {
 
         for (cmd, data) in unparsedElements {
             var currCmd = cmd
-            var values: [CGFloat] = TPSVGPathDLexer.parseValues(from: data)
+            var values: [CGFloat] = TPSVGValueLexer.parseValues(from: data)
             repeat {
                 var element: TPSVGInstruction?
                 switch currCmd {
@@ -114,57 +114,6 @@ class TPSVGPathDLexer {
         }
 
         return result
-    }
-
-    /**
-     TODO: Add documentation
-     */
-    public static func parseValues(from raw: String) -> [CGFloat] {
-        var values: [CGFloat] = []
-        var valueData: [Character] = []
-        for c in raw {
-            if let dChar = DChars(rawValue: String(c).utf8CString[0]) {
-                switch dChar {
-                case .sign:
-                    if let parsed = TPSVGNumberParser.parse(String(valueData)) {
-                        values.append(parsed.value)
-                        valueData = [c]
-                    } else {
-                        valueData = [c]
-                    }
-                case .comma:
-                    if let parsed = TPSVGNumberParser.parse(String(valueData)) {
-                        values.append(parsed.value)
-                        valueData = []
-                    } else {
-                        valueData = [c]
-                    }
-                case .space:
-                    if let parsed = TPSVGNumberParser.parse(String(valueData)) {
-                        values.append(parsed.value)
-                    }
-                    valueData = []
-                case .dot:
-                    if valueData.contains(c), let parsed = TPSVGNumberParser.parse(String(valueData)) {
-                        values.append(parsed.value)
-                        valueData = [c]
-                    } else {
-                        valueData.append(c)
-                    }
-                default:
-                    break
-                }
-            } else {
-                valueData.append(c)
-            }
-        }
-        if !valueData.isEmpty {
-            if let parsed = TPSVGNumberParser.parse(String(valueData)) {
-                values.append(parsed.value)
-            }
-            valueData = []
-        }
-        return values
     }
 
     /**

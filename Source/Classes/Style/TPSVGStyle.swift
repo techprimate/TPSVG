@@ -9,7 +9,7 @@
 /**
  TODO: documentation
  */
-public class TPSVGStyle {
+class TPSVGStyle {
 
     /**
      TODO: documentation
@@ -34,7 +34,7 @@ public class TPSVGStyle {
     /**
      TODO: documentation
      */
-    public init(name: String, fill: UIColor? = nil, stroke: TPSVGStroke? = nil, font: TPSVGFont? = nil) {
+    internal init(name: String, fill: UIColor? = nil, stroke: TPSVGStroke? = nil, font: TPSVGFont? = nil) {
         self.name = name
         self.fill = fill
         self.stroke = stroke

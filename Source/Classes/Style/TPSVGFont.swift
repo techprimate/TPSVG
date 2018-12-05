@@ -9,22 +9,22 @@
 /**
  TODO: documentation
  */
-public struct TPSVGFont {
+internal struct TPSVGFont {
 
     /**
      TODO: documentation
      */
-    public var family: String?
+    internal var family: String?
 
     /**
      TODO: documentation
      */
-    public var size: CGFloat?
+    internal var size: CGFloat?
 
     /**
      TODO: documentation
      */
-    public init(family: String? = nil, size: CGFloat? = nil) {
+    internal init(family: String? = nil, size: CGFloat? = nil) {
         self.family = family
         self.size = size
     }

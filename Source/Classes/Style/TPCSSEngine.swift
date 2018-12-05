@@ -14,7 +14,7 @@ class TPCSSEngine {
     /**
      TODO: documentation
      */
-    public var text: String = ""
+    internal var text: String = ""
 
     /**
      TODO: documentation

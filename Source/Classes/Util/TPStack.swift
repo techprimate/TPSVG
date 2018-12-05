@@ -8,7 +8,7 @@
 /**
  TODO: Add documentation
  */
-public struct TPStack<T> {
+struct TPStack<T> {
 
     /**
      TODO: Add documentation
@@ -18,21 +18,21 @@ public struct TPStack<T> {
     /**
      TODO: Add documentation
      */
-    public init(values: T...) {
+    internal init(values: T...) {
         array.append(contentsOf: values)
     }
 
     /**
      TODO: Add documentation
      */
-    public var isEmpty: Bool {
+    internal var isEmpty: Bool {
         return array.isEmpty
     }
 
     /**
      TODO: Add documentation
      */
-    public var count: Int {
+    internal var count: Int {
         return array.count
     }
 
@@ -40,7 +40,7 @@ public struct TPStack<T> {
      TODO: Add documentation
      */
     @discardableResult
-    public mutating func push(_ element: T) -> TPStack<T> {
+    internal mutating func push(_ element: T) -> TPStack<T> {
         array.append(element)
         return self
     }
@@ -49,7 +49,7 @@ public struct TPStack<T> {
      TODO: Add documentation
      */
     @discardableResult
-    public mutating func pop(to count: Int? = nil) -> T? {
+    internal mutating func pop(to count: Int? = nil) -> T? {
         if let count = count {
             var value: T?
             while self.count > count {
@@ -63,7 +63,7 @@ public struct TPStack<T> {
     /**
      TODO: Add documentation
      */
-    public var top: T? {
+    internal var top: T? {
         return array.last
     }
 }
@@ -76,7 +76,7 @@ extension TPStack: CustomStringConvertible where T: CustomStringConvertible {
     /**
      TODO: Add documentation
      */
-    public var description: String {
+    var description: String {
         return array.map({ $0.description }).joined(separator: "\n")
     }
 }
@@ -89,7 +89,7 @@ extension TPStack: CustomDebugStringConvertible where T: CustomDebugStringConver
     /**
      TODO: Add documentation
      */
-    public var debugDescription: String {
+    var debugDescription: String {
         return array.map({ $0.debugDescription }).joined(separator: "\n")
     }
 }

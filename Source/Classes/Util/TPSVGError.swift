@@ -9,7 +9,7 @@
 /**
  All errors used in TPSVG
  */
-public enum TPSVGError: Error {
+internal enum TPSVGError: Error {
 
     /**
      Data is not a valid UTF-8 string.

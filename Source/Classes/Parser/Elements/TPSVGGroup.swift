@@ -14,12 +14,12 @@ class TPSVGGroup: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public var elements: [TPSVGElement]
+    internal var elements: [TPSVGElement]
 
     /**
      TODO: Add documentation
      */
-    public init(elements: [TPSVGElement] = [], classNames: [String] = []) {
+    internal init(elements: [TPSVGElement] = [], classNames: [String] = []) {
         self.elements = elements
         super.init(classNames: classNames)
     }
@@ -29,7 +29,7 @@ class TPSVGGroup: TPSVGElement {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGGroup, rhs: TPSVGGroup) -> Bool {
+    internal static func == (lhs: TPSVGGroup, rhs: TPSVGGroup) -> Bool {
         guard lhs.classNames == rhs.classNames else {
             return false
         }
@@ -70,7 +70,7 @@ class TPSVGGroup: TPSVGElement {
     // MARK: - Calculations
 
     /// :nodoc:
-    override public var bounds: CGRect {
+    override internal var bounds: CGRect {
         return elements.reduce(CGRect.null, { (prev, element) -> CGRect in
             return prev.union(element.bounds)
         })

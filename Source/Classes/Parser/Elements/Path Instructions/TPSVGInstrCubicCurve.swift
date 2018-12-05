@@ -72,7 +72,7 @@ class TPSVGInstrCubicCurve: TPSVGInstruction {
      */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {
-            let ref = path.currentPoint
+            let ref = path.isEmpty ? .zero : path.currentPoint
             path.addCurve(to: ref + end, control1: ref + control1, control2: ref + control2)
         } else {
             path.addCurve(to: end, control1: control1, control2: control2)
@@ -85,7 +85,7 @@ class TPSVGInstrCubicCurve: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrCubicCurve, rhs: TPSVGInstrCubicCurve) -> Bool {
+    internal static func == (lhs: TPSVGInstrCubicCurve, rhs: TPSVGInstrCubicCurve) -> Bool {
         guard lhs.end == rhs.end else {
             return false
         }
