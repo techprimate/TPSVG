@@ -128,14 +128,14 @@ class TPSVG_UIImage_Spec: QuickSpec {
 
                 it("should render render file-7") {
                     // TODO: implement text rendering
-//                    guard let svg = svgImage(file: "file-7-text") else {
-//                        fail("Image should not be null!")
-//                        fatalError()
-//                    }
-//                    let ref = referenceImage(file: "file-7-text")
-//
-//                    expect(svg.size) == ref.size
-//                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    //                    guard let svg = svgImage(file: "file-7-text") else {
+                    //                        fail("Image should not be null!")
+                    //                        fatalError()
+                    //                    }
+                    //                    let ref = referenceImage(file: "file-7-text")
+                    //
+                    //                    expect(svg.size) == ref.size
+                    //                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
                 }
 
                 it("should render render file-8") {
@@ -168,7 +168,7 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     let ref = referenceImage(file: "file-10-tiger")
 
                     expect(svg.size) == ref.size
-                    expect(svg.pixelsEqual(to: ref)).to(beTrue())
+                    expect(svg.pixelError(to: ref)) < 0.01
                 }
 
                 it("should render render file-11") {
@@ -232,6 +232,7 @@ class TPSVG_UIImage_Spec: QuickSpec {
                         fatalError()
                     }
                     let ref = referenceImage(file: "file-13-icon-04")
+
 
                     expect(svg.size) == ref.size
                     expect(svg.pixelsEqual(to: ref)).to(beTrue())

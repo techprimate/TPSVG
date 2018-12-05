@@ -111,7 +111,7 @@ class TPSVG_Spec: QuickSpec {
                     expect(loadSVG(name: "file-4-circle").contentBounds) == CGRect(x: 100, y: 100, width: 300, height: 300)
                     expect(loadSVG(name: "file-5-ellipse").contentBounds) == CGRect(x: 25, y: 100, width: 450, height: 300)
 
-                    let file6Bounds = loadSVG(name: "file-6").contentBounds
+                    let file6Bounds = loadSVG(name: "file-6-path").contentBounds
                     expect(file6Bounds.origin.x).to(beCloseTo(90))
                     expect(file6Bounds.origin.y).to(beCloseTo(170))
                     expect(file6Bounds.size.width).to(beCloseTo(340))
@@ -132,7 +132,7 @@ class TPSVG_Spec: QuickSpec {
                     expect(file10Bounds.size.width).to(beCloseTo(872.0088638741104))
                     expect(file10Bounds.size.height).to(beCloseTo(898.9919779406335))
 
-                    expect(loadSVG(name: "file-11-line").contentBounds) == CGRect(x: 100, y: 200, width: 250, height: 0)
+                    expect(loadSVG(name: "file-11-line").contentBounds) == CGRect(x: 100, y: 250, width: 300, height: 0)
 
 
                     expect(loadSVG(name: "file-14-v-line").contentBounds) == CGRect(x: 100, y: 150, width: 100, height: 350)

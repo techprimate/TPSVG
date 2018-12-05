@@ -17,6 +17,10 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
     public var classNames: [String]
 
     /**
+     */
+    public var inheritedStyles: [TPSVGStyle]
+
+    /**
      Holds a reference to the SVG styles, resolved by `classNames`.
      */
     public var styles: [TPSVGStyle]
@@ -29,9 +33,10 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
     /**
      TODO: documentation
      */
-    public init(classNames: [String] = [], inline: TPSVGStyle? = nil) {
+    public init(classNames: [String] = [], inheritedStyles: [TPSVGStyle] = [], styles: [TPSVGStyle] = [], inline: TPSVGStyle? = nil) {
         self.classNames = classNames
-        self.styles = []
+        self.inheritedStyles = inheritedStyles
+        self.styles = styles
         self.inline = inline
     }
 
@@ -41,6 +46,7 @@ public class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugString
     public init?(attributes: [String: String]) {
         self.classNames = attributes["class"]?.split(separator: " ").map({ String($0) }) ?? []
         self.styles = []
+        self.inheritedStyles = []
 
         var inlineFillColor: TPSVGColor?
         if let rawHex = attributes["fill"] {

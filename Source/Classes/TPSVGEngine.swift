@@ -84,6 +84,9 @@ class TPSVGEngine: NSObject {
         })
         if let groupElement = element as? TPSVGGroup {
             groupElement.elements.forEach(resolveStyles(element:))
+            groupElement.elements.forEach { (el) in
+                el.inheritedStyles = groupElement.inheritedStyles + groupElement.styles
+            }
         }
     }
 }

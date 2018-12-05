@@ -50,13 +50,24 @@ extension CGImage {
     }
 
     /**
-     Compares this image to the `other` image bit-by-bit and calculates the error.
+     Compares this image to the `other` image bit-by-bit and checks if the error is below the given `threshold`.
 
      TODO: documentation
      */
     func pixelsEqual(to other: CGImage, threshold: Double = 0.01) -> Bool {
+        return pixelError(to: other) <= threshold
+    }
+
+    /**
+     Compares this image to the `other` image bit-by-bit and calculates the error.
+
+     Lower means better.
+
+     TODO: documentation
+     */
+    func pixelError(to other: CGImage) -> Double {
         guard self.width == other.width && self.height == other.height else {
-            return false
+            return 1.0
         }
 
         let colorSpace = CGColorSpaceCreateDeviceRGB()
@@ -69,15 +80,15 @@ extension CGImage {
                                       bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow,
                                       space: colorSpace, bitmapInfo: bitmapInfo),
             let ptr = context.data?.assumingMemoryBound(to: UInt8.self) else {
-                return false
+                return 1.0
         }
         context.draw(self, in: CGRect(x: 0, y: 0, width: width, height: height))
 
         guard let otherContext = CGContext(data: nil, width: width, height: height,
-                                      bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow,
-                                      space: colorSpace, bitmapInfo: bitmapInfo),
+                                           bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow,
+                                           space: colorSpace, bitmapInfo: bitmapInfo),
             let otherPtr = otherContext.data?.assumingMemoryBound(to: UInt8.self) else {
-                return false
+                return 1.0
         }
         otherContext.draw(other, in: CGRect(x: 0, y: 0, width: width, height: height))
 
@@ -93,6 +104,6 @@ extension CGImage {
                 }
             }
         }
-        return Double(diffPixelCount) / Double(height * width) <= threshold
+        return Double(diffPixelCount) / Double(height * width)
     }
 }

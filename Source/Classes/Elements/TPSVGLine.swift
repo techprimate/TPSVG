@@ -93,7 +93,7 @@ class TPSVGLine: TPSVGElement {
         let path = CGMutablePath()
         path.move(to: start)
         path.addLine(to: end)
-        
+
         return path.boundingBoxOfPath
     }
 }

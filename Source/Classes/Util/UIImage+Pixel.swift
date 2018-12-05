@@ -29,9 +29,16 @@ extension UIImage {
      TODO: documentation
      */
     func pixelsEqual(to other: UIImage, threshold: Double = 0.01) -> Bool {
+        return pixelError(to: other) <= threshold
+    }
+
+    /**
+     TODO: documentation
+     */
+    func pixelError(to other: UIImage) -> Double {
         guard let cgImg = self.cgImage, let otherCGImage = other.cgImage else {
-            return false
+            return 1.0
         }
-        return cgImg.pixelsEqual(to: otherCGImage, threshold: threshold)
+        return cgImg.pixelError(to: otherCGImage)
     }
 }

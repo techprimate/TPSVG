@@ -59,17 +59,11 @@ class TPSVGGroup: TPSVGElement {
     override func draw(in context: CGContext) {
         for element in elements {
             // Style
-            if let fill = element.styles.reduce(nil, { (prev, style) -> TPSVGColor? in
-                return style.fill != nil ? style.fill : prev
-            }) {
-                context.setFillColor(fill.cgColor)
-            }
-            if let stroke = element.styles.reduce(nil, { (prev, style) -> TPSVGStroke? in
-                return style.stroke != nil ? style.stroke : prev
-            }) {
-                context.setStrokeColor(stroke.color?.cgColor ?? UIColor.clear.cgColor)
-                context.setLineWidth(stroke.width ?? 0)
-            }
+            context.setFillColor(TPSVG.fillColor(of: element).cgColor)
+            context.setStrokeColor(TPSVG.strokeColor(of: element).cgColor)
+            context.setLineWidth(TPSVG.strokeLineWidth(of: element))
+            context.setMiterLimit(TPSVG.strokeMiterLimit(of: element))
+
             element.draw(in: context)
         }
     }
