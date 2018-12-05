@@ -1,5 +1,5 @@
 //
-//  TPSVGInstrLineTo.swift
+//  TPSVGInstrMoveTo.swift
 //  TPSVG
 //
 //  Created by Philip Niedertscheider on 01.12.18.
@@ -9,7 +9,7 @@
 /**
  TODO: Add documentation
  */
-class TPSVGInstrLineTo: TPSVGInstruction {
+class TPSVGInstrMoveTo: TPSVGInstruction {
 
     /**
      TODO: Add documentation
@@ -29,30 +29,12 @@ class TPSVGInstrLineTo: TPSVGInstruction {
         self.relative = relative
     }
 
-    // MARK: - CustomStringConvertible
-
-    /**
-     TODO: Add documentation
-     */
-    override var description: String {
-        return "TPSVGInstrLineTo {}"
-    }
-
-    // MARK: - CustomDebugStringConvertible
-
-    /**
-     TODO: Add documentation
-     */
-    override var debugDescription: String {
-        return "TPSVGInstrLineTo { point: \(point), relative: \(relative) }"
-    }
-
     // MARK: - Drawing
 
     /**
      Modifies a given path using the logic of this instruction.
 
-     Adds a line to the given `path`.
+     Moves the current point of the given `path`.
 
      - Parameter path: Active path, which should be modified
      - Parameter prev: Previous instruction if exists, might be null.
@@ -60,18 +42,22 @@ class TPSVGInstrLineTo: TPSVGInstruction {
      */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {
-            path.addLine(to: path.currentPoint + point)
+            let current = path.isEmpty ? .zero : path.currentPoint
+            path.move(to: current + point)
         } else {
-            path.addLine(to: point)
+            path.move(to: point)
         }
     }
+}
 
-    // MARK: - Equatable
+// MARK: - Equatable
+
+extension TPSVGInstrMoveTo {
 
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrLineTo, rhs: TPSVGInstrLineTo) -> Bool {
+    public static func == (lhs: TPSVGInstrMoveTo, rhs: TPSVGInstrMoveTo) -> Bool {
         guard lhs.point == rhs.point else {
             return false
         }

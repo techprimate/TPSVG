@@ -1,5 +1,5 @@
 //
-//  TPSVGInstrCubicCurve.swift
+//  TPSVGInstrVerticalLineTo.swift
 //  TPSVG
 //
 //  Created by Philip Niedertscheider on 01.12.18.
@@ -9,22 +9,12 @@
 /**
  TODO: Add documentation
  */
-class TPSVGInstrCubicCurve: TPSVGInstruction {
+class TPSVGInstrVerticalLineTo: TPSVGInstruction {
 
     /**
      TODO: Add documentation
      */
-    var end: CGPoint
-
-    /**
-     TODO: Add documentation
-     */
-    var control1: CGPoint
-
-    /**
-     TODO: Add documentation
-     */
-    var control2: CGPoint
+    var length: CGFloat
 
     /**
      TODO: Add documentation
@@ -34,10 +24,8 @@ class TPSVGInstrCubicCurve: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    init(control1: CGPoint, control2: CGPoint, end: CGPoint, relative: Bool = false) {
-        self.end = end
-        self.control1 = control1
-        self.control2 = control2
+    init(length: CGFloat, relative: Bool = false) {
+        self.length = length
         self.relative = relative
     }
 
@@ -47,7 +35,7 @@ class TPSVGInstrCubicCurve: TPSVGInstruction {
      TODO: Add documentation
      */
     override var description: String {
-        return "TPSVGInstrCubicCurve {}"
+        return "TPSVGInstrVerticalLineTo {}"
     }
 
     // MARK: - CustomDebugStringConvertible
@@ -56,7 +44,7 @@ class TPSVGInstrCubicCurve: TPSVGInstruction {
      TODO: Add documentation
      */
     override var debugDescription: String {
-        return "TPSVGInstrCubicCurve {control1: \(control1), control2: \(control2), end: \(end), relative: \(relative) }"
+        return "TPSVGInstrVerticalLineTo { length: \(length), relative: \(relative) }"
     }
 
     // MARK: - Drawing
@@ -64,20 +52,20 @@ class TPSVGInstrCubicCurve: TPSVGInstruction {
     /**
      Modifies a given path using the logic of this instruction.
 
-     Adds a cubic curve to the given `path` starting and the current point.
+     Adds a vertical line to the given `path` starting and the current point.
 
      - Parameter path: Active path, which should be modified
      - Parameter prev: Previous instruction if exists, might be null.
      - Parameter prevStartPoint: Start point of previous instruction, used to calculate control points with relative values
      */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
+        var end = path.isEmpty ? .zero : path.currentPoint
         if relative {
-            let ref = path.currentPoint
-            path.addCurve(to: ref + end, control1: ref + control1, control2: ref + control2)
+            end.y += length
         } else {
-            path.addCurve(to: end, control1: control1, control2: control2)
-
+            end.y = length
         }
+        path.addLine(to: end)
     }
 
     // MARK: - Equatable
@@ -85,14 +73,8 @@ class TPSVGInstrCubicCurve: TPSVGInstruction {
     /**
      TODO: Add documentation
      */
-    public static func == (lhs: TPSVGInstrCubicCurve, rhs: TPSVGInstrCubicCurve) -> Bool {
-        guard lhs.end == rhs.end else {
-            return false
-        }
-        guard lhs.control1 == rhs.control1 else {
-            return false
-        }
-        guard lhs.control2 == rhs.control2 else {
+    public static func == (lhs: TPSVGInstrVerticalLineTo, rhs: TPSVGInstrVerticalLineTo) -> Bool {
+        guard lhs.length == rhs.length else {
             return false
         }
         guard lhs.relative == rhs.relative else {

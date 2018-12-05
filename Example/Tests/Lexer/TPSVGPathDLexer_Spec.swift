@@ -212,19 +212,6 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                     }
                 }
             }
-
-            describe("parseRaw") {
-
-                it("should parse values") {
-                    let raw = "-2.46.4-4.9.86-7.32,1.41"
-                    expect(TPSVGPathDLexer.parseValues(from: raw)) == [-2.46, 0.4, -4.9, 0.86, -7.32, 1.41]
-                }
-
-                it("should parse values") {
-                    let raw = "123.456 654.321 123.123 567.567 876.876 465.465"
-                    expect(TPSVGPathDLexer.parseValues(from: raw)) == [123.456, 654.321, 123.123, 567.567, 876.876, 465.465]
-                }
-            }
         }
     }
 }

@@ -60,7 +60,7 @@ class TPSVGInstrQuadraticCurve: TPSVGInstruction {
      */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
         if relative {
-            let ref = path.currentPoint
+            let ref = path.isEmpty ? .zero : path.currentPoint
             path.addQuadCurve(to: ref + end, control: ref + control1)
         } else {
             path.addQuadCurve(to: end, control: control1)

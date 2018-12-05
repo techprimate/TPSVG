@@ -28,19 +28,11 @@ class TPSVGPolygon: TPSVGElement {
      TODO: Add documentation
      */
     public override init?(attributes: [String: String]) {
-        guard let rawPoints = attributes["points"] else {
-            return nil
+        self.points = []
+
+        if let rawPoints = attributes["points"] {
+            self.points = TPSVGValueLexer.parsePoints(from: rawPoints)
         }
-        self.points = rawPoints.split(separator: " ").compactMap({ item -> CGPoint? in
-            let comps = item.split(separator: ",")
-            guard comps.count == 2 else {
-                return nil
-            }
-            guard let x = TPSVGNumberParser.parse(String(comps[0])), let y = TPSVGNumberParser.parse(String(comps[1])) else {
-                return nil
-            }
-            return CGPoint(x: x.value, y: y.value)
-        })
         super.init(attributes: attributes)
     }
 

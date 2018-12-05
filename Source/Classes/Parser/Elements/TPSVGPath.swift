@@ -101,7 +101,7 @@ class TPSVGPath: TPSVGElement {
         var prev: TPSVGInstruction?
         var lastStartPoint: CGPoint?
         for inst in instructions {
-            let point = path.currentPoint
+            let point = path.isEmpty ? .zero : path.currentPoint
             inst.modify(path: path, prev: prev, prevStartPoint: lastStartPoint)
             lastStartPoint = point
             prev = inst

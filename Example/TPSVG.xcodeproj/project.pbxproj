@@ -14,6 +14,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		7E6C7453A616E44389A90FAA /* Pods_TPSVG_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1F6999D9B3F2A2CE8A052E /* Pods_TPSVG_Tests.framework */; };
 		AB6E74C374D403AE3A0C6E11 /* Pods_TPSVG_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F884A594357B0231E777545 /* Pods_TPSVG_Example.framework */; };
+		D40218C921B8315C00C80051 /* TPSVGPolygon_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40218C821B8315C00C80051 /* TPSVGPolygon_Spec.swift */; };
 		D40822F121AF3F740027B10B /* CGImage+Pixel_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40822F021AF3F740027B10B /* CGImage+Pixel_Spec.swift */; };
 		D40822F321AF42B40027B10B /* UIImage+Pixel_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40822F221AF42B40027B10B /* UIImage+Pixel_Spec.swift */; };
 		D40D188E21B098CA0061C15F /* file-1-rect.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40D188521B098CA0061C15F /* file-1-rect.svg */; };
@@ -77,6 +78,7 @@
 		D429C69721B2B7A000B5CE0A /* file-11-line.svg in Resources */ = {isa = PBXBuildFile; fileRef = D429C65F21B1A8A800B5CE0A /* file-11-line.svg */; };
 		D429C69821B2B7DD00B5CE0A /* file-11-line.svg in Resources */ = {isa = PBXBuildFile; fileRef = D429C65F21B1A8A800B5CE0A /* file-11-line.svg */; };
 		D429C6B721B2E72500B5CE0A /* TPSVGPathDLexer_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D429C6B621B2E72500B5CE0A /* TPSVGPathDLexer_Spec.swift */; };
+		D42A703F21B835870005D87B /* TPSVGValueLexer_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42A703E21B835870005D87B /* TPSVGValueLexer_Spec.swift */; };
 		D438204D21B6AB9B00FEB6C1 /* file-14-v-line.png in Resources */ = {isa = PBXBuildFile; fileRef = D438204B21B6A95300FEB6C1 /* file-14-v-line.png */; };
 		D438204E21B6AB9B00FEB6C1 /* file-15-h-line.png in Resources */ = {isa = PBXBuildFile; fileRef = D438204C21B6A95500FEB6C1 /* file-15-h-line.png */; };
 		D438204F21B6AB9B00FEB6C1 /* file-14-v-line.png in Resources */ = {isa = PBXBuildFile; fileRef = D438204B21B6A95300FEB6C1 /* file-14-v-line.png */; };
@@ -168,6 +170,7 @@
 		8F884A594357B0231E777545 /* Pods_TPSVG_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TPSVG_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2AFB1539E659101C4CA5F24 /* Pods-TPSVG_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPSVG_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPSVG_Example/Pods-TPSVG_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		BF1F6999D9B3F2A2CE8A052E /* Pods_TPSVG_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TPSVG_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D40218C821B8315C00C80051 /* TPSVGPolygon_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSVGPolygon_Spec.swift; sourceTree = "<group>"; };
 		D40822F021AF3F740027B10B /* CGImage+Pixel_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage+Pixel_Spec.swift"; sourceTree = "<group>"; };
 		D40822F221AF42B40027B10B /* UIImage+Pixel_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Pixel_Spec.swift"; sourceTree = "<group>"; };
 		D40822F521AF46870027B10B /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-version"; path = "../.swift-version"; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 		D429C67921B2A50900B5CE0A /* file-11-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-11-line.png"; sourceTree = "<group>"; };
 		D429C69221B2A54D00B5CE0A /* empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty.png; sourceTree = "<group>"; };
 		D429C6B621B2E72500B5CE0A /* TPSVGPathDLexer_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSVGPathDLexer_Spec.swift; sourceTree = "<group>"; };
+		D42A703E21B835870005D87B /* TPSVGValueLexer_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSVGValueLexer_Spec.swift; sourceTree = "<group>"; };
 		D438204921B6A8AA00FEB6C1 /* file-15-h-line.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; path = "file-15-h-line.svg"; sourceTree = "<group>"; };
 		D438204A21B6A8B400FEB6C1 /* file-14-v-line.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; path = "file-14-v-line.svg"; sourceTree = "<group>"; };
 		D438204B21B6A95300FEB6C1 /* file-14-v-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-14-v-line.png"; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D40218C721B8313600C80051 /* Elements */,
 				D429C6B521B2E6AC00B5CE0A /* Lexer */,
 				D40D187921B097C30061C15F /* TPSVG_Spec.swift */,
 				D429C66B21B2A2BB00B5CE0A /* TPSVG+UIImage_Spec.swift */,
@@ -377,6 +382,14 @@
 				1C5E9DFF7C5972A9BB6BCDC9 /* Pods-TPSVG_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D40218C721B8313600C80051 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				D40218C821B8315C00C80051 /* TPSVGPolygon_Spec.swift */,
+			);
+			path = Elements;
 			sourceTree = "<group>";
 		};
 		D40822EB21AF3D250027B10B /* Helper */ = {
@@ -487,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				D429C6B621B2E72500B5CE0A /* TPSVGPathDLexer_Spec.swift */,
+				D42A703E21B835870005D87B /* TPSVGValueLexer_Spec.swift */,
 			);
 			path = Lexer;
 			sourceTree = "<group>";
@@ -854,7 +868,9 @@
 				D414778721B74BC500F7E4AC /* TPSVG+UIImage_Cropping_Spec.swift in Sources */,
 				D429C6B721B2E72500B5CE0A /* TPSVGPathDLexer_Spec.swift in Sources */,
 				D4FCD1A621B5C8A10034F082 /* TPSVGEngine_Spec_3.swift in Sources */,
+				D42A703F21B835870005D87B /* TPSVGValueLexer_Spec.swift in Sources */,
 				D414779021B7F7E100F7E4AC /* TPSVG+UIImage_PerformanceSpec.swift in Sources */,
+				D40218C921B8315C00C80051 /* TPSVGPolygon_Spec.swift in Sources */,
 				D40D18DF21B166720061C15F /* TPCSSEngine_Spec.swift in Sources */,
 				D429C66C21B2A2BB00B5CE0A /* TPSVG+UIImage_Spec.swift in Sources */,
 				D4851CBD21B6CC19000255C6 /* TPSVGEngine_Spec_4.swift in Sources */,

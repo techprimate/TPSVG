@@ -66,7 +66,8 @@ class TPSVGInstrSmoothCubicCurve: TPSVGInstruction {
      - Parameter prevStartPoint: Start point of previous instruction, used to calculate control points with relative values
      */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
-        var control1 = path.currentPoint
+        let current = path.isEmpty ? .zero : path.currentPoint
+        var control1 = current
         var prevControl2: CGPoint?
         var prevRelative = false
         if let prevCubic = prev as? TPSVGInstrCubicCurve {
@@ -85,20 +86,18 @@ class TPSVGInstrSmoothCubicCurve: TPSVGInstruction {
         if let prevC2 = prevControl2, let prevSp = prevStartPoint {
             if prevRelative {
                 let absolutePrevC2 = prevSp + prevC2
-                let diff = path.currentPoint - absolutePrevC2
-                control1 = path.currentPoint + diff
+                let diff = current - absolutePrevC2
+                control1 = current + diff
             } else {
-                let diff = path.currentPoint - prevC2
-                control1 = path.currentPoint + diff
+                let diff = current - prevC2
+                control1 = current + diff
             }
         }
 
         if relative {
-            let ref = path.currentPoint
-            path.addCurve(to: ref + end, control1: control1, control2: ref + control2)
+            path.addCurve(to: current + end, control1: control1, control2: current + control2)
         } else {
             path.addCurve(to: end, control1: control1, control2: control2)
-
         }
     }
 

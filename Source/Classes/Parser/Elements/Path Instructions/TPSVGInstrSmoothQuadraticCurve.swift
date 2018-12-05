@@ -59,7 +59,9 @@ class TPSVGInstrSmoothQuadraticCurve: TPSVGInstruction {
      TODO: Add documentation
      */
     override func modify(path: CGMutablePath, prev: TPSVGInstruction?, prevStartPoint: CGPoint?) {
-        var control1 = path.currentPoint
+        let ref = path.isEmpty ? .zero : path.currentPoint
+
+        var control1 = ref
         var prevControl2: CGPoint?
         var prevRelative = false
         if let prevCubic = prev as? TPSVGInstrCubicCurve {
@@ -78,16 +80,15 @@ class TPSVGInstrSmoothQuadraticCurve: TPSVGInstruction {
         if let prevC2 = prevControl2, let prevSp = prevStartPoint {
             if prevRelative {
                 let absolutePrevC2 = prevSp + prevC2
-                let diff = path.currentPoint - absolutePrevC2
-                control1 = path.currentPoint + diff
+                let diff = ref - absolutePrevC2
+                control1 = ref + diff
             } else {
-                let diff = path.currentPoint - prevC2
-                control1 = path.currentPoint + diff
+                let diff = ref - prevC2
+                control1 = ref + diff
             }
         }
 
         if relative {
-            let ref = path.currentPoint
             path.addQuadCurve(to: ref + end, control: control1)
         } else {
             path.addQuadCurve(to: end, control: control1)
