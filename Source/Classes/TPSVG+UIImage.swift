@@ -44,13 +44,15 @@ extension TPSVG {
         guard crop || size != nil else {
             return fullSizeImage
         }
-        return cropAndResize(image: fullSizeImage, crop: crop, size: size)
+        return cropAndResize(image: fullSizeImage, crop: crop, size: size, contentMode: contentMode)
     }
 
-    private func cropAndResize(image: UIImage, crop: Bool, size: CGSize?) -> UIImage? {
+    // swiftlint:disable cyclomatic_complexity
+    private func cropAndResize(image: UIImage, crop: Bool, size: CGSize?, contentMode: TPSVGImageContentMode) -> UIImage? {
         let bounds = self.contentBounds
         var scaleFactor: CGPoint = CGPoint(x: 1, y: 1)
         var offset: CGPoint = .zero
+        let targetSize = size ?? bounds.size
 
         if crop {
             // Translate context to start at correct bound
@@ -62,7 +64,50 @@ extension TPSVG {
             scaleFactor = scaledSize / frame.size
         }
 
-        UIGraphicsBeginImageContext(size ?? bounds.size)
+        // Change scale based on content mode
+        switch contentMode {
+        case .scaleToFill:
+            break
+        case .scaleAspectFit:
+            scaleFactor = CGPoint(x: min(scaleFactor.x, scaleFactor.y), y: min(scaleFactor.x, scaleFactor.y))
+        case .scaleAspectFill:
+            scaleFactor = CGPoint(x: max(scaleFactor.x, scaleFactor.y), y: max(scaleFactor.x, scaleFactor.y))
+        case .topLeft, .top, .topRight,
+             .left, .center, .right,
+             .bottomLeft, .bottom, .bottomRight:
+            scaleFactor = CGPoint(x: 1, y: 1)
+        }
+
+        switch contentMode {
+        case .scaleToFill:
+            break
+        case .scaleAspectFit:
+            offset.x += (targetSize.width / scaleFactor.x - bounds.width) / 2
+            offset.y += (targetSize.height / scaleFactor.y - bounds.height) / 2
+        case .scaleAspectFill:
+            offset.x += (targetSize.width / scaleFactor.x - bounds.width) / 2
+            offset.y += (targetSize.height / scaleFactor.y - bounds.height) / 2
+        case .topLeft:
+            break
+        case .top:
+            break
+        case .topRight:
+            break
+        case .left:
+            break
+        case .center:
+            break
+        case .right:
+            break
+        case .bottomLeft:
+            break
+        case .bottom:
+            break
+        case .bottomRight:
+            break
+        }
+
+        UIGraphicsBeginImageContext(targetSize)
         guard let context = UIGraphicsGetCurrentContext() else {
             return nil
         }

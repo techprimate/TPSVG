@@ -33,9 +33,6 @@ class TPSVG_UIImage_Cropping_Spec: QuickSpec {
                             }
                             expect(resizedImage.size) == refImage.size
                             expect(resizedImage.pixelError(to: refImage)) < 0.1
-
-                            try resizedImage.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/file-13-path.png"))
-                            try refImage.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/file-13-path_resized.png"))
                         } catch {
                             fail(error.localizedDescription)
                             fatalError()
@@ -54,9 +51,6 @@ class TPSVG_UIImage_Cropping_Spec: QuickSpec {
                             }
                             expect(resizedImage.size) == refImage.size
                             expect(resizedImage.pixelError(to: refImage)) == 0
-
-                            try resizedImage.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/file-4-circle.png"))
-                            try refImage.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/file-4-circle_cropped.png"))
                         } catch {
                             fail(error.localizedDescription)
                             fatalError()
@@ -67,17 +61,14 @@ class TPSVG_UIImage_Cropping_Spec: QuickSpec {
                         let svgUrl = Bundle.main.url(forResource: "file-6-path", withExtension: "svg")!
                         let refUrl = Bundle.main.url(forResource: "file-6-path_resized_cropped", withExtension: "png")!
                         do {
-                            guard let resizedImage = try TPSVG(data: try Data(contentsOf: svgUrl)).image(size: CGSize(width: 250, height: 209), crop: true, antialias: false) else {
+                            guard let resizedImage = try TPSVG(data: try Data(contentsOf: svgUrl)).image(size: CGSize(width: 250, height: 209), crop: true, contentMode: .scaleAspectFit, antialias: false) else {
                                 fatalError()
                             }
                             guard let refImage = UIImage(data: try Data(contentsOf: refUrl)) else {
                                 fatalError()
                             }
                             expect(refImage.size) == resizedImage.size
-                            expect(resizedImage.pixelError(to: refImage)) < 0.01
-
-                            try resizedImage.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/file-6-path.png"))
-                            try refImage.pngData()?.write(to: URL(fileURLWithPath: "/Users/Philip/Desktop/file-6-path_resized_cropped.png"))
+                            expect(resizedImage.pixelError(to: refImage)) < 0.05
                         } catch {
                             fail(error.localizedDescription)
                             fatalError()
