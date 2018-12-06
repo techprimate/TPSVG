@@ -59,7 +59,7 @@ extension TPSVGTransform: Equatable {
     public static func == (lhs: TPSVGTransform, rhs: TPSVGTransform) -> Bool {
         if case TPSVGTransform.matrix(let lhsA, let lhsB, let lhsC, let lhsD, let lhsE, let lhsF) = lhs,
             case TPSVGTransform.matrix(let rhsA, let rhsB, let rhsC, let rhsD, let rhsE, let rhsF) = rhs {
-            return lhsA == lhsA && lhsB == rhsB && lhsC == rhsC && lhsD == rhsD && lhsE == rhsE && lhsF == rhsF
+            return lhsA == rhsA && lhsB == rhsB && lhsC == rhsC && lhsD == rhsD && lhsE == rhsE && lhsF == rhsF
         }
         if case TPSVGTransform.translate(let lhsX, let lhsY) = lhs, case TPSVGTransform.translate(let rhsX, let rhsY) = rhs {
             return lhsX == rhsX && lhsY == rhsY
