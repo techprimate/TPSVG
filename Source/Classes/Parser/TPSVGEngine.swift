@@ -85,6 +85,11 @@ class TPSVGEngine: NSObject {
         element.resolvedStyle = mergeOverwrite(style: element.resolvedStyle, with: parent?.resolvedStyle)
         element.resolvedStyle = mergeOverwrite(style: element.resolvedStyle, with: element.inline)
 
+        element.resolvedTransform = element.transforms.reduce(CGAffineTransform.identity, { (prev, trans) -> CGAffineTransform in
+            return prev.concatenating(trans.affine)
+        })
+        element.resolvedTransform = element.resolvedTransform.concatenating(parent?.resolvedTransform ?? .identity)
+
         if let groupElement = element as? TPSVGGroup {
             groupElement.elements.forEach { (el) in
                 el.inheritedStyles = groupElement.inheritedStyles + groupElement.styles

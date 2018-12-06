@@ -77,8 +77,16 @@ class TPSVGRect: TPSVGElement {
      TODO: Add documentation
      */
     override internal func draw(in context: CGContext) {
-        context.fill(CGRect(origin: origin, size: size))
-        context.stroke(CGRect(origin: origin, size: size))
+        let path = CGMutablePath()
+        path.addRect(CGRect(origin: origin, size: size))
+
+        var transform = resolvedTransform
+        if let transformedPath = path.copy(using: &transform) {
+            context.addPath(transformedPath)
+            context.fillPath()
+            context.addPath(transformedPath)
+            context.strokePath()
+        }
     }
 
     // MARK: - Calculations

@@ -15,7 +15,7 @@ extension TPSVGStroke: CustomStringConvertible, CustomDebugStringConvertible {
      TODO: documentation
      */
     internal var description: String {
-        return String(format: "TPSVGStroke { color: %@, width: %f, miter limit: %f }", color?.hex ?? "nil", width ?? 0, miterLimit ?? 0)
+        return debugDescription
     }
 
     /**

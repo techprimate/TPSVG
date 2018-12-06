@@ -82,6 +82,8 @@ class TPSVGCircle: TPSVGElement {
                                                y: center.y - radius,
                                                width: 2 * radius,
                                                height: 2 * radius))
+        path.apply(resolvedTransform)
+        
         context.addPath(path.cgPath)
         context.fillPath()
         context.addPath(path.cgPath)

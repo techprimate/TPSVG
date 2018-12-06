@@ -1,6 +1,12 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/Philip/Desktop/techprimate/Projects/TPSVG/Source/Classes/Parser/TPSVGTransform.swift",
+      "line": null,
+      "symbol": "TPSVGTransform",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    }
   ],
   "source_directory": "/Users/Philip/Desktop/techprimate/Projects/TPSVG"
 }
