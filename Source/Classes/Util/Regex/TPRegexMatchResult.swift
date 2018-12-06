@@ -39,11 +39,16 @@ struct TPRegexMatchResult {
         self.searchString = searchString
         self.items = items
 
-        captures = items.flatMap { result in
-            (1..<result.numberOfRanges).map { i in
-                let range = result.range(at: i)
-                return (searchString as NSString).substring(with: range)
-            }
-        }
+        captures = items
+            .reduce([], { (prev, result) in
+                return prev + (1..<result.numberOfRanges).map({ result.range(at: $0) })
+            })
+            .compactMap({ range -> String? in
+                if range.lowerBound >= 0 && range.lowerBound <= searchString.count
+                    && range.upperBound >= 0 && range.upperBound <= searchString.count {
+                    return (searchString as NSString).substring(with: range)
+                }
+                return nil
+            })
     }
 }

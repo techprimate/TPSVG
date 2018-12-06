@@ -35,14 +35,21 @@ class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugStringConvert
      */
     internal var resolvedStyle: TPSVGStyle?
 
+    internal var transforms: [TPSVGTransform]
+
     /**
      TODO: documentation
      */
-    internal init(classNames: [String] = [], inheritedStyles: [TPSVGStyle] = [], styles: [TPSVGStyle] = [], inline: TPSVGStyle? = nil) {
+    internal init(classNames: [String] = [],
+                  inheritedStyles: [TPSVGStyle] = [],
+                  styles: [TPSVGStyle] = [],
+                  transforms: [TPSVGTransform] = [],
+                  inline: TPSVGStyle? = nil) {
         self.classNames = classNames
         self.inheritedStyles = inheritedStyles
         self.styles = styles
         self.inline = inline
+        self.transforms = transforms
     }
 
     /**
@@ -71,6 +78,12 @@ class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugStringConvert
                                 fill: inlineFillColor,
                                 stroke: nil,
                                 font: nil)
+        }
+
+        if let raw = attributes["transform"] {
+            self.transforms = TPSVGTransformLexer.parse(raw: raw)
+        } else {
+            self.transforms = []
         }
     }
 
