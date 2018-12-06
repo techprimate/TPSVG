@@ -36,6 +36,10 @@ class TPSVGValueLexer_Spec: QuickSpec {
                     let raw = "325,120 175,120 100,250 175,380 325,380 400,250"
                     expect(TPSVGValueLexer.parseValues(from: raw)) == [325, 120, 175, 120, 100, 250, 175, 380, 325, 380, 400, 250]
                 }
+
+                it("should parse space separated values") {
+                    let raw = " 0 7.5 "
+                }
             }
         }
     }

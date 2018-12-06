@@ -105,49 +105,6 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                     }
                 }
 
-                describe("cubic curve") {
-
-                    it("should parse") {
-                        let raw = "C100 100 250 100 250 200"
-                        let instructions = TPSVGPathDLexer(raw: raw).parse()
-
-                        expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 100, y: 100), control2: CGPoint(x: 250, y: 100), end: CGPoint(x: 250, y: 200))
-                    }
-
-                    it("should parse with floating values") {
-                        let raw = "C123.456 654.321 123.123 567.567 876.876 465.465"
-                        let instructions = TPSVGPathDLexer(raw: raw).parse()
-
-                        expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 123.456, y: 654.321), control2: CGPoint(x: 123.123, y: 567.567), end: CGPoint(x: 876.876, y: 465.465))
-                    }
-
-                    it("should parse relative") {
-                        let raw = "c100 100 250 100 250 200"
-                        let instructions = TPSVGPathDLexer(raw: raw).parse()
-
-                        expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 100, y: 100), control2: CGPoint(x: 250, y: 100), end: CGPoint(x: 250, y: 200), relative: true)
-                    }
-
-                    it("should parse partly minified") {
-                        let raw = "C100,100 250,100 250,200"
-                        let instructions = TPSVGPathDLexer(raw: raw).parse()
-
-                        expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 100, y: 100), control2: CGPoint(x: 250, y: 100), end: CGPoint(x: 250, y: 200))
-                    }
-
-                    it("should parse minified") {
-                        let raw = "C100,100,250,100,250,200"
-                        let instructions = TPSVGPathDLexer(raw: raw).parse()
-
-                        expect(instructions).to(haveCount(1))
-                        expect(instructions[0]) == TPSVGInstrCubicCurve(control1: CGPoint(x: 100, y: 100), control2: CGPoint(x: 250, y: 100), end: CGPoint(x: 250, y: 200))
-                    }
-                }
-
                 describe("elliptical arc") {
 
                     it("should parse") {
@@ -209,6 +166,33 @@ class TPSVGPathDLexer_Spec: QuickSpec {
                                                                                 largeArcFlag: false,
                                                                                 sweepFlag: false,
                                                                                 end: CGPoint(x: 250, y: 150))
+                    }
+                }
+
+                describe("multiple elements") {
+
+                    it("should parse space separated values") {
+                        let raw = "M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z"
+                        expect(TPSVGPathDLexer(raw: raw).parse()) == [
+                            TPSVGInstrMoveTo(point: CGPoint(x: 0, y: 7.5)),
+                            TPSVGInstrLineTo(point: CGPoint(x: 0, y: 12.5)),
+                            TPSVGInstrLineTo(point: CGPoint(x: 50, y: 12.5)),
+                            TPSVGInstrLineTo(point: CGPoint(x: 50, y: 7.5)),
+                            TPSVGInstrClosePath(),
+
+                            TPSVGInstrMoveTo(point: CGPoint(x: 0, y: 22.5)),
+                            TPSVGInstrLineTo(point: CGPoint(x: 0, y: 27.5)),
+                            TPSVGInstrLineTo(point: CGPoint(x: 50, y: 27.5)),
+                            TPSVGInstrLineTo(point: CGPoint(x: 50, y: 22.5)),
+                            TPSVGInstrClosePath(),
+
+
+                            TPSVGInstrMoveTo(point: CGPoint(x: 0, y: 37.5)),
+                            TPSVGInstrLineTo(point: CGPoint(x: 0, y: 42.5)),
+                            TPSVGInstrLineTo(point: CGPoint(x: 50, y: 42.5)),
+                            TPSVGInstrLineTo(point: CGPoint(x: 50, y: 37.5)),
+                            TPSVGInstrClosePath()
+                        ]
                     }
                 }
             }

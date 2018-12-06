@@ -13,32 +13,35 @@ class TPSVGNumberParser {
 
     /**
      TODO: Add documentation
-     */
-    private static let formatter: NumberFormatter = {
-        return NumberFormatter()
-    }()
 
-    /**
-     TODO: Add documentation
+     https://www.w3.org/TR/SVG/paths.html#PathDataBNF
      */
     internal static func parse(_ raw: String) -> (value: CGFloat, unit: String)? {
-        guard let regex = try? TPRegex(pattern: "^([-|+]?[\\d|,|\\.]*)(.*)$") else {
+        guard !raw.isEmpty else {
+            return nil
+        }
+
+        let sign = "(?:\\+|-)" // signs
+        let digit = "[0-9]" // all digits
+        let number = digit + "+" // at least one digit
+        let decimal = "(?:" + number + "(?:\\." + number + ")?" + "|\\." + number + ")" // allows 123, 123.123, .123
+        let unit = "(?:px|deg)" // allowed units
+        let coordinate = "(" + sign + "?)(" + decimal + ")(" + unit + "?)" // always capture 3 groups
+
+        guard let regex = try? TPRegex(pattern: coordinate) else {
             return nil
         }
         let comps = regex.match(in: raw).captures
-
-        if comps.count == 2 {
-            guard let value = formatter.number(from: comps[0])?.doubleValue else {
-                return nil
-            }
-            return (value: CGFloat(value), unit: comps[1])
-        } else if comps.count == 1 {
-            guard let value = formatter.number(from: comps[0])?.doubleValue else {
-                return nil
-            }
-            return (value: CGFloat(value), unit: "")
+        guard comps.count == 3 else {
+            fatalError("Should always read three components, even empty!")
         }
-        return nil
+        let signValue: CGFloat = comps[0] == "-" ? -1 : 1
+        guard let value = Double(comps[1]) else {
+            return nil
+        }
+        let unitValue = comps[2]
+
+        return (value: signValue * CGFloat(value), unit: unitValue)
     }
 
     /**
