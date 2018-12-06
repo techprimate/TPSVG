@@ -51,4 +51,8 @@ struct TPRegexMatchResult {
                 return nil
             })
     }
+
+    internal var boolValue: Bool {
+        return !captures.isEmpty
+    }
 }
