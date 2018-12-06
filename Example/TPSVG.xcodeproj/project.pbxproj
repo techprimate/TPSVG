@@ -88,6 +88,7 @@
 		D438205221B6ABA000FEB6C1 /* file-15-h-line.svg in Resources */ = {isa = PBXBuildFile; fileRef = D438204921B6A8AA00FEB6C1 /* file-15-h-line.svg */; };
 		D438205321B6AD5F00FEB6C1 /* file-14-v-line.svg in Resources */ = {isa = PBXBuildFile; fileRef = D438204A21B6A8B400FEB6C1 /* file-14-v-line.svg */; };
 		D438205421B6AD5F00FEB6C1 /* file-14-v-line.svg in Resources */ = {isa = PBXBuildFile; fileRef = D438204A21B6A8B400FEB6C1 /* file-14-v-line.svg */; };
+		D468970921B9872F0029C276 /* TPSVGNumberParser_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468970821B9872F0029C276 /* TPSVGNumberParser_Spec.swift */; };
 		D46F1DB521B320200072525E /* file-12-ell-arc.svg in Resources */ = {isa = PBXBuildFile; fileRef = D46F1DB421B320200072525E /* file-12-ell-arc.svg */; };
 		D46F1DB621B320200072525E /* file-12-ell-arc.svg in Resources */ = {isa = PBXBuildFile; fileRef = D46F1DB421B320200072525E /* file-12-ell-arc.svg */; };
 		D46F1DB821B3202B0072525E /* file-12-ell-arc.png in Resources */ = {isa = PBXBuildFile; fileRef = D46F1DB721B3202B0072525E /* file-12-ell-arc.png */; };
@@ -222,6 +223,7 @@
 		D438204A21B6A8B400FEB6C1 /* file-14-v-line.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; path = "file-14-v-line.svg"; sourceTree = "<group>"; };
 		D438204B21B6A95300FEB6C1 /* file-14-v-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-14-v-line.png"; sourceTree = "<group>"; };
 		D438204C21B6A95500FEB6C1 /* file-15-h-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-15-h-line.png"; sourceTree = "<group>"; };
+		D468970821B9872F0029C276 /* TPSVGNumberParser_Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSVGNumberParser_Spec.swift; sourceTree = "<group>"; };
 		D46F1DB421B320200072525E /* file-12-ell-arc.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; fileEncoding = 4; path = "file-12-ell-arc.svg"; sourceTree = "<group>"; };
 		D46F1DB721B3202B0072525E /* file-12-ell-arc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-12-ell-arc.png"; sourceTree = "<group>"; };
 		D4851CB921B6CBEB000255C6 /* inline-01.svg */ = {isa = PBXFileReference; explicitFileType = text.xml; path = "inline-01.svg"; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D468970721B987190029C276 /* Util */,
 				D40218C721B8313600C80051 /* Elements */,
 				D429C6B521B2E6AC00B5CE0A /* Lexer */,
 				D40D187921B097C30061C15F /* TPSVG_Spec.swift */,
@@ -506,6 +509,14 @@
 				D42A704721B871410005D87B /* TPSVGTransformLexer_Spec.swift */,
 			);
 			path = Lexer;
+			sourceTree = "<group>";
+		};
+		D468970721B987190029C276 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D468970821B9872F0029C276 /* TPSVGNumberParser_Spec.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		D4851CB821B6CBD8000255C6 /* inline-style */ = {
@@ -875,6 +886,7 @@
 				D42A703F21B835870005D87B /* TPSVGValueLexer_Spec.swift in Sources */,
 				D414779021B7F7E100F7E4AC /* TPSVG+UIImage_PerformanceSpec.swift in Sources */,
 				D40218C921B8315C00C80051 /* TPSVGPolygon_Spec.swift in Sources */,
+				D468970921B9872F0029C276 /* TPSVGNumberParser_Spec.swift in Sources */,
 				D40D18DF21B166720061C15F /* TPCSSEngine_Spec.swift in Sources */,
 				D429C66C21B2A2BB00B5CE0A /* TPSVG+UIImage_Spec.swift in Sources */,
 				D4851CBD21B6CC19000255C6 /* TPSVGEngine_Spec_4.swift in Sources */,
