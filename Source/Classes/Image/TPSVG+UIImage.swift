@@ -6,18 +6,34 @@
 //
 
 /**
- TODO: Add documentation
+ Extension of `TPSVG` used to create `UIImage` instances.
+
+ Using the provided methods in this extension you can create a `UIImage` from the already parsed SVG data.
  */
 extension TPSVG {
 
     /**
-     TODO: Add documentation
+     Creates an instance of UIImage.
+
+     Image creation constists out of two steps:
+
+        1. Drawing the image in the original resolution.
+        2. Optionally resizing the image to fit the given size.
+
+     - Parameter size: Target image size, content will be resized using `contentMode`, defaults to nil.
+     - Parameter crop: Image should be cropped to content bounds, defaults to false.
+     - Parameter contentMode: Defines how the rendered image is positioned if a `size` is given, defaults to `scaleToFill`
+     - Parameter antialias: Enables pixel smoothing, defaults to false
+     - Parameter scale: Sets an image scale, useful for different retina solutions, defaults to `UIScreen.main.scale`
+
+     - Returns: Instance of UIImage if successfull, otherwise nil if the image could not be rendered.
      */
     public func image(size: CGSize? = nil,
                       crop: Bool = false,
                       contentMode: TPSVGImageContentMode = .scaleToFill,
                       antialias: Bool = true,
                       scale: CGFloat = UIScreen.main.scale) -> UIImage? {
+        // TODO: draw in correct scale without loosing resolution
         defer {
             UIGraphicsEndImageContext()
         }
@@ -52,6 +68,9 @@ extension TPSVG {
     }
 
     // swiftlint:disable cyclomatic_complexity
+    /**
+     TODO: documentation
+     */
     private func cropAndResize(image: UIImage,
                                crop: Bool,
                                size: CGSize?,
@@ -125,18 +144,30 @@ extension TPSVG {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
 
+    /**
+     TODO: documentation
+     */
     internal static func fillColor(of element: TPSVGElement) -> TPSVGColor {
         return element.resolvedStyle?.fill ?? TPSVGColor.black
     }
 
+    /**
+     TODO: documentation
+     */
     internal static func strokeColor(of element: TPSVGElement) -> TPSVGColor {
         return element.resolvedStyle?.stroke?.color ?? TPSVGColor.clear
     }
 
+    /**
+     TODO: documentation
+     */
     internal static func strokeLineWidth(of element: TPSVGElement) -> CGFloat {
         return element.resolvedStyle?.stroke?.width ?? 1
     }
 
+    /**
+     TODO: documentation
+     */
     internal static func strokeMiterLimit(of element: TPSVGElement) -> CGFloat {
         return element.resolvedStyle?.stroke?.miterLimit ?? 4
     }
