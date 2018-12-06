@@ -40,6 +40,7 @@ class TPSVGNumberParser {
         guard comps.count == 3 else {
             fatalError("Should always read three components, even empty!")
         }
+
         let signValue: CGFloat = comps[0] == "-" ? -1 : 1
         guard let value = Double(comps[1]) else {
             return nil
