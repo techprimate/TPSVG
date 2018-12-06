@@ -242,12 +242,12 @@ class TPSVGTransformLexer {
                 let ty = captures[safe: 5] else {
                     return nil
             }
-            return TPSVGTransform.matrix(values: CGAffineTransform(a: parse(number: valA),
-                                                                   b: parse(number: valB),
-                                                                   c: parse(number: valC),
-                                                                   d: parse(number: valD),
-                                                                   tx: parse(number: tx),
-                                                                   ty: parse(number: ty)))
+            return TPSVGTransform.matrix(a: parse(number: valA),
+                                         b: parse(number: valB),
+                                         c: parse(number: valC),
+                                         d: parse(number: valD),
+                                         e: parse(number: tx),
+                                         f: parse(number: ty))
         default:
             return nil
         }

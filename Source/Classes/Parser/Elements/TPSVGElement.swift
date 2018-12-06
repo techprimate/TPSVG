@@ -36,6 +36,7 @@ class TPSVGElement: Equatable, CustomStringConvertible, CustomDebugStringConvert
     internal var resolvedStyle: TPSVGStyle?
 
     internal var transforms: [TPSVGTransform]
+    internal var resolvedTransform = CGAffineTransform.identity
 
     /**
      TODO: documentation

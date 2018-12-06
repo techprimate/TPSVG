@@ -112,9 +112,12 @@ class TPSVGTransformLexer_Spec: QuickSpec {
                     it("should parse matrix") {
                         let raw = "matrix(0.7071067811865475, 0.7071067811865476, -0.7071067811865476, 0.7071067811865475, -0.7071067811865497, 34.648232278140824)"
                         expect(TPSVGTransformLexer.parse(raw: raw)) == [
-                            TPSVGTransform.matrix(values: CGAffineTransform(a: 0.7071067811865475, b: 0.7071067811865476,
-                                                                            c: -0.7071067811865476, d: 0.7071067811865475,
-                                                                            tx: -0.7071067811865497, ty: 34.648232278140824))
+                            TPSVGTransform.matrix(a: 0.7071067811865475,
+                                                  b: 0.7071067811865476,
+                                                  c: -0.7071067811865476,
+                                                  d: 0.7071067811865475,
+                                                  e: -0.7071067811865497,
+                                                  f: 34.648232278140824)
                         ]
                     }
                 }
