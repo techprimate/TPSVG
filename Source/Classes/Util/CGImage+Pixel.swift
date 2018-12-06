@@ -14,14 +14,14 @@ extension CGImage {
     /**
      TODO: documentation
      */
-    func pixel(at point: CGPoint) -> UIColor? {
+    internal func pixel(at point: CGPoint) -> UIColor? {
         return pixels(at: [point])?.first
     }
 
     /**
      TODO: documentation
      */
-    func pixels(at points: [CGPoint]) -> [UIColor]? {
+    internal func pixels(at points: [CGPoint]) -> [UIColor]? {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bytesPerPixel = 4
         let bytesPerRow = bytesPerPixel * width
@@ -54,7 +54,7 @@ extension CGImage {
 
      TODO: documentation
      */
-    func pixelsEqual(to other: CGImage, threshold: Double = 0.01) -> Bool {
+    internal func pixelsEqual(to other: CGImage, threshold: Double = 0.01) -> Bool {
         return pixelError(to: other) <= threshold
     }
 
@@ -65,7 +65,7 @@ extension CGImage {
 
      TODO: documentation
      */
-    func pixelError(to other: CGImage) -> Double {
+    internal func pixelError(to other: CGImage) -> Double {
         guard self.width == other.width && self.height == other.height else {
             return 1.0
         }
