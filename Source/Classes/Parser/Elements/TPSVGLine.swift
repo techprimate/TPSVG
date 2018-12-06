@@ -62,10 +62,13 @@ class TPSVGLine: TPSVGElement {
         path.move(to: start)
         path.addLine(to: end)
 
-        context.addPath(path)
-        context.fillPath()
-        context.addPath(path)
-        context.strokePath()
+        var transform = resolvedTransform
+        if let transformedPath = path.copy(using: &transform) {
+            context.addPath(transformedPath)
+            context.fillPath()
+            context.addPath(transformedPath)
+            context.strokePath()
+        }
     }
 
     // MARK: - Equatable

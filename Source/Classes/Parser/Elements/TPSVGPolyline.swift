@@ -76,10 +76,13 @@ class TPSVGPolyline: TPSVGElement {
                 path.addLine(to: point)
             }
         }
-        context.addPath(path)
-        context.fillPath()
-        context.addPath(path)
-        context.strokePath()
+        var transform = resolvedTransform
+        if let transformedPath = path.copy(using: &transform) {
+            context.addPath(transformedPath)
+            context.fillPath()
+            context.addPath(transformedPath)
+            context.strokePath()
+        }
     }
 
     // MARK: - Calculations

@@ -42,19 +42,6 @@ class TPSVG_UIImage_Spec: QuickSpec {
                     }
                 }
 
-                func svgEqualsRef(name: String) -> Bool {
-                    guard let svg = svgImage(file: name) else {
-                        fail("Image should not be null!")
-                        fatalError()
-                    }
-                    let ref = referenceImage(file: name)
-
-                    guard svg.size == ref.size else {
-                        return false
-                    }
-                    return svg.pixelsEqual(to: ref)
-                }
-
                 func svgPixelError(name: String) -> Double {
                     guard let svg = svgImage(file: name) else {
                         fail("Image should not be null!")
@@ -74,99 +61,99 @@ class TPSVG_UIImage_Spec: QuickSpec {
                 }
 
                 it("should render render file-1") {
-                    expect(svgEqualsRef(name: "file-1-rect")).to(beTrue())
+                    expect(svgPixelError(name: "file-1-rect")) < 0.01
                 }
 
                 it("should render render file-2") {
-                    expect(svgEqualsRef(name: "file-2-polygon")).to(beTrue())
+                    expect(svgPixelError(name: "file-2-polygon")) < 0.01
                 }
 
                 it("should render render file-3") {
-                    expect(svgEqualsRef(name: "file-3-polyline")).to(beTrue())
+                    expect(svgPixelError(name: "file-3-polyline")) < 0.01
                 }
 
                 it("should render render file-4") {
-                    expect(svgEqualsRef(name: "file-4-circle")).to(beTrue())
+                    expect(svgPixelError(name: "file-4-circle")) < 0.01
                 }
 
                 it("should render render file-5") {
-                    expect(svgEqualsRef(name: "file-5-ellipse")).to(beTrue())
+                    expect(svgPixelError(name: "file-5-ellipse")) < 0.01
                 }
 
                 it("should render render file-6") {
-                    expect(svgEqualsRef(name: "file-6-path")).to(beTrue())
+                    expect(svgPixelError(name: "file-6-path")) < 0.01
                 }
 
                 it("should render render file-7") {
-//                    expect(svgEqualsRef(name: "file-7-text")).to(beTrue())
+//                    expect(svgEqualsRef(name: "file-7-text")) < 0.01
                 }
 
                 it("should render render file-8") {
-                    expect(svgEqualsRef(name: "file-8")).to(beTrue())
+                    expect(svgPixelError(name: "file-8")) < 0.01
                 }
 
                 it("should render render file-9") {
-                    expect(svgEqualsRef(name: "file-9")).to(beTrue())
+                    expect(svgPixelError(name: "file-9")) < 0.01
                 }
 
                 it("should render render file-10") {
-                    expect(svgPixelError(name: "file-10-tiger")) < 0.035
+                    expect(svgPixelError(name: "file-10-tiger")) < 0.04
                 }
 
                 it("should render render file-11") {
-                    expect(svgEqualsRef(name: "file-11-line")).to(beTrue())
+                    expect(svgPixelError(name: "file-11-line")) < 0.01
                 }
 
                 it("should render render file-12") {
-                    expect(svgEqualsRef(name: "file-12-ell-arc")).to(beTrue())
+                    expect(svgPixelError(name: "file-12-ell-arc")) < 0.01
                 }
 
                 it("should render render file-13-icon-01") {
-                    expect(svgEqualsRef(name: "file-13-icon-01")).to(beTrue())
+                    expect(svgPixelError(name: "file-13-icon-01")) < 0.01
                 }
 
                 it("should render render file-13-icon-02") {
-                    expect(svgEqualsRef(name: "file-13-icon-02")).to(beTrue())
+                    expect(svgPixelError(name: "file-13-icon-02")) < 0.01
                 }
 
                 it("should render render file-13-icon-03") {
-                    expect(svgEqualsRef(name: "file-13-icon-03")).to(beTrue())
+                    expect(svgPixelError(name: "file-13-icon-03")) < 0.01
                 }
 
                 it("should render render file-13-icon-04") {
-                    expect(svgEqualsRef(name: "file-13-icon-04")).to(beTrue())
+                    expect(svgPixelError(name: "file-13-icon-04")) < 0.01
                 }
 
                 it("should render render file-13-icon-05") {
-                    expect(svgEqualsRef(name: "file-13-icon-05")).to(beTrue())
+                    expect(svgPixelError(name: "file-13-icon-05")) < 0.01
                 }
 
                 it("should render render file-13-icon-06") {
-                    expect(svgEqualsRef(name: "file-13-icon-06")).to(beTrue())
+                    expect(svgPixelError(name: "file-13-icon-06")) < 0.01
                 }
 
                 it("should render render file-13-icon-07") {
-                    expect(svgEqualsRef(name: "file-13-icon-07")).to(beTrue())
+                    expect(svgPixelError(name: "file-13-icon-07")) < 0.01
                 }
 
                 it("should render render file-13-icon-08") {
-                    expect(svgEqualsRef(name: "file-13-icon-08")).to(beTrue())
+                    expect(svgPixelError(name: "file-13-icon-08")) < 0.01
                 }
 
                 it("should render render file-13-icon-09") {
-                    expect(svgEqualsRef(name: "file-13-icon-09")).to(beTrue())
+                    expect(svgPixelError(name: "file-13-icon-09")) < 0.01
                 }
 
                 it("should render render file-14-v-line") {
-                    expect(svgEqualsRef(name: "file-14-v-line")).to(beTrue())
+                    expect(svgPixelError(name: "file-14-v-line")) < 0.01
                 }
 
                 it("should render render file-15-h-line") {
-                    expect(svgEqualsRef(name: "file-15-h-line")).to(beTrue())
+                    expect(svgPixelError(name: "file-15-h-line")) < 0.01
                 }
 
                 it("should render inline-01") {
-                    expect(svgEqualsRef(name: "inline-01")).to(beTrue())
+                    expect(svgPixelError(name: "inline-01")) < 0.01
                 }
             }
         }
