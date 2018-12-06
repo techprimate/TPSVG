@@ -52,7 +52,11 @@ extension TPSVG {
     }
 
     // swiftlint:disable cyclomatic_complexity
-    private func cropAndResize(image: UIImage, crop: Bool, size: CGSize?, contentMode: TPSVGImageContentMode, scale: CGFloat = UIScreen.main.scale) -> UIImage? {
+    private func cropAndResize(image: UIImage,
+                               crop: Bool,
+                               size: CGSize?,
+                               contentMode: TPSVGImageContentMode,
+                               scale: CGFloat = UIScreen.main.scale) -> UIImage? {
         let bounds = self.contentBounds
         var scaleFactor: CGPoint = CGPoint(x: 1, y: 1)
         var offset: CGPoint = .zero

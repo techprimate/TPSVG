@@ -61,99 +61,99 @@ class TPSVG_UIImage_Spec: QuickSpec {
                 }
 
                 it("should render render file-1") {
-                    expect(svgPixelError(name: "file-1-rect")) < 0.01
+                    expect(svgPixelError(name: "file-1-rect")) <= 0.0
                 }
 
                 it("should render render file-2") {
-                    expect(svgPixelError(name: "file-2-polygon")) < 0.01
+                    expect(svgPixelError(name: "file-2-polygon")) <= 0.0001
                 }
 
                 it("should render render file-3") {
-                    expect(svgPixelError(name: "file-3-polyline")) < 0.01
+                    expect(svgPixelError(name: "file-3-polyline")) <= 0.0025
                 }
 
                 it("should render render file-4") {
-                    expect(svgPixelError(name: "file-4-circle")) < 0.01
+                    expect(svgPixelError(name: "file-4-circle")) <= 0.001
                 }
 
                 it("should render render file-5") {
-                    expect(svgPixelError(name: "file-5-ellipse")) < 0.01
+                    expect(svgPixelError(name: "file-5-ellipse")) <= 0.001
                 }
 
                 it("should render render file-6") {
-                    expect(svgPixelError(name: "file-6-path")) < 0.01
+                    expect(svgPixelError(name: "file-6-path")) <= 0.0001
                 }
 
                 it("should render render file-7") {
-//                    expect(svgEqualsRef(name: "file-7-text")) < 0.01
+//                    expect(svgEqualsRef(name: "file-7-text")) <= 0.0
                 }
 
                 it("should render render file-8") {
-                    expect(svgPixelError(name: "file-8")) < 0.01
+                    expect(svgPixelError(name: "file-8")) <= 0.0
                 }
 
                 it("should render render file-9") {
-                    expect(svgPixelError(name: "file-9")) < 0.01
+                    expect(svgPixelError(name: "file-9")) <= 0.0
                 }
 
                 it("should render render file-10") {
-                    expect(svgPixelError(name: "file-10-tiger")) < 0.04
+                    expect(svgPixelError(name: "file-10-tiger")) <= 0.04
                 }
 
                 it("should render render file-11") {
-                    expect(svgPixelError(name: "file-11-line")) < 0.01
+                    expect(svgPixelError(name: "file-11-line")) <= 0.001
                 }
 
                 it("should render render file-12") {
-                    expect(svgPixelError(name: "file-12-ell-arc")) < 0.01
+                    expect(svgPixelError(name: "file-12-ell-arc")) <= 0.005
                 }
 
                 it("should render render file-13-icon-01") {
-                    expect(svgPixelError(name: "file-13-icon-01")) < 0.01
+                    expect(svgPixelError(name: "file-13-icon-01")) <= 0.001
                 }
 
                 it("should render render file-13-icon-02") {
-                    expect(svgPixelError(name: "file-13-icon-02")) < 0.01
+                    expect(svgPixelError(name: "file-13-icon-02")) <= 0.001
                 }
 
                 it("should render render file-13-icon-03") {
-                    expect(svgPixelError(name: "file-13-icon-03")) < 0.01
+                    expect(svgPixelError(name: "file-13-icon-03")) <= 0.001
                 }
 
                 it("should render render file-13-icon-04") {
-                    expect(svgPixelError(name: "file-13-icon-04")) < 0.01
+                    expect(svgPixelError(name: "file-13-icon-04")) <= 0.001
                 }
 
                 it("should render render file-13-icon-05") {
-                    expect(svgPixelError(name: "file-13-icon-05")) < 0.01
+                    expect(svgPixelError(name: "file-13-icon-05")) <= 0.0002
                 }
 
                 it("should render render file-13-icon-06") {
-                    expect(svgPixelError(name: "file-13-icon-06")) < 0.01
+                    expect(svgPixelError(name: "file-13-icon-06")) <= 0.002
                 }
 
                 it("should render render file-13-icon-07") {
-                    expect(svgPixelError(name: "file-13-icon-07")) < 0.01
+                    expect(svgPixelError(name: "file-13-icon-07")) <= 0.001
                 }
 
                 it("should render render file-13-icon-08") {
-                    expect(svgPixelError(name: "file-13-icon-08")) < 0.01
+                    expect(svgPixelError(name: "file-13-icon-08")) <= 0.001
                 }
 
                 it("should render render file-13-icon-09") {
-                    expect(svgPixelError(name: "file-13-icon-09")) < 0.01
+                    expect(svgPixelError(name: "file-13-icon-09")) <= 0.0005
                 }
 
                 it("should render render file-14-v-line") {
-                    expect(svgPixelError(name: "file-14-v-line")) < 0.01
+                    expect(svgPixelError(name: "file-14-v-line")) <= 0.0001
                 }
 
                 it("should render render file-15-h-line") {
-                    expect(svgPixelError(name: "file-15-h-line")) < 0.01
+                    expect(svgPixelError(name: "file-15-h-line")) <= 0.0005
                 }
 
                 it("should render inline-01") {
-                    expect(svgPixelError(name: "inline-01")) < 0.01
+                    expect(svgPixelError(name: "inline-01")) <= 0.0
                 }
             }
         }

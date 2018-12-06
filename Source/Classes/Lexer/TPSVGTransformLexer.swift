@@ -59,14 +59,7 @@ class TPSVGTransformLexer {
         return "(?:" + wsp + "+" + comma + "?" + wsp + "*|" + comma + wsp + "*)"
     }()
 
-    /**
-     https://www.w3.org/TR/css-transforms-1/#svg-syntax
-     */
-    internal static func parse(raw: String) -> [TPSVGTransform] {
-        guard !raw.isEmpty else {
-            return []
-        }
-
+    static var transformList: String = {
         // translate
         //     "translate" wsp* "(" wsp* number ( comma-wsp? number )? wsp* ")"
         //     Optional number unit 'px'
@@ -97,7 +90,8 @@ class TPSVGTransformLexer {
         // rotate
         //     "rotate" wsp* "(" wsp* number ( comma-wsp? number comma-wsp? number )? wsp* ")"
         //     Optional number unit 'deg'
-        let rotate = "rotate" + wsp + "*" + lePa + wsp + "*" + number + "(?:deg)?(?:" + commaWsp + "?" + number + "(?:deg)?" + commaWsp + "?" + number + "(?:deg)?)?" + wsp + "*" + riPa
+        let rotate = "rotate" + wsp + "*" + lePa + wsp + "*" + number + "(?:deg)?(?:" + commaWsp + "?" + number
+            + "(?:deg)?" + commaWsp + "?" + number + "(?:deg)?)?" + wsp + "*" + riPa
 
         // skewX
         //     "skewX" wsp* "(" wsp* number wsp* ")"
@@ -152,31 +146,126 @@ class TPSVGTransformLexer {
 
         // transform-list
         //       wsp* transforms? wsp*
-        let transformList = wsp + "*" + transforms + "?" + wsp + "*"
+        return wsp + "*" + transforms + "?" + wsp + "*"
+    }()
 
-        return try! TPRegex(pattern: transformList).match(in: raw).captures.compactMap(parse(method:))
+    private static var transformRegex: TPRegex = {
+        do {
+            return try TPRegex(pattern: transformList)
+        } catch {
+            fatalError("Internal regex is invalid: " + error.localizedDescription)
+        }
+    }()
+
+    private static let translate: TPRegex = {
+        do {
+            return try TPRegex(pattern: "translate" + wsp + "*" + lePa + wsp + "*(" + number + ")(?:px)?(?:" + commaWsp
+                + "?(" + number + ")(?:px)?)?" + wsp + "*" + riPa)
+        } catch {
+            fatalError("Internal regex is invalid: " + error.localizedDescription)
+        }
+    }()
+
+    private static let translateX: TPRegex = {
+        do {
+            return try TPRegex(pattern: "translateX" + wsp + "*" + lePa + wsp + "*(" + number + ")(?:px)?" + wsp + "*" + riPa)
+        } catch {
+            fatalError("Internal regex is invalid: " + error.localizedDescription)
+        }
+    }()
+
+    private static let translateY: TPRegex = {
+        do {
+            return try TPRegex(pattern: "translateY" + wsp + "*" + lePa + wsp + "*(" + number + ")(?:px)?" + wsp + "*" + riPa)
+        } catch {
+            fatalError("Internal regex is invalid: " + error.localizedDescription)
+        }
+    }()
+
+    private static let scale: TPRegex = {
+        do {
+            return try TPRegex(pattern: "scale" + wsp + "*" + lePa + wsp + "*(" + number + ")"
+                + "(?:" + commaWsp + "?(" + number + "))?" + wsp + "*" + riPa)
+        } catch {
+            fatalError("Internal regex is invalid: " + error.localizedDescription)
+        }
+    }()
+
+    private static let scaleX: TPRegex = {
+        do {
+            return try TPRegex(pattern: "scaleX" + wsp + "*" + lePa + wsp + "*(" + number + ")" + wsp + "*" + riPa)
+        } catch {
+            fatalError("Internal regex is invalid: " + error.localizedDescription)
+        }
+    }()
+
+    private static let scaleY: TPRegex = {
+        do {
+            return try TPRegex(pattern: "scaleY" + wsp + "*" + lePa + wsp + "*(" + number + ")" + wsp + "*" + riPa)
+        } catch {
+            fatalError("Internal regex is invalid: " + error.localizedDescription)
+        }
+    }()
+
+    private static let rotate: TPRegex = {
+        do {
+            return try TPRegex(pattern: "rotate" + wsp + "*" + lePa + wsp + "*(" + number + ")(?:deg)?"
+                + "(?:" + commaWsp + "?(" + number + ")(?:deg)?" + commaWsp + "?(" + number + ")(?:deg)?)?" + wsp + "*" + riPa)
+        } catch {
+            fatalError("Internal regex is invalid: " + error.localizedDescription)
+        }
+    }()
+
+    private static let skewX: TPRegex = {
+        do {
+            return try TPRegex(pattern: "skewX" + wsp + "*" + lePa + wsp + "*(" + number + ")(?:deg)?" + wsp + "*" + riPa)
+        } catch {
+            fatalError("Internal regex is invalid: " + error.localizedDescription)
+        }
+    }()
+
+    private static let skewY: TPRegex = {
+        do {
+            return try TPRegex(pattern: "skewY" + wsp + "*" + lePa + wsp + "*(" + number + ")(?:deg)?" + wsp + "*" + riPa)
+        } catch {
+            fatalError("Internal regex is invalid: " + error.localizedDescription)
+        }
+    }()
+
+    private static let matrix: TPRegex = {
+        do {
+            return try TPRegex(pattern: "matrix" + wsp + "*" + lePa + wsp + "*"
+                + "(" + number + ")" + commaWsp + "?"
+                + "(" + number + ")" + commaWsp + "?"
+                + "(" + number + ")" + commaWsp + "?"
+                + "(" + number + ")" + commaWsp + "?"
+                + "(" + number + ")" + commaWsp + "?"
+                + "(" + number + ")" + commaWsp + "?" + wsp + "*" + riPa)
+        } catch {
+            fatalError("Internal regex is invalid: " + error.localizedDescription)
+        }
+    }()
+
+    private static var numberRegex: TPRegex = {
+        do {
+            return try TPRegex(pattern: "(^" + sign + "?)(" + digit + "*\\.?" + digit + "*)?((?:[Ee]" + sign + digit + "*)?)")
+        } catch {
+            fatalError("Internal regex is invalid: " + error.localizedDescription)
+        }
+    }()
+
+    /**
+     https://www.w3.org/TR/css-transforms-1/#svg-syntax
+     */
+    internal static func parse(raw: String) -> [TPSVGTransform] {
+        guard !raw.isEmpty else {
+            return []
+        }
+        return transformRegex.match(in: raw).captures.compactMap(parse(method:))
     }
 
-    // swiftlint:disable cyclomatic_complexity
+    // swiftlint:disable cyclomatic_complexity function_body_length
     private static func parse(method: String) -> TPSVGTransform? {
-        let translate = try! TPRegex(pattern: "translate" + wsp + "*" + lePa + wsp + "*(" + number + ")(?:px)?(?:" + commaWsp + "?(" + number + ")(?:px)?)?" + wsp + "*" + riPa)
-        let translateX = try! TPRegex(pattern: "translateX" + wsp + "*" + lePa + wsp + "*(" + number + ")(?:px)?" + wsp + "*" + riPa)
-        let translateY = try! TPRegex(pattern: "translateY" + wsp + "*" + lePa + wsp + "*(" + number + ")(?:px)?" + wsp + "*" + riPa)
-        let scale = try! TPRegex(pattern: "scale" + wsp + "*" + lePa + wsp + "*(" + number + ")" + "(?:" + commaWsp + "?(" + number + "))?" + wsp + "*" + riPa)
-        let scaleX = try! TPRegex(pattern: "scaleX" + wsp + "*" + lePa + wsp + "*(" + number + ")" + wsp + "*" + riPa)
-        let scaleY = try! TPRegex(pattern: "scaleY" + wsp + "*" + lePa + wsp + "*(" + number + ")" + wsp + "*" + riPa)
-        let rotate = try! TPRegex(pattern: "rotate" + wsp + "*" + lePa + wsp + "*(" + number + ")(?:deg)?" + "(?:" + commaWsp + "?(" + number + ")(?:deg)?" + commaWsp + "?(" + number + ")(?:deg)?)?" + wsp + "*" + riPa)
-        let skewX = try! TPRegex(pattern: "skewX" + wsp + "*" + lePa + wsp + "*(" + number + ")(?:deg)?" + wsp + "*" + riPa)
-        let skewY = try! TPRegex(pattern: "skewY" + wsp + "*" + lePa + wsp + "*(" + number + ")(?:deg)?" + wsp + "*" + riPa)
-        let matrix = try! TPRegex(pattern: "matrix" + wsp + "*" + lePa + wsp + "*"
-            + "(" + number + ")" + commaWsp + "?"
-            + "(" + number + ")" + commaWsp + "?"
-            + "(" + number + ")" + commaWsp + "?"
-            + "(" + number + ")" + commaWsp + "?"
-            + "(" + number + ")" + commaWsp + "?"
-            + "(" + number + ")" + commaWsp + "?" + wsp + "*" + riPa)
-
-
         switch method {
         case translate:
             let captures = translate.match(in: method).captures
@@ -234,28 +323,16 @@ class TPSVGTransformLexer {
             return TPSVGTransform.skewY(angle: parse(number: angle))
         case matrix:
             let captures = matrix.match(in: method).captures
-            guard let valA = captures[safe: 0],
-                let valB = captures[safe: 1],
-                let valC = captures[safe: 2],
-                let valD = captures[safe: 3],
-                let tx = captures[safe: 4],
-                let ty = captures[safe: 5] else {
+            guard let valA = captures[safe: 0], let valB = captures[safe: 1], let valC = captures[safe: 2],
+                let valD = captures[safe: 3], let valE = captures[safe: 4], let valF = captures[safe: 5] else {
                     return nil
             }
-            return TPSVGTransform.matrix(a: parse(number: valA),
-                                         b: parse(number: valB),
-                                         c: parse(number: valC),
-                                         d: parse(number: valD),
-                                         e: parse(number: tx),
-                                         f: parse(number: ty))
+            return TPSVGTransform.matrix(a: parse(number: valA), b: parse(number: valB), c: parse(number: valC),
+                                         d: parse(number: valD), e: parse(number: valE), f: parse(number: valF))
         default:
             return nil
         }
     }
-
-    private static var numberRegex: TPRegex = {
-        return try! TPRegex(pattern: "(^[+-]?)([0-9]*\\.?[0-9]*)?((?:[Ee][+-][0-9]*)?)")
-    }()
 
     private static func parse(number raw: String) -> CGFloat {
         let values = numberRegex.match(in: raw).captures
