@@ -18,12 +18,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         do {
-//            if let path = Bundle.main.path(forResource: "file-10-tiger", ofType: "png") {
-//                leftImageView.image = UIImage(contentsOfFile: path)
-//            }
-//            if let url = Bundle.main.url(forResource: "file-10-tiger", withExtension: "svg") {
-//                rightImageView.image = try TPSVG(contentsOf: url).image(antialias: false)
-//            }
+            if let path = Bundle.main.path(forResource: "file-10-tiger", ofType: "png") {
+                leftImageView.image = UIImage(contentsOfFile: path)
+            }
+            if let url = Bundle.main.url(forResource: "file-10-tiger", withExtension: "svg") {
+                rightImageView.image = try TPSVG(contentsOf: url).image(antialias: false)
+            }
         } catch {
             print(error.localizedDescription)
         }
