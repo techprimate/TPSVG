@@ -31,16 +31,7 @@ class TPSVGPolyline: TPSVGElement {
         guard let rawPoints = attributes["points"] else {
             return nil
         }
-        self.points = rawPoints.split(separator: " ").compactMap({ item -> CGPoint? in
-            let comps = item.split(separator: ",")
-            guard comps.count == 2 else {
-                return nil
-            }
-            guard let x = TPSVGNumberParser.parse(String(comps[0])), let y = TPSVGNumberParser.parse(String(comps[1])) else {
-                return nil
-            }
-            return CGPoint(x: x.value, y: y.value)
-        })
+        self.points = TPSVGValueLexer.parsePoints(from: rawPoints)
         super.init(attributes: attributes)
     }
 

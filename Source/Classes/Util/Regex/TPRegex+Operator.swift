@@ -6,8 +6,6 @@
 //  Copyright © 2018 techprimate GmbH & Co. KG. All rights reserved.
 //
 
-infix operator =~
-
 /**
  * Match equatable used for switch-case
  */

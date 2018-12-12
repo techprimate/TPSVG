@@ -9,6 +9,8 @@
 // swiftlint:disable identifier_name cyclomatic_complexity function_body_length
 
 /**
+
+ SVG Spec: https://www.w3.org/TR/SVG2/paths.html
  TODO: Add documentation
  */
 class TPSVGPathDLexer {
@@ -59,9 +61,12 @@ class TPSVGPathDLexer {
                 var element: TPSVGInstruction?
                 switch currCmd {
                 case .A:
-                    element = TPSVGInstrEllipticalArcCurve(radius: .zero, xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: .zero)
+                    element = TPSVGInstrEllipticalArcCurve(radius: .zero, xAxisRotation: 0,
+                                                           largeArcFlag: false, sweepFlag: false, end: .zero)
                 case .a:
-                    element = TPSVGInstrEllipticalArcCurve(radius: .zero, xAxisRotation: 0, largeArcFlag: false, sweepFlag: false, end: .zero, relative: true)
+                    element = TPSVGInstrEllipticalArcCurve(radius: .zero, xAxisRotation: 0,
+                                                           largeArcFlag: false, sweepFlag: false,
+                                                           end: .zero, relative: true)
                 case .C:
                     element = TPSVGInstrCubicCurve(control1: .zero, control2: .zero, end: .zero)
                 case .c:
