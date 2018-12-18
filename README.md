@@ -20,8 +20,9 @@
 </p>
 
 <p align="center">
-	<a href="https://travis-ci.org/techprimate/TPSVG">
-		<img src="https://travis-ci.org/techprimate/TPSVG.svg?branch=master&style=flat-square" alt="Travis">
+	<a href="https://travis-ci.org/Techprimate/TPSVG">
+		<img 
+src="https://travis-ci.org/Techprimate/TPSVG.svg?branch=master&style=flat-square" alt="Travis">
 	</a>
 	<a href="https://codebeat.co/projects/github-com-techprimate-tpsvg-master">
 		<img src="https://codebeat.co/badges/3d242e57-5f87-433d-b5ae-715d9d0c2c25" alt="codebeat">
