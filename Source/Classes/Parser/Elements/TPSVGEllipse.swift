@@ -80,29 +80,30 @@ class TPSVGEllipse: TPSVGElement {
      TODO: Add documentation
      */
     override func draw(in context: CGContext) {
-        let path = CGMutablePath()
-        let origin = CGPoint(x: center.x - radius.dx, y: center.y - radius.dy)
-        let size = CGSize(width: 2 * radius.dx, height: 2 * radius.dy)
-        path.addEllipse(in: CGRect(origin: origin, size: size))
-
-        var transform = resolvedTransform
-        if let transformedPath = path.copy(using: &transform) {
-            context.addPath(transformedPath)
-            context.fillPath()
-            context.addPath(transformedPath)
-            context.strokePath()
+        guard let path = createPath() else {
+            return
         }
+        context.addPath(path)
+        context.fillPath()
+        context.addPath(path)
+        context.strokePath()
     }
 
     // MARK: - Calculations
 
     /// :nodoc:
     override internal var bounds: CGRect {
+        return createPath()?.boundingBoxOfPath ?? .null
+    }
+
+    // MARK: - Path
+
+    private func createPath() -> CGPath? {
         let path = CGMutablePath()
-        path.addEllipse(in: CGRect(x: center.x - radius.dx,
-                                   y: center.y - radius.dy,
-                                   width: 2 * radius.dx,
-                                   height: 2 * radius.dy))
-        return path.boundingBoxOfPath
+        let origin = CGPoint(x: center.x - radius.dx, y: center.y - radius.dy)
+        let size = CGSize(width: 2 * radius.dx, height: 2 * radius.dy)
+        path.addEllipse(in: CGRect(origin: origin, size: size))
+
+        return path.copy(using: &resolvedTransform)
     }
 }

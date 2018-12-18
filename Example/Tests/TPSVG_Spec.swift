@@ -127,8 +127,8 @@ class TPSVG_Spec: QuickSpec {
                     expect(file9Bounds.size.height).to(beCloseTo(228.1))
 
                     let file10Bounds = loadSVG(name: "file-10-tiger").contentBounds
-                    expect(file10Bounds.origin.x).to(beCloseTo(0.15))
-                    expect(file10Bounds.origin.y).to(beCloseTo(0.07802205936670248))
+                    expect(file10Bounds.origin.x).to(beCloseTo(0.07))
+                    expect(file10Bounds.origin.y).to(beCloseTo(-0.021977940633297166))
                     expect(file10Bounds.size.width).to(beCloseTo(872.0088638741104))
                     expect(file10Bounds.size.height).to(beCloseTo(898.9919779406335))
 
@@ -147,6 +147,21 @@ class TPSVG_Spec: QuickSpec {
                     expect(loadSVG(name: "file-13-icon-07").contentBounds) == CGRect(x: 0, y: 0, width: 512, height: 512)
                     expect(loadSVG(name: "file-13-icon-08").contentBounds) == CGRect(x: 0, y: 0, width: 512, height: 512)
                     expect(loadSVG(name: "file-13-icon-09").contentBounds) == CGRect(x: 0, y: 0, width: 512, height: 512)
+                }
+
+                it("should use transform in calculation") {
+                    let rawSVG = "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 896 896\">"
+                        + "<title>verified</title><path d=\"M512,64C264.58,64,64,264.58,64,512S264.58,960,512,960,960,759.42,960,512,759.42,64,512,64Z"
+                        + "M763.24,332.71,489.94,747.37c-16.12,24.45-49.5,27.72-69.7,6.84L263.37,592a29.14,29.14,0,0,1-.09-40.06l39-40.64a26.31,26.31,0"
+                        + ",0,1,38.16-.16L430.8,604a15.07,15.07,0,0,0,23.6-2.38L673.25,268.29c8.46-12.88,25.33-16.17,37.68-7.33l45.31,32.46C768.57,302.25,"
+                        + "771.71,319.85,763.24,332.71Z\" transform=\"translate(-64 -64)\"/></svg>"
+                    let svg: TPSVG!
+                    do {
+                        svg = try TPSVG(raw: rawSVG)
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                    expect(svg.contentBounds) == CGRect(x: 0, y: 0, width: 896, height: 896)
                 }
             }
         }

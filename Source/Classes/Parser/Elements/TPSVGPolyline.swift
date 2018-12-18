@@ -56,32 +56,26 @@ class TPSVGPolyline: TPSVGElement {
      TODO: Add documentation
      */
     override func draw(in context: CGContext) {
-        guard points.count > 0 else {
+        guard let path = createPath() else {
             return
         }
-        let path = CGMutablePath()
-        for (idx, point) in points.enumerated() {
-            if idx == 0 {
-                path.move(to: point)
-            } else {
-                path.addLine(to: point)
-            }
-        }
-        var transform = resolvedTransform
-        if let transformedPath = path.copy(using: &transform) {
-            context.addPath(transformedPath)
-            context.fillPath()
-            context.addPath(transformedPath)
-            context.strokePath()
-        }
+        context.addPath(path)
+        context.fillPath()
+        context.addPath(path)
+        context.strokePath()
     }
 
     // MARK: - Calculations
 
     /// :nodoc:
     override internal var bounds: CGRect {
-        let path = CGMutablePath()
+        return createPath()?.boundingBoxOfPath ?? .null
+    }
 
+    // MARK: - Path
+
+    private func createPath() -> CGPath? {
+        let path = CGMutablePath()
         for (idx, point) in points.enumerated() {
             if idx == 0 {
                 path.move(to: point)
@@ -90,6 +84,6 @@ class TPSVGPolyline: TPSVGElement {
             }
         }
 
-        return path.boundingBoxOfPath
+        return path.copy(using: &resolvedTransform)
     }
 }

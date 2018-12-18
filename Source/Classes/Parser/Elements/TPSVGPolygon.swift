@@ -60,31 +60,26 @@ class TPSVGPolygon: TPSVGElement {
         guard points.count > 0 else {
             return
         }
-        let path = CGMutablePath()
-        for (idx, point) in points.enumerated() {
-            if idx == 0 {
-                path.move(to: point)
-            } else {
-                path.addLine(to: point)
-            }
+        guard let path = createPath() else {
+            return
         }
-        path.closeSubpath()
-
-        var transform = resolvedTransform
-        if let transformedPath = path.copy(using: &transform) {
-            context.addPath(transformedPath)
-            context.fillPath()
-            context.addPath(transformedPath)
-            context.strokePath()
-        }
+        context.addPath(path)
+        context.fillPath()
+        context.addPath(path)
+        context.strokePath()
     }
 
     // MARK: - Calculations
 
     /// :nodoc:
     override internal var bounds: CGRect {
-        let path = CGMutablePath()
+        return createPath()?.boundingBoxOfPath ?? .null
+    }
 
+    // MARK: - Path
+
+    private func createPath() -> CGPath? {
+        let path = CGMutablePath()
         for (idx, point) in points.enumerated() {
             if idx == 0 {
                 path.move(to: point)
@@ -94,6 +89,6 @@ class TPSVGPolygon: TPSVGElement {
         }
         path.closeSubpath()
 
-        return path.boundingBoxOfPath
+        return path.copy(using: &resolvedTransform)
     }
 }
