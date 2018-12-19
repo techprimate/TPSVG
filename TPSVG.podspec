@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "TPSVG"
-  s.version          = "0.1.4"
+  s.version          = "0.1.5"
   s.summary          = "TPSVG is a SVG parsing engine"
   s.description      = <<-DESC
 TPSVG parses SVG vector-based graphics according to the SVG2 standard at https://www.w3.org/TR/SVG2/
