@@ -58,17 +58,13 @@ class TPSVGLine: TPSVGElement {
      TODO: Add documentation
      */
     override func draw(in context: CGContext) {
-        let path = CGMutablePath()
-        path.move(to: start)
-        path.addLine(to: end)
-
-        var transform = resolvedTransform
-        if let transformedPath = path.copy(using: &transform) {
-            context.addPath(transformedPath)
-            context.fillPath()
-            context.addPath(transformedPath)
-            context.strokePath()
+        guard let path = createPath() else {
+            return
         }
+        context.addPath(path)
+        context.fillPath()
+        context.addPath(path)
+        context.strokePath()
     }
 
     // MARK: - Equatable
@@ -93,10 +89,15 @@ class TPSVGLine: TPSVGElement {
 
     /// :nodoc:
     override internal var bounds: CGRect {
+        return createPath()?.boundingBoxOfPath ?? .null
+    }
+
+    // MARK: - Path
+
+    private func createPath() -> CGPath? {
         let path = CGMutablePath()
         path.move(to: start)
         path.addLine(to: end)
-
-        return path.boundingBoxOfPath
+        return path.copy(using: &resolvedTransform)
     }
 }

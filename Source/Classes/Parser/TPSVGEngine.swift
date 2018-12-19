@@ -98,6 +98,9 @@ class TPSVGEngine: NSObject {
         }
     }
 
+    /**
+     TODO: Add documentation
+     */
     private func mergeOverwrite(style: TPSVGStyle?, with other: TPSVGStyle?) -> TPSVGStyle? {
         if style == nil && other == nil {
             return nil

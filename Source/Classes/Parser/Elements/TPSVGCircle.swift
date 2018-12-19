@@ -78,15 +78,10 @@ class TPSVGCircle: TPSVGElement {
      TODO: Add documentation
      */
     override func draw(in context: CGContext) {
-        let path = UIBezierPath(ovalIn: CGRect(x: center.x - radius,
-                                               y: center.y - radius,
-                                               width: 2 * radius,
-                                               height: 2 * radius))
-        path.apply(resolvedTransform)
-        
-        context.addPath(path.cgPath)
+        let path = createPath()
+        context.addPath(path)
         context.fillPath()
-        context.addPath(path.cgPath)
+        context.addPath(path)
         context.strokePath()
     }
 
@@ -115,11 +110,17 @@ class TPSVGCircle: TPSVGElement {
     // MARK: - Calculations
 
     override internal var bounds: CGRect {
-        let path = CGMutablePath()
-        path.addEllipse(in: CGRect(x: center.x - radius,
-                                   y: center.y - radius,
-                                   width: 2 * radius,
-                                   height: 2 * radius))
-        return path.boundingBoxOfPath
+        return createPath().boundingBoxOfPath
+    }
+
+    // MARK: - Path
+
+    private func createPath() -> CGPath {
+        let path = UIBezierPath(ovalIn: CGRect(x: center.x - radius,
+                                               y: center.y - radius,
+                                               width: 2 * radius,
+                                               height: 2 * radius))
+        path.apply(resolvedTransform)
+        return path.cgPath
     }
 }

@@ -31,16 +31,7 @@ class TPSVGPolyline: TPSVGElement {
         guard let rawPoints = attributes["points"] else {
             return nil
         }
-        self.points = rawPoints.split(separator: " ").compactMap({ item -> CGPoint? in
-            let comps = item.split(separator: ",")
-            guard comps.count == 2 else {
-                return nil
-            }
-            guard let x = TPSVGNumberParser.parse(String(comps[0])), let y = TPSVGNumberParser.parse(String(comps[1])) else {
-                return nil
-            }
-            return CGPoint(x: x.value, y: y.value)
-        })
+        self.points = TPSVGValueLexer.parsePoints(from: rawPoints)
         super.init(attributes: attributes)
     }
 
@@ -65,32 +56,26 @@ class TPSVGPolyline: TPSVGElement {
      TODO: Add documentation
      */
     override func draw(in context: CGContext) {
-        guard points.count > 0 else {
+        guard let path = createPath() else {
             return
         }
-        let path = CGMutablePath()
-        for (idx, point) in points.enumerated() {
-            if idx == 0 {
-                path.move(to: point)
-            } else {
-                path.addLine(to: point)
-            }
-        }
-        var transform = resolvedTransform
-        if let transformedPath = path.copy(using: &transform) {
-            context.addPath(transformedPath)
-            context.fillPath()
-            context.addPath(transformedPath)
-            context.strokePath()
-        }
+        context.addPath(path)
+        context.fillPath()
+        context.addPath(path)
+        context.strokePath()
     }
 
     // MARK: - Calculations
 
     /// :nodoc:
     override internal var bounds: CGRect {
-        let path = CGMutablePath()
+        return createPath()?.boundingBoxOfPath ?? .null
+    }
 
+    // MARK: - Path
+
+    private func createPath() -> CGPath? {
+        let path = CGMutablePath()
         for (idx, point) in points.enumerated() {
             if idx == 0 {
                 path.move(to: point)
@@ -99,6 +84,6 @@ class TPSVGPolyline: TPSVGElement {
             }
         }
 
-        return path.boundingBoxOfPath
+        return path.copy(using: &resolvedTransform)
     }
 }

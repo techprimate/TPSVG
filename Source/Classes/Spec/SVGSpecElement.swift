@@ -68,7 +68,12 @@ enum SVGSpecElement: String {
     case line = "line"
 
     /**
-     TODO: Add documentation
+     A path represents the outline of a shape which can be filled or stroked.
+     A path can also be used as a clipping path, to describe animation, or position text.
+     A path can be used for more than one of these functions at the same time.
+
+     SVG Spec:
+     https://www.w3.org/TR/SVG2/paths.html#PathDataQuadraticBezierCommands
      */
     case path = "path"
 

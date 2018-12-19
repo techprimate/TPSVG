@@ -57,24 +57,13 @@ class TPSVGPath: TPSVGElement {
      TODO: Add documentation
      */
     override func draw(in context: CGContext) {
-        let path = CGMutablePath()
-
-        var prev: TPSVGInstruction?
-        var lastStartPoint: CGPoint?
-        for inst in instructions {
-            let point = path.isEmpty ? .zero : path.currentPoint
-            inst.modify(path: path, prev: prev, prevStartPoint: lastStartPoint)
-            lastStartPoint = point
-            prev = inst
+        guard let path = createPath() else {
+            return
         }
-
-        var transform = resolvedTransform
-        if let transformedPath = path.copy(using: &transform) {
-            context.addPath(transformedPath)
-            context.fillPath()
-            context.addPath(transformedPath)
-            context.strokePath()
-        }
+        context.addPath(path)
+        context.fillPath()
+        context.addPath(path)
+        context.strokePath()
     }
 
     // MARK: - CustomStringConvertible
@@ -99,6 +88,12 @@ class TPSVGPath: TPSVGElement {
 
     /// :nodoc:
     override internal var bounds: CGRect {
+        return createPath()?.boundingBoxOfPath ?? .null
+    }
+
+    // MARK: - Path
+
+    private func createPath() -> CGPath? {
         let path = CGMutablePath()
 
         var prev: TPSVGInstruction?
@@ -109,7 +104,7 @@ class TPSVGPath: TPSVGElement {
             lastStartPoint = point
             prev = inst
         }
-        
-        return path.boundingBoxOfPath
+
+        return path.copy(using: &resolvedTransform)
     }
 }

@@ -7,6 +7,7 @@
 //
 
 /**
- TODO: documentation
+ An alias for UIColor in UIKit for iOS.
+ Will be used as an alias of NSColor in AppKit for OSX.
  */
 internal typealias TPSVGColor = UIColor

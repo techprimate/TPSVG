@@ -268,70 +268,110 @@ class TPSVGTransformLexer {
     private static func parse(method: String) -> TPSVGTransform? {
         switch method {
         case translate:
-            let captures = translate.match(in: method).captures
-            guard let x = captures[safe: 0] else {
-                return nil
-            }
-            return TPSVGTransform.translate(x: parse(number: x), y: parse(number: captures[safe: 1] ?? "0"))
+            return parseAsTranslate(method: method)
         case translateX:
-            let captures = translateX.match(in: method).captures
-            guard let angle = captures[safe: 0] else {
-                return nil
-            }
-            return TPSVGTransform.translateX(distance: parse(number: angle))
+            return parseAsTranslateX(method: method)
         case translateY:
-            let captures = translateY.match(in: method).captures
-            guard let angle = captures[safe: 0] else {
-                return nil
-            }
-            return TPSVGTransform.translateY(distance: parse(number: angle))
+           return parseAsTranslateY(method: method)
         case scale:
-            let captures = scale.match(in: method).captures
-            guard let x = captures[safe: 0], let y = captures[safe: 1] else {
-                return nil
-            }
-            return TPSVGTransform.scale(x: parse(number: x), y: parse(number: y))
+            return parseAsScale(method: method)
         case scaleX:
-            let captures = scaleX.match(in: method).captures
-            guard let angle = captures[safe: 0] else {
-                return nil
-            }
-            return TPSVGTransform.scaleX(factor: parse(number: angle))
+            return parseAsScaleX(method: method)
         case scaleY:
-            let captures = scaleY.match(in: method).captures
-            guard let angle = captures[safe: 0] else {
-                return nil
-            }
-            return TPSVGTransform.scaleY(factor: parse(number: angle))
+            return parseAsScaleY(method: method)
         case rotate:
-            let captures = rotate.match(in: method).captures
-            guard let angle = captures[safe: 0] else {
-                return nil
-            }
-            return TPSVGTransform.rotate(angle: parse(number: angle))
+            return parseAsRotate(method: method)
         case skewX:
-            let captures = skewX.match(in: method).captures
-            guard let angle = captures[safe: 0] else {
-                return nil
-            }
-            return TPSVGTransform.skewX(angle: parse(number: angle))
+            return parseAsSkewX(method: method)
         case skewY:
-            let captures = skewY.match(in: method).captures
-            guard let angle = captures[safe: 0] else {
-                return nil
-            }
-            return TPSVGTransform.skewY(angle: parse(number: angle))
+            return parseAsSkewY(method: method)
         case matrix:
-            let captures = matrix.match(in: method).captures
-            guard let valA = captures[safe: 0], let valB = captures[safe: 1], let valC = captures[safe: 2],
-                let valD = captures[safe: 3], let valE = captures[safe: 4], let valF = captures[safe: 5] else {
-                    return nil
-            }
-            return TPSVGTransform.matrix(a: parse(number: valA), b: parse(number: valB), c: parse(number: valC),
-                                         d: parse(number: valD), e: parse(number: valE), f: parse(number: valF))
+            return parseAsMatrix(method: method)
         default:
             return nil
         }
+    }
+
+    private static func parseAsTranslate(method: String) -> TPSVGTransform? {
+        let captures = translate.match(in: method).captures
+        guard let x = captures[safe: 0] else {
+            return nil
+        }
+        return TPSVGTransform.translate(x: parse(number: x), y: parse(number: captures[safe: 1] ?? "0"))
+    }
+
+    private static func parseAsTranslateX(method: String) -> TPSVGTransform? {
+        let captures = translateX.match(in: method).captures
+        guard let angle = captures[safe: 0] else {
+            return nil
+        }
+        return TPSVGTransform.translateX(distance: parse(number: angle))
+    }
+
+    private static func parseAsTranslateY(method: String) -> TPSVGTransform? {
+        let captures = translateY.match(in: method).captures
+        guard let angle = captures[safe: 0] else {
+            return nil
+        }
+        return TPSVGTransform.translateY(distance: parse(number: angle))
+    }
+
+    private static func parseAsScale(method: String) -> TPSVGTransform? {
+        let captures = scale.match(in: method).captures
+        guard let x = captures[safe: 0], let y = captures[safe: 1] else {
+            return nil
+        }
+        return TPSVGTransform.scale(x: parse(number: x), y: parse(number: y))
+    }
+
+    private static func parseAsScaleX(method: String) -> TPSVGTransform? {
+        let captures = scaleX.match(in: method).captures
+        guard let angle = captures[safe: 0] else {
+            return nil
+        }
+        return TPSVGTransform.scaleX(factor: parse(number: angle))
+    }
+
+    private static func parseAsScaleY(method: String) -> TPSVGTransform? {
+        let captures = scaleY.match(in: method).captures
+        guard let angle = captures[safe: 0] else {
+            return nil
+        }
+        return TPSVGTransform.scaleY(factor: parse(number: angle))
+    }
+
+    private static func parseAsRotate(method: String) -> TPSVGTransform? {
+        let captures = rotate.match(in: method).captures
+        guard let angle = captures[safe: 0] else {
+            return nil
+        }
+        return TPSVGTransform.rotate(angle: parse(number: angle))
+    }
+
+    private static func parseAsSkewX(method: String) -> TPSVGTransform? {
+        let captures = skewX.match(in: method).captures
+        guard let angle = captures[safe: 0] else {
+            return nil
+        }
+        return TPSVGTransform.skewX(angle: parse(number: angle))
+    }
+
+    private static func parseAsSkewY(method: String) -> TPSVGTransform? {
+        let captures = skewY.match(in: method).captures
+        guard let angle = captures[safe: 0] else {
+            return nil
+        }
+        return TPSVGTransform.skewY(angle: parse(number: angle))
+    }
+
+    private static func parseAsMatrix(method: String) -> TPSVGTransform? {
+        let captures = matrix.match(in: method).captures
+        guard let valA = captures[safe: 0], let valB = captures[safe: 1], let valC = captures[safe: 2],
+            let valD = captures[safe: 3], let valE = captures[safe: 4], let valF = captures[safe: 5] else {
+                return nil
+        }
+        return TPSVGTransform.matrix(a: parse(number: valA), b: parse(number: valB), c: parse(number: valC),
+                                     d: parse(number: valD), e: parse(number: valE), f: parse(number: valF))
     }
 
     private static func parse(number raw: String) -> CGFloat {
