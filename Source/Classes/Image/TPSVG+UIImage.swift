@@ -5,6 +5,8 @@
 //  Created by Philip Niedertscheider on 01.12.18.
 //
 
+import UIKit
+
 /**
  Extension of `TPSVG` used to create `UIImage` instances.
 
@@ -15,7 +17,7 @@ extension TPSVG {
     /**
      Creates an instance of UIImage.
 
-     Image creation constists out of two steps:
+     Image creation consists out of two steps:
 
         1. Drawing the image in the original resolution.
         2. Optionally resizing the image to fit the given size.
