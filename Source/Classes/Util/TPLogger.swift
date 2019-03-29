@@ -43,7 +43,7 @@ public class TPLogger {
     }
 
     private class func stripFuncParameters(_ funcName: String) -> String {
-        if let openingIndex = funcName.index(of: "(") {
+        if let openingIndex = funcName.firstIndex(of: "(") {
             return String(funcName[..<openingIndex])
         } else {
             return funcName
