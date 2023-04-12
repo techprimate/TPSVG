@@ -1,3 +1,5 @@
+**This project is not maintained anymore, as this functionality is now included in Xcode Asset Catalogs**
+
 <p align="center">
 	<img src="https://raw.githubusercontent.com/techprimate/TPSVG/master/res/header.png" alt="TPSVG">
 </p>
